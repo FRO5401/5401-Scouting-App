@@ -1,4 +1,4 @@
-package com.fro.scoutingapp;
+package com.fro.scoutingapp2025;
 
 import android.os.Bundle;
 

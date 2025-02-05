@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace = "com.fro.scoutingapp"
+    namespace = "com.fro.scoutingapp2025"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.fro.scoutingapp"
-        minSdk = 24
+        applicationId = "com.fro.scoutingapp2025"
+        minSdk = 31
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
