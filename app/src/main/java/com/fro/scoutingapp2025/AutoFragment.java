@@ -1,21 +1,22 @@
-package com.fro.scoutingapp;
+package com.fro.scoutingapp2025;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
-
-public class EndFragment extends Fragment {
-    public EndFragment() {/* Required empty public constructor*/}
+public class AutoFragment extends Fragment {
+    public AutoFragment() {/* Required empty public constructor*/}
 
     // Declare global variables here \/
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_teleop, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_auto, container, false);
         // Instantiate variables here \/
 
 
