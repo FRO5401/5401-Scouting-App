@@ -18,3 +18,5 @@ A clear and concise description of any alternative solutions or features you've 
 
 ## Additional context
 Add any other context or screenshots about the feature request here.
+
+Figma link:  [https://www.figma.com/design/v6eCTDoVVCFMPU8pgQxSAf/Game-Scouting-App](https://www.figma.com/design/v6eCTDoVVCFMPU8pgQxSAf/Game-Scouting-App)
