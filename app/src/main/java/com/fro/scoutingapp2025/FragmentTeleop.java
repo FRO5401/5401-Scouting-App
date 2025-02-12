@@ -8,8 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class TeleopFragment extends Fragment {
-    public TeleopFragment() {/* Required empty public constructor*/}
+public class FragmentTeleop extends Fragment {
+    public FragmentTeleop() {/* Required empty public constructor*/}
 
     // Declare global variables here \/
 

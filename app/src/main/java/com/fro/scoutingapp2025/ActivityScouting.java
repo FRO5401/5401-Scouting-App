@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ScoutingActivity extends AppCompatActivity {
+public class ActivityScouting extends AppCompatActivity {
     // Declare global variables here \/
 
 

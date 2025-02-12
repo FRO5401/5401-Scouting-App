@@ -1,12 +1,14 @@
 package com.fro.scoutingapp2025;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class ActivityMain extends AppCompatActivity {
     // Declare global variables here \/
-
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Instantiate variables here \/
+        button = findViewById(R.id.testButton);
 
+        button.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), ActivityScouting.class)));
     }
 }

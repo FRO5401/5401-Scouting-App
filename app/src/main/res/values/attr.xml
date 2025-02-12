@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TemplateTwoBoxes">
+        <attr name="left_text" format="string" />
+        <attr name="right_text" format="string" />
+
+        <attr name="left_box_type" format="enum" >
+            <enum name="text_type_box" value="0"/>
+            <enum name="number_type_box" value="1"/>
+            <enum name="text_dropdown" value="2"/>
+            <enum name="team_number_dropdown" value="3"/>
+            <enum name="toggle" value="4"/>
+            <enum name="counter" value="5"/>
+            <enum name="stopwatch" value="6"/>
+
+        </attr>
+        <attr name="right_box_type" format="enum" >
+            <enum name="text_type_box" value="0"/>
+            <enum name="number_type_box" value="1"/>
+            <enum name="text_dropdown" value="2"/>
+            <enum name="team_number_dropdown" value="3"/>
+            <enum name="toggle" value="4"/>
+            <enum name="counter" value="5"/>
+            <enum name="stopwatch" value="6"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="TemplateButton">
+        <attr name="buttonText" format="string" />
+    </declare-styleable>
+</resources>
