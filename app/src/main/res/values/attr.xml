@@ -45,9 +45,11 @@
             <enum name="counter" value="5"/>
             <enum name="stopwatch" value="6"/>
         </attr>
-    </declare-styleable>
 
-    <declare-styleable name="TemplateButton">
-        <attr name="buttonText" format="string" />
+        <attr name="color_pattern" format="enum" >
+            <enum name="white_grey_white" value="0"/>
+            <enum name="grey_white_grey" value="1"/>
+        </attr>
+
     </declare-styleable>
 </resources>

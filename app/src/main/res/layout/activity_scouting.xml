@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ActivityMain"
-    android:weightSum="4"
+    android:weightSum="5"
     android:background="@color/white">
 
     <com.fro.scoutingapp2025.TemplateTwoBoxes
@@ -26,6 +26,18 @@
         app:left_box_type="team_number_dropdown"
         app:middle_box_type="text_type_box"
         app:right_box_type="stopwatch"
+        android:layout_weight="1"/>
+
+    <com.fro.scoutingapp2025.TemplateLongBox
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:left_text="lefty"
+        app:middle_text="middle"
+        app:right_text="righty"
+        app:left_box_type="text_dropdown"
+        app:middle_box_type="number_type_box"
+        app:right_box_type="text_type_box"
+        app:color_pattern="white_grey_white"
         android:layout_weight="1"/>
 
     <com.fro.scoutingapp2025.TemplateOneLargeBox
