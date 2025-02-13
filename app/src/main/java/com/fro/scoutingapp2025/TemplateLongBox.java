@@ -40,8 +40,6 @@ public class TemplateLongBox extends LinearLayout {
 
         initComponents();
 
-        Toast.makeText(context, String.valueOf(colorPattern)+" |", Toast.LENGTH_SHORT).show();
-
         setLeftText(leftText);
         setMiddleText(middleText);
         setRightText(rightText);
