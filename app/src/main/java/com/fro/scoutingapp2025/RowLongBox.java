@@ -5,9 +5,40 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class TemplateLongBox extends LinearLayout {
+/**
+ * Creates a row with one long multicolored box. <br/>
+ * Usually, the layout weight of this row is 1 out of a weight sum of 5
+ *
+ * @requires app:color_pattern=""
+ * <br> The color of the background and middle section</li>
+ * <ul>
+ *     <li> white_grey_white - White background with grey middle section</li>
+ *     <li> grey_white_grey - Grey background with white middle section</li>
+ * </ul>
+ *
+ * @requires app:left_text=""
+ * <br> The text that will be displayed in the left box header</li>
+ * @requires app:middle_text=""
+ * <br> The text that will be displayed in the middle box header</li>
+ * @requires app:right_text=""
+ * <br> The text that will be displayed in the right box header</li>
+ *
+ * @requires app:left_box_type=""
+ * @requires app:middle_box_type=""
+ * @requires app:right_box_type=""
+ * <br> The type of component that will be in the left/middle/right boxes
+ * <ul>
+ *     <li>text_type_box - Typed input</li>
+ *     <li>number_type_box - Typed input with numbers only</li>
+ *     <li>text_dropdown - A dropdown list</li>
+ *     <li>team_number_dropdown - A searchable dropdown of team numbers</li>
+ *     <li>toggle - An on/off switch</li>
+ *     <li>counter - A plus/minus counter starting at 0</li>
+ *     <li>stopwatch - A stopwatch with on, off, and reset</li>
+ * </ul>
+ */
+public class RowLongBox extends LinearLayout {
 
     TextView leftTextView;
     TextView middleTextView;
@@ -22,13 +53,13 @@ public class TemplateLongBox extends LinearLayout {
     LinearLayout middleLayout;
     LinearLayout backgroundLayout;
 
-    public TemplateLongBox(Context context, AttributeSet attrs) {
+    public RowLongBox(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
     private void init(Context context, AttributeSet attrs) {
-        inflate(context, R.layout.template_long_box, this);
+        inflate(context, R.layout.row_long_box, this);
 
         CharSequence leftText = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "left_text");
         CharSequence middleText = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "middle_text");

@@ -8,7 +8,7 @@
     android:weightSum="5"
     android:background="@color/white">
 
-    <com.fro.scoutingapp2025.TemplateTwoBoxes
+    <com.fro.scoutingapp2025.RowTwoBoxes
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="GO FRO!!!"
@@ -17,7 +17,7 @@
         app:right_box_type="text_dropdown"
         android:layout_weight="1"/>
 
-    <com.fro.scoutingapp2025.TemplateThreeBoxes
+    <com.fro.scoutingapp2025.RowThreeBoxes
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="A thing"
@@ -28,7 +28,7 @@
         app:right_box_type="stopwatch"
         android:layout_weight="1"/>
 
-    <com.fro.scoutingapp2025.TemplateLongBox
+    <com.fro.scoutingapp2025.RowLongBox
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="lefty"
@@ -40,7 +40,7 @@
         app:color_pattern="white_grey_white"
         android:layout_weight="1"/>
 
-    <com.fro.scoutingapp2025.TemplateOneLargeBox
+    <com.fro.scoutingapp2025.RowLargeBox
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Very big box"
