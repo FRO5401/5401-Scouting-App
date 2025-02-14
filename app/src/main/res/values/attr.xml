@@ -51,5 +51,10 @@
             <enum name="grey_white_grey" value="1"/>
         </attr>
 
+        <attr name="color_mode" format="enum" >
+            <enum name="light" value="0"/>
+            <enum name="dark" value="1"/>
+        </attr>
+
     </declare-styleable>
 </resources>
