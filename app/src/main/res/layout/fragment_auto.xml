@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/light_blue"
+    tools:context=".FragmentAuto"
     android:weightSum="5">
+
 
     <com.fro.scoutingapp2025.RowTopText
         android:layout_width="match_parent"
