@@ -7,11 +7,14 @@ assignees: ''
 
 ---
 
-## Describe the change
+## Overview of the change
 A clear and concise description of what you want to happen.
 
 ## Specific Requirements
-The requirements that need to be met in order for this issue to be closed
+- The requirements that need to be met in order for this issue to be closed
+
+## Files that should be edited:
+- file.type
 
 ## Additional context
 Add any other context or screenshots about the feature request here.
