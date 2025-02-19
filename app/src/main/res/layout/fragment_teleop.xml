@@ -50,7 +50,7 @@
         app:left_box_type="number_type_box"
         app:middle_box_type="number_type_box"
         app:right_box_type="number_type_box"
-        app:color_pattern="white_grey_white"
+        app:color_pattern="grey_white_grey"
         android:layout_weight="1">
     </com.fro.scoutingapp2025.RowLongBox>
 
