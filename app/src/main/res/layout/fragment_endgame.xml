@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Started Climbing At\nThis Time"
-        app:box_type="text_dropdown"
+        app:box_type="text_type_box"
         android:layout_weight="1">
     </com.fro.scoutingapp2025.RowLargeBox>
 
