@@ -46,6 +46,19 @@
             <enum name="stopwatch" value="6"/>
         </attr>
 
+        <attr name="vertical_long_box" format="enum" >
+            <enum name="text_1" value="0"/>
+            <enum name="text_2" value="1"/>
+            <enum name="text_3" value="2"/>
+            <enum name="text_4" value="3"/>
+            <enum name="text_5" value="4"/>
+            <enum name="box_type_1" value="5"/>
+            <enum name="box_type_2" value="6"/>
+            <enum name= "box_type_3" value="7"/>
+            <enum name= "box_type_4" value="8"/>
+            <enum name= "box_type_5" value="9"/>
+        </attr>
+
         <attr name="color_pattern" format="enum" >
             <enum name="white_grey_white" value="0"/>
             <enum name="grey_white_grey" value="1"/>
