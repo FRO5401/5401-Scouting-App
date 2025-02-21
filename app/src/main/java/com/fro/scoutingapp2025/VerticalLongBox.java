@@ -31,11 +31,11 @@ public class VerticalLongBox extends LinearLayout{
         CharSequence text4 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_4");
         CharSequence text5 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_5");
 
-        CharSequence box1 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_1_type");
-        CharSequence box2 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_2_type");
-        CharSequence box3 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_3_type");
-        CharSequence box4 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_4_type");
-        CharSequence box5 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_5_type");
+        CharSequence box1 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_1_type");
+        CharSequence box2 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_2_type");
+        CharSequence box3 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_3_type");
+        CharSequence box4 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_4_type");
+        CharSequence box5 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_5_type");
 
         initComponents();
 
