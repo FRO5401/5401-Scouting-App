@@ -35,7 +35,7 @@ public class RowLargeBox extends LinearLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        inflate(context, R.layout.row_thin_large_box, this);
+        inflate(context, R.layout.row_large_box, this);
 
         CharSequence text = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text");
         CharSequence box =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type");
