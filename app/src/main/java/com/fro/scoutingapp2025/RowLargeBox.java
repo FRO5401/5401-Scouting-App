@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Creates a row with one large box. <br/>
  * Usually, the layout weight of this row is 2 out of a weight sum of 5
@@ -29,6 +31,7 @@ public class RowLargeBox extends LinearLayout {
     TextView textView;
     ComponentFlipper flipper;
 
+
     public RowLargeBox(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
@@ -41,6 +44,8 @@ public class RowLargeBox extends LinearLayout {
         CharSequence box =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type");
 
         initComponents();
+
+        flipper.setPadding(2, 10);
 
         setText(text);
         setBox(box);
@@ -58,5 +63,9 @@ public class RowLargeBox extends LinearLayout {
     public void setBox(CharSequence value) {
         if (value == null) {return;}
         flipper.changeTo(value);
+    }
+
+    public void createTextDropdown(ArrayList<String> array, String name) {
+        flipper.createTextDropdown(array, name);
     }
 }
