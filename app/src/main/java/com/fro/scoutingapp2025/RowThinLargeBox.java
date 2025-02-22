@@ -24,12 +24,12 @@ import android.widget.TextView;
  *     <li>stopwatch - A stopwatch with on, off, and reset</li>
  * </ul>
  */
-public class RowLargeBox extends LinearLayout {
+public class RowThinLargeBox extends LinearLayout {
 
     TextView textView;
     ComponentFlipper flipper;
 
-    public RowLargeBox(Context context, AttributeSet attrs) {
+    public RowThinLargeBox(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
