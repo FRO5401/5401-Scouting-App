@@ -6,8 +6,34 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * Creates a row with one long multicolored box. <br/>
+ * Usually, the layout weight of this row is 3 out of a weight sum of 5
+ *
+ * @requires app:text_1=""
+ * @requires app:text_2=""
+ * @requires app:text_3=""
+ * @requires app:text_4=""
+ * @requires app:text_5=""
+ * <br> The text that will be displayed in the headers on the left. Numbers are from 1-5, top-bottom</li>
+ *
+ * @requires app:box_type_1=""
+ * @requires app:box_type_2=""
+ * @requires app:box_type_3=""
+ * @requires app:box_type_4=""
+ * @requires app:box_type_5=""
+ * <br> The type of component that will be in the boxes. Boxes are from 1-5, top-bottom
+ * <ul>
+ *     <li>text_type_box - Typed input</li>
+ *     <li>number_type_box - Typed input with numbers only</li>
+ *     <li>text_dropdown - A dropdown list</li>
+ *     <li>team_number_dropdown - A searchable dropdown of team numbers</li>
+ *     <li>toggle - An on/off switch</li>
+ *     <li>counter - A plus/minus counter starting at 0</li>
+ *     <li>stopwatch - A stopwatch with on, off, and reset</li>
+ * </ul>
+ */
 public class VerticalLongBox extends LinearLayout{
-
     TextView text1View;
     TextView text2View;
     TextView text3View;
@@ -31,11 +57,11 @@ public class VerticalLongBox extends LinearLayout{
         CharSequence text4 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_4");
         CharSequence text5 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_5");
 
-        CharSequence box1 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_1_type");
-        CharSequence box2 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_2_type");
-        CharSequence box3 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_3_type");
-        CharSequence box4 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_4_type");
-        CharSequence box5 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_5_type");
+        CharSequence box1 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_1");
+        CharSequence box2 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_2");
+        CharSequence box3 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_3");
+        CharSequence box4 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_4");
+        CharSequence box5 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_5");
 
         initComponents();
 
@@ -49,7 +75,6 @@ public class VerticalLongBox extends LinearLayout{
         setBox3(box3);
         setBox4(box4);
         setBox5(box5);
-
     }
 
     private void initComponents() {
