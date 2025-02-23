@@ -33,10 +33,10 @@ public class FragmentTeleop extends Fragment {
         // Row 1
         row1.createTextDropdown(
                 new ArrayList<String>(Arrays.asList("Reef", "Ground", "Both")),
-                "Teleop_Algae_Pickup_Location", RowThreeBoxes.left);
+                "Teleop_Algae_Pickup_Location", Values.left);
         row1.createTextDropdown(
                 new ArrayList<String>(Arrays.asList("Source", "Ground", "Both")),
-                "Teleop_Coral_Pickup_Location", RowThreeBoxes.middle);
+                "Teleop_Coral_Pickup_Location", Values.middle);
 
         // Inflate the layout for this fragment
         return rootView;

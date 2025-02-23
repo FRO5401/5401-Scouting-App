@@ -56,11 +56,6 @@ public class RowLongBox extends LinearLayout {
     LinearLayout middleLayout;
     LinearLayout backgroundLayout;
 
-    // public variables for the developer to set which box they are using
-    public static int left = 0;
-    public static int middle = 1;
-    public static int right = 2;
-
     public RowLongBox(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
@@ -146,17 +141,17 @@ public class RowLongBox extends LinearLayout {
     }
 
     public void createTextDropdown(ArrayList<String> array, String name, int position) {
-        if (position == left) {leftFlipper.createTextDropdown(array, name);}
-        else if (position == middle) {middleFlipper.createTextDropdown(array, name);}
-        else if (position == right) {rightFlipper.createTextDropdown(array, name);}
+        if (position == Values.left) {leftFlipper.createTextDropdown(array, name);}
+        else if (position == Values.middle) {middleFlipper.createTextDropdown(array, name);}
+        else if (position == Values.right) {rightFlipper.createTextDropdown(array, name);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }
 
-    public void createTextTypeBox(String name, int position) {
-        if (position == left) {leftFlipper.createTextTypeBox(name);}
-        else if (position == middle) {middleFlipper.createTextTypeBox(name);}
-        else if (position == right) {rightFlipper.createTextTypeBox(name);}
+    public void createTextTypeBox(String name, int inputType, int position) {
+        if (position == Values.left) {leftFlipper.createTextTypeBox(name, inputType);}
+        else if (position == Values.middle) {middleFlipper.createTextTypeBox(name, inputType);}
+        else if (position == Values.right) {rightFlipper.createTextTypeBox(name, inputType);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in text type box "+name, Toast.LENGTH_SHORT).show();
         }
