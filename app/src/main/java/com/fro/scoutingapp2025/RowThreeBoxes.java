@@ -42,10 +42,11 @@ public class RowThreeBoxes extends LinearLayout {
     ComponentFlipper middleFlipper;
     ComponentFlipper rightFlipper;
 
-    // public variables for the developer to set which box they are using
+    // public variables for the developer
     public static int left = 0;
     public static int middle = 1;
     public static int right = 2;
+    public static int text = 0;
 
     public RowThreeBoxes(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -116,5 +117,14 @@ public class RowThreeBoxes extends LinearLayout {
         else if (position == right) {rightFlipper.createTextDropdown(array, name);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void createTextTypeBox(String name, int position) {
+        if (position == left) {leftFlipper.createTextTypeBox(name);}
+        else if (position == middle) {middleFlipper.createTextTypeBox(name);}
+        else if (position == right) {rightFlipper.createTextTypeBox(name);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in text type box "+name, Toast.LENGTH_SHORT).show();
+        }
     }
 }

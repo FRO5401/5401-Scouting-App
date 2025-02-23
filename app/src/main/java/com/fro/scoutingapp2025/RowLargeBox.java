@@ -68,4 +68,8 @@ public class RowLargeBox extends LinearLayout {
     public void createTextDropdown(ArrayList<String> array, String name) {
         flipper.createTextDropdown(array, name);
     }
+
+    public void createTextTypeBox(String name) {
+        flipper.createTextTypeBox(name);
+    }
 }

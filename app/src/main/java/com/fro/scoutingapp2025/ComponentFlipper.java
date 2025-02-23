@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -78,7 +79,7 @@ public class ComponentFlipper extends LinearLayout {
     }
 
 
-    public void createTextTypeBox(String name) {
+    public void createTextTypeBox(String name, int type) {
         //Creates the data in the hashmap
         if (!Values.data.containsKey(name)) {
             Values.data.put(name, "");
@@ -86,6 +87,13 @@ public class ComponentFlipper extends LinearLayout {
 
         //Creates the type box
         textTypeBox = findViewById(R.id.text_type_box);
+
+        if (type == 1){
+            textTypeBox.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
+        }
+        else {
+            textTypeBox.setInputType(EditorInfo.TYPE_CLASS_TEXT);
+        }
 
         // Set inputted text
         if (Values.data.containsKey(name) && (CharSequence) Values.data.get(name) != null) {

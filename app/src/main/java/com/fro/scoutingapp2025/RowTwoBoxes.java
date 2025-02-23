@@ -100,4 +100,12 @@ public class RowTwoBoxes extends LinearLayout {
         else if (position == right) {rightFlipper.createTextDropdown(array, name);}
         else{Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }
+
+    public void createTextTypeBox(String name, int position) {
+        if (position == left) {leftFlipper.createTextTypeBox(name);}
+        else if (position == right) {rightFlipper.createTextTypeBox(name);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in text type box "+name, Toast.LENGTH_SHORT).show();
+        }
+    }
 }
