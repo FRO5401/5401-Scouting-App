@@ -22,20 +22,6 @@
             android:padding="10dp"/>
     </LinearLayout>
 
-<!--    Number Type Box    -->
-    <LinearLayout
-        android:id="@+id/numberTypeBox"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Text Number Box"
-            android:autoSizeTextType="uniform"
-            android:padding="10dp"/>
-    </LinearLayout>
-
 <!--    Text Dropdown    -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/textDropdown"

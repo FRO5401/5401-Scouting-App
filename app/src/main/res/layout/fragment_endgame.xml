@@ -39,9 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Started Climbing At\nThis Time (in seconds)"
-        app:box_type="text_type_box"
+        app:box_type="type_box"
         android:layout_weight="1">
     </com.fro.scoutingapp2025.RowThinLargeBox>
-
 
 </LinearLayout>

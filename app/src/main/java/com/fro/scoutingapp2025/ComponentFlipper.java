@@ -48,7 +48,6 @@ public class ComponentFlipper extends LinearLayout {
 
     public boolean getView(String type) {
         if (type.equals("typeBox") && flipper.getCurrentView() != findViewById(R.id.typeBox)) {return true;}
-        if (type.equals("numberTypeBox") && flipper.getCurrentView() == findViewById(R.id.numberTypeBox)) {return true;}
         if (type.equals("textDropdown") && flipper.getCurrentView() != findViewById(R.id.textDropdown)) {return true;}
         if (type.equals("numberDropdown") && flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {return true;}
         if (type.equals("toggle") && flipper.getCurrentView() != findViewById(R.id.toggle)) {return true;}
@@ -70,9 +69,7 @@ public class ComponentFlipper extends LinearLayout {
                             (height / verticalChange)   // bottom
                     );
                 }
-                else{
-                    Toast.makeText(con, "Error 0: " + String.valueOf(horizontalChange)+" | "+String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();
-                }
+                else{Toast.makeText(con, "Error divide by 0: " + String.valueOf(horizontalChange)+" or "+String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();}
             }
         });
     }
@@ -80,19 +77,14 @@ public class ComponentFlipper extends LinearLayout {
 
     public void createTypeBox(String name, int type) {
         //Creates the data in the hashmap
-        if (!Values.data.containsKey(name)) {
-            Values.data.put(name, "");
-        }
+        if (!Values.data.containsKey(name)) { Values.data.put(name, ""); }
 
         //Creates the type box
         typeBox = findViewById(R.id.type_box);
 
-        if (type == 1){
-            typeBox.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
-        }
-        else {
-            typeBox.setInputType(EditorInfo.TYPE_CLASS_TEXT);
-        }
+        // Sets the input type (number or text)
+        if (type == Values.inputType_number){typeBox.setInputType(EditorInfo.TYPE_CLASS_NUMBER);}
+        else {typeBox.setInputType(EditorInfo.TYPE_CLASS_TEXT);}
 
         // Set inputted text
         if (Values.data.containsKey(name) && (CharSequence) Values.data.get(name) != null) {
@@ -109,9 +101,7 @@ public class ComponentFlipper extends LinearLayout {
 
     public void createTextDropdown(ArrayList<String> array, String name) {
         //Creates the data in the hashmap
-        if (!Values.data.containsKey(name)) {
-            Values.data.put(name, -1);
-        }
+        if (!Values.data.containsKey(name)) {Values.data.put(name, -1);}
 
         // Adds 'dropdown' to the beginning of the list to be a default value
         array.add(0, "Dropdown");
