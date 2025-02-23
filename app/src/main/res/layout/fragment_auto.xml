@@ -18,6 +18,7 @@
     </com.fro.scoutingapp2025.RowTopText>
 
     <com.fro.scoutingapp2025.RowTwoBoxes
+        android:id="@+id/auto_row_1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="Leaves Robot\nStarting Zone"
@@ -28,6 +29,7 @@
     </com.fro.scoutingapp2025.RowTwoBoxes>
 
     <com.fro.scoutingapp2025.RowLongBox
+        android:id="@+id/auto_row_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="Reef\nLevel 2"
@@ -40,6 +42,7 @@
         android:layout_weight="1"/>
 
     <com.fro.scoutingapp2025.RowLongBox
+        android:id="@+id/auto_row_3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="Algae\nRemoved"
@@ -52,6 +55,7 @@
         android:layout_weight="1"/>
 
     <com.fro.scoutingapp2025.RowTwoBoxes
+        android:id="@+id/auto_row_4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="Picked Up\nFrom Source"

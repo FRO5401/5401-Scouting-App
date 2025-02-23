@@ -17,6 +17,7 @@
     </com.fro.scoutingapp2025.RowTopText>
 
     <com.fro.scoutingapp2025.RowThinLargeBox
+        android:id="@+id/endgame_row_1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="End Location"
@@ -25,6 +26,7 @@
     </com.fro.scoutingapp2025.RowThinLargeBox>
 
     <com.fro.scoutingapp2025.RowThinLargeBox
+        android:id="@+id/endgame_row_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Robot Spent the\nLast 10 Seconds Doing"
@@ -33,6 +35,7 @@
     </com.fro.scoutingapp2025.RowThinLargeBox>
 
     <com.fro.scoutingapp2025.RowThinLargeBox
+        android:id="@+id/endgame_row_3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Started Climbing At\nThis Time"

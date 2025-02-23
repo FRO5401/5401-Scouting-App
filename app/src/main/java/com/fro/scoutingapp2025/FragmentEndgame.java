@@ -12,13 +12,17 @@ public class FragmentEndgame extends Fragment {
     public FragmentEndgame() {/* Required empty public constructor*/}
 
     // Declare global variables here \/
-
+    RowThinLargeBox row1;
+    RowThinLargeBox row2;
+    RowThinLargeBox row3;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_endgame, container, false);
         // Instantiate variables here \/
-
+        row1 = rootView.findViewById(R.id.endgame_row_1);
+        row2 = rootView.findViewById(R.id.endgame_row_2);
+        row3 = rootView.findViewById(R.id.endgame_row_3);
 
         // Inflate the layout for this fragment
         return rootView;
