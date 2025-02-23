@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class FragmentTeleop extends Fragment {
     public FragmentTeleop() {/* Required empty public constructor*/}
 
@@ -25,6 +28,15 @@ public class FragmentTeleop extends Fragment {
         row2 = rootView.findViewById(R.id.teleop_row_2);
         row3 = rootView.findViewById(R.id.teleop_row_3);
         row4 = rootView.findViewById(R.id.teleop_row_4);
+
+        /*  Setting Text Values  */
+        // Row 1
+        row1.createTextDropdown(
+                new ArrayList<String>(Arrays.asList("Reef", "Ground", "Both")),
+                "Teleop_Algae_Pickup_Location", RowThreeBoxes.left);
+        row1.createTextDropdown(
+                new ArrayList<String>(Arrays.asList("Source", "Ground", "Both")),
+                "Teleop_Coral_Pickup_Location", RowThreeBoxes.middle);
 
         // Inflate the layout for this fragment
         return rootView;

@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class FragmentEndgame extends Fragment {
     public FragmentEndgame() {/* Required empty public constructor*/}
 
@@ -23,6 +26,15 @@ public class FragmentEndgame extends Fragment {
         row1 = rootView.findViewById(R.id.endgame_row_1);
         row2 = rootView.findViewById(R.id.endgame_row_2);
         row3 = rootView.findViewById(R.id.endgame_row_3);
+
+        /*  Setting Text Values  */
+        row1.createTextDropdown(
+                new ArrayList<String>(Arrays.asList("Parked", "Shallow Cage", "Deep Cage", "Not In Barge Zone")),
+                "Endgame_End_Location");
+
+        row2.createTextDropdown(
+                new ArrayList<String>(Arrays.asList("Scoring Coral", "Scoring Algae", "Climbing", "Defense", "Other", "Nothing")),
+                "Endgame_Robot_Spent_Last_10_Seconds_Doing");
 
         // Inflate the layout for this fragment
         return rootView;
