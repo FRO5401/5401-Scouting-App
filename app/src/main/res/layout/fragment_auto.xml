@@ -23,7 +23,7 @@
         app:left_text="Leaves Robot\nStarting Zone"
         app:right_text="Reef\nTrough (L1)"
         app:left_box_type="toggle"
-        app:right_box_type="number_type_box"
+        app:right_box_type="counter"
         android:layout_weight="1">
     </com.fro.scoutingapp2025.RowTwoBoxes>
 
@@ -33,9 +33,9 @@
         app:left_text="Reef\nLevel 2"
         app:middle_text="Reef\nLevel 3"
         app:right_text="Reef\nLevel 4"
-        app:left_box_type="number_type_box"
-        app:middle_box_type="number_type_box"
-        app:right_box_type="number_type_box"
+        app:left_box_type="counter"
+        app:middle_box_type="counter"
+        app:right_box_type="counter"
         app:color_pattern="white_grey_white"
         android:layout_weight="1"/>
 
@@ -45,9 +45,9 @@
         app:left_text="Algae\nRemoved"
         app:middle_text="Net"
         app:right_text="Processor"
-        app:left_box_type="number_type_box"
-        app:middle_box_type="number_type_box"
-        app:right_box_type="number_type_box"
+        app:left_box_type="counter"
+        app:middle_box_type="counter"
+        app:right_box_type="counter"
         app:color_pattern="grey_white_grey"
         android:layout_weight="1"/>
 
