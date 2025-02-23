@@ -140,6 +140,15 @@ public class RowLongBox extends LinearLayout {
         }
     }
 
+    public void createTypeBox(String name, int inputType, int position) {
+        if (position == Values.left) {leftFlipper.createTypeBox(name, inputType);}
+        else if (position == Values.middle) {middleFlipper.createTypeBox(name, inputType);}
+        else if (position == Values.right) {rightFlipper.createTypeBox(name, inputType);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in type box "+name, Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void createTextDropdown(ArrayList<String> array, String name, int position) {
         if (position == Values.left) {leftFlipper.createTextDropdown(array, name);}
         else if (position == Values.middle) {middleFlipper.createTextDropdown(array, name);}
@@ -147,14 +156,4 @@ public class RowLongBox extends LinearLayout {
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }
-
-    public void createTextTypeBox(String name, int inputType, int position) {
-        if (position == Values.left) {leftFlipper.createTextTypeBox(name, inputType);}
-        else if (position == Values.middle) {middleFlipper.createTextTypeBox(name, inputType);}
-        else if (position == Values.right) {rightFlipper.createTextTypeBox(name, inputType);}
-        else{
-            Toast.makeText(this.getContext(), "ERROR: Invalid position in text type box "+name, Toast.LENGTH_SHORT).show();
-        }
-    }
-
 }

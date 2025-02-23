@@ -7,8 +7,8 @@ public class Values {
     public static int left = 0;
     public static int middle = 1;
     public static int right = 2;
-    public static int inputType_text = 0;
-    public static int inputType_number = 1;
+    public static int inputType_text = 3;
+    public static int inputType_number = 4;
 
     // Data
     public static HashMap<String, Object> data = new HashMap<>();

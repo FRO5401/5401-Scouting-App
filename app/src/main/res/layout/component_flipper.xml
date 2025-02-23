@@ -8,12 +8,12 @@
 
 <!--    Text Type Box    -->
     <LinearLayout
-        android:id="@+id/textTypeBox"
+        android:id="@+id/typeBox"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <EditText
-            android:id="@+id/text_type_box"
+            android:id="@+id/type_box"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Type Here..."

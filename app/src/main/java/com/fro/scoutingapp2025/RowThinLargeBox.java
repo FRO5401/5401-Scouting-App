@@ -66,7 +66,7 @@ public class RowThinLargeBox extends LinearLayout {
         flipper.changeTo(value);
     }
 
-    public void createTextDropdown(ArrayList<String> array, String name) {flipper.createTextDropdown(array, name);}
+    public void createTypeBox(String name, int inputType) {flipper.createTypeBox(name, inputType);}
 
-    public void createTextTypeBox(String name, int inputType) {flipper.createTextTypeBox(name, inputType);}
+    public void createTextDropdown(ArrayList<String> array, String name) {flipper.createTextDropdown(array, name);}
 }

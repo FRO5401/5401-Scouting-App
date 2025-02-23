@@ -23,7 +23,7 @@ public class ComponentFlipper extends LinearLayout {
     // Instantiates the view flipper
     ViewFlipper flipper;
     // Text type box
-    EditText textTypeBox;
+    EditText typeBox;
     // Text Dropdown
     Spinner textDropdown;
 
@@ -38,17 +38,16 @@ public class ComponentFlipper extends LinearLayout {
     }
 
     public void changeTo(CharSequence value) {
-        if (value.equals("0")) {while (flipper.getCurrentView() != findViewById(R.id.textTypeBox)) {flipper.showNext();}}
-        if (value.equals("1")) {while (flipper.getCurrentView() != findViewById(R.id.numberTypeBox)) {flipper.showNext();}}
-        if (value.equals("2")) {while (flipper.getCurrentView() != findViewById(R.id.textDropdown)) {flipper.showNext();}}
-        if (value.equals("3")) {while (flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {flipper.showNext();}}
-        if (value.equals("4")) {while (flipper.getCurrentView() != findViewById(R.id.toggle)) {flipper.showNext();}}
-        if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.counter)) {flipper.showNext();}}
-        if (value.equals("6")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch)) {flipper.showNext();}}
+        if (value.equals("0")) {while (flipper.getCurrentView() != findViewById(R.id.typeBox)) {flipper.showNext();}}
+        if (value.equals("1")) {while (flipper.getCurrentView() != findViewById(R.id.textDropdown)) {flipper.showNext();}}
+        if (value.equals("2")) {while (flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {flipper.showNext();}}
+        if (value.equals("3")) {while (flipper.getCurrentView() != findViewById(R.id.toggle)) {flipper.showNext();}}
+        if (value.equals("4")) {while (flipper.getCurrentView() != findViewById(R.id.counter)) {flipper.showNext();}}
+        if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch)) {flipper.showNext();}}
     }
 
     public boolean getView(String type) {
-        if (type.equals("textTypeBox") && flipper.getCurrentView() != findViewById(R.id.textTypeBox)) {return true;}
+        if (type.equals("typeBox") && flipper.getCurrentView() != findViewById(R.id.typeBox)) {return true;}
         if (type.equals("numberTypeBox") && flipper.getCurrentView() == findViewById(R.id.numberTypeBox)) {return true;}
         if (type.equals("textDropdown") && flipper.getCurrentView() != findViewById(R.id.textDropdown)) {return true;}
         if (type.equals("numberDropdown") && flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {return true;}
@@ -79,32 +78,32 @@ public class ComponentFlipper extends LinearLayout {
     }
 
 
-    public void createTextTypeBox(String name, int type) {
+    public void createTypeBox(String name, int type) {
         //Creates the data in the hashmap
         if (!Values.data.containsKey(name)) {
             Values.data.put(name, "");
         }
 
         //Creates the type box
-        textTypeBox = findViewById(R.id.text_type_box);
+        typeBox = findViewById(R.id.type_box);
 
         if (type == 1){
-            textTypeBox.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
+            typeBox.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
         }
         else {
-            textTypeBox.setInputType(EditorInfo.TYPE_CLASS_TEXT);
+            typeBox.setInputType(EditorInfo.TYPE_CLASS_TEXT);
         }
 
         // Set inputted text
         if (Values.data.containsKey(name) && (CharSequence) Values.data.get(name) != null) {
-            textTypeBox.setText((CharSequence) Values.data.get(name));
+            typeBox.setText((CharSequence) Values.data.get(name));
         }
 
         // Updates data when text is changed
-        textTypeBox.addTextChangedListener(new TextWatcher() {
+        typeBox.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
-            @Override public void afterTextChanged(Editable s) {Values.data.put(name, textTypeBox.getText());}
+            @Override public void afterTextChanged(Editable s) {Values.data.put(name, typeBox.getText());}
         });
     }
 
