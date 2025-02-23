@@ -16,29 +16,29 @@
         android:layout_weight="0.5">
     </com.fro.scoutingapp2025.RowTopText>
 
-    <com.fro.scoutingapp2025.RowLargeBox
+    <com.fro.scoutingapp2025.RowThinLargeBox
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="End Location"
         app:box_type="text_dropdown"
         android:layout_weight="1">
-    </com.fro.scoutingapp2025.RowLargeBox>
+    </com.fro.scoutingapp2025.RowThinLargeBox>
 
-    <com.fro.scoutingapp2025.RowLargeBox
+    <com.fro.scoutingapp2025.RowThinLargeBox
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Robot Spent the\nLast 10 Seconds Doing"
         app:box_type="text_dropdown"
         android:layout_weight="1">
-    </com.fro.scoutingapp2025.RowLargeBox>
+    </com.fro.scoutingapp2025.RowThinLargeBox>
 
-    <com.fro.scoutingapp2025.RowLargeBox
+    <com.fro.scoutingapp2025.RowThinLargeBox
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Started Climbing At\nThis Time"
         app:box_type="text_type_box"
         android:layout_weight="1">
-    </com.fro.scoutingapp2025.RowLargeBox>
+    </com.fro.scoutingapp2025.RowThinLargeBox>
 
 
 </LinearLayout>

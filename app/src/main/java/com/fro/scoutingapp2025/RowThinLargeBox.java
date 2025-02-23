@@ -42,6 +42,8 @@ public class RowThinLargeBox extends LinearLayout {
 
         initComponents();
 
+        flipper.setPadding(2, 10);
+
         setText(text);
         setBox(box);
     }
