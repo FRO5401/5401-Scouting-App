@@ -3,10 +3,13 @@ package com.fro.scoutingapp2025;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -18,7 +21,8 @@ public class ComponentFlipper extends LinearLayout {
 
     // Instantiates the view flipper
     ViewFlipper flipper;
-
+    // Text type box
+    EditText textTypeBox;
     // Text Dropdown
     Spinner textDropdown;
 
@@ -57,23 +61,53 @@ public class ComponentFlipper extends LinearLayout {
         Context con = this.getContext();
         flipper.post(new Runnable() {
             @Override public void run() {
-                int height = flipper.getHeight();
-                flipper.setPadding(
-                        (height / horizontalChange), // left
-                        (height / verticalChange), // top
-                        (height / horizontalChange),  // right
-                        (height / verticalChange)   // bottom
-                );
+                if(horizontalChange != 0 && verticalChange != 0){
+                    int height = flipper.getHeight();
+                    flipper.setPadding(
+                            (height / horizontalChange), // left
+                            (height / verticalChange), // top
+                            (height / horizontalChange),  // right
+                            (height / verticalChange)   // bottom
+                    );
+                }
+                else{
+                    Toast.makeText(con, "Error 0: " + String.valueOf(horizontalChange)+" | "+String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
+
+    public void createTextTypeBox(String name) {
+        //Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, "");
+        }
+
+        //Creates the type box
+        textTypeBox = findViewById(R.id.text_type_box);
+
+        // Set inputted text
+        if (Values.data.containsKey(name) && (CharSequence) Values.data.get(name) != null) {
+            textTypeBox.setText((CharSequence) Values.data.get(name));
+        }
+
+        // Updates data when text is changed
+        textTypeBox.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override public void afterTextChanged(Editable s) {Values.data.put(name, textTypeBox.getText());}
+        });
+    }
+
     public void createTextDropdown(ArrayList<String> array, String name) {
-        Context c = this.getContext();
         //Creates the data in the hashmap
         if (!Values.data.containsKey(name)) {
             Values.data.put(name, -1);
         }
+
+        // Adds 'dropdown' to the beginning of the list to be a default value
+        array.add(0, "Dropdown");
 
         // Creates the dropdown
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, array);
@@ -92,7 +126,7 @@ public class ComponentFlipper extends LinearLayout {
             textDropdown.setSelection((Integer) Values.data.get(name));
         }
 
-        // Set text dropdown on item selected listener
+        // Updates data when new item is selected in dropdown
         textDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {Values.data.put(name, pos);}
             public void onNothingSelected(AdapterView<?> parent) {}

@@ -12,12 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Text Type Box"
-                android:autoSizeTextType="uniform"
-                android:padding="10dp"/>
+        <EditText
+            android:id="@+id/text_type_box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Type Here..."
+            android:autoSizeTextType="uniform"
+            android:inputType="text"
+            android:padding="10dp"/>
     </LinearLayout>
 
 <!--    Number Type Box    -->

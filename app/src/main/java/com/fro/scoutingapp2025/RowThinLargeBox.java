@@ -40,7 +40,7 @@ public class RowThinLargeBox extends LinearLayout {
         inflate(context, R.layout.row_thin_large_box, this);
 
         CharSequence text = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text");
-        CharSequence box =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type");
+        CharSequence box = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type");
 
         initComponents();
 
@@ -60,11 +60,17 @@ public class RowThinLargeBox extends LinearLayout {
     }
 
     public void setBox(CharSequence value) {
-        if (value == null) {return;}
+        if (value == null) {
+            return;
+        }
         flipper.changeTo(value);
     }
 
     public void createTextDropdown(ArrayList<String> array, String name) {
         flipper.createTextDropdown(array, name);
+    }
+
+    public void createTextTypeBox(String name) {
+        flipper.createTextTypeBox(name);
     }
 }
