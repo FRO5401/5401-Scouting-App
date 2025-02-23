@@ -5,48 +5,53 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ActivityMain"
-    android:weightSum="5">
+    android:weightSum="5"
+    android:background="@color/fro_blue">
 
     <com.fro.scoutingapp2025.RowTopText
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Template"
-        app:color_mode="dark"
+        app:color_mode="light"
         android:layout_weight="0.5"/>
 
     <com.fro.scoutingapp2025.RowTwoBoxes
+        android:id="@+id/rowTwoBoxes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="GO FRO!!!"
         app:right_text="There is def text here"
-        app:left_box_type="toggle"
+        app:left_box_type="text_dropdown"
         app:right_box_type="text_dropdown"
         android:layout_weight="1"/>
 
     <com.fro.scoutingapp2025.RowThreeBoxes
+        android:id="@+id/rowThreeBoxes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="A thing"
         app:middle_text="muahahah"
         app:right_text="ssjhk"
-        app:left_box_type="team_number_dropdown"
-        app:middle_box_type="text_type_box"
-        app:right_box_type="stopwatch"
+        app:left_box_type="text_dropdown"
+        app:middle_box_type="text_dropdown"
+        app:right_box_type="text_dropdown"
         android:layout_weight="1"/>
 
     <com.fro.scoutingapp2025.RowLongBox
+        android:id="@+id/rowLongBox"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="lefty"
         app:middle_text="middle"
         app:right_text="righty"
         app:left_box_type="text_dropdown"
-        app:middle_box_type="number_type_box"
-        app:right_box_type="text_type_box"
+        app:middle_box_type="text_dropdown"
+        app:right_box_type="text_dropdown"
         app:color_pattern="white_grey_white"
         android:layout_weight="1"/>
 
     <com.fro.scoutingapp2025.RowLargeBox
+        android:id="@+id/rowLargeBox"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Very big box"

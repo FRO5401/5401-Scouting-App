@@ -5,6 +5,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Creates a row with one long multicolored box. <br/>
@@ -53,6 +56,11 @@ public class RowLongBox extends LinearLayout {
     LinearLayout middleLayout;
     LinearLayout backgroundLayout;
 
+    // public variables for the developer to set which box they are using
+    public static int left = 0;
+    public static int middle = 1;
+    public static int right = 2;
+
     public RowLongBox(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
@@ -70,6 +78,10 @@ public class RowLongBox extends LinearLayout {
         CharSequence colorPattern = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "color_pattern");
 
         initComponents();
+
+        leftFlipper.setPadding(10, 10);
+        middleFlipper.setPadding(10,10);
+        rightFlipper.setPadding(10,10);
 
         setLeftText(leftText);
         setMiddleText(middleText);
@@ -131,5 +143,13 @@ public class RowLongBox extends LinearLayout {
             middleView2.setBackgroundResource(R.color.white);
             middleLayout.setBackgroundResource(R.color.white);
         }
+    }
+
+    public void createTextDropdown(ArrayList<String> array, String name, int position) {
+        if (position == left) {leftFlipper.createTextDropdown(array, name);}
+        else if (position == middle) {middleFlipper.createTextDropdown(array, name);}
+        else if (position == right) {rightFlipper.createTextDropdown(array, name);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }
 }

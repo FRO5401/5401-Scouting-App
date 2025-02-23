@@ -4,6 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Creates a row with two medium sized boxes <br/>
@@ -28,11 +31,14 @@ import android.widget.TextView;
  * </ul>
  */
 public class RowTwoBoxes extends LinearLayout {
-
     TextView leftTextView;
     TextView rightTextView;
     ComponentFlipper leftFlipper;
     ComponentFlipper rightFlipper;
+
+    // public variables for the developer to set which box they are using
+    public static int left = 0;
+    public static int right = 1;
 
     public RowTwoBoxes(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -44,10 +50,13 @@ public class RowTwoBoxes extends LinearLayout {
 
         CharSequence leftText = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "left_text");
         CharSequence rightText = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "right_text");
-        CharSequence leftBox =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "left_box_type");
+        CharSequence leftBox = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "left_box_type");
         CharSequence rightBox = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "right_box_type");
 
         initComponents();
+
+        leftFlipper.setPadding(5, 10);
+        rightFlipper.setPadding(5, 10);
 
         setLeftText(leftText);
         setRightText(rightText);
@@ -71,11 +80,24 @@ public class RowTwoBoxes extends LinearLayout {
     }
 
     public void setLeftBox(CharSequence value) {
-        if (value == null) {return;}
+        if (value == null) {
+            Toast.makeText(this.getContext(), "ERROR: Null pointer", Toast.LENGTH_SHORT).show();
+            return;
+        }
         leftFlipper.changeTo(value);
     }
+
     public void setRightBox(CharSequence value) {
-        if (value == null) {return;}
+        if (value == null) {
+            Toast.makeText(this.getContext(), "ERROR: Null pointer", Toast.LENGTH_SHORT).show();
+            return;
+        }
         rightFlipper.changeTo(value);
+    }
+
+    public void createTextDropdown(ArrayList<String> array, String name, int position) {
+        if (position == left) {leftFlipper.createTextDropdown(array, name);}
+        else if (position == right) {rightFlipper.createTextDropdown(array, name);}
+        else{Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }
 }
