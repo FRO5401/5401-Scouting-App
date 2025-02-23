@@ -5,6 +5,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:id="@+id/flipper">
+    <!--    Number Dropdown    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/numberDropdown"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@drawable/box_background"
+        android:weightSum="6">
+        <AutoCompleteTextView
+            android:id="@+id/number_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            android:hint="Type Here..."
+            android:overlapAnchor="false"
+            android:inputType="number"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/arrow_down" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 <!--    Text Type Box    -->
     <LinearLayout
@@ -40,7 +65,6 @@
             android:padding="10dp"
             android:overlapAnchor="false" />
         <ImageView
-            android:id="@+id/arrowImage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -49,19 +73,7 @@
             android:src="@drawable/arrow_down" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    Number Dropdown    -->
-    <LinearLayout
-        android:id="@+id/numberDropdown"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Number Dropdown"
-            android:autoSizeTextType="uniform"
-            android:padding="10dp"/>
-    </LinearLayout>
+
 
 <!--    Toggle     -->
     <LinearLayout

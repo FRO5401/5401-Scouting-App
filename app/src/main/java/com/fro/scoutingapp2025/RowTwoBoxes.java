@@ -104,4 +104,11 @@ public class RowTwoBoxes extends LinearLayout {
             Toast.makeText(this.getContext(), "ERROR: Invalid position in text type box "+name, Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void createTeamNumberDropdown(String name, int position) {
+        if (position == Values.left) {leftFlipper.createTeamNumberDropdown(name);}
+        else if (position == Values.right) {rightFlipper.createTeamNumberDropdown(name);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
+    }
 }

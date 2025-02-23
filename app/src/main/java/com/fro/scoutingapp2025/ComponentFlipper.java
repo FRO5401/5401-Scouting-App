@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -26,6 +27,8 @@ public class ComponentFlipper extends LinearLayout {
     EditText typeBox;
     // Text Dropdown
     Spinner textDropdown;
+    // Team Number Dropdown
+    AutoCompleteTextView numberDropdown;
 
     public ComponentFlipper(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -68,8 +71,7 @@ public class ComponentFlipper extends LinearLayout {
                             (height / horizontalChange),  // right
                             (height / verticalChange)   // bottom
                     );
-                }
-                else{Toast.makeText(con, "Error divide by 0: " + String.valueOf(horizontalChange)+" or "+String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();}
+                } else{Toast.makeText(con, "Error divide by 0: " + String.valueOf(horizontalChange)+" or "+String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();}
             }
         });
     }
@@ -127,6 +129,39 @@ public class ComponentFlipper extends LinearLayout {
         textDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {Values.data.put(name, pos);}
             public void onNothingSelected(AdapterView<?> parent) {}
+        });
+    }
+
+    public void createTeamNumberDropdown(String name) {
+        //Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {Values.data.put(name, "");}
+
+        // Creates the dropdown
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this.getContext(), R.layout.spinner_dropdown, TeamNumbers.hatboro_horsham);
+        numberDropdown = findViewById(R.id.number_dropdown);
+        numberDropdown.setThreshold(1);
+        numberDropdown.setAdapter(adapter);
+
+        // Sets the dropdown to be below the spinner border
+        numberDropdown.post(new Runnable() {
+            @Override public void run() {
+                numberDropdown.setDropDownVerticalOffset(5);}
+        });
+
+        // Set text to data value
+        if (Values.data.containsKey(name)) {
+            numberDropdown.setText(String.valueOf(Values.data.get(name)));
+        }
+
+        // Updates value when text is changed
+        numberDropdown.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override public void afterTextChanged(Editable editable) {
+                String text = numberDropdown.getText().toString();
+                if (!text.equals("")){
+                    Values.data.put(name, Integer.parseInt(numberDropdown.getText().toString()));
+                }}
         });
     }
 

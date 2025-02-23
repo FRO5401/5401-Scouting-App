@@ -156,4 +156,12 @@ public class RowLongBox extends LinearLayout {
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }
+
+    public void createTeamNumberDropdown(String name, int position) {
+        if (position == Values.left) {leftFlipper.createTeamNumberDropdown(name);}
+        else if (position == Values.middle) {middleFlipper.createTeamNumberDropdown(name);}
+        else if (position == Values.right) {rightFlipper.createTeamNumberDropdown(name);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
+    }
 }
