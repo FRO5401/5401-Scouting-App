@@ -23,10 +23,9 @@
             android:id="@+id/topImage"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:text="Text here"
             android:autoSizeTextType="uniform"
             android:gravity="center_horizontal"
-            android:src=""
+            android:src="@color/light_grey"
             android:layout_weight="1"/>
         <ImageView
             android:id="@+id/topUnderline"
