@@ -5,6 +5,7 @@
         <attr name="middle_text" format="string" />
         <attr name="right_text" format="string" />
         <attr name="text" format="string"/>
+        <attr name="image" format="reference"/>
 
         <attr name="left_box_type" format="enum" >
             <enum name="text_type_box" value="0"/>
@@ -57,4 +58,5 @@
         </attr>
 
     </declare-styleable>
+
 </resources>

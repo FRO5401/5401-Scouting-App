@@ -2,6 +2,8 @@ package com.fro.scoutingapp2025;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,12 +32,21 @@ public class RowTopImage extends LinearLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
+
         inflate(context, R.layout.row_top_image, this);
+        int imageSrc;
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TemplateBoxes, 0, 0);
+        try {
+            imageSrc = ta.getResourceId(R.styleable.TemplateBoxes_image, -1);
+        } finally {
+            ta.recycle();
+        }
 
         CharSequence colorMode = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "color_mode");
 
         initComponents();
 
+        setImage(imageSrc);
         setColorMode(colorMode);
     }
 
@@ -43,14 +54,18 @@ public class RowTopImage extends LinearLayout {
         image = findViewById(R.id.topImage);
         underline = findViewById(R.id.topUnderline);
     }
+
+    public void setImage(int img) {
+        image.setImageResource(img);
+    }
     public void setColorMode(CharSequence value) {
         if (value == null) {return;}
         if (value.equals("0")){
-            //maybe change color of image?
+            image.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.white, getContext().getTheme())));
             underline.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.white, getContext().getTheme())));
         }
         if (value.equals("1")){
-            //maybe change color of image?
+            image.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.text_grey, getContext().getTheme())));
             underline.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.text_grey, getContext().getTheme())));
         }
     }
