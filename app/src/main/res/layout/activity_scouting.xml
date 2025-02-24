@@ -6,10 +6,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivityMain"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_weight="10">
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/replaceFrame"/>
+        android:layout_height="0dp"
+        android:id="@+id/replaceFrame"
+        android:layout_weight="9"/>
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/box_background"
+        android:weightSum="4"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/autoButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/light_blue" />
+
+        <Button
+            android:id="@+id/teleopButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/medium_blue" />
+
+        <Button
+            android:id="@+id/endgameButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/dark_blue" />
+
+        <Button
+            android:id="@+id/notesButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/night_blue"/>
+    </LinearLayout>
 
 </LinearLayout>
