@@ -12,7 +12,14 @@
         android:layout_height="0dp"
         app:text="Template"
         app:color_mode="dark"
-        android:layout_weight="0.5"/>
+        android:layout_weight="0.4"/>
+
+    <com.fro.scoutingapp2025.RowTopImage
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:image="@drawable/reefscape_logo"
+        app:color_mode="dark"
+        android:layout_weight="0.4"/>
 
     <com.fro.scoutingapp2025.RowTwoBoxes
         android:layout_width="match_parent"
