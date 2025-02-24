@@ -10,6 +10,7 @@
         <attr name="text_3" format="string"/>
         <attr name="text_4" format="string"/>
         <attr name="text_5" format="string"/>
+        <attr name="image" format="reference"/>
 
         <attr name="left_box_type" format="enum" >
             <enum name="text_type_box" value="0"/>
@@ -112,4 +113,5 @@
         </attr>
 <!--huh-->
     </declare-styleable>
+
 </resources>
