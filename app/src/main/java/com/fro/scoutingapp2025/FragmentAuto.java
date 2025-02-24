@@ -26,6 +26,8 @@ public class FragmentAuto extends Fragment {
         row3 = rootView.findViewById(R.id.auto_row_3);
         row4 = rootView.findViewById(R.id.auto_row_4);
 
+        row1.createToggle("Auto_Leaves_Robot_Start_Zone", Values.left);
+
         // Inflate the layout for this fragment
         return rootView;
     }

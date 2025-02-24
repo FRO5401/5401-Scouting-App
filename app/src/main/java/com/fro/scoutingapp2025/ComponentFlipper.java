@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import androidx.appcompat.widget.SwitchCompat;
+
 import java.util.ArrayList;
 
 public class ComponentFlipper extends LinearLayout {
@@ -29,6 +31,8 @@ public class ComponentFlipper extends LinearLayout {
     Spinner textDropdown;
     // Team Number Dropdown
     AutoCompleteTextView numberDropdown;
+    //Toggle
+    SwitchCompat toggle;
 
     public ComponentFlipper(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -44,7 +48,7 @@ public class ComponentFlipper extends LinearLayout {
         if (value.equals("0")) {while (flipper.getCurrentView() != findViewById(R.id.typeBox)) {flipper.showNext();}}
         if (value.equals("1")) {while (flipper.getCurrentView() != findViewById(R.id.textDropdown)) {flipper.showNext();}}
         if (value.equals("2")) {while (flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {flipper.showNext();}}
-        if (value.equals("3")) {while (flipper.getCurrentView() != findViewById(R.id.toggle)) {flipper.showNext();}}
+        if (value.equals("3")) {while (flipper.getCurrentView() != findViewById(R.id.toggleLayout)) {flipper.showNext();}}
         if (value.equals("4")) {while (flipper.getCurrentView() != findViewById(R.id.counter)) {flipper.showNext();}}
         if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch)) {flipper.showNext();}}
     }
@@ -53,7 +57,7 @@ public class ComponentFlipper extends LinearLayout {
         if (type.equals("typeBox") && flipper.getCurrentView() != findViewById(R.id.typeBox)) {return true;}
         if (type.equals("textDropdown") && flipper.getCurrentView() != findViewById(R.id.textDropdown)) {return true;}
         if (type.equals("numberDropdown") && flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {return true;}
-        if (type.equals("toggle") && flipper.getCurrentView() != findViewById(R.id.toggle)) {return true;}
+        if (type.equals("toggle") && flipper.getCurrentView() != findViewById(R.id.toggleLayout)) {return true;}
         if (type.equals("counter") && flipper.getCurrentView() != findViewById(R.id.counter)) {return true;}
         return type.equals("stopwatch") && flipper.getCurrentView() != findViewById(R.id.stopwatch);
     }
@@ -165,4 +169,19 @@ public class ComponentFlipper extends LinearLayout {
         });
     }
 
+    public void createToggle(String name) {
+        // Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {Values.data.put(name, false);}
+
+        // Creates the toggle
+        toggle = findViewById(R.id.toggle);
+
+        // Set inputted text
+        if (Values.data.containsKey(name) && (Boolean) Values.data.get(name) != null) {
+            toggle.setChecked((Boolean) Values.data.get(name));
+        }
+
+        // Updates value when text is changed
+        toggle.setOnCheckedChangeListener((buttonView, isChecked) -> Values.data.put(name, isChecked));
+    }
 }
