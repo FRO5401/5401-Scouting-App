@@ -16,7 +16,7 @@ public class ActivityMain extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Instantiate variables here \/
-        button = findViewById(R.id.testButton);
+        button = findViewById(R.id.startButton);
 
         button.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), ActivityScouting.class)));
     }
