@@ -36,7 +36,7 @@ public class FragmentEndgame extends Fragment {
                 new ArrayList<String>(Arrays.asList("Scoring Coral", "Scoring Algae", "Climbing", "Defense", "Other", "Nothing")),
                 "Endgame_Robot_Spent_Last_10_Seconds_Doing");
 
-        row3.createTypeBox("Started_Climbing_At_This_Time", Values.inputType_number);
+        row3.createTypeBox("Endgame_Started_Climbing_At_This_Time", Values.inputType_number);
 
         // Inflate the layout for this fragment
         return rootView;

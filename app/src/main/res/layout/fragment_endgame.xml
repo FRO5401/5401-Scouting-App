@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@color/dark_blue"
     tools:context=".FragmentEndgame"
-    android:weightSum="4">
+    android:weightSum="5">
 
     <com.fro.scoutingapp2025.RowTopText
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
         android:layout_height="0dp"
         app:text="End Location"
         app:box_type="text_dropdown"
-        android:layout_weight="1">
+        android:layout_weight="1.2">
     </com.fro.scoutingapp2025.RowThinLargeBox>
 
     <com.fro.scoutingapp2025.RowThinLargeBox
@@ -31,7 +31,7 @@
         android:layout_height="0dp"
         app:text="Robot Spent the\nLast 10 Seconds Doing"
         app:box_type="text_dropdown"
-        android:layout_weight="1">
+        android:layout_weight="1.2">
     </com.fro.scoutingapp2025.RowThinLargeBox>
 
     <com.fro.scoutingapp2025.RowThinLargeBox
@@ -40,7 +40,7 @@
         android:layout_height="0dp"
         app:text="Started Climbing At\nThis Time (in seconds)"
         app:box_type="type_box"
-        android:layout_weight="1">
+        android:layout_weight="1.2">
     </com.fro.scoutingapp2025.RowThinLargeBox>
 
 </LinearLayout>
