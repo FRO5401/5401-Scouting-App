@@ -3,6 +3,7 @@ package com.fro.scoutingapp2025;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -11,10 +12,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class ActivityScouting extends AppCompatActivity {
     // Declare global variables here \/
-    Button autoButton;
-    Button teleopButton;
-    Button endgameButton;
-    Button notesButton;
+    TextView autoButton;
+    TextView teleopButton;
+    TextView endgameButton;
+    TextView notesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
