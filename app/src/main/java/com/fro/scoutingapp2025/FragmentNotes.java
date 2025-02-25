@@ -15,7 +15,7 @@ public class FragmentNotes extends Fragment {
     public FragmentNotes() {/* Required empty public constructor*/}
 
     // Declare global variables here \/
-    RowThreeBoxes row1;
+    RowLongBox row1;
     RowLargeBox row2;
 
     @Override
@@ -32,7 +32,7 @@ public class FragmentNotes extends Fragment {
 //        row1.createToggle("Endgame_Any_Penalties", Values.right);
 
         // Row 2
-        row2.createTypeBox("Notes_Extra_Comments", Values.inputType_number);
+        row2.createTypeBox("Notes_Extra_Comments", Values.inputType_text);
 
         // Inflate the layout for this fragment
         return rootView;

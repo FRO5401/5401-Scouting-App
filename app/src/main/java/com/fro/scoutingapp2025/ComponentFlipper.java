@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
@@ -89,8 +90,8 @@ public class ComponentFlipper extends LinearLayout {
         typeBox = findViewById(R.id.type_box);
 
         // Sets the input type (number or text)
-        if (type == Values.inputType_number){typeBox.setInputType(EditorInfo.TYPE_CLASS_NUMBER);}
-        else {typeBox.setInputType(EditorInfo.TYPE_CLASS_TEXT);}
+        if (type == Values.inputType_number){typeBox.setInputType(InputType.TYPE_CLASS_NUMBER);}
+        else {typeBox.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);}
 
         // Set inputted text
         if (Values.data.containsKey(name) && (CharSequence) Values.data.get(name) != null) {
