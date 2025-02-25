@@ -3,12 +3,13 @@ package com.fro.scoutingapp2025;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ActivityMain extends AppCompatActivity {
     // Declare global variables here \/
-    Button button;
+    TextView startButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,8 +17,8 @@ public class ActivityMain extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Instantiate variables here \/
-        button = findViewById(R.id.startButton);
+        startButton = findViewById(R.id.startButton);
 
-        button.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), ActivityScouting.class)));
+        startButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), ActivityScouting.class)));
     }
 }
