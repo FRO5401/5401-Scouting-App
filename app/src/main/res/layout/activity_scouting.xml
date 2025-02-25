@@ -28,20 +28,20 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/hamburger_menu"
+            android:id="@+id/menu_bars"
             android:clickable="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:src="@drawable/menu_button"
+            android:src="@drawable/menu_bars"
             android:scaleType="fitCenter"
             android:background="@color/transparent"
             android:padding="5dp"
             android:layout_weight="1"/>
 
         <TextView
-            android:id="@+id/autoButton"
+            android:id="@+id/auto_button"
             android:clickable="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -59,7 +59,7 @@
             android:foreground="@drawable/box_outline"/>
 
         <TextView
-            android:id="@+id/teleopButton"
+            android:id="@+id/teleop_button"
             android:clickable="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -77,7 +77,7 @@
             android:foreground="@drawable/box_outline"/>
 
         <TextView
-            android:id="@+id/endgameButton"
+            android:id="@+id/endgame_button"
             android:clickable="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -95,7 +95,7 @@
             android:foreground="@drawable/box_outline"/>
 
         <TextView
-            android:id="@+id/notesButton"
+            android:id="@+id/notes_button"
             android:clickable="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"

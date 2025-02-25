@@ -5,7 +5,7 @@
             <solid android:color="@color/outline_grey" />
         </shape>
     </item>
-    <item android:top="2dp">
+    <item android:top="3dp">
         <shape android:shape="rectangle">
             <padding android:right="5dp" android:left="5dp"/>
             <solid android:color="@color/white" />

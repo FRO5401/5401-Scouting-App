@@ -23,10 +23,10 @@ public class ActivityScouting extends AppCompatActivity {
         setContentView(R.layout.activity_scouting);
 
         // Instantiate variables here \/
-        autoButton = findViewById(R.id.autoButton);
-        teleopButton = findViewById(R.id.teleopButton);
-        endgameButton = findViewById(R.id.endgameButton);
-        notesButton = findViewById(R.id.notesButton);
+        autoButton = findViewById(R.id.auto_button);
+        teleopButton = findViewById(R.id.teleop_button);
+        endgameButton = findViewById(R.id.endgame_button);
+        notesButton = findViewById(R.id.notes_button);
 
         replaceFragment(new FragmentAuto());
 
