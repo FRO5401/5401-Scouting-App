@@ -38,6 +38,12 @@ public class FragmentTeleop extends Fragment {
                 new ArrayList<String>(Arrays.asList("Source", "Ground", "Both")),
                 "Teleop_Coral_Pickup_Location", Values.middle);
 
+        // Row 2
+
+        // Row 3
+
+        // Row 4
+
         // Inflate the layout for this fragment
         return rootView;
     }

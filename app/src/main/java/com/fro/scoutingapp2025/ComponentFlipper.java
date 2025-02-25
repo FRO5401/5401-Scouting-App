@@ -2,6 +2,7 @@ package com.fro.scoutingapp2025;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.text.Editable;
 import android.text.InputType;
@@ -19,6 +20,9 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.appcompat.widget.SwitchCompat;
+
+import com.google.android.material.materialswitch.MaterialSwitch;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.ArrayList;
 
@@ -176,13 +180,28 @@ public class ComponentFlipper extends LinearLayout {
 
         // Creates the toggle
         toggle = findViewById(R.id.toggle);
+        LinearLayout toggleLayout = findViewById(R.id.toggleLayout);
 
-        // Set inputted text
+        // Sets the track and thumb drawables
+        toggle.setTrackResource(R.drawable.toggle_track);
+        toggle.setThumbResource(R.drawable.toggle_thumb);
+
+        // Scales the toggle based on the height
+        // TODO Fix this scaling later
+        toggleLayout.post(new Runnable() {
+            @Override public void run() {
+                float scale = (float) toggleLayout.getHeight() / 200;
+                toggle.setScaleX(scale);
+                toggle.setScaleY(scale);
+            }
+        });
+
+        // Set if checked or not
         if (Values.data.containsKey(name) && (Boolean) Values.data.get(name) != null) {
             toggle.setChecked((Boolean) Values.data.get(name));
         }
 
-        // Updates value when text is changed
+        // Updates value when checked is changed
         toggle.setOnCheckedChangeListener((buttonView, isChecked) -> Values.data.put(name, isChecked));
     }
 }

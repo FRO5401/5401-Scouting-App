@@ -14,11 +14,14 @@
         android:orientation="vertical">
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/toggle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:thumbTint="@color/green"
-            android:trackTint="@color/text_grey"
-            android:padding="10dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:track="@drawable/toggle_track"
+            android:thumb="@drawable/toggle_thumb"
+            android:autoSizeTextType="uniform"
+            android:layout_gravity="center"
+            android:textAlignment="center"/>
+
     </LinearLayout>
 
 <!--    Text Type Box    -->

@@ -27,9 +27,9 @@ public class FragmentNotes extends Fragment {
 
         /*  Setting Text Values  */
         // Row 1
-//        row1.createToggle("Endgame_Did_Robot_Break", Values.left);
-//        row1.createToggle("Endgame_Was_Robot_Tipped", Values.middle);
-//        row1.createToggle("Endgame_Any_Penalties", Values.right);
+        row1.createToggle("Notes_Did_Robot_Break", Values.left);
+        row1.createToggle("Notes_Was_Robot_Tipped", Values.middle);
+        row1.createToggle("Notes_Any_Penalties", Values.right);
 
         // Row 2
         row2.createTypeBox("Notes_Extra_Comments", Values.inputType_text);
