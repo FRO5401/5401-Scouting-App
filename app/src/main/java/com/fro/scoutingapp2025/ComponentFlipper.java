@@ -301,7 +301,7 @@ public class ComponentFlipper extends LinearLayout {
             //sets the view to the num + 1
             if (num < maxValue) {
                 num++;
-                counterNumber.setText(num);
+                counterNumber.setText(String.valueOf(num));
             }
             Values.data.put(name, num);
         });
@@ -313,7 +313,7 @@ public class ComponentFlipper extends LinearLayout {
             //sets the view to the number + 1
             if (num > 0) {
                 num--;
-                counterNumber.setText(num);
+                counterNumber.setText(String.valueOf(num));
             }
             Values.data.put(name, num);
         });

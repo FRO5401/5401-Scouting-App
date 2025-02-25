@@ -118,4 +118,11 @@ public class RowTwoBoxes extends LinearLayout {
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in toggle "+name, Toast.LENGTH_SHORT).show();}
     }
+
+    public void createCounter(String name, int maxValue, int position) {
+        if (position == Values.left) {leftFlipper.createCounter(name, maxValue);}
+        else if (position == Values.right) {rightFlipper.createCounter(name, maxValue);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
+    }
 }

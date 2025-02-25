@@ -30,11 +30,17 @@ public class FragmentAuto extends Fragment {
         /*  Setting Text Values  */
         // Row 1
         row1.createToggle("Auto_Leaves_Robot_Starting_Zone", Values.left);
+        row1.createCounter("Auto_Reef_L1", 100, Values.right);
 
         // Row 2
-        row2.createCounter("Auto_Counter_1", 20, Values.left);
+        row2.createCounter("Auto_Reef_L2", 12, Values.left);
+        row2.createCounter("Auto_Reef_L3", 12, Values.middle);
+        row2.createCounter("Auto_Reef_L4", 12, Values.right);
 
         // Row 3
+        row3.createCounter("Auto_Algae_Removed", 6, Values.left);
+        row3.createCounter("Auto_Algae_Processor", 18, Values.middle);
+        row3.createCounter("Auto_Algae_Net", 18, Values.right);
 
         // Row 4
         row4.createToggle("Auto_Picked_Up_From_Source", Values.left);

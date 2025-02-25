@@ -69,4 +69,6 @@ public class RowLargeBox extends LinearLayout {
     public void createTeamNumberDropdown(String name) {flipper.createTeamNumberDropdown(name);}
 
     public void createToggle(String name, int position) {flipper.createToggle(name);}
+
+    public void createCounter(String name, int maxValue) {flipper.createCounter(name, maxValue);}
 }

@@ -37,12 +37,22 @@ public class FragmentTeleop extends Fragment {
         row1.createTextDropdown(
                 new ArrayList<String>(Arrays.asList("Source", "Ground", "Both")),
                 "Teleop_Coral_Pickup_Location", Values.middle);
+        row1.createCounter("Teleop_Reef_L1", 100, Values.right);
 
         // Row 2
+        row2.createCounter("Teleop_Reef_L2", 12, Values.left);
+        row2.createCounter("Teleop_Reef_L3", 12, Values.middle);
+        row2.createCounter("Teleop_Reef_L4", 12, Values.right);
 
         // Row 3
+        row3.createCounter("Teleop_Algae_Removed", 6, Values.left);
+        row3.createCounter("Teleop_Algae_Processor", 18, Values.middle);
+        row3.createCounter("Teleop_Algae_Net", 18, Values.right);
 
         // Row 4
+        row4.createCounter("Teleop_Algae_Scored_Human_Player", 18, Values.left);
+        row4.createCounter("Teleop_Algae_Missed_Human_Player", 18, Values.middle);
+
 
         // Inflate the layout for this fragment
         return rootView;
