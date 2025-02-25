@@ -1,28 +1,23 @@
 package com.fro.scoutingapp2025;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.res.ColorStateList;
-import android.content.res.Configuration;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.appcompat.widget.SwitchCompat;
-
-import com.google.android.material.materialswitch.MaterialSwitch;
-import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.ArrayList;
 
@@ -38,6 +33,10 @@ public class ComponentFlipper extends LinearLayout {
     AutoCompleteTextView numberDropdown;
     //Toggle
     SwitchCompat toggle;
+    // Counter
+    ImageButton counterPlus;
+    ImageButton counterMinus;
+    TextView counterNumber;
 
     public ComponentFlipper(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -50,29 +49,64 @@ public class ComponentFlipper extends LinearLayout {
     }
 
     public void changeTo(CharSequence value) {
-        if (value.equals("0")) {while (flipper.getCurrentView() != findViewById(R.id.typeBox)) {flipper.showNext();}}
-        if (value.equals("1")) {while (flipper.getCurrentView() != findViewById(R.id.textDropdown)) {flipper.showNext();}}
-        if (value.equals("2")) {while (flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {flipper.showNext();}}
-        if (value.equals("3")) {while (flipper.getCurrentView() != findViewById(R.id.toggleLayout)) {flipper.showNext();}}
-        if (value.equals("4")) {while (flipper.getCurrentView() != findViewById(R.id.counter)) {flipper.showNext();}}
-        if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch)) {flipper.showNext();}}
+        if (value.equals("0")) {
+            while (flipper.getCurrentView() != findViewById(R.id.typeBox)) {
+                flipper.showNext();
+            }
+        }
+        if (value.equals("1")) {
+            while (flipper.getCurrentView() != findViewById(R.id.textDropdown)) {
+                flipper.showNext();
+            }
+        }
+        if (value.equals("2")) {
+            while (flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {
+                flipper.showNext();
+            }
+        }
+        if (value.equals("3")) {
+            while (flipper.getCurrentView() != findViewById(R.id.toggleLayout)) {
+                flipper.showNext();
+            }
+        }
+        if (value.equals("4")) {
+            while (flipper.getCurrentView() != findViewById(R.id.counter)) {
+                flipper.showNext();
+            }
+        }
+        if (value.equals("5")) {
+            while (flipper.getCurrentView() != findViewById(R.id.stopwatch)) {
+                flipper.showNext();
+            }
+        }
     }
 
     public boolean getView(String type) {
-        if (type.equals("typeBox") && flipper.getCurrentView() != findViewById(R.id.typeBox)) {return true;}
-        if (type.equals("textDropdown") && flipper.getCurrentView() != findViewById(R.id.textDropdown)) {return true;}
-        if (type.equals("numberDropdown") && flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {return true;}
-        if (type.equals("toggle") && flipper.getCurrentView() != findViewById(R.id.toggleLayout)) {return true;}
-        if (type.equals("counter") && flipper.getCurrentView() != findViewById(R.id.counter)) {return true;}
+        if (type.equals("typeBox") && flipper.getCurrentView() != findViewById(R.id.typeBox)) {
+            return true;
+        }
+        if (type.equals("textDropdown") && flipper.getCurrentView() != findViewById(R.id.textDropdown)) {
+            return true;
+        }
+        if (type.equals("numberDropdown") && flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {
+            return true;
+        }
+        if (type.equals("toggle") && flipper.getCurrentView() != findViewById(R.id.toggleLayout)) {
+            return true;
+        }
+        if (type.equals("counter") && flipper.getCurrentView() != findViewById(R.id.counter)) {
+            return true;
+        }
         return type.equals("stopwatch") && flipper.getCurrentView() != findViewById(R.id.stopwatch);
     }
 
-    public void setPadding(int horizontalChange, int verticalChange){
+    public void setPadding(int horizontalChange, int verticalChange) {
         //Sets the padding to change per screen size
         Context con = this.getContext();
         flipper.post(new Runnable() {
-            @Override public void run() {
-                if(horizontalChange != 0 && verticalChange != 0){
+            @Override
+            public void run() {
+                if (horizontalChange != 0 && verticalChange != 0) {
                     int height = flipper.getHeight();
                     flipper.setPadding(
                             (height / horizontalChange), // left
@@ -80,7 +114,9 @@ public class ComponentFlipper extends LinearLayout {
                             (height / horizontalChange),  // right
                             (height / verticalChange)   // bottom
                     );
-                } else{Toast.makeText(con, "Error divide by 0: " + String.valueOf(horizontalChange)+" or "+String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();}
+                } else {
+                    Toast.makeText(con, "Error divide by 0: " + String.valueOf(horizontalChange) + " or " + String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -88,14 +124,19 @@ public class ComponentFlipper extends LinearLayout {
 
     public void createTypeBox(String name, int type) {
         //Creates the data in the hashmap
-        if (!Values.data.containsKey(name)) { Values.data.put(name, ""); }
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, "");
+        }
 
         //Creates the type box
         typeBox = findViewById(R.id.type_box);
 
         // Sets the input type (number or text)
-        if (type == Values.inputType_number){typeBox.setInputType(InputType.TYPE_CLASS_NUMBER);}
-        else {typeBox.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);}
+        if (type == Values.inputType_number) {
+            typeBox.setInputType(InputType.TYPE_CLASS_NUMBER);
+        } else {
+            typeBox.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        }
 
         // Set inputted text
         if (Values.data.containsKey(name) && (CharSequence) Values.data.get(name) != null) {
@@ -104,15 +145,26 @@ public class ComponentFlipper extends LinearLayout {
 
         // Updates data when text is changed
         typeBox.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
-            @Override public void afterTextChanged(Editable s) {Values.data.put(name, typeBox.getText());}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Values.data.put(name, typeBox.getText());
+            }
         });
     }
 
     public void createTextDropdown(ArrayList<String> array, String name) {
         //Creates the data in the hashmap
-        if (!Values.data.containsKey(name)) {Values.data.put(name, -1);}
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, -1);
+        }
 
         // Adds 'dropdown' to the beginning of the list to be a default value
         array.add(0, "Dropdown");
@@ -125,8 +177,10 @@ public class ComponentFlipper extends LinearLayout {
 
         // Sets the dropdown to be below the spinner border
         textDropdown.post(new Runnable() {
-            @Override public void run() {
-                textDropdown.setDropDownVerticalOffset(5);}
+            @Override
+            public void run() {
+                textDropdown.setDropDownVerticalOffset(5);
+            }
         });
 
         // Set text dropdown selection
@@ -136,14 +190,20 @@ public class ComponentFlipper extends LinearLayout {
 
         // Updates data when new item is selected in dropdown
         textDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {Values.data.put(name, pos);}
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                Values.data.put(name, pos);
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
     }
 
     public void createTeamNumberDropdown(String name) {
         //Creates the data in the hashmap
-        if (!Values.data.containsKey(name)) {Values.data.put(name, "");}
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, "");
+        }
 
         // Creates the dropdown
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this.getContext(), R.layout.spinner_dropdown, TeamNumbers.hatboro_horsham);
@@ -153,8 +213,10 @@ public class ComponentFlipper extends LinearLayout {
 
         // Sets the dropdown to be below the spinner border
         numberDropdown.post(new Runnable() {
-            @Override public void run() {
-                numberDropdown.setDropDownVerticalOffset(5);}
+            @Override
+            public void run() {
+                numberDropdown.setDropDownVerticalOffset(5);
+            }
         });
 
         // Set text to data value
@@ -164,19 +226,29 @@ public class ComponentFlipper extends LinearLayout {
 
         // Updates value when text is changed
         numberDropdown.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-            @Override public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-            @Override public void afterTextChanged(Editable editable) {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
                 String text = numberDropdown.getText().toString();
-                if (!text.equals("")){
+                if (!text.equals("")) {
                     Values.data.put(name, Integer.parseInt(numberDropdown.getText().toString()));
-                }}
+                }
+            }
         });
     }
 
     public void createToggle(String name) {
         // Creates the data in the hashmap
-        if (!Values.data.containsKey(name)) {Values.data.put(name, false);}
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, false);
+        }
 
         // Creates the toggle
         toggle = findViewById(R.id.toggle);
@@ -189,7 +261,8 @@ public class ComponentFlipper extends LinearLayout {
         // Scales the toggle based on the height
         // TODO Fix this scaling later
         toggleLayout.post(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 float scale = (float) toggleLayout.getHeight() / 200;
                 toggle.setScaleX(scale);
                 toggle.setScaleY(scale);
@@ -203,5 +276,46 @@ public class ComponentFlipper extends LinearLayout {
 
         // Updates value when checked is changed
         toggle.setOnCheckedChangeListener((buttonView, isChecked) -> Values.data.put(name, isChecked));
+    }
+
+    public void createCounter(String name, int maxValue) {
+        // Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, 0);
+        }
+
+        // Creates the buttons and text view
+        counterMinus = findViewById(R.id.counter_minus);
+        counterPlus = findViewById(R.id.counter_plus);
+        counterNumber = findViewById(R.id.counter_number);
+
+        // Set text to data value
+        if (Values.data.containsKey(name)) {
+            counterNumber.setText(String.valueOf(Values.data.get(name)));
+        }
+
+        // Updates value when plus is hit
+        counterPlus.setOnClickListener(v -> {
+            //gets the num from the view
+            int num = Integer.parseInt(counterNumber.getText().toString());
+            //sets the view to the num + 1
+            if (num < maxValue) {
+                num++;
+                counterNumber.setText(num);
+            }
+            Values.data.put(name, num);
+        });
+
+        // Updates value when minus is hit
+        counterMinus.setOnClickListener(v -> {
+            //gets the number from the view
+            int num = Integer.parseInt(counterNumber.getText().toString());
+            //sets the view to the number + 1
+            if (num > 0) {
+                num--;
+                counterNumber.setText(num);
+            }
+            Values.data.put(name, num);
+        });
     }
 }

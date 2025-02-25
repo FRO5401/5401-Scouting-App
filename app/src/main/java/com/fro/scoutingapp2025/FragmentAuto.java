@@ -32,6 +32,7 @@ public class FragmentAuto extends Fragment {
         row1.createToggle("Auto_Leaves_Robot_Starting_Zone", Values.left);
 
         // Row 2
+        row2.createCounter("Auto_Counter_1", 20, Values.left);
 
         // Row 3
 
