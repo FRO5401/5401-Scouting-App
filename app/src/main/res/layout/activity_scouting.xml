@@ -8,54 +8,122 @@
     tools:context=".ActivityMain"
     android:orientation="vertical"
     android:layout_weight="10">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/replaceFrame"
         android:layout_weight="9"/>
+
     <LinearLayout
         style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/box_background"
-        android:weightSum="4"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
+        android:background="@drawable/bottom_bar_background"
+        android:weightSum="6"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
+            android:id="@+id/hamburger_menu"
+            android:clickable="true"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/menu_button"
+            android:background="@color/transparent"
+            android:layout_weight="1"/>
+
+        <TextView
             android:id="@+id/autoButton"
+            android:clickable="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/light_blue" />
+            android:fontFamily="@font/helvetica"
+            android:textColor="@color/white"
+            android:text="Auto"
+            android:textAlignment="center"
+            android:autoSizeTextType="uniform"
+            android:backgroundTint="@color/light_grey"
+            android:background="@drawable/box_background"
+            android:foreground="@drawable/box_outline"/>
 
-        <Button
+        <TextView
             android:id="@+id/teleopButton"
-            style="?android:attr/buttonBarButtonStyle"
+            android:clickable="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/medium_blue" />
+            android:fontFamily="@font/helvetica"
+            android:textColor="@color/white"
+            android:text="Tele\nOp"
+            android:textAlignment="center"
+            android:autoSizeTextType="uniform"
+            android:background="@drawable/box_background"
+            android:backgroundTint="@color/medium_blue"
+            android:foreground="@drawable/box_outline"/>
 
-        <Button
+        <TextView
             android:id="@+id/endgameButton"
-            style="?android:attr/buttonBarButtonStyle"
+            android:clickable="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/dark_blue" />
+            android:fontFamily="@font/helvetica"
+            android:textColor="@color/white"
+            android:text="End\nGame"
+            android:textAlignment="center"
+            android:autoSizeTextType="uniform"
+            android:background="@drawable/box_background"
+            android:backgroundTint="@color/dark_blue"
+            android:foreground="@drawable/box_outline"/>
 
-        <Button
+        <TextView
             android:id="@+id/notesButton"
-            style="?android:attr/buttonBarButtonStyle"
+            android:clickable="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/night_blue"/>
+            android:fontFamily="@font/helvetica"
+            android:textColor="@color/white"
+            android:text="Notes"
+            android:textAlignment="center"
+            android:autoSizeTextType="uniform"
+            android:background="@drawable/box_background"
+            android:backgroundTint="@color/night_blue"
+            android:foreground="@drawable/box_outline"/>
+
+        <TextView
+            android:id="@+id/circle_background"
+            android:clickable="true"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:src="circle_background"
+            android:fontFamily="@font/helvetica"
+            android:textColor="@color/outline_grey"
+            android:background="@drawable/circle_background"
+            android:text="\?"
+            android:textAlignment="center"
+            android:autoSizeTextType="uniform"
+            android:layout_weight="1"
+            />
+
     </LinearLayout>
 
 </LinearLayout>
