@@ -1,8 +1,12 @@
 package com.fro.scoutingapp2025;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +20,14 @@ public class ActivityScouting extends AppCompatActivity {
     TextView teleopButton;
     TextView endgameButton;
     TextView notesButton;
+    ImageButton helpButton;
+    ImageButton menuBars;
+    ImageButton menuExit;
+    LinearLayout menuPopup;
+    LinearLayout bottomBar;
+    LinearLayout fullPage;
+    TextView submitButton;
+    TextView homeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +39,68 @@ public class ActivityScouting extends AppCompatActivity {
         teleopButton = findViewById(R.id.teleop_button);
         endgameButton = findViewById(R.id.endgame_button);
         notesButton = findViewById(R.id.notes_button);
+        helpButton = findViewById(R.id.help_button);
+        menuBars = findViewById(R.id.menu_bars);
+        menuExit = findViewById(R.id.menu_exit);
+        menuPopup = findViewById(R.id.menu_popup);
+        bottomBar = findViewById(R.id.bottom_bar);
+        fullPage = findViewById(R.id.full_page);
+        submitButton = findViewById(R.id.submit);
+        homeButton = findViewById(R.id.home_page);
 
+        //Trying to make it dynamic sizing + placed above bottom bar
+//        DisplayMetrics displayMetrics = new DisplayMetrics();
+//        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+//        int height = displayMetrics.heightPixels;
+//        int width = displayMetrics.widthPixels;
+//        Toast.makeText(this, "h:"+String.valueOf(height)+" w:"+String.valueOf(width), Toast.LENGTH_SHORT).show();
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width/3, height/10);
+////        params.setMargins(10, 0, 0, bottomBar.getHeight());
+//        menuPopup.setLayoutParams(params);
+
+        // Set default page
         replaceFragment(new FragmentAuto());
 
+        // Page changes
         autoButton.setOnClickListener(v -> replaceFragment(new FragmentAuto()));
         teleopButton.setOnClickListener(v -> replaceFragment(new FragmentTeleop()));
         endgameButton.setOnClickListener(v -> replaceFragment(new FragmentEndgame()));
         notesButton.setOnClickListener(v -> replaceFragment(new FragmentNotes()));
+
+        // Menu popup
+        menuBars.setOnClickListener(v -> {
+            menuBars.setVisibility(GONE);
+            menuExit.setVisibility(VISIBLE);
+            menuPopup.setVisibility(VISIBLE);
+            fullPage.setClickable(true);
+        });
+        menuExit.setOnClickListener(v -> {
+            menuBars.setVisibility(VISIBLE);
+            menuExit.setVisibility(GONE);
+            menuPopup.setVisibility(GONE);
+            fullPage.setClickable(false);
+        });
+        fullPage.setOnClickListener(v -> {
+            menuBars.setVisibility(VISIBLE);
+            menuExit.setVisibility(GONE);
+            menuPopup.setVisibility(GONE);
+            fullPage.setClickable(false);
+        });
+        homeButton.setOnClickListener(v ->{
+            menuBars.setVisibility(VISIBLE);
+            menuExit.setVisibility(GONE);
+            menuPopup.setVisibility(GONE);
+            fullPage.setClickable(false);
+            startActivity(new Intent(getApplicationContext(), ActivityMain.class));
+        });
+        submitButton.setOnClickListener(v ->{
+            menuBars.setVisibility(VISIBLE);
+            menuExit.setVisibility(GONE);
+            menuPopup.setVisibility(GONE);
+            fullPage.setClickable(false);
+            //TODO submit data
+            startActivity(new Intent(getApplicationContext(), ActivityMain.class));
+        });
     }
 
     private void replaceFragment(Fragment fragment) {
