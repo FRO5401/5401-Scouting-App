@@ -3,11 +3,14 @@ package com.fro.scoutingapp2025;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -48,16 +51,6 @@ public class ActivityScouting extends AppCompatActivity {
         submitButton = findViewById(R.id.submit);
         homeButton = findViewById(R.id.home_page);
 
-        //Trying to make it dynamic sizing + placed above bottom bar
-//        DisplayMetrics displayMetrics = new DisplayMetrics();
-//        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-//        int height = displayMetrics.heightPixels;
-//        int width = displayMetrics.widthPixels;
-//        Toast.makeText(this, "h:"+String.valueOf(height)+" w:"+String.valueOf(width), Toast.LENGTH_SHORT).show();
-//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width/3, height/10);
-////        params.setMargins(10, 0, 0, bottomBar.getHeight());
-//        menuPopup.setLayoutParams(params);
-
         // Set default page
         replaceFragment(new FragmentAuto());
 
@@ -66,6 +59,20 @@ public class ActivityScouting extends AppCompatActivity {
         teleopButton.setOnClickListener(v -> replaceFragment(new FragmentTeleop()));
         endgameButton.setOnClickListener(v -> replaceFragment(new FragmentEndgame()));
         notesButton.setOnClickListener(v -> replaceFragment(new FragmentNotes()));
+
+
+        // Set the size and position of menu popup
+        fullPage.post(new Runnable() {
+            @Override
+            public void run() {
+                ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) menuPopup.getLayoutParams();
+                params.width = fullPage.getWidth()/2;
+                params.height = fullPage.getHeight()/6;
+                params.leftMargin = fullPage.getWidth()/50;
+                params.bottomMargin = bottomBar.getHeight() + fullPage.getHeight()/100;
+                menuPopup.setLayoutParams(params);
+            }
+        });
 
         // Menu popup
         menuBars.setOnClickListener(v -> {
