@@ -26,6 +26,7 @@ android:weightSum="5">
     </com.fro.scoutingapp2025.RowTopImage>
 
     <com.fro.scoutingapp2025.RowVerticalLongBox
+        android:id="@+id/vertical_long_box"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text_1="Scouter's\nName:"
@@ -33,10 +34,10 @@ android:weightSum="5">
         app:text_3="Robot\nPosition:"
         app:text_4="Match\nNumber:"
         app:text_5="Human Player\nPosition:"
-        app:box_type_1="text_type_box"
+        app:box_type_1="type_box"
         app:box_type_2="team_number_dropdown"
         app:box_type_3="text_dropdown"
-        app:box_type_4="text_type_box"
+        app:box_type_4="type_box"
         app:box_type_5="text_dropdown"
         android:layout_weight="3.3">
     </com.fro.scoutingapp2025.RowVerticalLongBox>

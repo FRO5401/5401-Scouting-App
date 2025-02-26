@@ -13,8 +13,13 @@ public class Values {
     public static int left = 0;
     public static int middle = 1;
     public static int right = 2;
-    public static int inputType_text = 3;
-    public static int inputType_number = 4;
+    public static int vertical_level_1 = 3;
+    public static int vertical_level_2 = 4;
+    public static int vertical_level_3 = 5;
+    public static int vertical_level_4 = 6;
+    public static int vertical_level_5 = 7;
+    public static int inputType_text = 8;
+    public static int inputType_number = 9;
 
     // stopwatch
     public static int seconds;
