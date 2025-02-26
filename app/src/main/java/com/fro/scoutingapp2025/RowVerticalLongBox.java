@@ -2,7 +2,6 @@ package com.fro.scoutingapp2025;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -33,23 +32,23 @@ import android.widget.TextView;
  *     <li>stopwatch - A stopwatch with on, off, and reset</li>
  * </ul>
  */
-public class VerticalLongBox extends LinearLayout{
-    TextView text1View;
-    TextView text2View;
-    TextView text3View;
-    TextView text4View;
-    TextView text5View;
-    ComponentFlipper box1Flipper;
-    ComponentFlipper box2Flipper;
-    ComponentFlipper box3Flipper;
-    ComponentFlipper box4Flipper;
-    ComponentFlipper box5Flipper;
-    public VerticalLongBox(Context context, AttributeSet attrs) {
+public class RowVerticalLongBox extends LinearLayout{
+    TextView textView1;
+    TextView textView2;
+    TextView textView3;
+    TextView textView4;
+    TextView textView5;
+    ComponentFlipper flipper1;
+    ComponentFlipper flipper2;
+    ComponentFlipper flipper3;
+    ComponentFlipper flipper4;
+    ComponentFlipper flipper5;
+    public RowVerticalLongBox(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
     private void init(Context context, AttributeSet attrs) {
-        inflate(context, R.layout.vertical_long_box, this);
+        inflate(context, R.layout.row_vertical_long_box, this);
 
         CharSequence text1 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_1");
         CharSequence text2 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_2");
@@ -65,6 +64,12 @@ public class VerticalLongBox extends LinearLayout{
 
         initComponents();
 
+        flipper1.setPadding(5, 5);
+        flipper2.setPadding(5, 5);
+        flipper3.setPadding(5, 5);
+        flipper4.setPadding(5, 5);
+        flipper5.setPadding(5, 5);
+
         setText1(text1);
         setText2(text2);
         setText3(text3);
@@ -78,52 +83,52 @@ public class VerticalLongBox extends LinearLayout{
     }
 
     private void initComponents() {
-        text1View = findViewById(R.id.text1);
-        text2View = findViewById(R.id.text2);
-        text3View = findViewById(R.id.text3);
-        text4View = findViewById(R.id.text4);
-        text5View = findViewById(R.id.text5);
-        box1Flipper = findViewById(R.id.box1);
-        box2Flipper = findViewById(R.id.box2);
-        box3Flipper = findViewById(R.id.box3);
-        box4Flipper = findViewById(R.id.box4);
-        box5Flipper = findViewById(R.id.box5);
+        textView1 = findViewById(R.id.text1);
+        textView2 = findViewById(R.id.text2);
+        textView3 = findViewById(R.id.text3);
+        textView4 = findViewById(R.id.text4);
+        textView5 = findViewById(R.id.text5);
+        flipper1 = findViewById(R.id.box1);
+        flipper2 = findViewById(R.id.box2);
+        flipper3 = findViewById(R.id.box3);
+        flipper4 = findViewById(R.id.box4);
+        flipper5 = findViewById(R.id.box5);
     }
 
     public void setText1(CharSequence value) {
-        text1View.setText(value);
+        textView1.setText(value);
     }
     public void setText2(CharSequence value) {
-        text2View.setText(value);
+        textView2.setText(value);
     }
     public void setText3(CharSequence value) {
-        text3View.setText(value);
+        textView3.setText(value);
     }
     public void setText4(CharSequence value) {
-        text4View.setText(value);
+        textView4.setText(value);
     }
     public void setText5(CharSequence value) {
-        text5View.setText(value);
+        textView5.setText(value);
     }
 
     public void setBox1(CharSequence value) {
         if (value == null) {return;}
-        box1Flipper.changeTo(value);
+        flipper1.changeTo(value);
     }
     public void setBox2(CharSequence value) {
         if (value == null) {return;}
-        box2Flipper.changeTo(value);
+        flipper2.changeTo(value);
     }
     public void setBox3(CharSequence value) {
         if (value == null) {return;}
-        box3Flipper.changeTo(value);
+        flipper3.changeTo(value);
     }
     public void setBox4(CharSequence value) {
         if (value == null) {return;}
-        box4Flipper.changeTo(value);
+        flipper4.changeTo(value);
     }
     public void setBox5(CharSequence value) {
         if (value == null) {return;}
-        box5Flipper.changeTo(value);
+        flipper5.changeTo(value);
     }
 }

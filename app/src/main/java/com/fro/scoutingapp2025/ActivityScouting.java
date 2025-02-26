@@ -3,6 +3,7 @@ package com.fro.scoutingapp2025;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -11,10 +12,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class ActivityScouting extends AppCompatActivity {
     // Declare global variables here \/
-    Button autoButton;
-    Button teleopButton;
-    Button endgameButton;
-    Button notesButton;
+    TextView autoButton;
+    TextView teleopButton;
+    TextView endgameButton;
+    TextView notesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +23,10 @@ public class ActivityScouting extends AppCompatActivity {
         setContentView(R.layout.activity_scouting);
 
         // Instantiate variables here \/
-        autoButton = findViewById(R.id.autoButton);
-        teleopButton = findViewById(R.id.teleopButton);
-        endgameButton = findViewById(R.id.endgameButton);
-        notesButton = findViewById(R.id.notesButton);
+        autoButton = findViewById(R.id.auto_button);
+        teleopButton = findViewById(R.id.teleop_button);
+        endgameButton = findViewById(R.id.endgame_button);
+        notesButton = findViewById(R.id.notes_button);
 
         replaceFragment(new FragmentAuto());
 
