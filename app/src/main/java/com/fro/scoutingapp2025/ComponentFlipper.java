@@ -1,6 +1,11 @@
 package com.fro.scoutingapp2025;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.icu.text.MessageFormat;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -18,8 +23,11 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Objects;
 
 public class ComponentFlipper extends LinearLayout {
 
@@ -31,12 +39,37 @@ public class ComponentFlipper extends LinearLayout {
     Spinner textDropdown;
     // Team Number Dropdown
     AutoCompleteTextView numberDropdown;
-    //Toggle
+    // Toggle
     SwitchCompat toggle;
     // Counter
     ImageButton counterPlus;
     ImageButton counterMinus;
     TextView counterNumber;
+    // Stopwatch
+    TextView stopwatchTimer;
+    TextView stopwatchRestart;
+    TextView stopwatchStart;
+    TextView stopwatchStop;
+    String stopwatchName;
+    int seconds, minutes;
+    Looper looper = Looper.getMainLooper();
+    Handler handler = new Handler(looper);
+    long currentTimeInMillis = 0, startTime = 0, timeBuff = 0;
+
+    private final Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            currentTimeInMillis = SystemClock.uptimeMillis() - startTime;
+            seconds = (int) ((timeBuff + currentTimeInMillis)/1000);
+            Values.data.put(stopwatchName, seconds);
+            minutes = seconds / 60;
+            seconds = seconds % 60;
+
+            String text = minutes + ":" + String.format(Locale.getDefault(), "%02d", seconds);
+            stopwatchTimer.setText(text);
+            handler.postDelayed(this, 0);
+        }
+    };
 
     public ComponentFlipper(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -146,13 +179,9 @@ public class ComponentFlipper extends LinearLayout {
         // Updates data when text is changed
         typeBox.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
             @Override
             public void afterTextChanged(Editable s) {
                 Values.data.put(name, typeBox.getText());
@@ -227,13 +256,9 @@ public class ComponentFlipper extends LinearLayout {
         // Updates value when text is changed
         numberDropdown.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
             @Override
             public void afterTextChanged(Editable editable) {
                 String text = numberDropdown.getText().toString();
@@ -316,6 +341,70 @@ public class ComponentFlipper extends LinearLayout {
                 counterNumber.setText(String.valueOf(num));
             }
             Values.data.put(name, num);
+        });
+    }
+
+    public void createStopwatch(String name) {
+        // Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, 0);
+        }
+
+        stopwatchName = name;
+        Toast.makeText(this.getContext(), " "+Values.data.get(name), Toast.LENGTH_SHORT).show();
+
+        // Creates the buttons and text view
+        stopwatchTimer = findViewById(R.id.stopwatch_timer);
+        stopwatchRestart = findViewById(R.id.stopwatch_restart);
+        stopwatchStart = findViewById(R.id.stopwatch_start);
+        stopwatchStop = findViewById(R.id.stopwatch_stop);
+
+
+        // Set text to data value
+        if (Values.data.containsKey(name)) {
+            seconds = Integer.parseInt(Objects.requireNonNull(Values.data.get(name)).toString());
+            minutes = seconds / 60;
+            seconds = seconds % 60;
+
+            String text = (minutes + ":" + String.format(Locale.getDefault(), "%02d", seconds));
+            stopwatchTimer.setText(text);
+        }
+
+        // Updates value as time goes
+        stopwatchStart.setOnClickListener(v -> {
+            startTime = SystemClock.uptimeMillis();
+            handler.postDelayed(runnable, 0);
+            stopwatchRestart.setClickable(false);
+            stopwatchRestart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getContext().getTheme()));
+            stopwatchStop.setClickable(true);
+            stopwatchStop.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
+            stopwatchStart.setClickable(false);
+            stopwatchStart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getContext().getTheme()));
+            Toast.makeText(this.getContext(), "start: "+timeBuff, Toast.LENGTH_SHORT).show();
+        });
+
+        stopwatchStop.setOnClickListener(v -> {
+            timeBuff += currentTimeInMillis;
+            handler.removeCallbacks(runnable);
+            stopwatchRestart.setClickable(true);
+            stopwatchRestart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
+            stopwatchStop.setClickable(false);
+            stopwatchStop.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getContext().getTheme()));
+            stopwatchStart.setClickable(true);
+            stopwatchStart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
+            Toast.makeText(this.getContext(), "stop: "+timeBuff, Toast.LENGTH_SHORT).show();
+        });
+
+        stopwatchRestart.setOnClickListener(v ->{
+            currentTimeInMillis = 0;
+            startTime = 0;
+            timeBuff = 0;
+            seconds = 0;
+            minutes = 0;
+            Toast.makeText(this.getContext(), "restart: "+timeBuff, Toast.LENGTH_SHORT).show();
+            Values.data.put(name, 0);
+            stopwatchTimer.setText("0:00");
+            // TODO Change all of the data inputs from strings to inputting seconds
         });
     }
 }

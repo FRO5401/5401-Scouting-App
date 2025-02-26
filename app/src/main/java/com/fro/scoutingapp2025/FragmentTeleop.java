@@ -52,7 +52,7 @@ public class FragmentTeleop extends Fragment {
         // Row 4
         row4.createCounter("Teleop_Algae_Scored_Human_Player", 18, Values.left);
         row4.createCounter("Teleop_Algae_Missed_Human_Player", 18, Values.middle);
-
+        row4.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
 
         // Inflate the layout for this fragment
         return rootView;

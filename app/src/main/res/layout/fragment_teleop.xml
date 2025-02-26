@@ -63,7 +63,7 @@
         android:layout_height="0dp"
         app:left_text="Algae Scored\nHuman Player"
         app:middle_text="Algae Missed\nHuman Player"
-        app:right_text="Defense Stopwatch"
+        app:right_text="Defense\nStopwatch"
         app:left_box_type="counter"
         app:middle_box_type="counter"
         app:right_box_type="stopwatch"

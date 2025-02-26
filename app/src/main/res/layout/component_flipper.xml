@@ -6,46 +6,84 @@
     android:orientation="horizontal"
     android:id="@+id/flipper">
 
-    <!--    Counter    -->
+<!--    Stopwatch    -->
     <LinearLayout
-        android:id="@+id/counter"
+        android:id="@+id/stopwatch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="3">
-        <ImageButton
-            android:id="@+id/counter_minus"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="@color/transparent"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/counter_minus"
-            android:layout_marginEnd="5dp"/>
-        <TextView
-            android:id="@+id/counter_number"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="0"
-            android:paddingBottom="5dp"
-            android:autoSizeTextType="uniform"
-            android:gravity="center"
-            android:fontFamily="@font/helvetica_bold"
-            android:layout_weight="1"
-            android:textColor="@color/text_grey"/>
-        <ImageButton
-            android:id="@+id/counter_plus"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="@color/transparent"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/counter_plus"
-            android:layout_marginStart="5dp"/>
+        android:orientation="vertical"
+        android:weightSum="0.9">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/stopwatch_timer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="0:00"
+                android:gravity="center"
+                android:fontFamily="@font/helvetica_bold"
+                android:autoSizeTextType="uniform"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/stopwatch_restart"
+                android:clickable="true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:textColor="@color/white"
+                android:text="Restart"
+                android:gravity="center"
+                android:autoSizeTextType="uniform"
+                android:backgroundTint="@color/orange"
+                android:background="@drawable/box_background"
+                android:foreground="@drawable/box_outline" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/stopwatch_start"
+                android:clickable="true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:textColor="@color/white"
+                android:text="Start"
+                android:gravity="center"
+                android:autoSizeTextType="uniform"
+                android:backgroundTint="@color/green"
+                android:background="@drawable/box_background"
+                android:foreground="@drawable/box_outline" />
+            <TextView
+                android:id="@+id/stopwatch_stop"
+                android:clickable="true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:textColor="@color/white"
+                android:text="Stop"
+                android:gravity="center"
+                android:autoSizeTextType="uniform"
+                android:backgroundTint="@color/red"
+                android:background="@drawable/box_background"
+                android:foreground="@drawable/box_outline_tinted" />
+        </LinearLayout>
     </LinearLayout>
 
 <!--    Text Type Box    -->
@@ -133,18 +171,47 @@
             android:textAlignment="center"/>
     </LinearLayout>
 
-<!--    Stopwatch    -->
+<!--    Counter    -->
     <LinearLayout
-        android:id="@+id/stopwatch"
+        android:id="@+id/counter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        <ImageButton
+            android:id="@+id/counter_minus"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="Stopwatch"
+            android:background="@color/transparent"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/counter_minus"
+            android:layout_marginEnd="5dp"/>
+        <TextView
+            android:id="@+id/counter_number"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="0"
+            android:paddingBottom="5dp"
             android:autoSizeTextType="uniform"
-            android:padding="10dp"/>
+            android:gravity="center"
+            android:fontFamily="@font/helvetica_bold"
+            android:layout_weight="1"
+            android:textColor="@color/text_grey"/>
+        <ImageButton
+            android:id="@+id/counter_plus"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/counter_plus"
+            android:layout_marginStart="5dp"/>
     </LinearLayout>
+
 
 </ViewFlipper>

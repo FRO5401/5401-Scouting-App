@@ -145,4 +145,12 @@ public class RowThreeBoxes extends LinearLayout {
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
     }
+
+    public void createStopwatch(String name, int position) {
+        if (position == Values.left) {leftFlipper.createStopwatch(name);}
+        else if (position == Values.middle) {middleFlipper.createStopwatch(name);}
+        else if (position == Values.right) {rightFlipper.createStopwatch(name);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch "+name, Toast.LENGTH_SHORT).show();}
+    }
 }
