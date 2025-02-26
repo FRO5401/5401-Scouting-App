@@ -8,6 +8,6 @@
         android:right="4dp"
         android:bottom="4dp"
         android:top="4dp" />
-    <size android:width="10dp"
-        android:height="10dp"/>
+    <size android:width="100dp"
+        android:height="100dp"/>
 </shape>
