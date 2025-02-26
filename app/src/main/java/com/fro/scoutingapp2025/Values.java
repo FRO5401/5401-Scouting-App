@@ -24,12 +24,16 @@ public class Values {
     // Data
     public static HashMap<String, Object> data = new HashMap<>();
 
-    public static String getMap(){
+    public static String getData(){
         String map ="[";
         for(String key: data.keySet()){
             map = (map + data.get(key) + ", ");
         }
         map += "]";
         return map;
+    }
+
+    public static void clearData(){
+        data.clear();
     }
 }

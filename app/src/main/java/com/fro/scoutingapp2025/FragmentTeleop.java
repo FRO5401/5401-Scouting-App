@@ -79,7 +79,8 @@ public class FragmentTeleop extends Fragment {
             row4_source.setVisibility(GONE);
             row4_processor.setVisibility(GONE);
             row4_none.setVisibility(VISIBLE);
-        }
+            row4_none.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
+         }
 
         // Inflate the layout for this fragment
         return rootView;
