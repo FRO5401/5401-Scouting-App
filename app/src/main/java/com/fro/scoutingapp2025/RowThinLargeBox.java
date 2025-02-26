@@ -4,6 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Creates a row with one large box. <br/>
@@ -38,7 +41,7 @@ public class RowThinLargeBox extends LinearLayout {
         inflate(context, R.layout.row_thin_large_box, this);
 
         CharSequence text = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text");
-        CharSequence box =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type");
+        CharSequence box = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type");
 
         initComponents();
 
@@ -58,7 +61,19 @@ public class RowThinLargeBox extends LinearLayout {
     }
 
     public void setBox(CharSequence value) {
-        if (value == null) {return;}
+        if (value == null) {
+            return;
+        }
         flipper.changeTo(value);
     }
+
+    public void createTypeBox(String name, int inputType) {flipper.createTypeBox(name, inputType);}
+
+    public void createTextDropdown(ArrayList<String> array, String name) {flipper.createTextDropdown(array, name);}
+
+    public void createTeamNumberDropdown(String name) {flipper.createTeamNumberDropdown(name);}
+
+    public void createToggle(String name, int position) {flipper.createToggle(name);}
+
+    public void createCounter(String name, int maxValue) {flipper.createCounter(name, maxValue);}
 }

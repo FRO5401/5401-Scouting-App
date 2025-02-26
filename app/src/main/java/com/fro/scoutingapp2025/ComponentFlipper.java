@@ -1,26 +1,75 @@
 package com.fro.scoutingapp2025;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.res.Configuration;
+import android.content.res.ColorStateList;
+import android.icu.text.MessageFormat;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.content.res.ResourcesCompat;
+
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Objects;
 
 public class ComponentFlipper extends LinearLayout {
 
     // Instantiates the view flipper
     ViewFlipper flipper;
-
+    // Text type box
+    EditText typeBox;
     // Text Dropdown
     Spinner textDropdown;
+    // Team Number Dropdown
+    AutoCompleteTextView numberDropdown;
+    // Toggle
+    SwitchCompat toggle;
+    // Counter
+    ImageButton counterPlus;
+    ImageButton counterMinus;
+    TextView counterNumber;
+    // Stopwatch
+    TextView stopwatchTimer;
+    TextView stopwatchRestart;
+    TextView stopwatchStart;
+    TextView stopwatchStop;
+    String stopwatchName;
+    int seconds, minutes;
+    Looper looper = Looper.getMainLooper();
+    Handler handler = new Handler(looper);
+    long currentTimeInMillis = 0, startTime = 0, timeBuff = 0;
+
+    private final Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            currentTimeInMillis = SystemClock.uptimeMillis() - startTime;
+            seconds = (int) ((timeBuff + currentTimeInMillis)/1000);
+            Values.data.put(stopwatchName, seconds);
+            minutes = seconds / 60;
+            seconds = seconds % 60;
+
+            String text = minutes + ":" + String.format(Locale.getDefault(), "%02d", seconds);
+            stopwatchTimer.setText(text);
+            handler.postDelayed(this, 0);
+        }
+    };
 
     public ComponentFlipper(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -33,47 +82,121 @@ public class ComponentFlipper extends LinearLayout {
     }
 
     public void changeTo(CharSequence value) {
-        if (value.equals("0")) {while (flipper.getCurrentView() != findViewById(R.id.textTypeBox)) {flipper.showNext();}}
-        if (value.equals("1")) {while (flipper.getCurrentView() != findViewById(R.id.numberTypeBox)) {flipper.showNext();}}
-        if (value.equals("2")) {while (flipper.getCurrentView() != findViewById(R.id.textDropdown)) {flipper.showNext();}}
-        if (value.equals("3")) {while (flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {flipper.showNext();}}
-        if (value.equals("4")) {while (flipper.getCurrentView() != findViewById(R.id.toggle)) {flipper.showNext();}}
-        if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.counter)) {flipper.showNext();}}
-        if (value.equals("6")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch)) {flipper.showNext();}}
+        if (value.equals("0")) {
+            while (flipper.getCurrentView() != findViewById(R.id.typeBox)) {
+                flipper.showNext();
+            }
+        }
+        if (value.equals("1")) {
+            while (flipper.getCurrentView() != findViewById(R.id.textDropdown)) {
+                flipper.showNext();
+            }
+        }
+        if (value.equals("2")) {
+            while (flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {
+                flipper.showNext();
+            }
+        }
+        if (value.equals("3")) {
+            while (flipper.getCurrentView() != findViewById(R.id.toggleLayout)) {
+                flipper.showNext();
+            }
+        }
+        if (value.equals("4")) {
+            while (flipper.getCurrentView() != findViewById(R.id.counter)) {
+                flipper.showNext();
+            }
+        }
+        if (value.equals("5")) {
+            while (flipper.getCurrentView() != findViewById(R.id.stopwatch)) {
+                flipper.showNext();
+            }
+        }
     }
 
     public boolean getView(String type) {
-        if (type.equals("textTypeBox") && flipper.getCurrentView() != findViewById(R.id.textTypeBox)) {return true;}
-        if (type.equals("numberTypeBox") && flipper.getCurrentView() == findViewById(R.id.numberTypeBox)) {return true;}
-        if (type.equals("textDropdown") && flipper.getCurrentView() != findViewById(R.id.textDropdown)) {return true;}
-        if (type.equals("numberDropdown") && flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {return true;}
-        if (type.equals("toggle") && flipper.getCurrentView() != findViewById(R.id.toggle)) {return true;}
-        if (type.equals("counter") && flipper.getCurrentView() != findViewById(R.id.counter)) {return true;}
+        if (type.equals("typeBox") && flipper.getCurrentView() != findViewById(R.id.typeBox)) {
+            return true;
+        }
+        if (type.equals("textDropdown") && flipper.getCurrentView() != findViewById(R.id.textDropdown)) {
+            return true;
+        }
+        if (type.equals("numberDropdown") && flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {
+            return true;
+        }
+        if (type.equals("toggle") && flipper.getCurrentView() != findViewById(R.id.toggleLayout)) {
+            return true;
+        }
+        if (type.equals("counter") && flipper.getCurrentView() != findViewById(R.id.counter)) {
+            return true;
+        }
         return type.equals("stopwatch") && flipper.getCurrentView() != findViewById(R.id.stopwatch);
     }
 
-    public void setPadding(int horizontalChange, int verticalChange){
+    public void setPadding(int horizontalChange, int verticalChange) {
         //Sets the padding to change per screen size
         Context con = this.getContext();
         flipper.post(new Runnable() {
-            @Override public void run() {
-                int height = flipper.getHeight();
-                flipper.setPadding(
-                        (height / horizontalChange), // left
-                        (height / verticalChange), // top
-                        (height / horizontalChange),  // right
-                        (height / verticalChange)   // bottom
-                );
+            @Override
+            public void run() {
+                if (horizontalChange != 0 && verticalChange != 0) {
+                    int height = flipper.getHeight();
+                    flipper.setPadding(
+                            (height / horizontalChange), // left
+                            (height / verticalChange), // top
+                            (height / horizontalChange),  // right
+                            (height / verticalChange)   // bottom
+                    );
+                } else {
+                    Toast.makeText(con, "Error divide by 0: " + String.valueOf(horizontalChange) + " or " + String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+
+    public void createTypeBox(String name, int type) {
+        //Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, "");
+        }
+
+        //Creates the type box
+        typeBox = findViewById(R.id.type_box);
+
+        // Sets the input type (number or text)
+        if (type == Values.inputType_number) {
+            typeBox.setInputType(InputType.TYPE_CLASS_NUMBER);
+        } else {
+            typeBox.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        }
+
+        // Set inputted text
+        if (Values.data.containsKey(name) && (CharSequence) Values.data.get(name) != null) {
+            typeBox.setText((CharSequence) Values.data.get(name));
+        }
+
+        // Updates data when text is changed
+        typeBox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                Values.data.put(name, typeBox.getText());
             }
         });
     }
 
     public void createTextDropdown(ArrayList<String> array, String name) {
-        Context c = this.getContext();
         //Creates the data in the hashmap
         if (!Values.data.containsKey(name)) {
             Values.data.put(name, -1);
         }
+
+        // Adds 'dropdown' to the beginning of the list to be a default value
+        array.add(0, "Dropdown");
 
         // Creates the dropdown
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, array);
@@ -83,8 +206,10 @@ public class ComponentFlipper extends LinearLayout {
 
         // Sets the dropdown to be below the spinner border
         textDropdown.post(new Runnable() {
-            @Override public void run() {
-                textDropdown.setDropDownVerticalOffset(5);}
+            @Override
+            public void run() {
+                textDropdown.setDropDownVerticalOffset(5);
+            }
         });
 
         // Set text dropdown selection
@@ -92,11 +217,194 @@ public class ComponentFlipper extends LinearLayout {
             textDropdown.setSelection((Integer) Values.data.get(name));
         }
 
-        // Set text dropdown on item selected listener
+        // Updates data when new item is selected in dropdown
         textDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {Values.data.put(name, pos);}
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                Values.data.put(name, pos);
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
     }
 
+    public void createTeamNumberDropdown(String name) {
+        //Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, "");
+        }
+
+        // Creates the dropdown
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this.getContext(), R.layout.spinner_dropdown, TeamNumbers.hatboro_horsham);
+        numberDropdown = findViewById(R.id.number_dropdown);
+        numberDropdown.setThreshold(1);
+        numberDropdown.setAdapter(adapter);
+
+        // Sets the dropdown to be below the spinner border
+        numberDropdown.post(new Runnable() {
+            @Override
+            public void run() {
+                numberDropdown.setDropDownVerticalOffset(5);
+            }
+        });
+
+        // Set text to data value
+        if (Values.data.containsKey(name)) {
+            numberDropdown.setText(String.valueOf(Values.data.get(name)));
+        }
+
+        // Updates value when text is changed
+        numberDropdown.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String text = numberDropdown.getText().toString();
+                if (!text.equals("")) {
+                    Values.data.put(name, Integer.parseInt(numberDropdown.getText().toString()));
+                }
+            }
+        });
+    }
+
+    public void createToggle(String name) {
+        // Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, false);
+        }
+
+        // Creates the toggle
+        toggle = findViewById(R.id.toggle);
+        LinearLayout toggleLayout = findViewById(R.id.toggleLayout);
+
+        // Sets the track and thumb drawables
+        toggle.setTrackResource(R.drawable.toggle_track);
+        toggle.setThumbResource(R.drawable.toggle_thumb);
+
+        // Scales the toggle based on the height
+        // TODO Fix this scaling later
+        toggleLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                float scale = (float) toggleLayout.getHeight() / 200;
+                toggle.setScaleX(scale);
+                toggle.setScaleY(scale);
+            }
+        });
+
+        // Set if checked or not
+        if (Values.data.containsKey(name) && (Boolean) Values.data.get(name) != null) {
+            toggle.setChecked((Boolean) Values.data.get(name));
+        }
+
+        // Updates value when checked is changed
+        toggle.setOnCheckedChangeListener((buttonView, isChecked) -> Values.data.put(name, isChecked));
+    }
+
+    public void createCounter(String name, int maxValue) {
+        // Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, 0);
+        }
+
+        // Creates the buttons and text view
+        counterMinus = findViewById(R.id.counter_minus);
+        counterPlus = findViewById(R.id.counter_plus);
+        counterNumber = findViewById(R.id.counter_number);
+
+        // Set text to data value
+        if (Values.data.containsKey(name)) {
+            counterNumber.setText(String.valueOf(Values.data.get(name)));
+        }
+
+        // Updates value when plus is hit
+        counterPlus.setOnClickListener(v -> {
+            //gets the num from the view
+            int num = Integer.parseInt(counterNumber.getText().toString());
+            //sets the view to the num + 1
+            if (num < maxValue) {
+                num++;
+                counterNumber.setText(String.valueOf(num));
+            }
+            Values.data.put(name, num);
+        });
+
+        // Updates value when minus is hit
+        counterMinus.setOnClickListener(v -> {
+            //gets the number from the view
+            int num = Integer.parseInt(counterNumber.getText().toString());
+            //sets the view to the number + 1
+            if (num > 0) {
+                num--;
+                counterNumber.setText(String.valueOf(num));
+            }
+            Values.data.put(name, num);
+        });
+    }
+
+    public void createStopwatch(String name) {
+        // Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, 0);
+        }
+
+        stopwatchName = name;
+        Toast.makeText(this.getContext(), " "+Values.data.get(name), Toast.LENGTH_SHORT).show();
+
+        // Creates the buttons and text view
+        stopwatchTimer = findViewById(R.id.stopwatch_timer);
+        stopwatchRestart = findViewById(R.id.stopwatch_restart);
+        stopwatchStart = findViewById(R.id.stopwatch_start);
+        stopwatchStop = findViewById(R.id.stopwatch_stop);
+
+
+        // Set text to data value
+        if (Values.data.containsKey(name)) {
+            seconds = Integer.parseInt(Objects.requireNonNull(Values.data.get(name)).toString());
+            minutes = seconds / 60;
+            seconds = seconds % 60;
+
+            String text = (minutes + ":" + String.format(Locale.getDefault(), "%02d", seconds));
+            stopwatchTimer.setText(text);
+        }
+
+        // Updates value as time goes
+        stopwatchStart.setOnClickListener(v -> {
+            startTime = SystemClock.uptimeMillis();
+            handler.postDelayed(runnable, 0);
+            stopwatchRestart.setClickable(false);
+            stopwatchRestart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getContext().getTheme()));
+            stopwatchStop.setClickable(true);
+            stopwatchStop.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
+            stopwatchStart.setClickable(false);
+            stopwatchStart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getContext().getTheme()));
+            Toast.makeText(this.getContext(), "start: "+timeBuff, Toast.LENGTH_SHORT).show();
+        });
+
+        stopwatchStop.setOnClickListener(v -> {
+            timeBuff += currentTimeInMillis;
+            handler.removeCallbacks(runnable);
+            stopwatchRestart.setClickable(true);
+            stopwatchRestart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
+            stopwatchStop.setClickable(false);
+            stopwatchStop.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getContext().getTheme()));
+            stopwatchStart.setClickable(true);
+            stopwatchStart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
+            Toast.makeText(this.getContext(), "stop: "+timeBuff, Toast.LENGTH_SHORT).show();
+        });
+
+        stopwatchRestart.setOnClickListener(v ->{
+            currentTimeInMillis = 0;
+            startTime = 0;
+            timeBuff = 0;
+            seconds = 0;
+            minutes = 0;
+            Toast.makeText(this.getContext(), "restart: "+timeBuff, Toast.LENGTH_SHORT).show();
+            Values.data.put(name, 0);
+            stopwatchTimer.setText("0:00");
+            // TODO Change all of the data inputs from strings to inputting seconds
+        });
+    }
 }

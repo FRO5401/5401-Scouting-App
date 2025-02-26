@@ -56,11 +56,6 @@ public class RowLongBox extends LinearLayout {
     LinearLayout middleLayout;
     LinearLayout backgroundLayout;
 
-    // public variables for the developer to set which box they are using
-    public static int left = 0;
-    public static int middle = 1;
-    public static int right = 2;
-
     public RowLongBox(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
@@ -145,11 +140,44 @@ public class RowLongBox extends LinearLayout {
         }
     }
 
+    public void createTypeBox(String name, int inputType, int position) {
+        if (position == Values.left) {leftFlipper.createTypeBox(name, inputType);}
+        else if (position == Values.middle) {middleFlipper.createTypeBox(name, inputType);}
+        else if (position == Values.right) {rightFlipper.createTypeBox(name, inputType);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in type box "+name, Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void createTextDropdown(ArrayList<String> array, String name, int position) {
-        if (position == left) {leftFlipper.createTextDropdown(array, name);}
-        else if (position == middle) {middleFlipper.createTextDropdown(array, name);}
-        else if (position == right) {rightFlipper.createTextDropdown(array, name);}
+        if (position == Values.left) {leftFlipper.createTextDropdown(array, name);}
+        else if (position == Values.middle) {middleFlipper.createTextDropdown(array, name);}
+        else if (position == Values.right) {rightFlipper.createTextDropdown(array, name);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void createTeamNumberDropdown(String name, int position) {
+        if (position == Values.left) {leftFlipper.createTeamNumberDropdown(name);}
+        else if (position == Values.middle) {middleFlipper.createTeamNumberDropdown(name);}
+        else if (position == Values.right) {rightFlipper.createTeamNumberDropdown(name);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void createToggle(String name, int position) {
+        if (position == Values.left) {leftFlipper.createToggle(name);}
+        else if (position == Values.middle) {middleFlipper.createToggle(name);}
+        else if (position == Values.right) {rightFlipper.createToggle(name);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in toggle "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void createCounter(String name, int maxValue, int position) {
+        if (position == Values.left) {leftFlipper.createCounter(name, maxValue);}
+        else if (position == Values.middle) {middleFlipper.createCounter(name, maxValue);}
+        else if (position == Values.right) {rightFlipper.createCounter(name, maxValue);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
     }
 }

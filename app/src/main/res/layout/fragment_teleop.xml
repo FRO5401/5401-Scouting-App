@@ -17,6 +17,7 @@
     </com.fro.scoutingapp2025.RowTopText>
 
     <com.fro.scoutingapp2025.RowThreeBoxes
+        android:id="@+id/teleop_row_1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="Algae Pickup\nLocation"
@@ -24,44 +25,47 @@
         app:right_text="Reef\nTrough (L1)"
         app:left_box_type="text_dropdown"
         app:middle_box_type="text_dropdown"
-        app:right_box_type="number_type_box"
+        app:right_box_type="counter"
         android:layout_weight="1">
     </com.fro.scoutingapp2025.RowThreeBoxes>
 
     <com.fro.scoutingapp2025.RowLongBox
+        android:id="@+id/teleop_row_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="Reef\nLevel 2"
         app:middle_text="Reef\nLevel 3"
         app:right_text="Reef\nLevel 4"
-        app:left_box_type="number_type_box"
-        app:middle_box_type="number_type_box"
-        app:right_box_type="number_type_box"
+        app:left_box_type="counter"
+        app:middle_box_type="counter"
+        app:right_box_type="counter"
         app:color_pattern="white_grey_white"
         android:layout_weight="1">
     </com.fro.scoutingapp2025.RowLongBox>
 
     <com.fro.scoutingapp2025.RowLongBox
+        android:id="@+id/teleop_row_3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="Algae\nRemoved"
         app:middle_text="Net"
         app:right_text="Processor"
-        app:left_box_type="number_type_box"
-        app:middle_box_type="number_type_box"
-        app:right_box_type="number_type_box"
+        app:left_box_type="counter"
+        app:middle_box_type="counter"
+        app:right_box_type="counter"
         app:color_pattern="grey_white_grey"
         android:layout_weight="1">
     </com.fro.scoutingapp2025.RowLongBox>
 
     <com.fro.scoutingapp2025.RowThreeBoxes
+        android:id="@+id/teleop_row_4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="Algae Scored\nHuman Player"
         app:middle_text="Algae Missed\nHuman Player"
-        app:right_text="Defense Stopwatch"
-        app:left_box_type="number_type_box"
-        app:middle_box_type="number_type_box"
+        app:right_text="Defense\nStopwatch"
+        app:left_box_type="counter"
+        app:middle_box_type="counter"
         app:right_box_type="stopwatch"
         android:layout_weight="1">
     </com.fro.scoutingapp2025.RowThreeBoxes>
