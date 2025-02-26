@@ -58,7 +58,7 @@
     </com.fro.scoutingapp2025.RowLongBox>
 
     <com.fro.scoutingapp2025.RowThreeBoxes
-        android:id="@+id/teleop_row_4"
+        android:id="@+id/teleop_row_4_processor"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="Algae Scored\nHuman Player"
@@ -67,8 +67,33 @@
         app:left_box_type="counter"
         app:middle_box_type="counter"
         app:right_box_type="stopwatch"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:visibility="visible">
     </com.fro.scoutingapp2025.RowThreeBoxes>
+
+    <com.fro.scoutingapp2025.RowTwoBoxes
+        android:id="@+id/teleop_row_4_source"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:left_text="Feeding Accuracy\nHuman Player"
+        app:right_text="Defense\nStopwatch"
+        app:left_box_type="text_dropdown"
+        app:right_box_type="stopwatch"
+        android:layout_weight="1"
+        android:visibility="gone">
+    </com.fro.scoutingapp2025.RowTwoBoxes>
+
+    <com.fro.scoutingapp2025.RowTwoBoxes
+        android:id="@+id/teleop_row_4_none"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:left_text="Human Player\nNot Selected"
+        app:right_text="Defense\nStopwatch"
+        app:left_box_type="nothing"
+        app:right_box_type="stopwatch"
+        android:layout_weight="1"
+        android:visibility="gone">
+    </com.fro.scoutingapp2025.RowTwoBoxes>
 
 
 </LinearLayout>

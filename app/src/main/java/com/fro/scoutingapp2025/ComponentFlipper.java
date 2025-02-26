@@ -82,55 +82,13 @@ public class ComponentFlipper extends LinearLayout {
     }
 
     public void changeTo(CharSequence value) {
-        if (value.equals("0")) {
-            while (flipper.getCurrentView() != findViewById(R.id.typeBox)) {
-                flipper.showNext();
-            }
-        }
-        if (value.equals("1")) {
-            while (flipper.getCurrentView() != findViewById(R.id.textDropdown)) {
-                flipper.showNext();
-            }
-        }
-        if (value.equals("2")) {
-            while (flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {
-                flipper.showNext();
-            }
-        }
-        if (value.equals("3")) {
-            while (flipper.getCurrentView() != findViewById(R.id.toggleLayout)) {
-                flipper.showNext();
-            }
-        }
-        if (value.equals("4")) {
-            while (flipper.getCurrentView() != findViewById(R.id.counter)) {
-                flipper.showNext();
-            }
-        }
-        if (value.equals("5")) {
-            while (flipper.getCurrentView() != findViewById(R.id.stopwatch)) {
-                flipper.showNext();
-            }
-        }
-    }
-
-    public boolean getView(String type) {
-        if (type.equals("typeBox") && flipper.getCurrentView() != findViewById(R.id.typeBox)) {
-            return true;
-        }
-        if (type.equals("textDropdown") && flipper.getCurrentView() != findViewById(R.id.textDropdown)) {
-            return true;
-        }
-        if (type.equals("numberDropdown") && flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {
-            return true;
-        }
-        if (type.equals("toggle") && flipper.getCurrentView() != findViewById(R.id.toggleLayout)) {
-            return true;
-        }
-        if (type.equals("counter") && flipper.getCurrentView() != findViewById(R.id.counter)) {
-            return true;
-        }
-        return type.equals("stopwatch") && flipper.getCurrentView() != findViewById(R.id.stopwatch);
+        if (value.equals("0")) {while (flipper.getCurrentView() != findViewById(R.id.typeBox)) {flipper.showNext();}}
+        if (value.equals("1")) {while (flipper.getCurrentView() != findViewById(R.id.textDropdown)) {flipper.showNext();}}
+        if (value.equals("2")) {while (flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {flipper.showNext();}}
+        if (value.equals("3")) {while (flipper.getCurrentView() != findViewById(R.id.toggleLayout)) {flipper.showNext();}}
+        if (value.equals("4")) {while (flipper.getCurrentView() != findViewById(R.id.counter)) {flipper.showNext();}}
+        if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch)) {flipper.showNext();}}
+        if (value.equals("6")) {flipper.setVisibility(INVISIBLE);}
     }
 
     public void setPadding(int horizontalChange, int verticalChange) {

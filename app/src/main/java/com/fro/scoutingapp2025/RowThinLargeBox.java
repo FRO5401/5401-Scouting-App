@@ -76,4 +76,6 @@ public class RowThinLargeBox extends LinearLayout {
     public void createToggle(String name, int position) {flipper.createToggle(name);}
 
     public void createCounter(String name, int maxValue) {flipper.createCounter(name, maxValue);}
+
+    public void createStopwatch(String name) {flipper.createStopwatch(name);}
 }

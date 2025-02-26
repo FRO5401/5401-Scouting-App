@@ -32,7 +32,7 @@ public class ActivityMain extends AppCompatActivity {
         verticalLongBox.createTypeBox("Main_Match_Number", Values.inputType_number, Values.vertical_level_4);
         verticalLongBox.createTextDropdown(
                 new ArrayList<String>(Arrays.asList("Left Coral Station", "Right Coral Station", "Processor", "Can't Tell")),
-                "Main_Robot_Position", Values.vertical_level_5);
+                "Main_Human_Player_Position", Values.vertical_level_5);
         // button to go to next page
         startButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), ActivityScouting.class)));
     }
