@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -104,6 +105,7 @@ public class ActivityScouting extends AppCompatActivity {
             menuPopup.setVisibility(GONE);
             fullPage.setClickable(false);
             //TODO submit data
+            Toast.makeText(this, Values.checkData(), Toast.LENGTH_SHORT).show();
             Values.clearData();
             startActivity(new Intent(getApplicationContext(), ActivityMain.class));
         });

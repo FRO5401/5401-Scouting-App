@@ -1,5 +1,8 @@
 package com.fro.scoutingapp2025;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.util.HashMap;
 
 public class Values {
@@ -29,5 +32,15 @@ public class Values {
 
     public static void clearData(){
         data.clear();
+    }
+
+    public static String checkData(){
+        StringBuilder missingVals = new StringBuilder();
+        for(String key: data.keySet()){
+            if (data.get(key).equals(0) || data.get(key).equals(-1) || data.get(key).equals("")){
+                missingVals.append(key).append(", ");
+            }
+        }
+        return missingVals.toString();
     }
 }
