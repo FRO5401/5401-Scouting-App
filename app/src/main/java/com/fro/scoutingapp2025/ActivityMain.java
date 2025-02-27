@@ -2,9 +2,16 @@ package com.fro.scoutingapp2025;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,15 +20,25 @@ public class ActivityMain extends AppCompatActivity {
     // Declare global variables here \/
     TextView startButton;
     RowVerticalLongBox verticalLongBox;
+    ImageButton helpButton;
+    HelpPopup helpPopup;
+    ConstraintLayout fullPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Hides system bars
+        WindowInsetsControllerCompat windowInsetsController = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
+
         // Instantiate variables here \/
         startButton = findViewById(R.id.startButton);
         verticalLongBox = findViewById(R.id.vertical_long_box);
+        helpButton = findViewById(R.id.main_help_button);
+        helpPopup = findViewById(R.id.main_help_popup);
+        fullPage = findViewById(R.id.main_full_page);
 
         // vertical long box
         verticalLongBox.createTypeBox("Main_Scouters_Name", Values.inputType_text, 20, Values.vertical_level_1);
@@ -35,7 +52,24 @@ public class ActivityMain extends AppCompatActivity {
                 "Main_Human_Player_Position",
                 new ArrayList<String>(Arrays.asList("Left Coral Station", "Right Coral Station", "Processor", "Can't Tell")),
                 Values.vertical_level_5);
+
         // button to go to next page
         startButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), ActivityScouting.class)));
+
+        // Set the size and position of help popup
+        fullPage.post(new Runnable() {
+            @Override
+            public void run() {
+                // Help popup
+                ViewGroup.MarginLayoutParams helpParams = (ViewGroup.MarginLayoutParams) helpPopup.getLayoutParameters();
+                helpParams.width = (int) (fullPage.getWidth()/1.25);
+                helpParams.height = (int) (fullPage.getHeight()/1.25);
+                helpPopup.setLayoutParameters(helpParams);
+            }
+        });
+
+        // help button
+        helpPopup.createHelp(helpButton);
+        helpPopup.setRatio(4,5);
     }
 }

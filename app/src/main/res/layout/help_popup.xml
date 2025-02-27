@@ -13,12 +13,12 @@
         android:layout_height="600dp"
         android:orientation="vertical"
         android:weightSum="12.5"
+        android:padding="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/box_background"
-        android:layout_marginBottom="100dp">
+        android:background="@drawable/box_background">
         <TextView
             android:id="@+id/help_header_1"
             android:layout_width="match_parent"
@@ -82,7 +82,7 @@
             android:id="@+id/help_image"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:src="@drawable/help_reference_img"
+            android:src="@drawable/help_reference"
             android:layout_weight="5"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"/>

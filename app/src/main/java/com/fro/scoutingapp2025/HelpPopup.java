@@ -2,7 +2,6 @@ package com.fro.scoutingapp2025;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -10,8 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
-
-import java.lang.reflect.Constructor;
 
 public class HelpPopup extends LinearLayout {
 
@@ -121,4 +118,22 @@ public class HelpPopup extends LinearLayout {
         });
     }
 
+    /**
+     * Top and bottom need to total to 9
+     * @param top
+     * @param bottom
+     */
+    public void setRatio(float top, float bottom){
+        helpText1.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0, top));
+        helpText2.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0, bottom));
+        helpImage.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0, 10-top));
+    }
+
+    public ViewGroup.LayoutParams getLayoutParameters(){
+        return helpScreen.getLayoutParams();
+    }
+
+    public void setLayoutParameters(MarginLayoutParams params){
+        helpScreen.setLayoutParams(params);
+    }
 }
