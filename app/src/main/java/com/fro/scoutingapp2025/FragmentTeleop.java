@@ -59,29 +59,32 @@ public class FragmentTeleop extends Fragment {
         row3.createCounter("Teleop_Algae_Net", 18, Values.right);
 
         // Row 4
-         if (Values.data.get("Main_Human_Player_Position") == "Left Coral Station" || Values.data.get("Main_Human_Player_Position") == "Right Coral Station"){
+        // Creating values even if visibility gone, so the json file stays the same
+        row4_processor.createCounter("Teleop_Algae_Scored_Human_Player", 18, Values.left);
+        row4_processor.createCounter("Teleop_Algae_Missed_Human_Player", 18, Values.middle);
+        row4_processor.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
+        row4_source.createTextDropdown(
+                "Teleop_Human_Player_Feeding_Accuracy",
+                new ArrayList<String>(Arrays.asList("1", "2", "3", "4", "5")),
+                Values.left);
+        row4_source.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
+        row4_none.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
+
+        // Setting which row is visible
+        if (Values.data.get("Main_Human_Player_Position") == "Left Coral Station" || Values.data.get("Main_Human_Player_Position") == "Right Coral Station"){
              row4_source.setVisibility(GONE);
              row4_none.setVisibility(GONE);
              row4_processor.setVisibility(VISIBLE);
-             row4_processor.createCounter("Teleop_Algae_Scored_Human_Player", 18, Values.left);
-             row4_processor.createCounter("Teleop_Algae_Missed_Human_Player", 18, Values.middle);
-             row4_processor.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
         }
         else if (Values.data.get("Main_Human_Player_Position") == "Processor"){
             row4_processor.setVisibility(GONE);
             row4_none.setVisibility(GONE);
             row4_source.setVisibility(VISIBLE);
-            row4_source.createTextDropdown(
-                "Teleop_Human_Player_Feeding_Accuracy",
-                new ArrayList<String>(Arrays.asList("1", "2", "3", "4", "5")),
-                Values.left);
-            row4_source.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
         }
         else {
             row4_source.setVisibility(GONE);
             row4_processor.setVisibility(GONE);
             row4_none.setVisibility(VISIBLE);
-            row4_none.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
          }
 
         // Inflate the layout for this fragment

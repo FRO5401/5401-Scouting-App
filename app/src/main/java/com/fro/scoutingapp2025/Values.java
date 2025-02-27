@@ -42,24 +42,27 @@ public class Values {
     }
 
     public static void clearData(){
+        // clears all data so a new match can be started
         data.clear();
     }
 
     public static String checkData(){
         StringBuilder missingVals = new StringBuilder();
         for(String key: data.keySet()){
+            // If the data is a default value, then the user didn't change it so it's added to missing values
             if (data.get(key).equals(0) || data.get(key).equals("")){
                 String name = key.replace('_', ' ');
                 missingVals.append(name).append("\n");
             }
         }
 
+        // Returns whether the data was inputted correctly or not
         if (missingVals.toString().isEmpty()){return "All data has been successfully inputted.";}
         else {return "The input for these values were not changed:\n" + missingVals.toString();}
     }
 
     public static void exportData(Context c){
-        Calendar calendar = Calendar.getInstance();
+        // Finds the folder that the file will get saved to
         String pathToExternalStorage = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
         File path = new File(pathToExternalStorage + "/" + "Scouting-"+year);
 
@@ -68,19 +71,28 @@ public class Values {
         //start page
         for(String key: data.keySet()) {
             try {
-                if (data.get(key).equals("Dropdown")){ jsonObject.put(key, ""); }
+                // Any value that is an integer as a string gets turned into an integer (ex "1" --> 1)
+                int val;
+                try {val = Integer.parseInt(data.get(key).toString());}
+                catch (Exception e) {val = -100;}
+                if (val != -100){ jsonObject.put(key, val); }
+                // Any value that is not entered (aka 'Dropdown') becomes empty
+                else if (data.get(key).equals("Dropdown")){ jsonObject.put(key, ""); }
+                // Exports value saved in hashmap
                 else { jsonObject.put(key, data.get(key)); }
             }
             catch (JSONException e) {throw new RuntimeException(e);}
         }
 
         try {
+            // Saves the data to the file path
+            Calendar calendar = Calendar.getInstance();
             FileOutputStream writer = new FileOutputStream(new File(path, year+"_SCOUTING_DATA_" + calendar.getTimeInMillis() + ".json"));
             writer.write(jsonObject.toString().getBytes());
             writer.close();
+            Toast.makeText(c, "Saved data!", Toast.LENGTH_SHORT).show();
         }
         catch (IOException e) { e.printStackTrace(); }
 
-        Toast.makeText(c, path.toString(), Toast.LENGTH_SHORT).show();
     }
 }
