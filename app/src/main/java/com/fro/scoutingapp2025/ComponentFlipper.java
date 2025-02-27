@@ -50,23 +50,27 @@ public class ComponentFlipper extends LinearLayout {
     TextView stopwatchStart;
     TextView stopwatchStop;
     String stopwatchName;
-    int seconds, minutes;
-    Looper looper = Looper.getMainLooper();
-    Handler handler = new Handler(looper);
-    long currentTimeInMillis = 0, startTime = 0, timeBuff = 0;
+    int stopwatchSeconds, stopwatchMinutes, stopwatchElapsedTimeMillis = 0, stopwatchStartTimeMillis = 0, stopwatchSavedTimeMillis = 0;
+    Looper stopwatchLooper = Looper.getMainLooper();
+    Handler stopwatchHandler = new Handler(stopwatchLooper);
 
-    private final Runnable runnable = new Runnable() {
+    private final Runnable stopwatchRunnable = new Runnable() {
         @Override
         public void run() {
-            currentTimeInMillis = SystemClock.uptimeMillis() - startTime;
-            seconds = (int) ((timeBuff + currentTimeInMillis)/1000);
-            Values.data.put(stopwatchName, seconds);
-            minutes = seconds / 60;
-            seconds = seconds % 60;
-
-            String text = minutes + ":" + String.format(Locale.getDefault(), "%02d", seconds);
+            // Difference of what system time time we started the stopwatch and the current system time
+            stopwatchElapsedTimeMillis = (int) SystemClock.uptimeMillis() - stopwatchStartTimeMillis;
+            // Gets the previous time and adds it to the elapsed time (/1000 to turn into seconds)
+            stopwatchSeconds = (int) ((stopwatchSavedTimeMillis + stopwatchElapsedTimeMillis)/1000);
+            // Saves seconds in data
+            Values.data.put(stopwatchName, stopwatchSeconds);
+            // Gets minutes and seconds to print
+            stopwatchMinutes = stopwatchSeconds / 60;
+            stopwatchSeconds = stopwatchSeconds % 60;
+            // Sets the text view to the time in 00:00 format
+            String text = stopwatchMinutes + ":" + String.format(Locale.getDefault(), "%02d", stopwatchSeconds);
             stopwatchTimer.setText(text);
-            handler.postDelayed(this, 0);
+            // Uses recursion to run this function forever with no delay
+            stopwatchHandler.postDelayed(this, 0);
         }
     };
 
@@ -317,12 +321,10 @@ public class ComponentFlipper extends LinearLayout {
 
     public void createStopwatch(String name) {
         // Creates the data in the hashmap
-        if (!Values.data.containsKey(name)) {
-            Values.data.put(name, 0);
-        }
+        if (!Values.data.containsKey(name)) {Values.data.put(name, 0);}
 
+        // Sets this file's stopwatch name to be the name so the runnable can use it
         stopwatchName = name;
-        Toast.makeText(this.getContext(), " "+Values.data.get(name), Toast.LENGTH_SHORT).show();
 
         // Creates the buttons and text view
         stopwatchTimer = findViewById(R.id.stopwatch_timer);
@@ -330,52 +332,54 @@ public class ComponentFlipper extends LinearLayout {
         stopwatchStart = findViewById(R.id.stopwatch_start);
         stopwatchStop = findViewById(R.id.stopwatch_stop);
 
-
         // Set text to data value
         if (Values.data.containsKey(name)) {
-            seconds = Integer.parseInt(Objects.requireNonNull(Values.data.get(name)).toString());
-            minutes = seconds / 60;
-            seconds = seconds % 60;
-
-            String text = (minutes + ":" + String.format(Locale.getDefault(), "%02d", seconds));
+            stopwatchSeconds = Integer.parseInt(Objects.requireNonNull(Values.data.get(name)).toString());
+            stopwatchMinutes = stopwatchSeconds / 60;
+            stopwatchSeconds = stopwatchSeconds % 60;
+            String text = (stopwatchMinutes + ":" + String.format(Locale.getDefault(), "%02d", stopwatchSeconds));
             stopwatchTimer.setText(text);
         }
 
-        // Updates value as time goes
         stopwatchStart.setOnClickListener(v -> {
-            startTime = SystemClock.uptimeMillis();
-            handler.postDelayed(runnable, 0);
+            // Gets the start system time
+            stopwatchStartTimeMillis = (int) SystemClock.uptimeMillis();
+            // Sets the saved time to the time saved in data
+            stopwatchSavedTimeMillis = (int) Values.data.get(stopwatchName)*1000;
+            // Starts the stopwatch
+            stopwatchHandler.postDelayed(stopwatchRunnable, 0);
+            // Disables specific buttons
             stopwatchRestart.setClickable(false);
             stopwatchRestart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getContext().getTheme()));
             stopwatchStop.setClickable(true);
             stopwatchStop.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
             stopwatchStart.setClickable(false);
             stopwatchStart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getContext().getTheme()));
-            Toast.makeText(this.getContext(), "start: "+timeBuff, Toast.LENGTH_SHORT).show();
         });
 
         stopwatchStop.setOnClickListener(v -> {
-            timeBuff += currentTimeInMillis;
-            handler.removeCallbacks(runnable);
+            // Saves the current time
+            stopwatchSavedTimeMillis += stopwatchElapsedTimeMillis;
+            // Pauses the stopwatch
+            stopwatchHandler.removeCallbacks(stopwatchRunnable);
+            // Disables specific buttons
             stopwatchRestart.setClickable(true);
             stopwatchRestart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
             stopwatchStop.setClickable(false);
             stopwatchStop.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getContext().getTheme()));
             stopwatchStart.setClickable(true);
             stopwatchStart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
-            Toast.makeText(this.getContext(), "stop: "+timeBuff, Toast.LENGTH_SHORT).show();
         });
 
         stopwatchRestart.setOnClickListener(v ->{
-            currentTimeInMillis = 0;
-            startTime = 0;
-            timeBuff = 0;
-            seconds = 0;
-            minutes = 0;
-            Toast.makeText(this.getContext(), "restart: "+timeBuff, Toast.LENGTH_SHORT).show();
+            // Sets all values to 0 to restart timer
+            stopwatchElapsedTimeMillis = 0;
+            stopwatchStartTimeMillis = 0;
+            stopwatchSavedTimeMillis = 0;
+            stopwatchSeconds = 0;
+            stopwatchMinutes = 0;
             Values.data.put(name, 0);
             stopwatchTimer.setText("0:00");
-            // TODO Change all of the data inputs from strings to inputting seconds
         });
     }
 }
