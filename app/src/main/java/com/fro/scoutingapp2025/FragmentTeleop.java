@@ -59,8 +59,7 @@ public class FragmentTeleop extends Fragment {
         row3.createCounter("Teleop_Algae_Net", 18, Values.right);
 
         // Row 4
-        // Human player values: Dropdown = 0, Left Coral Station = 1, Right Coral Station = 2, Processor = 3, Can't Tell = 4
-         if ((int) Values.data.get("Main_Human_Player_Position") == 1 || (int) Values.data.get("Main_Human_Player_Position") == 2){
+         if (Values.data.get("Main_Human_Player_Position") == "Left Coral Station" || Values.data.get("Main_Human_Player_Position") == "Right Coral Station"){
              row4_source.setVisibility(GONE);
              row4_none.setVisibility(GONE);
              row4_processor.setVisibility(VISIBLE);
@@ -68,7 +67,7 @@ public class FragmentTeleop extends Fragment {
              row4_processor.createCounter("Teleop_Algae_Missed_Human_Player", 18, Values.middle);
              row4_processor.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
         }
-        else if ((int) Values.data.get("Main_Human_Player_Position") == 3){
+        else if (Values.data.get("Main_Human_Player_Position") == "Processor"){
             row4_processor.setVisibility(GONE);
             row4_none.setVisibility(GONE);
             row4_source.setVisibility(VISIBLE);

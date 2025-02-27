@@ -67,7 +67,10 @@ public class Values {
 
         //start page
         for(String key: data.keySet()) {
-            try { jsonObject.put(key, data.get(key)); }
+            try {
+                if (data.get(key).equals("Dropdown")){ jsonObject.put(key, ""); }
+                else { jsonObject.put(key, data.get(key)); }
+            }
             catch (JSONException e) {throw new RuntimeException(e);}
         }
 

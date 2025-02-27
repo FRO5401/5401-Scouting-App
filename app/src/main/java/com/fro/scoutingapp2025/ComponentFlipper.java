@@ -154,7 +154,7 @@ public class ComponentFlipper extends LinearLayout {
     public void createTextDropdown(String name, ArrayList<String> array) {
         //Creates the data in the hashmap
         if (!Values.data.containsKey(name)) {
-            Values.data.put(name, 0);
+            Values.data.put(name, "");
         }
 
         // Adds 'dropdown' to the beginning of the list to be a default value
@@ -175,14 +175,23 @@ public class ComponentFlipper extends LinearLayout {
         });
 
         // Set text dropdown selection
-        if (Values.data.containsKey(name) && (Integer) Values.data.get(name) != null) {
-            textDropdown.setSelection((Integer) Values.data.get(name));
+        if (Values.data.containsKey(name) && Values.data.get(name) != null) {
+            int index = 0;
+            for (String item: array){
+                if (item.equals(Values.data.get(name))){
+                    index = array.indexOf(item);
+                }
+            }
+            textDropdown.setSelection(index);
+
+//            textDropdown.setSelection((Integer) Values.data.get(name));
         }
 
         // Updates data when new item is selected in dropdown
         textDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                Values.data.put(name, pos);
+//                Values.data.put(name, pos);
+                Values.data.put(name, textDropdown.getSelectedItem());
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
