@@ -267,4 +267,116 @@
         </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/help_screen"
+        android:visibility="visible"
+        android:layout_width="350dp"
+        android:layout_height="600dp"
+        android:orientation="vertical"
+        android:weightSum="12.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/box_background"
+        android:layout_marginBottom="100dp">
+
+        <LinearLayout
+            android:id="@+id/page1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="11"
+            android:weightSum="5"
+            android:orientation="vertical"
+            android:visibility="visible">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="How To Scout"
+                android:autoSizeTextType="uniform"
+                android:gravity="center"
+                android:fontFamily="@font/helvetica_bold"
+                android:textColor="@color/text_grey"
+                android:paddingStart="50dp"
+                android:paddingEnd="50dp"
+                android:layout_weight=".5"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="text here"
+                android:autoSizeTextType="uniform"
+                android:gravity="center|left"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/text_grey"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="2" />
+            <ImageView
+                android:layout_width="270dp"
+                android:layout_height="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/dotted_line"
+                android:layout_gravity="center_horizontal"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:src="@drawable/help_reference_img"
+                android:layout_weight="2"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginTop="10dp">
+                <ImageButton
+                    android:id="@+id/help_left_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"
+                    android:layout_gravity="center_vertical"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/arrow_left"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:id="@+id/help_page_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Page 1"
+                    android:autoSizeTextType="uniform"
+                    android:gravity="center"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:textColor="@color/text_grey"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    android:background="@drawable/box_background"/>
+                <ImageButton
+                    android:id="@+id/help_right_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"
+                    android:layout_gravity="center_vertical"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/arrow_right"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
+                android:gravity="bottom|center_horizontal"
+                android:text="@string/click_to_close"
+                style="@style/header_text_dark" />
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
