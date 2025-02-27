@@ -46,6 +46,7 @@ public class ActivityScouting extends AppCompatActivity {
     ImageButton helpRightArrow;
     TextView helpPageNumber;
     ImageButton helpExitButton;
+    HelpPopup theHelpPopup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,7 @@ public class ActivityScouting extends AppCompatActivity {
         confirmYes = findViewById(R.id.confirm_yes);
         confirmNo = findViewById(R.id.confirm_no);
         helpPopup = findViewById(R.id.help_popup);
+        theHelpPopup = findViewById(R.id.the_help_popup);
 
         // Inflate all fragments so it creates all data in the list
         replaceFragment(new FragmentTeleop());
@@ -103,11 +105,11 @@ public class ActivityScouting extends AppCompatActivity {
                 confirmPopup.setLayoutParams(confirmParams);
 
                 // Help popup
-                ViewGroup.MarginLayoutParams helpParams = (ViewGroup.MarginLayoutParams) helpPopup.getLayoutParams();
+                ViewGroup.MarginLayoutParams helpParams = (ViewGroup.MarginLayoutParams) theHelpPopup.getLayoutParams();
                 helpParams.width = (int) (fullPage.getWidth()/1.1);
                 helpParams.height = (int) (fullPage.getHeight()/1.1) - bottomBar.getHeight();
                 helpParams.bottomMargin = bottomBar.getHeight() + fullPage.getHeight()/100;
-                helpPopup.setLayoutParams(helpParams);
+                theHelpPopup.setLayoutParams(helpParams);
             }
         });
 
@@ -163,76 +165,78 @@ public class ActivityScouting extends AppCompatActivity {
             fullPage.setClickable(true);
         });
 
-        // Help page
-        helpButton.setOnClickListener(v -> {
-            helpPopup.setVisibility(VISIBLE);
-            fullPage.setClickable(true);
-            helpButton.setImageResource(R.drawable.menu_exit);
-            helpButton.setClickable(false);
+        theHelpPopup.createHelp(helpButton);
 
-            //init pages
-            helpHeader1 = findViewById(R.id.help_header_1);
-            helpText1 = findViewById(R.id.help_text_1);
-            helpHeader2 = findViewById(R.id.help_header_2);
-            helpText2 = findViewById(R.id.help_text_2);
-            helpImage = findViewById(R.id.help_image);
-            helpLeftArrow = findViewById(R.id.help_left_arrow);
-            helpRightArrow = findViewById(R.id.help_right_arrow);
-            helpPageNumber = findViewById(R.id.help_page_number);
-            helpExitButton = findViewById(R.id.help_exit_button);
-
-            //when right arrow is clicked it changes the page
-            helpRightArrow.setOnClickListener(v12 -> {
-                if (helpPageNumber.getText().toString().equals("Pg. 1")) {
-                    helpHeader1.setText(R.string.help_screen_header_1_page_2);
-                    helpText1.setText(R.string.help_screen_text_1_page_2);
-                    helpHeader2.setText(R.string.help_screen_header_2_page_2);
-                    helpText2.setText(R.string.help_screen_text_2_page_2);
-                    helpPageNumber.setText("Pg. 2");
-                    helpText2.setVisibility(VISIBLE);
-                    helpHeader2.setVisibility(VISIBLE);
-                    helpImage.setVisibility(GONE);
-                    helpRightArrow.setVisibility(VISIBLE);
-                    helpLeftArrow.setVisibility(VISIBLE);
-                } else if (helpPageNumber.getText().toString().equals("Pg. 2")) {
-                    helpHeader1.setText(R.string.help_screen_header_1_page_3);
-                    helpText1.setText(R.string.help_screen_text_1_page_3);
-                    helpHeader2.setText(R.string.help_screen_header_2_page_3);
-                    helpText2.setText(R.string.help_screen_text_2_page_3);
-                    helpPageNumber.setText("Pg. 3");
-                    helpText2.setVisibility(VISIBLE);
-                    helpHeader2.setVisibility(VISIBLE);
-                    helpImage.setVisibility(GONE);
-                    helpRightArrow.setVisibility(INVISIBLE);
-                    helpLeftArrow.setVisibility(VISIBLE);
-                }
-            });
-
-            //when left arrow is clicked it changes the page
-            helpLeftArrow.setOnClickListener(v13 -> {
-                if (helpPageNumber.getText().toString().equals("Pg. 2")) {
-                    helpHeader1.setText(R.string.help_screen_header_1_page_1);
-                    helpText1.setText(R.string.help_screen_text_1_page_1);
-                    helpPageNumber.setText("Pg. 1");
-                    helpText2.setVisibility(GONE);
-                    helpHeader2.setVisibility(GONE);
-                    helpImage.setVisibility(VISIBLE);
-                    helpRightArrow.setVisibility(VISIBLE);
-                    helpLeftArrow.setVisibility(INVISIBLE);
-                } else if (helpPageNumber.getText().toString().equals("Pg. 3")) {
-                    helpHeader1.setText(R.string.help_screen_header_1_page_2);
-                    helpText1.setText(R.string.help_screen_text_1_page_2);
-                    helpHeader2.setText(R.string.help_screen_header_2_page_2);
-                    helpText2.setText(R.string.help_screen_text_2_page_2);
-                    helpPageNumber.setText("Pg. 2");
-                    helpText2.setVisibility(VISIBLE);
-                    helpHeader2.setVisibility(VISIBLE);
-                    helpImage.setVisibility(GONE);
-                    helpRightArrow.setVisibility(VISIBLE);
-                    helpLeftArrow.setVisibility(VISIBLE);
-                }
-            });
-        });
+////        // Help page
+////        helpButton.setOnClickListener(v -> {
+////            helpPopup.setVisibility(VISIBLE);
+////            fullPage.setClickable(true);
+////            helpButton.setImageResource(R.drawable.menu_exit);
+////            helpButton.setClickable(false);
+////
+////            //init pages
+////            helpHeader1 = findViewById(R.id.help_header_1);
+////            helpText1 = findViewById(R.id.help_text_1);
+////            helpHeader2 = findViewById(R.id.help_header_2);
+////            helpText2 = findViewById(R.id.help_text_2);
+////            helpImage = findViewById(R.id.help_image);
+////            helpLeftArrow = findViewById(R.id.help_left_arrow);
+////            helpRightArrow = findViewById(R.id.help_right_arrow);
+////            helpPageNumber = findViewById(R.id.help_page_number);
+////            helpExitButton = findViewById(R.id.help_exit_button);
+////
+////            //when right arrow is clicked it changes the page
+////            helpRightArrow.setOnClickListener(v12 -> {
+////                if (helpPageNumber.getText().toString().equals("Pg. 1")) {
+////                    helpHeader1.setText(R.string.help_screen_header_1_page_2);
+////                    helpText1.setText(R.string.help_screen_text_1_page_2);
+////                    helpHeader2.setText(R.string.help_screen_header_2_page_2);
+////                    helpText2.setText(R.string.help_screen_text_2_page_2);
+////                    helpPageNumber.setText("Pg. 2");
+////                    helpText2.setVisibility(VISIBLE);
+////                    helpHeader2.setVisibility(VISIBLE);
+////                    helpImage.setVisibility(GONE);
+////                    helpRightArrow.setVisibility(VISIBLE);
+////                    helpLeftArrow.setVisibility(VISIBLE);
+////                } else if (helpPageNumber.getText().toString().equals("Pg. 2")) {
+////                    helpHeader1.setText(R.string.help_screen_header_1_page_3);
+////                    helpText1.setText(R.string.help_screen_text_1_page_3);
+////                    helpHeader2.setText(R.string.help_screen_header_2_page_3);
+////                    helpText2.setText(R.string.help_screen_text_2_page_3);
+////                    helpPageNumber.setText("Pg. 3");
+////                    helpText2.setVisibility(VISIBLE);
+////                    helpHeader2.setVisibility(VISIBLE);
+////                    helpImage.setVisibility(GONE);
+////                    helpRightArrow.setVisibility(INVISIBLE);
+////                    helpLeftArrow.setVisibility(VISIBLE);
+////                }
+////            });
+//
+//            //when left arrow is clicked it changes the page
+//            helpLeftArrow.setOnClickListener(v13 -> {
+//                if (helpPageNumber.getText().toString().equals("Pg. 2")) {
+//                    helpHeader1.setText(R.string.help_screen_header_1_page_1);
+//                    helpText1.setText(R.string.help_screen_text_1_page_1);
+//                    helpPageNumber.setText("Pg. 1");
+//                    helpText2.setVisibility(GONE);
+//                    helpHeader2.setVisibility(GONE);
+//                    helpImage.setVisibility(VISIBLE);
+//                    helpRightArrow.setVisibility(VISIBLE);
+//                    helpLeftArrow.setVisibility(INVISIBLE);
+//                } else if (helpPageNumber.getText().toString().equals("Pg. 3")) {
+//                    helpHeader1.setText(R.string.help_screen_header_1_page_2);
+//                    helpText1.setText(R.string.help_screen_text_1_page_2);
+//                    helpHeader2.setText(R.string.help_screen_header_2_page_2);
+//                    helpText2.setText(R.string.help_screen_text_2_page_2);
+//                    helpPageNumber.setText("Pg. 2");
+//                    helpText2.setVisibility(VISIBLE);
+//                    helpHeader2.setVisibility(VISIBLE);
+//                    helpImage.setVisibility(GONE);
+//                    helpRightArrow.setVisibility(VISIBLE);
+//                    helpLeftArrow.setVisibility(VISIBLE);
+//                }
+//            });
+//        });
     }
 
     private void replaceFragment(Fragment fragment) {
