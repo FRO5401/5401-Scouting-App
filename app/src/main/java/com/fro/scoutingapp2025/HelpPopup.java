@@ -51,7 +51,7 @@ public class HelpPopup extends LinearLayout {
         helpButton.setOnClickListener(v -> {
             helpScreen.setVisibility(VISIBLE);
             fullPage.setClickable(true);
-            helpButton.setImageResource(R.drawable.menu_exit);
+            helpButton.setImageResource(R.drawable.help_button_exit);
             helpButton.setClickable(false);
 
             fullPage.setOnClickListener(v11 -> {
