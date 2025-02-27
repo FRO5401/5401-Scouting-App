@@ -154,7 +154,7 @@ public class ComponentFlipper extends LinearLayout {
     public void createTextDropdown(String name, ArrayList<String> array) {
         //Creates the data in the hashmap
         if (!Values.data.containsKey(name)) {
-            Values.data.put(name, -1);
+            Values.data.put(name, 0);
         }
 
         // Adds 'dropdown' to the beginning of the list to be a default value

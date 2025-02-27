@@ -130,8 +130,7 @@ public class ActivityScouting extends AppCompatActivity {
             menuPopup.setVisibility(GONE);
             confirmPopup.setVisibility(GONE);
             fullPage.setClickable(false);
-            //TODO submit data
-            confirmText.setText(Values.checkData());
+            Values.exportData(getApplicationContext());
             Values.clearData();
             startActivity(new Intent(getApplicationContext(), ActivityMain.class));
         });
