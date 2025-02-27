@@ -30,6 +30,10 @@ public class ActivityScouting extends AppCompatActivity {
     LinearLayout fullPage;
     TextView submitButton;
     TextView homeButton;
+    TextView confirmText;
+    LinearLayout confirmPopup;
+    TextView confirmYes;
+    TextView confirmNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +53,15 @@ public class ActivityScouting extends AppCompatActivity {
         fullPage = findViewById(R.id.full_page);
         submitButton = findViewById(R.id.submit);
         homeButton = findViewById(R.id.home_page);
+        confirmText = findViewById(R.id.confirm_text);
+        confirmPopup = findViewById(R.id.confirm_popup);
+        confirmYes = findViewById(R.id.confirm_yes);
+        confirmNo = findViewById(R.id.confirm_no);
 
-        // Set default page
+        // Inflate all fragments so it creates all data in the list
+        replaceFragment(new FragmentTeleop());
+        replaceFragment(new FragmentEndgame());
+        replaceFragment(new FragmentNotes());
         replaceFragment(new FragmentAuto());
 
         // Page changes
@@ -60,16 +71,23 @@ public class ActivityScouting extends AppCompatActivity {
         notesButton.setOnClickListener(v -> replaceFragment(new FragmentNotes()));
 
 
-        // Set the size and position of menu popup
+        // Set the size and position of menu popup and submit popup
         fullPage.post(new Runnable() {
             @Override
             public void run() {
-                ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) menuPopup.getLayoutParams();
-                params.width = fullPage.getWidth()/2;
-                params.height = fullPage.getHeight()/6;
-                params.leftMargin = fullPage.getWidth()/50;
-                params.bottomMargin = bottomBar.getHeight() + fullPage.getHeight()/100;
-                menuPopup.setLayoutParams(params);
+                // Menu popup
+                ViewGroup.MarginLayoutParams menuParams = (ViewGroup.MarginLayoutParams) menuPopup.getLayoutParams();
+                menuParams.width = fullPage.getWidth()/2;
+                menuParams.height = fullPage.getHeight()/6;
+                menuParams.leftMargin = fullPage.getWidth()/50;
+                menuParams.bottomMargin = bottomBar.getHeight() + fullPage.getHeight()/100;
+                menuPopup.setLayoutParams(menuParams);
+
+                // Confirm popup
+                ViewGroup.MarginLayoutParams confirmParams = (ViewGroup.MarginLayoutParams) confirmPopup.getLayoutParams();
+                confirmParams.width = (int) (fullPage.getWidth()/1.8);
+                confirmParams.height = fullPage.getHeight()/3;
+                confirmPopup.setLayoutParams(confirmParams);
             }
         });
 
@@ -90,6 +108,7 @@ public class ActivityScouting extends AppCompatActivity {
             menuBars.setVisibility(VISIBLE);
             menuExit.setVisibility(GONE);
             menuPopup.setVisibility(GONE);
+            confirmPopup.setVisibility(GONE);
             fullPage.setClickable(false);
         });
         homeButton.setOnClickListener(v ->{
@@ -100,14 +119,26 @@ public class ActivityScouting extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), ActivityMain.class));
         });
         submitButton.setOnClickListener(v ->{
+            confirmPopup.setVisibility(VISIBLE);
+            fullPage.setClickable(false);
+            confirmText.setText(Values.checkData());
+        });
+
+        confirmYes.setOnClickListener( v ->{
             menuBars.setVisibility(VISIBLE);
             menuExit.setVisibility(GONE);
             menuPopup.setVisibility(GONE);
+            confirmPopup.setVisibility(GONE);
             fullPage.setClickable(false);
             //TODO submit data
-            Toast.makeText(this, Values.checkData(), Toast.LENGTH_SHORT).show();
+            confirmText.setText(Values.checkData());
             Values.clearData();
             startActivity(new Intent(getApplicationContext(), ActivityMain.class));
+        });
+
+        confirmNo.setOnClickListener( v ->{
+            confirmPopup.setVisibility(GONE);
+            fullPage.setClickable(true);
         });
     }
 

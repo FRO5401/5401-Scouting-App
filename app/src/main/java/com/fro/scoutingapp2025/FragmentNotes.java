@@ -29,7 +29,7 @@ public class FragmentNotes extends Fragment {
         row1.createToggle("Notes_Any_Penalties", Values.right);
 
         // Row 2
-        row2.createTypeBox("Notes_Extra_Comments", Values.inputType_text);
+        row2.createTypeBox("Notes_Extra_Comments", Values.inputType_text, 2000);
 
         // Inflate the layout for this fragment
         return rootView;

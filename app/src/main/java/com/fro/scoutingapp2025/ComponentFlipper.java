@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -111,7 +112,7 @@ public class ComponentFlipper extends LinearLayout {
     }
 
 
-    public void createTypeBox(String name, int type) {
+    public void createTypeBox(String name, int type, int maxCharacters) {
         //Creates the data in the hashmap
         if (!Values.data.containsKey(name)) {
             Values.data.put(name, "");
@@ -126,6 +127,11 @@ public class ComponentFlipper extends LinearLayout {
         } else {
             typeBox.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         }
+
+        // Sets the max amount of characters
+        InputFilter[] filters = new InputFilter[1];
+        filters[0] = new InputFilter.LengthFilter(maxCharacters);
+        typeBox.setFilters(filters);
 
         // Set inputted text
         if (Values.data.containsKey(name) && (CharSequence) Values.data.get(name) != null) {

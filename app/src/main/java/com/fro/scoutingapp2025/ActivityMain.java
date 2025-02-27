@@ -24,13 +24,13 @@ public class ActivityMain extends AppCompatActivity {
         verticalLongBox = findViewById(R.id.vertical_long_box);
 
         // vertical long box
-        verticalLongBox.createTypeBox("Main_Scouters_Name", Values.inputType_text, Values.vertical_level_1);
+        verticalLongBox.createTypeBox("Main_Scouters_Name", Values.inputType_text, 20, Values.vertical_level_1);
         verticalLongBox.createTeamNumberDropdown("Main_Team_Number", Values.vertical_level_2);
         verticalLongBox.createTextDropdown(
                 "Main_Robot_Position",
                 new ArrayList<String>(Arrays.asList("Left", "Middle", "Right", "Other")),
                 Values.vertical_level_3);
-        verticalLongBox.createTypeBox("Main_Match_Number", Values.inputType_number, Values.vertical_level_4);
+        verticalLongBox.createTypeBox("Main_Match_Number", Values.inputType_number, 3, Values.vertical_level_4);
         verticalLongBox.createTextDropdown(
                 "Main_Human_Player_Position",
                 new ArrayList<String>(Arrays.asList("Left Coral Station", "Right Coral Station", "Processor", "Can't Tell")),

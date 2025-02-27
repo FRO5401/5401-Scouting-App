@@ -34,7 +34,7 @@ public class FragmentEndgame extends Fragment {
         row2.createTextDropdown("Endgame_Robot_Spent_Last_10_Seconds_Doing",
             new ArrayList<String>(Arrays.asList("Scoring Coral", "Scoring Algae", "Climbing", "Defense", "Other", "Nothing")));
 
-        row3.createTypeBox("Endgame_Started_Climbing_At_This_Time", Values.inputType_number);
+        row3.createTypeBox("Endgame_Started_Climbing_At_This_Time", Values.inputType_number, 3);
 
         // Inflate the layout for this fragment
         return rootView;

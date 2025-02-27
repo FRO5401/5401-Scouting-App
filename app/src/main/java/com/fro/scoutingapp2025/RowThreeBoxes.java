@@ -105,10 +105,10 @@ public class RowThreeBoxes extends LinearLayout {
         rightFlipper.changeTo(value);
     }
 
-    public void createTypeBox(String name, int inputType, int position) {
-        if (position == Values.left) {leftFlipper.createTypeBox(name, inputType);}
-        else if (position == Values.middle) {middleFlipper.createTypeBox(name, inputType);}
-        else if (position == Values.right) {rightFlipper.createTypeBox(name, inputType);}
+    public void createTypeBox(String name, int inputType, int maxCharacters, int position) {
+        if (position == Values.left) {leftFlipper.createTypeBox(name, inputType, maxCharacters);}
+        else if (position == Values.middle) {middleFlipper.createTypeBox(name, inputType, maxCharacters);}
+        else if (position == Values.right) {rightFlipper.createTypeBox(name, inputType, maxCharacters);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in type box "+name, Toast.LENGTH_SHORT).show();
         }

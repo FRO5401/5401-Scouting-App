@@ -144,7 +144,6 @@
         </LinearLayout>
     </LinearLayout>
 
-
     <LinearLayout
         android:id="@+id/menu_popup"
         android:visibility="gone"
@@ -182,7 +181,90 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:fontFamily="@font/helvetica_bold"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/confirm_popup"
+        android:visibility="gone"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/box_background"
+        android:layout_marginBottom="100dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:text="Submit Data?"
+            android:autoSizeTextType="uniform"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@color/text_grey"
+            android:fontFamily="@font/helvetica_bold"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:layout_marginTop="10dp"
+            android:fadeScrollbars="false"
+            android:scrollbarSize="5dp">
+            <TextView
+                android:id="@+id/confirm_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="All data has been successfully inputted!"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textSize="20sp"
+                android:textColor="@color/text_grey"/>
+        </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".4"
+            android:padding="20dp"
+            android:weightSum="2">
+            <TextView
+                android:id="@+id/confirm_yes"
+                android:clickable="true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:padding="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:textColor="@color/white"
+                android:text="Yes"
+                android:gravity="center"
+                android:autoSizeTextType="uniform"
+                android:backgroundTint="@color/green"
+                android:background="@drawable/box_background"
+                android:foreground="@drawable/box_outline"/>
+            <TextView
+                android:id="@+id/confirm_no"
+                android:clickable="true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:padding="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica_bold"
+                android:textColor="@color/white"
+                android:text="No"
+                android:gravity="center"
+                android:autoSizeTextType="uniform"
+                android:backgroundTint="@color/red"
+                android:background="@drawable/box_background"
+                android:foreground="@drawable/box_outline"/>
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

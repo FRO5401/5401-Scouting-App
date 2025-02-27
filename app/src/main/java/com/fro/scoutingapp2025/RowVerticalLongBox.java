@@ -136,12 +136,12 @@ public class RowVerticalLongBox extends LinearLayout{
         flipper5.changeTo(value);
     }
 
-    public void createTypeBox(String name, int inputType, int position) {
-        if (position == Values.vertical_level_1) {flipper1.createTypeBox(name, inputType);}
-        else if (position == Values.vertical_level_2) {flipper2.createTypeBox(name, inputType);}
-        else if (position == Values.vertical_level_3) {flipper3.createTypeBox(name, inputType);}
-        else if (position == Values.vertical_level_4) {flipper4.createTypeBox(name, inputType);}
-        else if (position == Values.vertical_level_5) {flipper5.createTypeBox(name, inputType);}
+    public void createTypeBox(String name, int inputType, int maxCharacters, int position) {
+        if (position == Values.vertical_level_1) {flipper1.createTypeBox(name, inputType, maxCharacters);}
+        else if (position == Values.vertical_level_2) {flipper2.createTypeBox(name, inputType, maxCharacters);}
+        else if (position == Values.vertical_level_3) {flipper3.createTypeBox(name, inputType, maxCharacters);}
+        else if (position == Values.vertical_level_4) {flipper4.createTypeBox(name, inputType, maxCharacters);}
+        else if (position == Values.vertical_level_5) {flipper5.createTypeBox(name, inputType, maxCharacters);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in type box "+name, Toast.LENGTH_SHORT).show();
         }

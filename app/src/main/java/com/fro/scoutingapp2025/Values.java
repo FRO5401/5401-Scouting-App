@@ -38,9 +38,16 @@ public class Values {
         StringBuilder missingVals = new StringBuilder();
         for(String key: data.keySet()){
             if (data.get(key).equals(0) || data.get(key).equals(-1) || data.get(key).equals("")){
-                missingVals.append(key).append(", ");
+                String name = key.replace('_', ' ');
+                missingVals.append(name).append("\n");
             }
         }
-        return missingVals.toString();
+
+        if (missingVals.toString().isEmpty()){
+            return "All data has been successfully inputted.";
+        }
+        else {
+            return "The input for these values were not changed:\n" + missingVals.toString();
+        }
     }
 }
