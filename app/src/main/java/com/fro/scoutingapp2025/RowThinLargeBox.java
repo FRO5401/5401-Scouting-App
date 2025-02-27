@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -69,7 +68,7 @@ public class RowThinLargeBox extends LinearLayout {
 
     public void createTypeBox(String name, int inputType) {flipper.createTypeBox(name, inputType);}
 
-    public void createTextDropdown(ArrayList<String> array, String name) {flipper.createTextDropdown(array, name);}
+    public void createTextDropdown(String name, ArrayList<String> array) {flipper.createTextDropdown(name, array);}
 
     public void createTeamNumberDropdown(String name) {flipper.createTeamNumberDropdown(name);}
 

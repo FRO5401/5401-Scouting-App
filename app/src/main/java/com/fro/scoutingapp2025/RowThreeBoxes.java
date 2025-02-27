@@ -114,10 +114,10 @@ public class RowThreeBoxes extends LinearLayout {
         }
     }
 
-    public void createTextDropdown(ArrayList<String> array, String name, int position) {
-        if (position == Values.left) {leftFlipper.createTextDropdown(array, name);}
-        else if (position == Values.middle) {middleFlipper.createTextDropdown(array, name);}
-        else if (position == Values.right) {rightFlipper.createTextDropdown(array, name);}
+    public void createTextDropdown(String name, ArrayList<String> array, int position) {
+        if (position == Values.left) {leftFlipper.createTextDropdown(name, array);}
+        else if (position == Values.middle) {middleFlipper.createTextDropdown(name, array);}
+        else if (position == Values.right) {rightFlipper.createTextDropdown(name, array);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }

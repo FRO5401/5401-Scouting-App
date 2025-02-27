@@ -1,12 +1,6 @@
 package com.fro.scoutingapp2025;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.SystemClock;
-import android.widget.TextView;
-
 import java.util.HashMap;
-import java.util.Locale;
 
 public class Values {
     // public variables for the developer to set which box they are using

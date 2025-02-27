@@ -39,11 +39,13 @@ public class FragmentTeleop extends Fragment {
         /*  Setting Text Values  */
         // Row 1
         row1.createTextDropdown(
-                new ArrayList<String>(Arrays.asList("Reef", "Ground", "Both")),
-                "Teleop_Algae_Pickup_Location", Values.left);
+                "Teleop_Algae_Pickup_Location",
+                new ArrayList<String>(Arrays.asList("Reef", "Ground", "Both", "None")),
+                Values.left);
         row1.createTextDropdown(
-                new ArrayList<String>(Arrays.asList("Source", "Ground", "Both")),
-                "Teleop_Coral_Pickup_Location", Values.middle);
+                "Teleop_Coral_Pickup_Location",
+                new ArrayList<String>(Arrays.asList("Source", "Ground", "Both", "None")),
+                Values.middle);
         row1.createCounter("Teleop_Reef_L1", 100, Values.right);
 
         // Row 2
@@ -68,11 +70,12 @@ public class FragmentTeleop extends Fragment {
         }
         else if ((int) Values.data.get("Main_Human_Player_Position") == 3){
             row4_processor.setVisibility(GONE);
-             row4_none.setVisibility(GONE);
-             row4_source.setVisibility(VISIBLE);
+            row4_none.setVisibility(GONE);
+            row4_source.setVisibility(VISIBLE);
             row4_source.createTextDropdown(
-                    new ArrayList<String>(Arrays.asList("1", "2", "3", "4", "5")),
-                    "Teleop_Human_Player_Feeding_Accuracy", Values.left);
+                "Teleop_Human_Player_Feeding_Accuracy",
+                new ArrayList<String>(Arrays.asList("1", "2", "3", "4", "5")),
+                Values.left);
             row4_source.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
         }
         else {

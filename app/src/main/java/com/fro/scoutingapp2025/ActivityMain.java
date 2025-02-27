@@ -27,12 +27,14 @@ public class ActivityMain extends AppCompatActivity {
         verticalLongBox.createTypeBox("Main_Scouters_Name", Values.inputType_text, Values.vertical_level_1);
         verticalLongBox.createTeamNumberDropdown("Main_Team_Number", Values.vertical_level_2);
         verticalLongBox.createTextDropdown(
+                "Main_Robot_Position",
                 new ArrayList<String>(Arrays.asList("Left", "Middle", "Right", "Other")),
-               "Main_Robot_Position", Values.vertical_level_3);
+                Values.vertical_level_3);
         verticalLongBox.createTypeBox("Main_Match_Number", Values.inputType_number, Values.vertical_level_4);
         verticalLongBox.createTextDropdown(
+                "Main_Human_Player_Position",
                 new ArrayList<String>(Arrays.asList("Left Coral Station", "Right Coral Station", "Processor", "Can't Tell")),
-                "Main_Human_Player_Position", Values.vertical_level_5);
+                Values.vertical_level_5);
         // button to go to next page
         startButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), ActivityScouting.class)));
     }

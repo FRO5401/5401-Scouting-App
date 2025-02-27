@@ -28,13 +28,11 @@ public class FragmentEndgame extends Fragment {
         row3 = rootView.findViewById(R.id.endgame_row_3);
 
         /*  Setting Text Values  */
-        row1.createTextDropdown(
-                new ArrayList<String>(Arrays.asList("Parked", "Shallow Cage", "Deep Cage", "Not In Barge Zone")),
-                "Endgame_End_Location");
+        row1.createTextDropdown("Endgame_End_Location",
+            new ArrayList<String>(Arrays.asList("Parked", "Shallow Cage", "Deep Cage", "Not In Barge Zone")));
 
-        row2.createTextDropdown(
-                new ArrayList<String>(Arrays.asList("Scoring Coral", "Scoring Algae", "Climbing", "Defense", "Other", "Nothing")),
-                "Endgame_Robot_Spent_Last_10_Seconds_Doing");
+        row2.createTextDropdown("Endgame_Robot_Spent_Last_10_Seconds_Doing",
+            new ArrayList<String>(Arrays.asList("Scoring Coral", "Scoring Algae", "Climbing", "Defense", "Other", "Nothing")));
 
         row3.createTypeBox("Endgame_Started_Climbing_At_This_Time", Values.inputType_number);
 

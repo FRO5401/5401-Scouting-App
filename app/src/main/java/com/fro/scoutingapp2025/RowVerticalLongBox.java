@@ -146,13 +146,12 @@ public class RowVerticalLongBox extends LinearLayout{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in type box "+name, Toast.LENGTH_SHORT).show();
         }
     }
-    // TODO change order of array and name in the parameters for both this and the flipper
-    public void createTextDropdown(ArrayList<String> array, String name, int position) {
-        if (position == Values.vertical_level_1) {flipper1.createTextDropdown(array, name);}
-        else if (position == Values.vertical_level_2) {flipper2.createTextDropdown(array, name);}
-        else if (position == Values.vertical_level_3) {flipper3.createTextDropdown(array, name);}
-        else if (position == Values.vertical_level_4) {flipper4.createTextDropdown(array, name);}
-        else if (position == Values.vertical_level_5) {flipper5.createTextDropdown(array, name);}
+    public void createTextDropdown(String name, ArrayList<String> array, int position) {
+        if (position == Values.vertical_level_1) {flipper1.createTextDropdown(name, array);}
+        else if (position == Values.vertical_level_2) {flipper2.createTextDropdown(name, array);}
+        else if (position == Values.vertical_level_3) {flipper3.createTextDropdown(name, array);}
+        else if (position == Values.vertical_level_4) {flipper4.createTextDropdown(name, array);}
+        else if (position == Values.vertical_level_5) {flipper5.createTextDropdown(name, array);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }

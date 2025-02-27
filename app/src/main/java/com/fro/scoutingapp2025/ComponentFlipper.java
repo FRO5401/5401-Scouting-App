@@ -1,8 +1,6 @@
 package com.fro.scoutingapp2025;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.icu.text.MessageFormat;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
@@ -147,7 +145,7 @@ public class ComponentFlipper extends LinearLayout {
         });
     }
 
-    public void createTextDropdown(ArrayList<String> array, String name) {
+    public void createTextDropdown(String name, ArrayList<String> array) {
         //Creates the data in the hashmap
         if (!Values.data.containsKey(name)) {
             Values.data.put(name, -1);
