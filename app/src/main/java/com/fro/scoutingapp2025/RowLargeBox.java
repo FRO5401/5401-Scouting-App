@@ -31,7 +31,6 @@ public class RowLargeBox extends LinearLayout {
     TextView textView;
     ComponentFlipper flipper;
 
-
     public RowLargeBox(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
@@ -56,16 +55,22 @@ public class RowLargeBox extends LinearLayout {
         flipper = findViewById(R.id.oneFlipper);
     }
 
-    public void setText(CharSequence value) {
-        textView.setText(value);
-    }
+    public void setText(CharSequence value) {textView.setText(value);}
 
     public void setBox(CharSequence value) {
         if (value == null) {return;}
         flipper.changeTo(value);
     }
 
-    public void createTextDropdown(ArrayList<String> array, String name) {
-        flipper.createTextDropdown(array, name);
-    }
+    public void createTypeBox(String name, int inputType, int maxCharacters) {flipper.createTypeBox(name, inputType, maxCharacters);}
+
+    public void createTextDropdown(String name, ArrayList<String> array) {flipper.createTextDropdown(name, array);}
+
+    public void createTeamNumberDropdown(String name) {flipper.createTeamNumberDropdown(name);}
+
+    public void createToggle(String name, int position) {flipper.createToggle(name);}
+
+    public void createCounter(String name, int maxValue) {flipper.createCounter(name, maxValue);}
+
+    public void createStopwatch(String name) {flipper.createStopwatch(name);}
 }

@@ -17,6 +17,7 @@
     </com.fro.scoutingapp2025.RowTopText>
 
     <com.fro.scoutingapp2025.RowLongBox
+        android:id="@+id/notes_row_1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="Did The\nRobot Break"
@@ -30,10 +31,11 @@
     </com.fro.scoutingapp2025.RowLongBox>
 
     <com.fro.scoutingapp2025.RowLargeBox
+        android:id="@+id/notes_row_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Any extra notes, comments, concerns?"
-        app:box_type="text_type_box"
+        app:box_type="type_box"
         android:layout_weight="2.5"/>
 
 </LinearLayout>

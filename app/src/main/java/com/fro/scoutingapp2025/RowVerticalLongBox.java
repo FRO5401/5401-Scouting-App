@@ -4,6 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Creates a row with one long multicolored box. <br/>
@@ -43,6 +46,7 @@ public class RowVerticalLongBox extends LinearLayout{
     ComponentFlipper flipper3;
     ComponentFlipper flipper4;
     ComponentFlipper flipper5;
+
     public RowVerticalLongBox(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
@@ -130,5 +134,65 @@ public class RowVerticalLongBox extends LinearLayout{
     public void setBox5(CharSequence value) {
         if (value == null) {return;}
         flipper5.changeTo(value);
+    }
+
+    public void createTypeBox(String name, int inputType, int maxCharacters, int position) {
+        if (position == Values.vertical_level_1) {flipper1.createTypeBox(name, inputType, maxCharacters);}
+        else if (position == Values.vertical_level_2) {flipper2.createTypeBox(name, inputType, maxCharacters);}
+        else if (position == Values.vertical_level_3) {flipper3.createTypeBox(name, inputType, maxCharacters);}
+        else if (position == Values.vertical_level_4) {flipper4.createTypeBox(name, inputType, maxCharacters);}
+        else if (position == Values.vertical_level_5) {flipper5.createTypeBox(name, inputType, maxCharacters);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in type box "+name, Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void createTextDropdown(String name, ArrayList<String> array, int position) {
+        if (position == Values.vertical_level_1) {flipper1.createTextDropdown(name, array);}
+        else if (position == Values.vertical_level_2) {flipper2.createTextDropdown(name, array);}
+        else if (position == Values.vertical_level_3) {flipper3.createTextDropdown(name, array);}
+        else if (position == Values.vertical_level_4) {flipper4.createTextDropdown(name, array);}
+        else if (position == Values.vertical_level_5) {flipper5.createTextDropdown(name, array);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void createTeamNumberDropdown(String name, int position) {
+        if (position == Values.vertical_level_1) {flipper1.createTeamNumberDropdown(name);}
+        else if (position == Values.vertical_level_2) {flipper2.createTeamNumberDropdown(name);}
+        else if (position == Values.vertical_level_3) {flipper3.createTeamNumberDropdown(name);}
+        else if (position == Values.vertical_level_4) {flipper4.createTeamNumberDropdown(name);}
+        else if (position == Values.vertical_level_5) {flipper5.createTeamNumberDropdown(name);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void createToggle(String name, int position) {
+        if (position == Values.vertical_level_1) {flipper1.createToggle(name);}
+        else if (position == Values.vertical_level_2) {flipper2.createToggle(name);}
+        else if (position == Values.vertical_level_3) {flipper3.createToggle(name);}
+        else if (position == Values.vertical_level_4) {flipper4.createToggle(name);}
+        else if (position == Values.vertical_level_5) {flipper5.createToggle(name);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in toggle "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void createCounter(String name, int maxValue, int position) {
+        if (position == Values.vertical_level_1) {flipper1.createCounter(name, maxValue);}
+        else if (position == Values.vertical_level_2) {flipper2.createCounter(name, maxValue);}
+        else if (position == Values.vertical_level_3) {flipper3.createCounter(name, maxValue);}
+        else if (position == Values.vertical_level_4) {flipper4.createCounter(name, maxValue);}
+        else if (position == Values.vertical_level_5) {flipper5.createCounter(name, maxValue);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void createStopwatch(String name, int position) {
+        if (position == Values.vertical_level_1) {flipper1.createStopwatch(name);}
+        else if (position == Values.vertical_level_2) {flipper2.createStopwatch(name);}
+        else if (position == Values.vertical_level_3) {flipper3.createStopwatch(name);}
+        else if (position == Values.vertical_level_4) {flipper4.createStopwatch(name);}
+        else if (position == Values.vertical_level_5) {flipper5.createStopwatch(name);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch "+name, Toast.LENGTH_SHORT).show();}
     }
 }
