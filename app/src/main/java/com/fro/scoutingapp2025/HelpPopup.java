@@ -32,9 +32,6 @@ public class HelpPopup extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.help_popup, this);
 
-        CharSequence text = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text");
-        CharSequence box =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type");
-
         //init components
         helpHeader1 = findViewById(R.id.help_header_1);
         helpText1 = findViewById(R.id.help_text_1);

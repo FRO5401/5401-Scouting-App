@@ -1,12 +1,13 @@
 package com.fro.scoutingapp2025;
 
+import static android.view.View.VISIBLE;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.WindowCompat;
@@ -69,6 +70,7 @@ public class ActivityMain extends AppCompatActivity {
         });
 
         // help button
+        helpPopup.setVisibility(VISIBLE);
         helpPopup.createHelp(helpButton);
         helpPopup.setRatio(4,5);
     }
