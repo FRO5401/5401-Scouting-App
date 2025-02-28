@@ -30,8 +30,7 @@ public class ActivityScouting extends AppCompatActivity {
     TextView endgameButton;
     TextView notesButton;
     // Menu popup
-    ImageButton menuBars;
-    ImageButton menuExit;
+    ImageButton menuButton;
     LinearLayout menuPopup;
     TextView homeButton;
     // Submit popup
@@ -62,8 +61,7 @@ public class ActivityScouting extends AppCompatActivity {
         endgameButton = findViewById(R.id.endgame_button);
         notesButton = findViewById(R.id.notes_button);
         // Menu popup
-        menuBars = findViewById(R.id.menu_bars);
-        menuExit = findViewById(R.id.menu_exit);
+        menuButton = findViewById(R.id.menu_bars);
         menuPopup = findViewById(R.id.menu_popup);
         homeButton = findViewById(R.id.home_page);
         // Submit popup
@@ -122,34 +120,30 @@ public class ActivityScouting extends AppCompatActivity {
         helpPopup.setRatio(4,5);
 
         // Menu popup
-        menuBars.setOnClickListener(v -> {
-            menuBars.setVisibility(GONE);
-            menuExit.setVisibility(VISIBLE);
+        menuButton.setOnClickListener(v -> {
             menuPopup.setVisibility(VISIBLE);
+            menuButton.setClickable(false);
+            menuButton.setImageResource(R.drawable.menu_exit);
             fullPage.setClickable(true);
         });
-        menuExit.setOnClickListener(v -> {
-            menuBars.setVisibility(VISIBLE);
-            menuExit.setVisibility(GONE);
-            menuPopup.setVisibility(GONE);
-            fullPage.setClickable(false);
-        });
+
         // Closing menu popup
         fullPage.setOnClickListener(v -> {
-            menuBars.setVisibility(VISIBLE);
-            menuExit.setVisibility(GONE);
+            menuButton.setClickable(true);
+            menuButton.setImageResource(R.drawable.menu_bars);
             menuPopup.setVisibility(GONE);
             confirmPopup.setVisibility(GONE);
             fullPage.setClickable(false);
         });
         // Switch page to home
         homeButton.setOnClickListener(v -> {
-            menuBars.setVisibility(VISIBLE);
-            menuExit.setVisibility(GONE);
+            menuButton.setClickable(true);
+            menuButton.setImageResource(R.drawable.menu_bars);
             menuPopup.setVisibility(GONE);
             fullPage.setClickable(false);
             startActivity(new Intent(getApplicationContext(), ActivityMain.class));
         });
+
         // Open confirmation screen
         submitButton.setOnClickListener(v -> {
             confirmPopup.setVisibility(VISIBLE);
@@ -159,8 +153,8 @@ public class ActivityScouting extends AppCompatActivity {
 
         // Submit all data
         confirmYes.setOnClickListener(v -> {
-            menuBars.setVisibility(VISIBLE);
-            menuExit.setVisibility(GONE);
+            menuButton.setClickable(true);
+            menuButton.setImageResource(R.drawable.menu_bars);
             menuPopup.setVisibility(GONE);
             confirmPopup.setVisibility(GONE);
             fullPage.setClickable(false);

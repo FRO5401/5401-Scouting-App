@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityMain"
+    tools:context=".ActivityScouting"
     android:id="@+id/scouting_full_page">
 
     <LinearLayout
@@ -138,18 +138,6 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:src="@drawable/help_button"
-                android:scaleType="fitCenter"
-                android:background="@color/transparent"
-                android:layout_weight="1"/>
-            <ImageButton
-                android:id="@+id/help_exit_button"
-                android:visibility="gone"
-                android:clickable="true"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/menu_exit"
                 android:scaleType="fitCenter"
                 android:background="@color/transparent"
                 android:layout_weight="1"/>

@@ -21,7 +21,6 @@ public class HelpPopup extends LinearLayout {
     ImageButton helpLeftArrow;
     ImageButton helpRightArrow;
     TextView helpPageNumber;
-    ImageButton helpExitButton;
     ConstraintLayout fullPage;
 
     public HelpPopup(Context context, AttributeSet attrs) {
@@ -41,7 +40,6 @@ public class HelpPopup extends LinearLayout {
         helpLeftArrow = findViewById(R.id.help_left_arrow);
         helpRightArrow = findViewById(R.id.help_right_arrow);
         helpPageNumber = findViewById(R.id.help_page_number);
-        helpExitButton = findViewById(R.id.help_exit_button);
         fullPage = findViewById(R.id.help_full_page);
         helpScreen = findViewById(R.id.help_popup);
 
