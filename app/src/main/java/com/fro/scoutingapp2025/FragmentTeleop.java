@@ -72,14 +72,14 @@ public class FragmentTeleop extends Fragment {
 
         // Setting which row is visible
         if (Values.data.get("Main_Human_Player_Position") == "Left Coral Station" || Values.data.get("Main_Human_Player_Position") == "Right Coral Station"){
-             row4_source.setVisibility(GONE);
-             row4_none.setVisibility(GONE);
-             row4_processor.setVisibility(VISIBLE);
-        }
-        else if (Values.data.get("Main_Human_Player_Position") == "Processor"){
             row4_processor.setVisibility(GONE);
             row4_none.setVisibility(GONE);
             row4_source.setVisibility(VISIBLE);
+        }
+        else if (Values.data.get("Main_Human_Player_Position") == "Processor"){
+            row4_source.setVisibility(GONE);
+            row4_none.setVisibility(GONE);
+            row4_processor.setVisibility(VISIBLE);
         }
         else {
             row4_source.setVisibility(GONE);
