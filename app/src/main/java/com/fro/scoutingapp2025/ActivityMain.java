@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -24,7 +25,7 @@ public class ActivityMain extends AppCompatActivity {
     RowVerticalLongBox verticalLongBox;
     ImageButton helpButton;
     HelpPopup helpPopup;
-    ConstraintLayout fullPage;
+    RelativeLayout fullPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,22 +59,22 @@ public class ActivityMain extends AppCompatActivity {
 
         // button to go to next page
         startButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), ActivityScouting.class)));
-
-        // Set the size and position of help popup
-        fullPage.post(new Runnable() {
-            @Override
-            public void run() {
-                // Help popup
-                ViewGroup.MarginLayoutParams helpParams = (ViewGroup.MarginLayoutParams) helpPopup.getLayoutParameters();
-                helpParams.width = (int) (fullPage.getWidth()/1.25);
-                helpParams.height = (int) (fullPage.getHeight()/1.25);
-                helpPopup.setLayoutParameters(helpParams);
-            }
-        });
+//
+//        // Set the size and position of help popup
+//        fullPage.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                // Help popup
+//                ViewGroup.MarginLayoutParams helpParams = (ViewGroup.MarginLayoutParams) helpPopup.getLayoutParameters();
+//                helpParams.width = (int) (fullPage.getWidth()/1.25);
+//                helpParams.height = (int) (fullPage.getHeight()/1.25);
+//                helpPopup.setLayoutParameters(helpParams);
+//            }
+//        });
 
         // help button
         helpPopup.setVisibility(VISIBLE);
         helpPopup.createHelp(helpButton);
-        helpPopup.setRatio(4,5);
+//        helpPopup.setRatio(4,5);
     }
 }

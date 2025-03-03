@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -23,7 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 public class ActivityScouting extends AppCompatActivity {
     // Declare global variables here \/
     // Layouts
-    ConstraintLayout fullPage;
+    RelativeLayout fullPage;
     LinearLayout bottomBar;
     // Fragment buttons
     TextView autoButton;
@@ -89,37 +90,37 @@ public class ActivityScouting extends AppCompatActivity {
         notesButton.setOnClickListener(v -> replaceFragment(new FragmentNotes()));
 
 
-        // Set the size and position of popups
-        fullPage.post(new Runnable() {
-            @Override
-            public void run() {
-                // Menu popup
-                ViewGroup.MarginLayoutParams menuParams = (ViewGroup.MarginLayoutParams) menuPopup.getLayoutParams();
-                menuParams.width = fullPage.getWidth()/2;
-                menuParams.height = fullPage.getHeight()/6;
-                menuParams.leftMargin = fullPage.getWidth()/50;
-                menuParams.bottomMargin = bottomBar.getHeight() + fullPage.getHeight()/100;
-                menuPopup.setLayoutParams(menuParams);
-
-                // Confirm popup
-                ViewGroup.MarginLayoutParams confirmParams = (ViewGroup.MarginLayoutParams) confirmPopup.getLayoutParams();
-                confirmParams.width = (int) (fullPage.getWidth()/1.8);
-                confirmParams.height = fullPage.getHeight()/3;
-                confirmPopup.setLayoutParams(confirmParams);
-
-                // Help popup
-                ViewGroup.MarginLayoutParams helpParams = (ViewGroup.MarginLayoutParams) helpPopup.getLayoutParameters();
-                helpParams.width = (int) (fullPage.getWidth()/1.1);
-                helpParams.height = (int) (fullPage.getHeight()/1.1) - bottomBar.getHeight();
-                helpParams.bottomMargin = bottomBar.getHeight() + fullPage.getHeight()/100;
-                helpPopup.setLayoutParameters(helpParams);
-            }
-        });
+//        // Set the size and position of popups
+//        fullPage.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                // Menu popup
+//                ViewGroup.MarginLayoutParams menuParams = (ViewGroup.MarginLayoutParams) menuPopup.getLayoutParams();
+//                menuParams.width = fullPage.getWidth()/2;
+//                menuParams.height = fullPage.getHeight()/6;
+//                menuParams.leftMargin = fullPage.getWidth()/50;
+//                menuParams.bottomMargin = bottomBar.getHeight() + fullPage.getHeight()/100;
+//                menuPopup.setLayoutParams(menuParams);
+//
+//                // Confirm popup
+//                ViewGroup.MarginLayoutParams confirmParams = (ViewGroup.MarginLayoutParams) confirmPopup.getLayoutParams();
+//                confirmParams.width = (int) (fullPage.getWidth()/1.8);
+//                confirmParams.height = fullPage.getHeight()/3;
+//                confirmPopup.setLayoutParams(confirmParams);
+//
+//                // Help popup
+//                ViewGroup.MarginLayoutParams helpParams = (ViewGroup.MarginLayoutParams) helpPopup.getLayoutParameters();
+//                helpParams.width = (int) (fullPage.getWidth()/1.1);
+//                helpParams.height = (int) (fullPage.getHeight()/1.1) - bottomBar.getHeight();
+//                helpParams.bottomMargin = bottomBar.getHeight() + fullPage.getHeight()/100;
+//                helpPopup.setLayoutParameters(helpParams);
+//            }
+//        });
 
         // help popup
         helpPopup.setVisibility(VISIBLE);
         helpPopup.createHelp(helpButton);
-        helpPopup.setRatio(4,5);
+//        helpPopup.setRatio(4,5);
 
         // Menu popup
         menuButton.setOnClickListener(v -> {

@@ -67,12 +67,12 @@ public class RowVerticalLongBox extends LinearLayout{
         CharSequence box5 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_5");
 
         initComponents();
-
-        flipper1.setPadding(5, 5);
-        flipper2.setPadding(5, 5);
-        flipper3.setPadding(5, 5);
-        flipper4.setPadding(5, 5);
-        flipper5.setPadding(5, 5);
+//
+//        flipper1.setPadding(5, 5);
+//        flipper2.setPadding(5, 5);
+//        flipper3.setPadding(5, 5);
+//        flipper4.setPadding(5, 5);
+//        flipper5.setPadding(5, 5);
 
         setText1(text1);
         setText2(text2);

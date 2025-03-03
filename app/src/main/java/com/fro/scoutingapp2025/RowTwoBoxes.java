@@ -51,8 +51,8 @@ public class RowTwoBoxes extends LinearLayout {
 
         initComponents();
 
-        leftFlipper.setPadding(5, 10);
-        rightFlipper.setPadding(5, 10);
+//        leftFlipper.setPadding(5, 10);
+//        rightFlipper.setPadding(5, 10);
 
         setLeftText(leftText);
         setRightText(rightText);

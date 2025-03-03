@@ -94,26 +94,26 @@ public class ComponentFlipper extends LinearLayout {
         if (value.equals("6")) {flipper.setVisibility(INVISIBLE);}
     }
 
-    public void setPadding(int horizontalChange, int verticalChange) {
-        //Sets the padding to change per screen size
-        Context con = this.getContext();
-        flipper.post(new Runnable() {
-            @Override
-            public void run() {
-                if (horizontalChange != 0 && verticalChange != 0) {
-                    int height = flipper.getHeight();
-                    flipper.setPadding(
-                            (height / horizontalChange), // left
-                            (height / verticalChange), // top
-                            (height / horizontalChange),  // right
-                            (height / verticalChange)   // bottom
-                    );
-                } else {
-                    Toast.makeText(con, "Error divide by 0: " + String.valueOf(horizontalChange) + " or " + String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
+//    public void setPadding(int horizontalChange, int verticalChange) {
+//        //Sets the padding to change per screen size
+//        Context con = this.getContext();
+//        flipper.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (horizontalChange != 0 && verticalChange != 0) {
+//                    int height = flipper.getHeight();
+//                    flipper.setPadding(
+//                            (height / horizontalChange), // left
+//                            (height / verticalChange), // top
+//                            (height / horizontalChange),  // right
+//                            (height / verticalChange)   // bottom
+//                    );
+//                } else {
+//                    Toast.makeText(con, "Error divide by 0: " + String.valueOf(horizontalChange) + " or " + String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//    }
 
 
     public void createTypeBox(String name, int type, int maxCharacters) {

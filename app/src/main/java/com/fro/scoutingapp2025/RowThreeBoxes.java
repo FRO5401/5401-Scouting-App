@@ -59,9 +59,9 @@ public class RowThreeBoxes extends LinearLayout {
 
         initComponents();
 
-        leftFlipper.setPadding(10, 10);
-        middleFlipper.setPadding(10, 10);
-        rightFlipper.setPadding(10, 10);
+//        leftFlipper.setPadding(10, 10);
+//        middleFlipper.setPadding(10, 10);
+//        rightFlipper.setPadding(10, 10);
 
         setLeftText(leftText);
         setMiddleText(middleText);
