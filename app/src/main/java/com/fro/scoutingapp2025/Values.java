@@ -29,6 +29,23 @@ public class Values {
     public static int inputType_text = 8;
     public static int inputType_number = 9;
 
+    // Sizes on page creation
+    public static int screen_width = 0;
+    public static int screen_height = 0;
+    public static int bottom_bar_height = 0;
+//    public static int large_box_flipper_width = 0;
+//    public static int large_box_flipper_height = 0;
+//    public static int thin_large_box_flipper_width = 0;
+//    public static int thin_large_box_flipper_height = 0;
+//    public static int long_box_flipper_width = 0;
+//    public static int long_boxes_flipper_height = 0;
+//    public static int vertical_long_box_flipper_width = 0;
+//    public static int vertical_long_boxes_flipper_height = 0;
+//    public static int two_boxes_flipper_width = 0;
+//    public static int two_boxes_flipper_height = 0;
+//    public static int three_boxes_flipper_width = 0;
+//    public static int three_boxes_flipper_height = 0;
+
     // Data
     public static HashMap<String, Object> data = new HashMap<>();
 
