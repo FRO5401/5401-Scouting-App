@@ -82,6 +82,7 @@ public class ComponentFlipper extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.component_flipper, this);
         flipper = (ViewFlipper) findViewById(R.id.flipper);
+
     }
 
     public void changeTo(CharSequence value) {
@@ -94,33 +95,24 @@ public class ComponentFlipper extends LinearLayout {
         if (value.equals("6")) {flipper.setVisibility(INVISIBLE);}
     }
 
-    public void setPadding(int horizontalChange, int verticalChange) {
-        //Sets the padding to change per screen size
-        Context con = this.getContext();
-        flipper.post(new Runnable() {
-            @Override
-            public void run() {
-                if (horizontalChange != 0 && verticalChange != 0) {
-                    int height = flipper.getHeight();
-                    flipper.setPadding(
-                            (height / horizontalChange), // left
-                            (height / verticalChange), // top
-                            (height / horizontalChange),  // right
-                            (height / verticalChange)   // bottom
-                    );
-                } else {
-                    Toast.makeText(con, "Error divide by 0: " + String.valueOf(horizontalChange) + " or " + String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+    public void setPadding(int verticalChange, int horizontalChange, int height, int width) {
+        if (horizontalChange != 0 && verticalChange != 0) {
+            flipper.setPadding(
+                    (width / horizontalChange), // left
+                    (height / verticalChange), // top
+                    (width / horizontalChange),  // right
+                    (height / verticalChange)   // bottom
+            );
+        } else {
+            Toast.makeText(getContext(), "Error divide by 0: " + String.valueOf(horizontalChange) + " or " + String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();
+        }
     }
 
+    public int getPadding(){return  flipper.getPaddingTop();}
 
     public void createTypeBox(String name, int type, int maxCharacters) {
         //Creates the data in the hashmap
-        if (!Values.data.containsKey(name)) {
-            Values.data.put(name, "");
-        }
+        if (!Values.data.containsKey(name)) {Values.data.put(name, "");}
 
         //Creates the type box
         typeBox = findViewById(R.id.type_box);
@@ -171,12 +163,7 @@ public class ComponentFlipper extends LinearLayout {
         textDropdown.setAdapter(adapter);
 
         // Sets the dropdown to be below the spinner border
-        textDropdown.post(new Runnable() {
-            @Override
-            public void run() {
-                textDropdown.setDropDownVerticalOffset(5);
-            }
-        });
+        textDropdown.setDropDownVerticalOffset(5);
 
         // Set text dropdown selection
         if (Values.data.containsKey(name) && Values.data.get(name) != null) {
@@ -187,19 +174,14 @@ public class ComponentFlipper extends LinearLayout {
                 }
             }
             textDropdown.setSelection(index);
-
-//            textDropdown.setSelection((Integer) Values.data.get(name));
         }
 
         // Updates data when new item is selected in dropdown
         textDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-//                Values.data.put(name, pos);
                 Values.data.put(name, textDropdown.getSelectedItem());
             }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
     }
 
@@ -259,13 +241,15 @@ public class ComponentFlipper extends LinearLayout {
         toggle.setThumbResource(R.drawable.toggle_thumb);
 
         // Scales the toggle based on the height
-        // TODO Fix this scaling later
-        toggleLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                float scale = (float) toggleLayout.getHeight() / 200;
-                toggle.setScaleX(scale);
-                toggle.setScaleY(scale);
+        // TODO Find the magic number/ algorithm for scaling later
+        toggle.setScaleX(Values.toggle_scale);
+        toggle.setScaleY(Values.toggle_scale);
+        toggleLayout.post(() -> {
+            if (toggle.getScaleX() == 0) {
+                Values.toggle_scale = toggleLayout.getHeight() / 200f;
+                toggle.setScaleX(Values.toggle_scale);
+                toggle.setScaleY(Values.toggle_scale);
+//                Toast.makeText(this.getContext(), "hhhh" + Values.toggle_scale, Toast.LENGTH_SHORT).show();
             }
         });
 

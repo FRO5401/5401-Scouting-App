@@ -68,11 +68,25 @@ public class RowVerticalLongBox extends LinearLayout{
 
         initComponents();
 
-        flipper1.setPadding(5, 5);
-        flipper2.setPadding(5, 5);
-        flipper3.setPadding(5, 5);
-        flipper4.setPadding(5, 5);
-        flipper5.setPadding(5, 5);
+        // Sets the padding of the flipper
+        flipper1.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+        flipper2.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+        flipper3.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+        flipper4.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+        flipper5.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+        // The first time this row, gets the size of it and sets the flipper padding
+        flipper5.post(() -> {
+            // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
+            if (flipper5.getPadding() == 0) {
+                Values.vertical_long_box_flipper_width = flipper5.getWidth();
+                Values.vertical_long_box_flipper_height = flipper5.getHeight();
+                flipper1.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+                flipper2.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+                flipper3.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+                flipper4.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+                flipper5.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+            }
+        });
 
         setText1(text1);
         setText2(text2);

@@ -55,6 +55,7 @@ public class RowLongBox extends LinearLayout {
     View middleView2;
     LinearLayout middleLayout;
     LinearLayout backgroundLayout;
+    boolean first = false;
 
     public RowLongBox(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -74,9 +75,21 @@ public class RowLongBox extends LinearLayout {
 
         initComponents();
 
-        leftFlipper.setPadding(10, 10);
-        middleFlipper.setPadding(10,10);
-        rightFlipper.setPadding(10,10);
+        // Sets the padding of the flipper
+        leftFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
+        middleFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
+        rightFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
+        // The first time this row, gets the size of it and sets the flipper padding
+        rightFlipper.post(() -> {
+            // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
+            if (rightFlipper.getPadding() == 0) {
+                Values.long_box_flipper_width = rightFlipper.getWidth();
+                Values.long_box_flipper_height = rightFlipper.getHeight();
+                leftFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
+                middleFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
+                rightFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
+            }
+        });
 
         setLeftText(leftText);
         setMiddleText(middleText);

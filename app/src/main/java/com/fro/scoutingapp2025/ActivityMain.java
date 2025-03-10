@@ -58,6 +58,7 @@ public class ActivityMain extends AppCompatActivity {
         setPopupMargins();
         // The first time this page is created, gets the screen size and sets popup margins
         screen.post(() -> {
+            // If the screen width and height was never set (aka the app is loaded for the first time)
             if (Values.screen_width == 0 && Values.screen_height == 0) {
                 Values.screen_width = screen.getWidth();
                 Values.screen_height = screen.getHeight();

@@ -91,6 +91,7 @@ public class ActivityScouting extends AppCompatActivity {
         setPopupMargins();
         // The first time this page is created, gets the height of the bottom bar and sets popup margins
         screen.post(() -> {
+            // If the bottom bar height was never set (aka the this page loaded for the first time)
             if (Values.bottom_bar_height == 0) {
                 Values.bottom_bar_height = bottomBar.getHeight();
                 setPopupMargins();

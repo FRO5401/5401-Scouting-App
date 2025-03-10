@@ -44,7 +44,17 @@ public class RowLargeBox extends LinearLayout {
 
         initComponents();
 
-        flipper.setPadding(2, 10);
+        // Sets the padding of the flipper
+        flipper.setPadding(10, 10, Values.large_box_flipper_height, Values.large_box_flipper_width);
+        // The first time this row, gets the size of it and sets the flipper padding
+        flipper.post(() -> {
+            // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
+            if (flipper.getPadding() == 0) {
+                Values.large_box_flipper_width = flipper.getWidth();
+                Values.large_box_flipper_height = flipper.getHeight();
+                flipper.setPadding(10, 10, Values.large_box_flipper_height, Values.large_box_flipper_width);
+            }
+        });
 
         setText(text);
         setBox(box);
