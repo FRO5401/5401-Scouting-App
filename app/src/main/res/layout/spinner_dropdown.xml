@@ -4,5 +4,6 @@
     android:layout_height="60dp"
     android:background="@drawable/dropdown_background"
     android:ellipsize="marquee"
+    android:textColor="@color/text_grey"
     android:gravity="center_vertical"
     />

@@ -25,6 +25,7 @@
             android:layout_margin="10dp"
             android:padding="20dp"
             android:gravity="center"
+            android:textColor="@color/text_grey"
             android:fontFamily="@font/helvetica_bold"
             android:layout_weight="1"/>
         <com.fro.scoutingapp2025.ComponentFlipper
@@ -50,6 +51,7 @@
             android:layout_margin="10dp"
             android:padding="20dp"
             android:gravity="center"
+            android:textColor="@color/text_grey"
             android:fontFamily="@font/helvetica_bold"
             android:layout_weight="1"/>
         <com.fro.scoutingapp2025.ComponentFlipper
@@ -74,6 +76,7 @@
             android:layout_margin="10dp"
             android:padding="20dp"
             android:gravity="center"
+            android:textColor="@color/text_grey"
             android:fontFamily="@font/helvetica_bold"
             android:layout_weight="1"/>
         <com.fro.scoutingapp2025.ComponentFlipper
@@ -99,6 +102,7 @@
             android:layout_margin="10dp"
             android:padding="20dp"
             android:gravity="center"
+            android:textColor="@color/text_grey"
             android:fontFamily="@font/helvetica_bold"
             android:layout_weight="1"/>
         <com.fro.scoutingapp2025.ComponentFlipper
@@ -123,6 +127,7 @@
             android:layout_margin="10dp"
             android:padding="20dp"
             android:gravity="center"
+            android:textColor="@color/text_grey"
             android:fontFamily="@font/helvetica_bold"
             android:layout_weight="1"/>
         <com.fro.scoutingapp2025.ComponentFlipper

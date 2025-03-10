@@ -30,6 +30,7 @@
             android:autoSizeTextType="uniform"
             android:layout_margin="10dp"
             android:textAlignment="center"
+            android:textColor="@color/text_grey"
             android:layout_weight="2"
             android:padding="10dp"/>
         <com.fro.scoutingapp2025.ComponentFlipper
@@ -67,6 +68,7 @@
             android:autoSizeTextType="uniform"
             android:layout_margin="10dp"
             android:textAlignment="center"
+            android:textColor="@color/text_grey"
             android:layout_weight="2"
             android:padding="10dp"/>
 
@@ -103,6 +105,7 @@
             android:autoSizeTextType="uniform"
             android:layout_margin="10dp"
             android:textAlignment="center"
+            android:textColor="@color/text_grey"
             android:layout_weight="2"
             android:padding="10dp"/>
         <com.fro.scoutingapp2025.ComponentFlipper
