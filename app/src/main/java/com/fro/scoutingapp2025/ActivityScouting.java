@@ -75,10 +75,15 @@ public class ActivityScouting extends AppCompatActivity {
         helpPopup = findViewById(R.id.scouting_help_popup);
         helpButton = findViewById(R.id.help_button);
 
-        // Inflate all fragments so it creates all data in the list
-        replaceFragment(new FragmentTeleop());
-        replaceFragment(new FragmentEndgame());
-        replaceFragment(new FragmentNotes());
+        // Create all rows in every fragment to create the data
+        if (!Values.dataCreated){
+            replaceFragment(new FragmentTeleop());
+            replaceFragment(new FragmentEndgame());
+            replaceFragment(new FragmentNotes());
+            Values.dataCreated = true;
+        }
+
+        // Inflate first fragment
         replaceFragment(new FragmentAuto());
 
         // Page changes

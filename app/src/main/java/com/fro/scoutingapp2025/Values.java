@@ -50,6 +50,8 @@ public class Values {
     public static float toggle_scale;
 
     // Data
+    public static boolean dataCreated = false;
+
     public static HashMap<String, Object> data = new HashMap<>();
 
     public static String getData(){
@@ -64,6 +66,7 @@ public class Values {
     public static void clearData(){
         // clears all data so a new match can be started
         data.clear();
+        dataCreated = false;
     }
 
     public static String checkData(){

@@ -17,7 +17,7 @@ import java.util.Arrays;
 public class FragmentTeleop extends Fragment {
     public FragmentTeleop() {/* Required empty public constructor*/}
 
-    // Declare global variables here \/
+    // Declare variables
     RowThreeBoxes row1;
     RowLongBox row2;
     RowLongBox row3;
@@ -28,7 +28,7 @@ public class FragmentTeleop extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_teleop, container, false);
-        // Instantiate variables here \/
+        // Init variables
         row1 = rootView.findViewById(R.id.teleop_row_1);
         row2 = rootView.findViewById(R.id.teleop_row_2);
         row3 = rootView.findViewById(R.id.teleop_row_3);
@@ -36,7 +36,13 @@ public class FragmentTeleop extends Fragment {
         row4_source = rootView.findViewById(R.id.teleop_row_4_source);
         row4_none = rootView.findViewById(R.id.teleop_row_4_none);
 
-        /*  Setting Text Values  */
+        createRows();
+
+        // Inflate the layout for this fragment
+        return rootView;
+    }
+
+    public void createRows() {
         // Row 1
         row1.createTextDropdown(
                 "Teleop_Algae_Pickup_Location",
@@ -70,24 +76,19 @@ public class FragmentTeleop extends Fragment {
         row4_source.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
         row4_none.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
 
-        // Setting which row is visible
-        if (Values.data.get("Main_Human_Player_Position") == "Left Coral Station" || Values.data.get("Main_Human_Player_Position") == "Right Coral Station"){
-             row4_source.setVisibility(GONE);
-             row4_none.setVisibility(GONE);
-             row4_processor.setVisibility(VISIBLE);
-        }
-        else if (Values.data.get("Main_Human_Player_Position") == "Processor"){
+        // Setting which human player row is visible
+        if (Values.data.get("Main_Human_Player_Position") == "Left Coral Station" || Values.data.get("Main_Human_Player_Position") == "Right Coral Station") {
+            row4_source.setVisibility(GONE);
+            row4_none.setVisibility(GONE);
+            row4_processor.setVisibility(VISIBLE);
+        } else if (Values.data.get("Main_Human_Player_Position") == "Processor") {
             row4_processor.setVisibility(GONE);
             row4_none.setVisibility(GONE);
             row4_source.setVisibility(VISIBLE);
-        }
-        else {
+        } else {
             row4_source.setVisibility(GONE);
             row4_processor.setVisibility(GONE);
             row4_none.setVisibility(VISIBLE);
-         }
-
-        // Inflate the layout for this fragment
-        return rootView;
+        }
     }
 }

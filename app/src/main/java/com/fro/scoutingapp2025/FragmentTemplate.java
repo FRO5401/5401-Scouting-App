@@ -30,9 +30,13 @@ public class FragmentTemplate extends Fragment {
         row3 = rootView.findViewById(R.id.template_row_3);
         row4 = rootView.findViewById(R.id.template_row_4);
 
-        // Create this later lol
+        createRows();
 
         // Inflate the layout for this fragment
         return rootView;
+    }
+
+    public void createRows(){
+        // create the rows here
     }
 }
