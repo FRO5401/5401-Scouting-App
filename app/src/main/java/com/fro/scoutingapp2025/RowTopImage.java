@@ -20,7 +20,7 @@ import android.widget.LinearLayout;
  * </ul>
  */
 public class RowTopImage extends LinearLayout {
-
+    // Declare variables
     ImageView image;
     ImageView underline;
 
@@ -30,32 +30,28 @@ public class RowTopImage extends LinearLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
-
         inflate(context, R.layout.row_top_image, this);
+
+        // Get the drawable resource file from xml input
         int imageSrc;
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TemplateBoxes, 0, 0);
-        try {
-            imageSrc = ta.getResourceId(R.styleable.TemplateBoxes_image, -1);
-        } finally {
-            ta.recycle();
-        }
+        try { imageSrc = ta.getResourceId(R.styleable.TemplateBoxes_image, -1); }
+        finally { ta.recycle();}
 
+        // Get the color mode from xml input
         CharSequence colorMode = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "color_mode");
 
-        initComponents();
+        // Init variables
+        image = findViewById(R.id.topImage);
+        underline = findViewById(R.id.topUnderline);
 
+        // Set image and color mode
         setImage(imageSrc);
         setColorMode(colorMode);
     }
 
-    private void initComponents() {
-        image = findViewById(R.id.topImage);
-        underline = findViewById(R.id.topUnderline);
-    }
+    public void setImage(int img) { image.setImageResource(img); }
 
-    public void setImage(int img) {
-        image.setImageResource(img);
-    }
     public void setColorMode(CharSequence value) {
         if (value == null) {return;}
         if (value.equals("0")){

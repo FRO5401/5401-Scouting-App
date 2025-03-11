@@ -34,7 +34,7 @@ import java.util.ArrayList;
  * </ul>
  */
 public class RowThreeBoxes extends LinearLayout {
-
+    // Declare variables
     TextView leftTextView;
     TextView middleTextView;
     TextView rightTextView;
@@ -50,6 +50,7 @@ public class RowThreeBoxes extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.row_three_boxes, this);
 
+        // Get values from xml input
         CharSequence leftText = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "left_text");
         CharSequence middleText = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "middle_text");
         CharSequence rightText = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "right_text");
@@ -57,7 +58,13 @@ public class RowThreeBoxes extends LinearLayout {
         CharSequence middleBox =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "middle_box_type");
         CharSequence rightBox = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "right_box_type");
 
-        initComponents();
+        // init variables
+        leftTextView = findViewById(R.id.leftText);
+        middleTextView = findViewById(R.id.middleText);
+        rightTextView = findViewById(R.id.rightText);
+        leftFlipper = findViewById(R.id.leftFlipper);
+        middleFlipper = findViewById(R.id.middleFlipper);
+        rightFlipper = findViewById(R.id.rightFlipper);
 
         // Sets the padding of the flipper
         leftFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
@@ -78,46 +85,23 @@ public class RowThreeBoxes extends LinearLayout {
             }
         });
 
-        setLeftText(leftText);
-        setMiddleText(middleText);
-        setRightText(rightText);
-        setLeftBox(leftBox);
-        setMiddleBox(middleBox);
-        setRightBox(rightBox);
+        // Set text and box type
+        setText(leftTextView, leftText);
+        setText(middleTextView, middleText);
+        setText(rightTextView, rightText);
+        setBox(leftFlipper, leftBox);
+        setBox(middleFlipper, middleBox);
+        setBox(rightFlipper, rightBox);
     }
 
-    private void initComponents() {
-        leftTextView = findViewById(R.id.leftText);
-        middleTextView = findViewById(R.id.middleText);
-        rightTextView = findViewById(R.id.rightText);
-        leftFlipper = findViewById(R.id.leftFlipper);
-        middleFlipper = findViewById(R.id.middleFlipper);
-        rightFlipper = findViewById(R.id.rightFlipper);
-    }
+    public void setText(TextView textview, CharSequence value) { textview.setText(value); }
 
-    public void setLeftText(CharSequence value) {
-        leftTextView.setText(value);
-    }
-
-    public void setMiddleText(CharSequence value) {
-        middleTextView.setText(value);
-    }
-
-    public void setRightText(CharSequence value) {
-        rightTextView.setText(value);
-    }
-
-    public void setLeftBox(CharSequence value) {
-        if (value == null) {return;}
-        leftFlipper.changeTo(value);
-    }
-    public void setMiddleBox(CharSequence value) {
-        if (value == null) {return;}
-        middleFlipper.changeTo(value);
-    }
-    public void setRightBox(CharSequence value) {
-        if (value == null) {return;}
-        rightFlipper.changeTo(value);
+    public void setBox(ComponentFlipper flipper, CharSequence value) {
+        if (value == null) {
+            Toast.makeText(this.getContext(), "Error: Vertical long box value is null", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        flipper.changeTo(value);
     }
 
     public void createTypeBox(String name, int inputType, int maxCharacters, int position) {
