@@ -86,12 +86,12 @@ public class ComponentFlipper extends LinearLayout {
     }
 
     public void changeTo(CharSequence value) {
-        if (value.equals("0")) {while (flipper.getCurrentView() != findViewById(R.id.typeBox)) {flipper.showNext();}}
-        if (value.equals("1")) {while (flipper.getCurrentView() != findViewById(R.id.textDropdown)) {flipper.showNext();}}
-        if (value.equals("2")) {while (flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {flipper.showNext();}}
-        if (value.equals("3")) {while (flipper.getCurrentView() != findViewById(R.id.toggleLayout)) {flipper.showNext();}}
-        if (value.equals("4")) {while (flipper.getCurrentView() != findViewById(R.id.counter)) {flipper.showNext();}}
-        if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch)) {flipper.showNext();}}
+        if (value.equals("0")) {while (flipper.getCurrentView() != findViewById(R.id.type_box_layout)) {flipper.showNext();}}
+        if (value.equals("1")) {while (flipper.getCurrentView() != findViewById(R.id.text_dropdown_layout)) {flipper.showNext();}}
+        if (value.equals("2")) {while (flipper.getCurrentView() != findViewById(R.id.number_dropdown_layout)) {flipper.showNext();}}
+        if (value.equals("3")) {while (flipper.getCurrentView() != findViewById(R.id.toggle_layout)) {flipper.showNext();}}
+        if (value.equals("4")) {while (flipper.getCurrentView() != findViewById(R.id.counter_layout)) {flipper.showNext();}}
+        if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch_layout)) {flipper.showNext();}}
         if (value.equals("6")) {flipper.setVisibility(INVISIBLE);}
     }
 
@@ -234,7 +234,7 @@ public class ComponentFlipper extends LinearLayout {
 
         // Creates the toggle
         toggle = findViewById(R.id.toggle);
-        LinearLayout toggleLayout = findViewById(R.id.toggleLayout);
+        LinearLayout toggleLayout = findViewById(R.id.toggle_layout);
 
         // Sets the track and thumb drawables
         toggle.setTrackResource(R.drawable.toggle_track);

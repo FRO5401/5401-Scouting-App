@@ -22,7 +22,7 @@
         android:background="@drawable/box_background"
         android:weightSum="5">
         <TextView
-            android:id="@+id/oneText"
+            android:id="@+id/thin_large_box_text"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             tools:text="Text\nHere"
@@ -32,7 +32,7 @@
             android:textColor="@color/text_grey"
             android:layout_weight="2"/>
         <com.fro.scoutingapp2025.ComponentFlipper
-            android:id="@+id/oneFlipper"
+            android:id="@+id/thin_large_box_flipper"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"

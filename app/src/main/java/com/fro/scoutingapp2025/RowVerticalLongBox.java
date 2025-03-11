@@ -68,16 +68,16 @@ public class RowVerticalLongBox extends LinearLayout{
         CharSequence box5 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_5");
 
         // Init variables
-        textView1 = findViewById(R.id.text1);
-        textView2 = findViewById(R.id.text2);
-        textView3 = findViewById(R.id.text3);
-        textView4 = findViewById(R.id.text4);
-        textView5 = findViewById(R.id.text5);
-        flipper1 = findViewById(R.id.box1);
-        flipper2 = findViewById(R.id.box2);
-        flipper3 = findViewById(R.id.box3);
-        flipper4 = findViewById(R.id.box4);
-        flipper5 = findViewById(R.id.box5);
+        textView1 = findViewById(R.id.vertical_long_box_text_1);
+        textView2 = findViewById(R.id.vertical_long_box_text_2);
+        textView3 = findViewById(R.id.vertical_long_box_text_3);
+        textView4 = findViewById(R.id.vertical_long_box_text_4);
+        textView5 = findViewById(R.id.vertical_long_box_text_5);
+        flipper1 = findViewById(R.id.vertical_long_box_flipper_1);
+        flipper2 = findViewById(R.id.vertical_long_box_flipper_2);
+        flipper3 = findViewById(R.id.vertical_long_box_flipper_3);
+        flipper4 = findViewById(R.id.vertical_long_box_flipper_4);
+        flipper5 = findViewById(R.id.vertical_long_box_flipper_5);
 
         // Sets the padding of the flipper
         flipper1.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);

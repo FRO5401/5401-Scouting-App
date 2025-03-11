@@ -54,7 +54,7 @@
             android:layout_weight="0.7"
             android:layout_margin="30dp">
             <TextView
-                android:id="@+id/startButton"
+                android:id="@+id/start_button"
                 android:padding="40dp"
                 android:gravity="center"
                 android:layout_width="0dp"

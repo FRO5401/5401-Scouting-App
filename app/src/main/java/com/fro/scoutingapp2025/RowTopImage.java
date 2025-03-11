@@ -42,8 +42,8 @@ public class RowTopImage extends LinearLayout {
         CharSequence colorMode = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "color_mode");
 
         // Init variables
-        image = findViewById(R.id.topImage);
-        underline = findViewById(R.id.topUnderline);
+        image = findViewById(R.id.top_image);
+        underline = findViewById(R.id.top_image_underline);
 
         // Set image and color mode
         setImage(imageSrc);

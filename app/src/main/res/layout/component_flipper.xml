@@ -7,7 +7,7 @@
 
 <!--    Text Type Box    -->
     <LinearLayout
-        android:id="@+id/typeBox"
+        android:id="@+id/type_box_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -25,7 +25,7 @@
 
 <!--    Text Dropdown    -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/textDropdown"
+        android:id="@+id/text_dropdown_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
@@ -51,7 +51,7 @@
 
 <!--    Number Dropdown    -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/numberDropdown"
+        android:id="@+id/number_dropdown_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
@@ -79,7 +79,7 @@
 
 <!--    Toggle     -->
     <LinearLayout
-        android:id="@+id/toggleLayout"
+        android:id="@+id/toggle_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -96,7 +96,7 @@
 
 <!--    Counter    -->
     <LinearLayout
-        android:id="@+id/counter"
+        android:id="@+id/counter_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
@@ -138,7 +138,7 @@
 
     <!--    Stopwatch    -->
     <LinearLayout
-        android:id="@+id/stopwatch"
+        android:id="@+id/stopwatch_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"

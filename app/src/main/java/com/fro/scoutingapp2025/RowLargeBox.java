@@ -45,8 +45,8 @@ public class RowLargeBox extends LinearLayout {
         CharSequence box =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type");
 
         // Init variables
-        textView = findViewById(R.id.oneText);
-        flipper = findViewById(R.id.oneFlipper);
+        textView = findViewById(R.id.large_box_text);
+        flipper = findViewById(R.id.large_box_flipper);
 
         // Sets the padding of the flipper
         flipper.setPadding(10, 10, Values.large_box_flipper_height, Values.large_box_flipper_width);

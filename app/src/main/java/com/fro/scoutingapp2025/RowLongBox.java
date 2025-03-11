@@ -74,16 +74,16 @@ public class RowLongBox extends LinearLayout {
         CharSequence colorPattern = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "color_pattern");
 
         // Init variables
-        leftTextView = findViewById(R.id.leftText);
-        middleTextView = findViewById(R.id.middleText);
-        rightTextView = findViewById(R.id.rightText);
-        leftFlipper = findViewById(R.id.leftFlipper);
-        middleFlipper = findViewById(R.id.middleFlipper);
-        rightFlipper = findViewById(R.id.rightFlipper);
-        middleView1 = findViewById(R.id.middleView1);
-        middleView2 = findViewById(R.id.middleView2);
-        middleLayout = findViewById(R.id.middleLayout);
-        backgroundLayout = findViewById(R.id.backgroundLayout);
+        leftTextView = findViewById(R.id.two_boxes_left_text);
+        middleTextView = findViewById(R.id.two_boxes_middle_text);
+        rightTextView = findViewById(R.id.two_boxes_right_text);
+        leftFlipper = findViewById(R.id.two_boxes_left_flipper);
+        middleFlipper = findViewById(R.id.two_boxes_middle_flipper);
+        rightFlipper = findViewById(R.id.two_boxes_right_flipper);
+        middleView1 = findViewById(R.id.two_boxes_middle_view_1);
+        middleView2 = findViewById(R.id.two_boxes_middle_view_2);
+        middleLayout = findViewById(R.id.two_boxes_middle_layout);
+        backgroundLayout = findViewById(R.id.two_boxes_background_layout);
 
         // Sets the padding of the flipper
         leftFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);

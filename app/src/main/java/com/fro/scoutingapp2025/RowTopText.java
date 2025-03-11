@@ -37,8 +37,8 @@ public class RowTopText extends LinearLayout {
         CharSequence colorMode = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "color_mode");
 
         // Init variables
-        textView = findViewById(R.id.topText);
-        underline = findViewById(R.id.topUnderline);
+        textView = findViewById(R.id.top_text);
+        underline = findViewById(R.id.top_text_underline);
 
         // Set text and color mode
         setText(textView, text);

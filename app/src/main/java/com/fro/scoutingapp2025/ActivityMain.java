@@ -35,7 +35,7 @@ public class ActivityMain extends AppCompatActivity {
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
 
         // Instantiate variables here \/
-        startButton = findViewById(R.id.startButton);
+        startButton = findViewById(R.id.start_button);
         verticalLongBox = findViewById(R.id.vertical_long_box);
         helpButton = findViewById(R.id.main_help_button);
         helpPopup = findViewById(R.id.main_help_popup);

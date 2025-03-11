@@ -52,10 +52,10 @@ public class RowTwoBoxes extends LinearLayout {
         CharSequence rightBox = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "right_box_type");
 
         // Init variables
-        leftTextView = findViewById(R.id.leftText);
-        rightTextView = findViewById(R.id.rightText);
-        leftFlipper = findViewById(R.id.leftFlipper);
-        rightFlipper = findViewById(R.id.rightFlipper);
+        leftTextView = findViewById(R.id.two_boxes_left_text);
+        rightTextView = findViewById(R.id.two_boxes_right_text);
+        leftFlipper = findViewById(R.id.two_boxes_left_flipper);
+        rightFlipper = findViewById(R.id.two_boxes_right_flipper);
 
         // Sets the padding of the flipper
         leftFlipper.setPadding(10, 10, Values.two_boxes_flipper_height, Values.two_boxes_flipper_width);

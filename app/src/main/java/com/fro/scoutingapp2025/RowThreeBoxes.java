@@ -59,12 +59,12 @@ public class RowThreeBoxes extends LinearLayout {
         CharSequence rightBox = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "right_box_type");
 
         // init variables
-        leftTextView = findViewById(R.id.leftText);
-        middleTextView = findViewById(R.id.middleText);
-        rightTextView = findViewById(R.id.rightText);
-        leftFlipper = findViewById(R.id.leftFlipper);
-        middleFlipper = findViewById(R.id.middleFlipper);
-        rightFlipper = findViewById(R.id.rightFlipper);
+        leftTextView = findViewById(R.id.three_boxes_left_text);
+        middleTextView = findViewById(R.id.three_boxes_middle_text);
+        rightTextView = findViewById(R.id.three_boxes_right_text);
+        leftFlipper = findViewById(R.id.three_boxes_left_flipper);
+        middleFlipper = findViewById(R.id.three_boxes_middle_flipper);
+        rightFlipper = findViewById(R.id.three_boxes_right_flipper);
 
         // Sets the padding of the flipper
         leftFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
