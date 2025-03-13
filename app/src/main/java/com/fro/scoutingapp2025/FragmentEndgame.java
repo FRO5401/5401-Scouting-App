@@ -27,13 +27,6 @@ public class FragmentEndgame extends Fragment {
         row2 = rootView.findViewById(R.id.endgame_row_2);
         row3 = rootView.findViewById(R.id.endgame_row_3);
 
-        createRows();
-
-        // Inflate the layout for this fragment
-        return rootView;
-    }
-
-    public void createRows() {
         row1.createTextDropdown("Endgame_End_Location",
                 new ArrayList<String>(Arrays.asList("Parked", "Shallow Cage", "Deep Cage", "Not In Barge Zone")));
 
@@ -41,5 +34,8 @@ public class FragmentEndgame extends Fragment {
                 new ArrayList<String>(Arrays.asList("Scoring Coral", "Scoring Algae", "Climbing", "Defense", "Other", "Nothing")));
 
         row3.createTypeBox("Endgame_Started_Climbing_At_This_Time", Values.inputType_number, 3);
+
+        // Inflate the layout for this fragment
+        return rootView;
     }
 }

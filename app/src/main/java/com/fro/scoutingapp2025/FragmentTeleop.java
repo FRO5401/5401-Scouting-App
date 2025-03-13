@@ -34,13 +34,6 @@ public class FragmentTeleop extends Fragment {
         row4_processor = rootView.findViewById(R.id.teleop_row_4_processor);
         row4_default = rootView.findViewById(R.id.teleop_row_4_default);
 
-        createRows();
-
-        // Inflate the layout for this fragment
-        return rootView;
-    }
-
-    public void createRows() {
         // Row 1
         row1.createTextDropdown(
                 "Teleop_Algae_Pickup_Location",
@@ -77,5 +70,8 @@ public class FragmentTeleop extends Fragment {
             row4_processor.setVisibility(GONE);
             row4_default.setVisibility(VISIBLE);
         }
+
+        // Inflate the layout for this fragment
+        return rootView;
     }
 }

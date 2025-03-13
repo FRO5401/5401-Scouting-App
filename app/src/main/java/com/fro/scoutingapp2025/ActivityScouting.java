@@ -75,22 +75,28 @@ public class ActivityScouting extends AppCompatActivity {
         helpPopup = findViewById(R.id.scouting_help_popup);
         helpButton = findViewById(R.id.help_button);
 
-        // Create all rows in every fragment to create the data
+        // Fragments
+        FragmentAuto fragmentAuto = new FragmentAuto();
+        FragmentTeleop fragmentTeleop = new FragmentTeleop();
+        FragmentEndgame fragmentEndgame = new FragmentEndgame();
+        FragmentNotes fragmentNotes = new FragmentNotes();
+
+        // If data is not created, then inflate fragments to create the data
         if (!Values.dataCreated){
-            replaceFragment(new FragmentTeleop());
-            replaceFragment(new FragmentEndgame());
-            replaceFragment(new FragmentNotes());
+            replaceFragment(fragmentTeleop);
+            replaceFragment(fragmentEndgame);
+            replaceFragment(fragmentNotes);
             Values.dataCreated = true;
         }
 
         // Inflate first fragment
-        replaceFragment(new FragmentAuto());
+        replaceFragment(fragmentAuto);
 
         // Page changes
-        autoButton.setOnClickListener(v -> replaceFragment(new FragmentAuto()));
-        teleopButton.setOnClickListener(v -> replaceFragment(new FragmentTeleop()));
-        endgameButton.setOnClickListener(v -> replaceFragment(new FragmentEndgame()));
-        notesButton.setOnClickListener(v -> replaceFragment(new FragmentNotes()));
+        autoButton.setOnClickListener(v -> replaceFragment(fragmentAuto));
+        teleopButton.setOnClickListener(v -> replaceFragment(fragmentTeleop));
+        endgameButton.setOnClickListener(v -> replaceFragment(fragmentEndgame));
+        notesButton.setOnClickListener(v -> replaceFragment(fragmentNotes));
 
         // Sets the margins of the popups
         setPopupMargins();

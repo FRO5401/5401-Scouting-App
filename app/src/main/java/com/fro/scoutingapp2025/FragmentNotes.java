@@ -22,13 +22,6 @@ public class FragmentNotes extends Fragment {
         row1 = rootView.findViewById(R.id.notes_row_1);
         row2 = rootView.findViewById(R.id.notes_row_2);
 
-        createRows();
-
-        // Inflate the layout for this fragment
-        return rootView;
-    }
-
-    public void createRows() {
         // Row 1
         row1.createToggle("Notes_Did_Robot_Break", Values.left);
         row1.createToggle("Notes_Was_Robot_Tipped", Values.middle);
@@ -36,5 +29,8 @@ public class FragmentNotes extends Fragment {
 
         // Row 2
         row2.createTypeBox("Notes_Extra_Comments", Values.inputType_text, 2000);
+
+        // Inflate the layout for this fragment
+        return rootView;
     }
 }
