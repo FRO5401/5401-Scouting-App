@@ -5,11 +5,12 @@ import static android.view.View.VISIBLE;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
+import android.os.MessageQueue;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -150,14 +151,16 @@ public class ActivityScouting extends AppCompatActivity {
 
         // Submit all data
         confirmYes.setOnClickListener(v -> {
-            menuButton.setClickable(true);
-            menuButton.setImageResource(R.drawable.menu_bars);
-            menuPopup.setVisibility(GONE);
-            confirmPopup.setVisibility(GONE);
-            screen.setClickable(false);
-            Values.exportData(getApplicationContext());
-            Values.clearData();
+            // Switches to activity main
             startActivity(new Intent(getApplicationContext(), ActivityMain.class));
+            // Waits until page is switched to Activity Main so no data can change while exporting
+            MessageQueue.IdleHandler handler = () -> {
+                // Exports and clears data
+                Values.exportData(getApplicationContext());
+                Values.clearData();
+                return false;
+            };
+            Looper.myQueue().addIdleHandler(handler);
         });
 
         // Close confirmation screen

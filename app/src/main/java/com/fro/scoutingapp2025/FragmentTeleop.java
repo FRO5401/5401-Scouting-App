@@ -74,4 +74,10 @@ public class FragmentTeleop extends Fragment {
         // Inflate the layout for this fragment
         return rootView;
     }
+
+    @Override
+    public void onStop() {
+        row4_default.pauseStopwatch(Values.right);
+        super.onStop();
+    }
 }

@@ -23,6 +23,7 @@ import android.widget.ViewFlipper;
 
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -363,7 +364,26 @@ public class ComponentFlipper extends LinearLayout {
             stopwatchSeconds = 0;
             stopwatchMinutes = 0;
             Values.data.put(name, 0);
-            stopwatchTimer.setText("0:00");
+            String text = (((int)Values.data.get(name) / 60) + ":" + String.format(Locale.getDefault(), "%02d", ((int)Values.data.get(name) % 60)));
+            stopwatchTimer.setText(text);
         });
+    }
+
+    public void pauseStopwatch(){
+        // When the stopwatch is not 0:00, pause it (same code as stopwatchStop.setOnClickListener)
+        if (!stopwatchTimer.getText().toString().equals("0:00")){
+            // Saves the current time
+            stopwatchSavedTimeMillis += stopwatchElapsedTimeMillis;
+            // Pauses the stopwatch
+            stopwatchHandler.removeCallbacks(stopwatchRunnable);
+            // Disables specific buttons
+            stopwatchRestart.setClickable(true);
+            stopwatchRestart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
+            stopwatchStop.setClickable(false);
+            stopwatchStop.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getContext().getTheme()));
+            stopwatchStart.setClickable(true);
+            stopwatchStart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
+
+        }
     }
 }
