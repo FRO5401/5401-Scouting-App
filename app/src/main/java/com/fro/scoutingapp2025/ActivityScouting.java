@@ -146,6 +146,7 @@ public class ActivityScouting extends AppCompatActivity {
         submitButton.setOnClickListener(v -> {
             confirmPopup.setVisibility(VISIBLE);
             screen.setClickable(false);
+            Values.sortData();
             confirmText.setText(Values.checkData());
         });
 

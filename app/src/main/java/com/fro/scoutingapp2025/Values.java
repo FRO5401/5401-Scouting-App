@@ -10,8 +10,11 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Values {
     // Current year
@@ -52,15 +55,32 @@ public class Values {
     // Data
     public static boolean dataCreated = false;
 
-    public static HashMap<String, Object> data = new HashMap<>();
+    public static LinkedHashMap<String, Object> data = new LinkedHashMap<>();
 
-    public static String getData(){
+    public static String getData(HashMap<String, Object> data){
         String map ="[";
         for(String key: data.keySet()){
             map = (map + data.get(key) + ", ");
         }
         map += "]";
         return map;
+    }
+
+    public static void sortData() {
+        // Creates a list of just the keys (names), and sorts them
+        ArrayList<String> sortedKeys = new ArrayList<>(data.keySet());
+        Collections.sort(sortedKeys);
+
+        // Goes through sorted keys and transfers data into new hashmap
+        LinkedHashMap<String, Object> sortedData = new LinkedHashMap<>();
+        for (String key : sortedKeys){
+            sortedData.put(key, data.get(key));
+        }
+
+        // Clears the list so the new list can be in the right order
+        data.clear();
+        // Replaces list with sorted list
+        data.putAll(sortedData);
     }
 
     public static void clearData(){
