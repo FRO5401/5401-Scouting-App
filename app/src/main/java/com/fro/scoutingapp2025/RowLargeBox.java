@@ -86,4 +86,6 @@ public class RowLargeBox extends LinearLayout {
     public void createCounter(String name, int maxValue) {flipper.createCounter(name, maxValue);}
 
     public void createStopwatch(String name) {flipper.createStopwatch(name);}
+
+    public void pauseStopwatch() {flipper.pauseStopwatch();}
 }

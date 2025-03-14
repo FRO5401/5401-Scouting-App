@@ -181,4 +181,13 @@ public class RowVerticalLongBox extends LinearLayout{
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch "+name, Toast.LENGTH_SHORT).show();}
     }
+    public void pauseStopwatch(int position) {
+        if (position == Values.vertical_level_1) {flipper1.pauseStopwatch();}
+        else if (position == Values.vertical_level_2) {flipper2.pauseStopwatch();}
+        else if (position == Values.vertical_level_3) {flipper3.pauseStopwatch();}
+        else if (position == Values.vertical_level_4) {flipper4.pauseStopwatch();}
+        else if (position == Values.vertical_level_5) {flipper5.pauseStopwatch();}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch pause", Toast.LENGTH_SHORT).show();}
+    }
 }

@@ -61,7 +61,7 @@ public class ComponentFlipper extends LinearLayout {
             // Difference of what system time time we started the stopwatch and the current system time
             stopwatchElapsedTimeMillis = (int) SystemClock.uptimeMillis() - stopwatchStartTimeMillis;
             // Gets the previous time and adds it to the elapsed time (/1000 to turn into seconds)
-            stopwatchSeconds = (int) ((stopwatchSavedTimeMillis + stopwatchElapsedTimeMillis)/1000);
+            stopwatchSeconds = ((stopwatchSavedTimeMillis + stopwatchElapsedTimeMillis)/1000);
             // Saves seconds in data
             Values.data.put(stopwatchName, stopwatchSeconds);
             // Gets minutes and seconds to print
@@ -82,7 +82,7 @@ public class ComponentFlipper extends LinearLayout {
 
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.component_flipper, this);
-        flipper = (ViewFlipper) findViewById(R.id.flipper);
+        flipper = findViewById(R.id.flipper);
 
     }
 
@@ -105,7 +105,7 @@ public class ComponentFlipper extends LinearLayout {
                     (height / verticalChange)   // bottom
             );
         } else {
-            Toast.makeText(getContext(), "Error divide by 0: " + String.valueOf(horizontalChange) + " or " + String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Error divide by 0: " + horizontalChange + " or " + verticalChange, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -131,7 +131,7 @@ public class ComponentFlipper extends LinearLayout {
         typeBox.setFilters(filters);
 
         // Set inputted text
-        if (Values.data.containsKey(name) && (CharSequence) Values.data.get(name) != null) {
+        if (Values.data.containsKey(name) && Values.data.get(name) != null) {
             typeBox.setText((CharSequence) Values.data.get(name));
         }
 
@@ -158,7 +158,7 @@ public class ComponentFlipper extends LinearLayout {
         array.add(0, "Dropdown");
 
         // Creates the dropdown
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, array);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_spinner_item, array);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown);
         textDropdown = findViewById(R.id.text_dropdown);
         textDropdown.setAdapter(adapter);
@@ -193,18 +193,13 @@ public class ComponentFlipper extends LinearLayout {
         }
 
         // Creates the dropdown
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this.getContext(), R.layout.spinner_dropdown, TeamNumbers.bensalem);
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this.getContext(), R.layout.spinner_dropdown, TeamNumbers.bensalem);
         numberDropdown = findViewById(R.id.number_dropdown);
         numberDropdown.setThreshold(1);
         numberDropdown.setAdapter(adapter);
 
         // Sets the dropdown to be below the spinner border
-        numberDropdown.post(new Runnable() {
-            @Override
-            public void run() {
-                numberDropdown.setDropDownVerticalOffset(5);
-            }
-        });
+        numberDropdown.post(() -> numberDropdown.setDropDownVerticalOffset(5));
 
         // Set text to data value
         if (Values.data.containsKey(name)) {
@@ -220,7 +215,7 @@ public class ComponentFlipper extends LinearLayout {
             @Override
             public void afterTextChanged(Editable editable) {
                 String text = numberDropdown.getText().toString();
-                if (!text.equals("")) {
+                if (!text.isEmpty()) {
                     Values.data.put(name, Integer.parseInt(numberDropdown.getText().toString()));
                 }
             }
@@ -255,7 +250,7 @@ public class ComponentFlipper extends LinearLayout {
         });
 
         // Set if checked or not
-        if (Values.data.containsKey(name) && (Boolean) Values.data.get(name) != null) {
+        if (Values.data.containsKey(name) && Values.data.get(name) != null) {
             toggle.setChecked((Boolean) Values.data.get(name));
         }
 
