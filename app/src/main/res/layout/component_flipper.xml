@@ -4,7 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:id="@+id/flipper">
-
+    <!--    Toggle     -->
+    <LinearLayout
+        android:id="@+id/toggle_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:track="@drawable/toggle_track"
+            android:thumb="@drawable/toggle_thumb"
+            android:autoSizeTextType="uniform"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_margin="-100dp"/>
+    </LinearLayout>
 <!--    Text Type Box    -->
     <LinearLayout
         android:id="@+id/type_box_layout"
@@ -77,22 +93,7 @@
             android:src="@drawable/arrow_down" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    Toggle     -->
-    <LinearLayout
-        android:id="@+id/toggle_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/toggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:track="@drawable/toggle_track"
-            android:thumb="@drawable/toggle_thumb"
-            android:autoSizeTextType="uniform"
-            android:layout_gravity="center"
-            android:textAlignment="center"/>
-    </LinearLayout>
+
 
 <!--    Counter    -->
     <LinearLayout

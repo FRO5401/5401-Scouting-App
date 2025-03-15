@@ -237,15 +237,14 @@ public class ComponentFlipper extends LinearLayout {
         toggle.setThumbResource(R.drawable.toggle_thumb);
 
         // Scales the toggle based on the height
-        // TODO Find the magic number/ algorithm for scaling later
         toggle.setScaleX(Values.toggle_scale);
         toggle.setScaleY(Values.toggle_scale);
         toggleLayout.post(() -> {
             if (toggle.getScaleX() == 0) {
-                Values.toggle_scale = toggleLayout.getHeight() / 200f;
+                Values.toggle_scale = (float) (toggleLayout.getHeight() * toggleLayout.getWidth() * 5) / (Values.screen_height * Values.screen_width * 5) * 25;
                 toggle.setScaleX(Values.toggle_scale);
                 toggle.setScaleY(Values.toggle_scale);
-//                Toast.makeText(this.getContext(), "hhhh" + Values.toggle_scale, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this.getContext(), "hhhh" + Values.toggle_scale, Toast.LENGTH_SHORT).show();
             }
         });
 
