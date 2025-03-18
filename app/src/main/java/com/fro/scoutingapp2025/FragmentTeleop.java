@@ -17,34 +17,31 @@ import java.util.Arrays;
 public class FragmentTeleop extends Fragment {
     public FragmentTeleop() {/* Required empty public constructor*/}
 
-    // Declare global variables here \/
+    // Declare variables
     RowThreeBoxes row1;
     RowLongBox row2;
     RowLongBox row3;
     RowThreeBoxes row4_processor;
-    RowTwoBoxes row4_source;
-    RowTwoBoxes row4_none;
+    RowTwoBoxes row4_default;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_teleop, container, false);
-        // Instantiate variables here \/
+        // Init variables
         row1 = rootView.findViewById(R.id.teleop_row_1);
         row2 = rootView.findViewById(R.id.teleop_row_2);
         row3 = rootView.findViewById(R.id.teleop_row_3);
         row4_processor = rootView.findViewById(R.id.teleop_row_4_processor);
-        row4_source = rootView.findViewById(R.id.teleop_row_4_source);
-        row4_none = rootView.findViewById(R.id.teleop_row_4_none);
+        row4_default = rootView.findViewById(R.id.teleop_row_4_default);
 
-        /*  Setting Text Values  */
         // Row 1
         row1.createTextDropdown(
                 "Teleop_Algae_Pickup_Location",
-                new ArrayList<String>(Arrays.asList("Reef", "Ground", "Both", "None")),
+                new ArrayList<>(Arrays.asList("Reef", "Ground", "Both", "None")),
                 Values.left);
         row1.createTextDropdown(
                 "Teleop_Coral_Pickup_Location",
-                new ArrayList<String>(Arrays.asList("Source", "Ground", "Both", "None")),
+                new ArrayList<>(Arrays.asList("Source", "Ground", "Both", "None")),
                 Values.middle);
         row1.createCounter("Teleop_Reef_L1", 100, Values.right);
 
@@ -63,31 +60,24 @@ public class FragmentTeleop extends Fragment {
         row4_processor.createCounter("Teleop_Algae_Scored_Human_Player", 18, Values.left);
         row4_processor.createCounter("Teleop_Algae_Missed_Human_Player", 18, Values.middle);
         row4_processor.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
-        row4_source.createTextDropdown(
-                "Teleop_Human_Player_Feeding_Accuracy",
-                new ArrayList<String>(Arrays.asList("1", "2", "3", "4", "5")),
-                Values.left);
-        row4_source.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
-        row4_none.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
+        row4_default.createStopwatch("Teleop_Defense_Stopwatch", Values.right);
 
-        // Setting which row is visible
-        if (Values.data.get("Main_Human_Player_Position") == "Left Coral Station" || Values.data.get("Main_Human_Player_Position") == "Right Coral Station"){
-             row4_source.setVisibility(GONE);
-             row4_none.setVisibility(GONE);
-             row4_processor.setVisibility(VISIBLE);
-        }
-        else if (Values.data.get("Main_Human_Player_Position") == "Processor"){
+        // Setting which human player row is visible
+        if (Values.data.get("Main_Human_Player_Position") == "Processor") {
+            row4_processor.setVisibility(VISIBLE);
+            row4_default.setVisibility(GONE);
+        } else {
             row4_processor.setVisibility(GONE);
-            row4_none.setVisibility(GONE);
-            row4_source.setVisibility(VISIBLE);
+            row4_default.setVisibility(VISIBLE);
         }
-        else {
-            row4_source.setVisibility(GONE);
-            row4_processor.setVisibility(GONE);
-            row4_none.setVisibility(VISIBLE);
-         }
 
         // Inflate the layout for this fragment
         return rootView;
+    }
+
+    @Override
+    public void onStop() {
+        row4_default.pauseStopwatch(Values.right);
+        super.onStop();
     }
 }

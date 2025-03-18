@@ -31,6 +31,7 @@ import java.util.ArrayList;
  * </ul>
  */
 public class RowTwoBoxes extends LinearLayout {
+    // Declare variables
     TextView leftTextView;
     TextView rightTextView;
     ComponentFlipper leftFlipper;
@@ -44,51 +45,47 @@ public class RowTwoBoxes extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.row_two_boxes, this);
 
+        // Get values from xml input
         CharSequence leftText = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "left_text");
         CharSequence rightText = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "right_text");
         CharSequence leftBox = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "left_box_type");
         CharSequence rightBox = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "right_box_type");
 
-        initComponents();
+        // Init variables
+        leftTextView = findViewById(R.id.two_boxes_left_text);
+        rightTextView = findViewById(R.id.two_boxes_right_text);
+        leftFlipper = findViewById(R.id.two_boxes_left_flipper);
+        rightFlipper = findViewById(R.id.two_boxes_right_flipper);
 
-        leftFlipper.setPadding(5, 10);
-        rightFlipper.setPadding(5, 10);
+        // Sets the padding of the flipper
+        leftFlipper.setPadding(10, 10, Values.two_boxes_flipper_height, Values.two_boxes_flipper_width);
+        rightFlipper.setPadding(10, 15, Values.two_boxes_flipper_height, Values.two_boxes_flipper_width);
+        // The first time this row, gets the size of it and sets the flipper padding
+        rightFlipper.post(() -> {
+            // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
+            if (rightFlipper.getPadding() == 0) {
+                Values.two_boxes_flipper_width = rightFlipper.getWidth();
+                Values.two_boxes_flipper_height = rightFlipper.getHeight();
+                leftFlipper.setPadding(10, 10, Values.two_boxes_flipper_height, Values.two_boxes_flipper_width);
+                rightFlipper.setPadding(10, 10, Values.two_boxes_flipper_height, Values.two_boxes_flipper_width);
+            }
+        });
 
-        setLeftText(leftText);
-        setRightText(rightText);
-        setLeftBox(leftBox);
-        setRightBox(rightBox);
+        // Set text and box type
+        setText(leftTextView, leftText);
+        setText(rightTextView, rightText);
+        setBox(leftFlipper, leftBox);
+        setBox(rightFlipper, rightBox);
     }
 
-    private void initComponents() {
-        leftTextView = findViewById(R.id.leftText);
-        rightTextView = findViewById(R.id.rightText);
-        leftFlipper = findViewById(R.id.leftFlipper);
-        rightFlipper = findViewById(R.id.rightFlipper);
-    }
+    public void setText(TextView textview, CharSequence value) { textview.setText(value); }
 
-    public void setLeftText(CharSequence value) {
-        leftTextView.setText(value);
-    }
-
-    public void setRightText(CharSequence value) {
-        rightTextView.setText(value);
-    }
-
-    public void setLeftBox(CharSequence value) {
+    public void setBox(ComponentFlipper flipper, CharSequence value) {
         if (value == null) {
-            Toast.makeText(this.getContext(), "ERROR: Null pointer", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getContext(), "Error: Vertical long box value is null", Toast.LENGTH_SHORT).show();
             return;
         }
-        leftFlipper.changeTo(value);
-    }
-
-    public void setRightBox(CharSequence value) {
-        if (value == null) {
-            Toast.makeText(this.getContext(), "ERROR: Null pointer", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        rightFlipper.changeTo(value);
+        flipper.changeTo(value);
     }
 
     public void createTextDropdown(String name, ArrayList<String> array, int position) {
@@ -131,5 +128,12 @@ public class RowTwoBoxes extends LinearLayout {
         else if (position == Values.right) {rightFlipper.createStopwatch(name);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void pauseStopwatch(int position) {
+        if (position == Values.left) {leftFlipper.pauseStopwatch();}
+        else if (position == Values.right) {rightFlipper.pauseStopwatch();}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch pause ", Toast.LENGTH_SHORT).show();}
     }
 }

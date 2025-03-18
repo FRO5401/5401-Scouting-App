@@ -8,31 +8,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class FragmentTemplate extends Fragment {
     public FragmentTemplate() {/* Required empty public constructor*/}
 
     // Declare global variables here \/
-    RowTwoBoxes rowTwoBoxes;
-    RowThreeBoxes rowThreeBoxes;
-    RowLongBox rowLongBox;
-    RowLargeBox rowLargeBox;
+    RowTwoBoxes row1;
+    RowThreeBoxes row2;
+    RowLongBox row3;
+    RowLargeBox row4;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_template, container, false);
         // Instantiate variables here \/
-        rowTwoBoxes = rootView.findViewById(R.id.rowTwoBoxes);
-        rowThreeBoxes = rootView.findViewById(R.id.rowThreeBoxes);
-        rowLongBox = rootView.findViewById(R.id.rowLongBox);
-        rowLargeBox = rootView.findViewById(R.id.rowLargeBox);
+        row1 = rootView.findViewById(R.id.template_row_1);
+        row2 = rootView.findViewById(R.id.template_row_2);
+        row3 = rootView.findViewById(R.id.template_row_3);
+        row4 = rootView.findViewById(R.id.template_row_4);
 
-        // Create this later lol
+        createRows();
 
         // Inflate the layout for this fragment
         return rootView;
+    }
+
+    public void createRows(){
+        // create the rows here
     }
 }

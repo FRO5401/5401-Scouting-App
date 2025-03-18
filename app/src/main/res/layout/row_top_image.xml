@@ -20,7 +20,7 @@
         android:orientation="vertical"
         android:weightSum="1.1">
         <ImageView
-            android:id="@+id/topImage"
+            android:id="@+id/top_image"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:autoSizeTextType="uniform"
@@ -28,7 +28,7 @@
             android:src="@color/light_grey"
             android:layout_weight="1"/>
         <ImageView
-            android:id="@+id/topUnderline"
+            android:id="@+id/top_image_underline"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@drawable/dotted_line"

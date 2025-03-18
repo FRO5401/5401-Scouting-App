@@ -23,7 +23,7 @@
         android:layout_weight="0.4"/>
 
     <com.fro.scoutingapp2025.RowTwoBoxes
-        android:id="@+id/rowTwoBoxes"
+        android:id="@+id/template_row_1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="GO FRO!!!"
@@ -33,7 +33,7 @@
         android:layout_weight="1"/>
 
     <com.fro.scoutingapp2025.RowThreeBoxes
-        android:id="@+id/rowThreeBoxes"
+        android:id="@+id/template_row_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="A thing"
@@ -45,7 +45,7 @@
         android:layout_weight="1"/>
 
     <com.fro.scoutingapp2025.RowLongBox
-        android:id="@+id/rowLongBox"
+        android:id="@+id/template_row_3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="lefty"
@@ -58,7 +58,7 @@
         android:layout_weight="1"/>
 
     <com.fro.scoutingapp2025.RowLargeBox
-        android:id="@+id/rowLargeBox"
+        android:id="@+id/template_row_4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Very big box"
