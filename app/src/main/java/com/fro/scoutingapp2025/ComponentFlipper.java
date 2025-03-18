@@ -23,7 +23,6 @@ import android.widget.ViewFlipper;
 
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -244,7 +243,6 @@ public class ComponentFlipper extends LinearLayout {
                 Values.toggle_scale = (float) (toggleLayout.getHeight() * toggleLayout.getWidth() * 5) / (Values.screen_height * Values.screen_width * 5) * 25;
                 toggle.setScaleX(Values.toggle_scale);
                 toggle.setScaleY(Values.toggle_scale);
-                Toast.makeText(this.getContext(), "hhhh" + Values.toggle_scale, Toast.LENGTH_SHORT).show();
             }
         });
 
