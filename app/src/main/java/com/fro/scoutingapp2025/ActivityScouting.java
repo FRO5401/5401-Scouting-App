@@ -4,6 +4,7 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.MessageQueue;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
@@ -183,15 +185,12 @@ public class ActivityScouting extends AppCompatActivity {
         // Submit all data
         confirmYes.setOnClickListener(v -> {
             // Switches to activity main
+            hideFragment(currentFragment);
+            screen.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getApplicationContext().getTheme()));
+            screen.setForegroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.text_grey, getApplicationContext().getTheme())));
+            Values.exportData(getApplicationContext());
+            Values.clearData();
             startActivity(new Intent(getApplicationContext(), ActivityMain.class));
-            // Waits until page is switched to Activity Main so no data can change while exporting
-            MessageQueue.IdleHandler handler = () -> {
-                // Exports and clears data
-                Values.exportData(getApplicationContext());
-                Values.clearData();
-                return false;
-            };
-            Looper.myQueue().addIdleHandler(handler);
         });
 
         // Close confirmation screen
