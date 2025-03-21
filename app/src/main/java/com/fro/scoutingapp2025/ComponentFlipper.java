@@ -240,7 +240,7 @@ public class ComponentFlipper extends LinearLayout {
         toggle.setScaleY(Values.toggle_scale);
         toggleLayout.post(() -> {
             if (toggle.getScaleX() == 0) {
-                Values.toggle_scale = (float) (toggleLayout.getHeight() * toggleLayout.getWidth() * 5) / (Values.screen_height * Values.screen_width * 5) * 25;
+                Values.toggle_scale = (float) (toggleLayout.getHeight() * toggleLayout.getHeight() * toggleLayout.getHeight()) / (Values.screen_height * Values.screen_width * 5) * 2;
                 toggle.setScaleX(Values.toggle_scale);
                 toggle.setScaleY(Values.toggle_scale);
             }
