@@ -3,13 +3,16 @@ package com.fro.scoutingapp2025;
 import static android.view.View.VISIBLE;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
@@ -70,7 +73,12 @@ public class ActivityMain extends AppCompatActivity {
         });
 
         // button to go to next page
-        startButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), ActivityScouting.class)));
+        startButton.setOnClickListener(v ->{
+            startButton.setText("Loading...");
+            screen.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getApplicationContext().getTheme()));
+            screen.setForegroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.text_grey, getApplicationContext().getTheme())));
+            startActivity(new Intent(getApplicationContext(), ActivityScouting.class));
+        });
 
         // help button
         helpPopup.setVisibility(VISIBLE);
