@@ -76,8 +76,8 @@ public class FragmentTeleop extends Fragment {
     }
 
     @Override
-    public void onStop() {
+    public void onHiddenChanged(boolean hidden) {
         row4_default.pauseStopwatch(Values.right);
-        super.onStop();
+        super.onHiddenChanged(hidden);
     }
 }

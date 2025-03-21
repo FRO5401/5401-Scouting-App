@@ -53,8 +53,6 @@ public class Values {
     public static float toggle_scale;
 
     // Data
-    public static boolean dataCreated = false;
-
     public static LinkedHashMap<String, Object> data = new LinkedHashMap<>();
 
     public static String getData(HashMap<String, Object> data){
@@ -86,7 +84,6 @@ public class Values {
     public static void clearData(){
         // clears all data so a new match can be started
         data.clear();
-        dataCreated = false;
     }
 
     public static String checkData(){

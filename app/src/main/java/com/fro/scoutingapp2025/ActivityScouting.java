@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -44,6 +45,8 @@ public class ActivityScouting extends AppCompatActivity {
     // Help popup
     HelpPopup helpPopup;
     ImageButton helpButton;
+    // Current fragment
+    Fragment currentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,22 +85,49 @@ public class ActivityScouting extends AppCompatActivity {
         FragmentEndgame fragmentEndgame = new FragmentEndgame();
         FragmentNotes fragmentNotes = new FragmentNotes();
 
-        // If data is not created, then inflate fragments to create the data
-        if (!Values.dataCreated){
-            replaceFragment(fragmentTeleop);
-            replaceFragment(fragmentEndgame);
-            replaceFragment(fragmentNotes);
-            Values.dataCreated = true;
-        }
+        // Create the fragments so the data is made
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.replaceFrame, fragmentNotes)
+                .add(R.id.replaceFrame, fragmentEndgame)
+                .add(R.id.replaceFrame, fragmentTeleop)
+                .add(R.id.replaceFrame, fragmentAuto)
+                .commit();
 
-        // Inflate first fragment
-        replaceFragment(fragmentAuto);
+        // After the screen loads, hide the fragments (this is so the pages actually exist first)
+        screen.post(() -> {
+            hideFragment(fragmentTeleop);
+            hideFragment(fragmentEndgame);
+            hideFragment(fragmentNotes);
+        });
+        // Show first fragment
+        showFragment(fragmentAuto);
 
         // Page changes
-        autoButton.setOnClickListener(v -> replaceFragment(fragmentAuto));
-        teleopButton.setOnClickListener(v -> replaceFragment(fragmentTeleop));
-        endgameButton.setOnClickListener(v -> replaceFragment(fragmentEndgame));
-        notesButton.setOnClickListener(v -> replaceFragment(fragmentNotes));
+        autoButton.setOnClickListener(v -> {
+            if(currentFragment != fragmentAuto) {
+                hideFragment(currentFragment);
+                showFragment(fragmentAuto);
+            }
+        });
+        teleopButton.setOnClickListener(v -> {
+            if (currentFragment != fragmentTeleop) {
+                hideFragment(currentFragment);
+                showFragment(fragmentTeleop);
+            }
+        });
+        endgameButton.setOnClickListener(v -> {
+            if (currentFragment != fragmentEndgame) {
+                hideFragment(currentFragment);
+                showFragment(fragmentEndgame);
+            }
+        });
+        notesButton.setOnClickListener(v -> {
+            if (currentFragment != fragmentNotes) {
+                hideFragment(currentFragment);
+                showFragment(fragmentNotes);
+            }
+        });
 
         // Sets the margins of the popups
         setPopupMargins();
@@ -171,11 +201,27 @@ public class ActivityScouting extends AppCompatActivity {
         });
     }
 
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.replaceFrame, fragment);
-        fragmentTransaction.commit();
+    private void createFragment(Fragment fragment){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.replaceFrame, fragment)
+                .commit();
+    }
+
+    private void showFragment(Fragment fragment){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .show(fragment)
+                .commit();
+        currentFragment = fragment;
+//        Toast.makeText(this, "Current: "+currentFragment, Toast.LENGTH_SHORT).show();
+    }
+
+    private void hideFragment(Fragment fragment){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .hide(fragment)
+                .commit();
     }
 
     void setPopupMargins(){
