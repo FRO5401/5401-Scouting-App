@@ -7,7 +7,10 @@ import android.os.SystemClock;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
+import android.text.method.KeyListener;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
@@ -121,7 +124,7 @@ public class ComponentFlipper extends LinearLayout {
         if (type == Values.inputType_number) {
             typeBox.setInputType(InputType.TYPE_CLASS_NUMBER);
         } else {
-            typeBox.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+            typeBox.setSingleLine(false);
         }
 
         // Sets the max amount of characters
