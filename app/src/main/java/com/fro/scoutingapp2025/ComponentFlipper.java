@@ -7,7 +7,10 @@ import android.os.SystemClock;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
+import android.text.method.KeyListener;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
@@ -121,7 +124,7 @@ public class ComponentFlipper extends LinearLayout {
         if (type == Values.inputType_number) {
             typeBox.setInputType(InputType.TYPE_CLASS_NUMBER);
         } else {
-            typeBox.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+            typeBox.setSingleLine(false);
         }
 
         // Sets the max amount of characters
@@ -240,7 +243,7 @@ public class ComponentFlipper extends LinearLayout {
         toggle.setScaleY(Values.toggle_scale);
         toggleLayout.post(() -> {
             if (toggle.getScaleX() == 0) {
-                Values.toggle_scale = (float) (toggleLayout.getHeight() * toggleLayout.getWidth() * 5) / (Values.screen_height * Values.screen_width * 5) * 25;
+                Values.toggle_scale = (float) (toggleLayout.getHeight() * toggleLayout.getHeight() * toggleLayout.getHeight()) / (Values.screen_height * Values.screen_width * 5) * 2;
                 toggle.setScaleX(Values.toggle_scale);
                 toggle.setScaleY(Values.toggle_scale);
             }
