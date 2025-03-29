@@ -42,13 +42,17 @@ public class ExceptionHandler implements UncaughtExceptionHandler {
         try {
             // Gets the file name
             Calendar calendar = Calendar.getInstance();
-            String filename = Values.year+"_ERROR_LOG_" + calendar.getTimeInMillis() + ".txt";
+            String filename = Values.year+"_TEST_ERROR_LOG_" + calendar.getTimeInMillis() + ".txt";
 
             // Write the file into the folder
             File reportFile = new File(dir, filename);
             FileWriter fileWriter = new FileWriter(reportFile);
             fileWriter.append("This error occurred on ")
                     .append(String.valueOf(calendar.getTime()))
+                    .append("\nScouter: ")
+                    .append(String.valueOf(Values.data.get("Main_Scouters_Name")))
+                    .append(", Match: ")
+                    .append(String.valueOf(Values.data.get("Main_Match_Number")))
                     .append("\n\n")
                     .append(currentStacktrace)
                     .flush();
