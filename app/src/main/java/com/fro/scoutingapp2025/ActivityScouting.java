@@ -6,13 +6,10 @@ import static android.view.View.VISIBLE;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.os.Looper;
-import android.os.MessageQueue;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -21,8 +18,6 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 public class ActivityScouting extends AppCompatActivity {
     // Declare global variables here \/
@@ -171,7 +166,12 @@ public class ActivityScouting extends AppCompatActivity {
             menuButton.setImageResource(R.drawable.menu_bars);
             menuPopup.setVisibility(GONE);
             screen.setClickable(false);
+            // Hides current fragment to stop any background processes
+            hideFragment(currentFragment);
+            // Starts next activity
             startActivity(new Intent(getApplicationContext(), ActivityMain.class));
+            // Ends current activity
+            finish();
         });
 
         // Open confirmation screen
@@ -184,13 +184,18 @@ public class ActivityScouting extends AppCompatActivity {
 
         // Submit all data
         confirmYes.setOnClickListener(v -> {
-            // Switches to activity main
+            // Hides current fragment to stop any background processes
             hideFragment(currentFragment);
+            // Sets loading screen
             screen.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getApplicationContext().getTheme()));
             screen.setForegroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.text_grey, getApplicationContext().getTheme())));
+            // Clears/exports data
             Values.exportData(getApplicationContext());
             Values.clearData();
+            // Starts next activity
             startActivity(new Intent(getApplicationContext(), ActivityMain.class));
+            // Ends current activity
+            finish();
         });
 
         // Close confirmation screen

@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -74,10 +73,14 @@ public class ActivityMain extends AppCompatActivity {
 
         // button to go to next page
         startButton.setOnClickListener(v ->{
+            // Set loading screen
             startButton.setText("Loading...");
             screen.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getApplicationContext().getTheme()));
             screen.setForegroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.text_grey, getApplicationContext().getTheme())));
+            // Starts next activity
             startActivity(new Intent(getApplicationContext(), ActivityScouting.class));
+            // Ends current activity
+            finish();
         });
 
         // help button
