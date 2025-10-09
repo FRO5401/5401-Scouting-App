@@ -44,7 +44,27 @@ public class RowThinLargeBox extends LinearLayout {
 
         initComponents();
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 //        flipper.setPadding(2, 10);
+=======
+=======
+>>>>>>> Stashed changes
+//        // Sets the padding of the flipper
+//        flipper.setPadding(10, 10, Values.thin_large_box_flipper_height, Values.thin_large_box_flipper_width);
+//        // The first time this row, gets the size of it and sets the flipper padding
+//        flipper.post(() -> {
+//            // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
+//            if (flipper.getPadding() == 0) {
+//                Values.thin_large_box_flipper_width = flipper.getWidth();
+//                Values.thin_large_box_flipper_height = flipper.getHeight();
+//                flipper.setPadding(10, 10, Values.thin_large_box_flipper_height, Values.thin_large_box_flipper_width);
+//            }
+//        });
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
         setText(text);
         setBox(box);

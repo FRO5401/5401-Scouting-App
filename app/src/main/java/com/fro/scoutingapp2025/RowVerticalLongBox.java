@@ -74,6 +74,8 @@ public class RowVerticalLongBox extends LinearLayout{
 //        flipper4.setPadding(5, 5);
 //        flipper5.setPadding(5, 5);
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         setText1(text1);
         setText2(text2);
         setText3(text3);
@@ -84,6 +86,41 @@ public class RowVerticalLongBox extends LinearLayout{
         setBox3(box3);
         setBox4(box4);
         setBox5(box5);
+=======
+=======
+>>>>>>> Stashed changes
+//        // Sets the padding of the flipper
+//        flipper1.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+//        flipper2.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+//        flipper3.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+//        flipper4.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+//        flipper5.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+//        // The first time this row, gets the size of it and sets the flipper padding
+//        flipper5.post(() -> {
+//            // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
+//            if (flipper5.getPadding() == 0) {
+//                Values.vertical_long_box_flipper_width = flipper5.getWidth();
+//                Values.vertical_long_box_flipper_height = flipper5.getHeight();
+//                flipper1.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+//                flipper2.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+//                flipper3.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+//                flipper4.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+//                flipper5.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+//            }
+//        });
+
+        // Set text and box type
+        setText(textView1, text1);
+        setText(textView2, text2);
+        setText(textView3, text3);
+        setText(textView4, text4);
+        setText(textView5, text5);
+        setBox(flipper1, box1);
+        setBox(flipper2, box2);
+        setBox(flipper3, box3);
+        setBox(flipper4, box4);
+        setBox(flipper5, box5);
+>>>>>>> Stashed changes
     }
 
     private void initComponents() {

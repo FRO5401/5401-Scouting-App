@@ -59,9 +59,33 @@ public class RowThreeBoxes extends LinearLayout {
 
         initComponents();
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 //        leftFlipper.setPadding(10, 10);
 //        middleFlipper.setPadding(10, 10);
 //        rightFlipper.setPadding(10, 10);
+=======
+=======
+>>>>>>> Stashed changes
+//        // Sets the padding of the flipper
+//        leftFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
+//        middleFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
+//        rightFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
+//        // The first time this row, gets the size of it and sets the flipper padding
+//        rightFlipper.post(() -> {
+//            // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
+//            if (rightFlipper.getPadding() == 0) {
+//                Values.three_boxes_flipper_width = rightFlipper.getWidth();
+//                Values.three_boxes_flipper_height = rightFlipper.getHeight();
+//                leftFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
+//                middleFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
+//                rightFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
+//            }
+//        });
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
         setLeftText(leftText);
         setMiddleText(middleText);

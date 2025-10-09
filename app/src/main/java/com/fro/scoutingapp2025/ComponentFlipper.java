@@ -94,6 +94,8 @@ public class ComponentFlipper extends LinearLayout {
         if (value.equals("6")) {flipper.setVisibility(INVISIBLE);}
     }
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 //    public void setPadding(int horizontalChange, int verticalChange) {
 //        //Sets the padding to change per screen size
 //        Context con = this.getContext();
@@ -113,6 +115,24 @@ public class ComponentFlipper extends LinearLayout {
 //                }
 //            }
 //        });
+=======
+=======
+>>>>>>> Stashed changes
+//    public void setPadding(int verticalChange, int horizontalChange, int height, int width) {
+//        if (horizontalChange != 0 && verticalChange != 0) {
+//            flipper.setPadding(
+//                    (width / horizontalChange), // left
+//                    (height / verticalChange), // top
+//                    (width / horizontalChange),  // right
+//                    (height / verticalChange)   // bottom
+//            );
+//        } else {
+//            Toast.makeText(getContext(), "Error divide by 0: " + horizontalChange + " or " + verticalChange, Toast.LENGTH_SHORT).show();
+//        }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 //    }
 
 

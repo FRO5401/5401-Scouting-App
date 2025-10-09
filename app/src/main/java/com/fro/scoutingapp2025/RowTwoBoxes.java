@@ -51,8 +51,30 @@ public class RowTwoBoxes extends LinearLayout {
 
         initComponents();
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 //        leftFlipper.setPadding(5, 10);
 //        rightFlipper.setPadding(5, 10);
+=======
+=======
+>>>>>>> Stashed changes
+//        // Sets the padding of the flipper
+//        leftFlipper.setPadding(10, 10, Values.two_boxes_flipper_height, Values.two_boxes_flipper_width);
+//        rightFlipper.setPadding(10, 15, Values.two_boxes_flipper_height, Values.two_boxes_flipper_width);
+//        // The first time this row, gets the size of it and sets the flipper padding
+//        rightFlipper.post(() -> {
+//            // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
+//            if (rightFlipper.getPadding() == 0) {
+//                Values.two_boxes_flipper_width = rightFlipper.getWidth();
+//                Values.two_boxes_flipper_height = rightFlipper.getHeight();
+//                leftFlipper.setPadding(10, 10, Values.two_boxes_flipper_height, Values.two_boxes_flipper_width);
+//                rightFlipper.setPadding(10, 10, Values.two_boxes_flipper_height, Values.two_boxes_flipper_width);
+//            }
+//        });
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
         setLeftText(leftText);
         setRightText(rightText);
