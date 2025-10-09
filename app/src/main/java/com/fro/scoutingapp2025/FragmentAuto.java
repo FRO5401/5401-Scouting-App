@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 public class FragmentAuto extends Fragment {
     public FragmentAuto() {/* Required empty public constructor*/}
 
-    // Declare global variables here \/
+    // Declare variables
     RowTwoBoxes row1;
     RowLongBox row2;
     RowLongBox row3;
@@ -20,14 +20,12 @@ public class FragmentAuto extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_auto, container, false);
-        // Instantiate variables here \/
+        // Init variables
         row1 = rootView.findViewById(R.id.auto_row_1);
         row2 = rootView.findViewById(R.id.auto_row_2);
         row3 = rootView.findViewById(R.id.auto_row_3);
         row4 = rootView.findViewById(R.id.auto_row_4);
 
-
-        /*  Setting Text Values  */
         // Row 1
         row1.createToggle("Auto_Leaves_Robot_Starting_Zone", Values.left);
         row1.createCounter("Auto_Reef_L1", 100, Values.right);

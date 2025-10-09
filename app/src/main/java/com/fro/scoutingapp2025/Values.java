@@ -10,8 +10,11 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Values {
     // Current year
@@ -29,16 +32,53 @@ public class Values {
     public static int inputType_text = 8;
     public static int inputType_number = 9;
 
-    // Data
-    public static HashMap<String, Object> data = new HashMap<>();
+    // Sizes on page creation
+    public static int screen_width = 0;
+    public static int screen_height = 0;
+    public static int bottom_bar_height = 0;
+    public static int large_box_flipper_width = 0;
+    public static int large_box_flipper_height = 0;
+    public static int thin_large_box_flipper_width = 0;
+    public static int thin_large_box_flipper_height = 0;
+    public static int long_box_flipper_width = 0;
+    public static int long_box_flipper_height = 0;
+    public static int vertical_long_box_flipper_width = 0;
+    public static int vertical_long_box_flipper_height = 0;
+    public static int two_boxes_flipper_width = 0;
+    public static int two_boxes_flipper_height = 0;
+    public static int three_boxes_flipper_width = 0;
+    public static int three_boxes_flipper_height = 0;
 
-    public static String getData(){
+    // Toggle scaling
+    public static float toggle_scale;
+
+    // Data
+    public static LinkedHashMap<String, Object> data = new LinkedHashMap<>();
+
+    public static String getData(HashMap<String, Object> data){
         String map ="[";
         for(String key: data.keySet()){
             map = (map + data.get(key) + ", ");
         }
         map += "]";
         return map;
+    }
+
+    public static void sortData() {
+        // Creates a list of just the keys (names), and sorts them
+        ArrayList<String> sortedKeys = new ArrayList<>(data.keySet());
+        Collections.sort(sortedKeys);
+
+        // Goes through sorted keys and transfers data into new hashmap
+        LinkedHashMap<String, Object> sortedData = new LinkedHashMap<>();
+        for (String key : sortedKeys){
+            sortedData.put(key, data.get(key));
+        }
+
+        // Clears the list so the new list can be in the right order
+        data.clear();
+        // Replaces list with sorted list
+        data.putAll(sortedData);
     }
 
     public static void clearData(){

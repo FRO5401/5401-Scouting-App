@@ -7,7 +7,10 @@ import android.os.SystemClock;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
+import android.text.method.KeyListener;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
@@ -60,7 +63,7 @@ public class ComponentFlipper extends LinearLayout {
             // Difference of what system time time we started the stopwatch and the current system time
             stopwatchElapsedTimeMillis = (int) SystemClock.uptimeMillis() - stopwatchStartTimeMillis;
             // Gets the previous time and adds it to the elapsed time (/1000 to turn into seconds)
-            stopwatchSeconds = (int) ((stopwatchSavedTimeMillis + stopwatchElapsedTimeMillis)/1000);
+            stopwatchSeconds = ((stopwatchSavedTimeMillis + stopwatchElapsedTimeMillis)/1000);
             // Saves seconds in data
             Values.data.put(stopwatchName, stopwatchSeconds);
             // Gets minutes and seconds to print
@@ -81,43 +84,20 @@ public class ComponentFlipper extends LinearLayout {
 
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.component_flipper, this);
-        flipper = (ViewFlipper) findViewById(R.id.flipper);
+        flipper = findViewById(R.id.flipper);
+
     }
 
     public void changeTo(CharSequence value) {
-        if (value.equals("0")) {while (flipper.getCurrentView() != findViewById(R.id.typeBox)) {flipper.showNext();}}
-        if (value.equals("1")) {while (flipper.getCurrentView() != findViewById(R.id.textDropdown)) {flipper.showNext();}}
-        if (value.equals("2")) {while (flipper.getCurrentView() != findViewById(R.id.numberDropdown)) {flipper.showNext();}}
-        if (value.equals("3")) {while (flipper.getCurrentView() != findViewById(R.id.toggleLayout)) {flipper.showNext();}}
-        if (value.equals("4")) {while (flipper.getCurrentView() != findViewById(R.id.counter)) {flipper.showNext();}}
-        if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch)) {flipper.showNext();}}
+        if (value.equals("0")) {while (flipper.getCurrentView() != findViewById(R.id.type_box_layout)) {flipper.showNext();}}
+        if (value.equals("1")) {while (flipper.getCurrentView() != findViewById(R.id.text_dropdown_layout)) {flipper.showNext();}}
+        if (value.equals("2")) {while (flipper.getCurrentView() != findViewById(R.id.number_dropdown_layout)) {flipper.showNext();}}
+        if (value.equals("3")) {while (flipper.getCurrentView() != findViewById(R.id.toggle_layout)) {flipper.showNext();}}
+        if (value.equals("4")) {while (flipper.getCurrentView() != findViewById(R.id.counter_layout)) {flipper.showNext();}}
+        if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch_layout)) {flipper.showNext();}}
         if (value.equals("6")) {flipper.setVisibility(INVISIBLE);}
     }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-//    public void setPadding(int horizontalChange, int verticalChange) {
-//        //Sets the padding to change per screen size
-//        Context con = this.getContext();
-//        flipper.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (horizontalChange != 0 && verticalChange != 0) {
-//                    int height = flipper.getHeight();
-//                    flipper.setPadding(
-//                            (height / horizontalChange), // left
-//                            (height / verticalChange), // top
-//                            (height / horizontalChange),  // right
-//                            (height / verticalChange)   // bottom
-//                    );
-//                } else {
-//                    Toast.makeText(con, "Error divide by 0: " + String.valueOf(horizontalChange) + " or " + String.valueOf(verticalChange), Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-=======
-=======
->>>>>>> Stashed changes
 //    public void setPadding(int verticalChange, int horizontalChange, int height, int width) {
 //        if (horizontalChange != 0 && verticalChange != 0) {
 //            flipper.setPadding(
@@ -129,18 +109,13 @@ public class ComponentFlipper extends LinearLayout {
 //        } else {
 //            Toast.makeText(getContext(), "Error divide by 0: " + horizontalChange + " or " + verticalChange, Toast.LENGTH_SHORT).show();
 //        }
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 //    }
 
+    public int getPadding(){return  flipper.getPaddingTop();}
 
     public void createTypeBox(String name, int type, int maxCharacters) {
         //Creates the data in the hashmap
-        if (!Values.data.containsKey(name)) {
-            Values.data.put(name, "");
-        }
+        if (!Values.data.containsKey(name)) {Values.data.put(name, "");}
 
         //Creates the type box
         typeBox = findViewById(R.id.type_box);
@@ -149,7 +124,7 @@ public class ComponentFlipper extends LinearLayout {
         if (type == Values.inputType_number) {
             typeBox.setInputType(InputType.TYPE_CLASS_NUMBER);
         } else {
-            typeBox.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+            typeBox.setSingleLine(false);
         }
 
         // Sets the max amount of characters
@@ -158,7 +133,7 @@ public class ComponentFlipper extends LinearLayout {
         typeBox.setFilters(filters);
 
         // Set inputted text
-        if (Values.data.containsKey(name) && (CharSequence) Values.data.get(name) != null) {
+        if (Values.data.containsKey(name) && Values.data.get(name) != null) {
             typeBox.setText((CharSequence) Values.data.get(name));
         }
 
@@ -185,18 +160,13 @@ public class ComponentFlipper extends LinearLayout {
         array.add(0, "Dropdown");
 
         // Creates the dropdown
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, array);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_spinner_item, array);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown);
         textDropdown = findViewById(R.id.text_dropdown);
         textDropdown.setAdapter(adapter);
 
         // Sets the dropdown to be below the spinner border
-        textDropdown.post(new Runnable() {
-            @Override
-            public void run() {
-                textDropdown.setDropDownVerticalOffset(5);
-            }
-        });
+        textDropdown.setDropDownVerticalOffset(5);
 
         // Set text dropdown selection
         if (Values.data.containsKey(name) && Values.data.get(name) != null) {
@@ -207,19 +177,14 @@ public class ComponentFlipper extends LinearLayout {
                 }
             }
             textDropdown.setSelection(index);
-
-//            textDropdown.setSelection((Integer) Values.data.get(name));
         }
 
         // Updates data when new item is selected in dropdown
         textDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-//                Values.data.put(name, pos);
                 Values.data.put(name, textDropdown.getSelectedItem());
             }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
     }
 
@@ -230,18 +195,13 @@ public class ComponentFlipper extends LinearLayout {
         }
 
         // Creates the dropdown
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this.getContext(), R.layout.spinner_dropdown, TeamNumbers.hatboro_horsham);
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this.getContext(), R.layout.spinner_dropdown, TeamNumbers.lehigh);
         numberDropdown = findViewById(R.id.number_dropdown);
         numberDropdown.setThreshold(1);
         numberDropdown.setAdapter(adapter);
 
         // Sets the dropdown to be below the spinner border
-        numberDropdown.post(new Runnable() {
-            @Override
-            public void run() {
-                numberDropdown.setDropDownVerticalOffset(5);
-            }
-        });
+        numberDropdown.post(() -> numberDropdown.setDropDownVerticalOffset(5));
 
         // Set text to data value
         if (Values.data.containsKey(name)) {
@@ -257,7 +217,7 @@ public class ComponentFlipper extends LinearLayout {
             @Override
             public void afterTextChanged(Editable editable) {
                 String text = numberDropdown.getText().toString();
-                if (!text.equals("")) {
+                if (!text.isEmpty()) {
                     Values.data.put(name, Integer.parseInt(numberDropdown.getText().toString()));
                 }
             }
@@ -272,25 +232,25 @@ public class ComponentFlipper extends LinearLayout {
 
         // Creates the toggle
         toggle = findViewById(R.id.toggle);
-        LinearLayout toggleLayout = findViewById(R.id.toggleLayout);
+        LinearLayout toggleLayout = findViewById(R.id.toggle_layout);
 
         // Sets the track and thumb drawables
         toggle.setTrackResource(R.drawable.toggle_track);
         toggle.setThumbResource(R.drawable.toggle_thumb);
 
         // Scales the toggle based on the height
-        // TODO Fix this scaling later
-        toggleLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                float scale = (float) toggleLayout.getHeight() / 200;
-                toggle.setScaleX(scale);
-                toggle.setScaleY(scale);
+        toggle.setScaleX(Values.toggle_scale);
+        toggle.setScaleY(Values.toggle_scale);
+        toggleLayout.post(() -> {
+            if (toggle.getScaleX() == 0) {
+                Values.toggle_scale = (float) (toggleLayout.getHeight() * toggleLayout.getHeight() * toggleLayout.getHeight()) / ((Values.screen_height * Values.screen_width * 5) + 1) * 2;
+                toggle.setScaleX(Values.toggle_scale);
+                toggle.setScaleY(Values.toggle_scale);
             }
         });
 
         // Set if checked or not
-        if (Values.data.containsKey(name) && (Boolean) Values.data.get(name) != null) {
+        if (Values.data.containsKey(name) && Values.data.get(name) != null) {
             toggle.setChecked((Boolean) Values.data.get(name));
         }
 
@@ -399,7 +359,26 @@ public class ComponentFlipper extends LinearLayout {
             stopwatchSeconds = 0;
             stopwatchMinutes = 0;
             Values.data.put(name, 0);
-            stopwatchTimer.setText("0:00");
+            String text = (((int)Values.data.get(name) / 60) + ":" + String.format(Locale.getDefault(), "%02d", ((int)Values.data.get(name) % 60)));
+            stopwatchTimer.setText(text);
         });
+    }
+
+    public void pauseStopwatch(){
+        // When the stopwatch is not 0:00, pause it (same code as stopwatchStop.setOnClickListener)
+        if (!stopwatchTimer.getText().toString().equals("0:00")){
+            // Saves the current time
+            stopwatchSavedTimeMillis += stopwatchElapsedTimeMillis;
+            // Pauses the stopwatch
+            stopwatchHandler.removeCallbacks(stopwatchRunnable);
+            // Disables specific buttons
+            stopwatchRestart.setClickable(true);
+            stopwatchRestart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
+            stopwatchStop.setClickable(false);
+            stopwatchStop.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline_tinted, getContext().getTheme()));
+            stopwatchStart.setClickable(true);
+            stopwatchStart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
+
+        }
     }
 }

@@ -42,7 +42,7 @@ import java.util.ArrayList;
  * </ul>
  */
 public class RowLongBox extends LinearLayout {
-
+    // Declare variables
     TextView leftTextView;
     TextView middleTextView;
     TextView rightTextView;
@@ -64,6 +64,7 @@ public class RowLongBox extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.row_long_box, this);
 
+        // Get values from xml input
         CharSequence leftText = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "left_text");
         CharSequence middleText = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "middle_text");
         CharSequence rightText = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "right_text");
@@ -72,16 +73,18 @@ public class RowLongBox extends LinearLayout {
         CharSequence rightBox = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "right_box_type");
         CharSequence colorPattern = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "color_pattern");
 
-        initComponents();
+        // Init variables
+        leftTextView = findViewById(R.id.long_box_left_text);
+        middleTextView = findViewById(R.id.long_box_middle_text);
+        rightTextView = findViewById(R.id.long_box_right_text);
+        leftFlipper = findViewById(R.id.long_box_left_flipper);
+        middleFlipper = findViewById(R.id.long_box_middle_flipper);
+        rightFlipper = findViewById(R.id.long_box_right_flipper);
+        middleView1 = findViewById(R.id.long_box_middle_view_1);
+        middleView2 = findViewById(R.id.long_box_middle_view_2);
+        middleLayout = findViewById(R.id.long_box_middle_layout);
+        backgroundLayout = findViewById(R.id.long_box_background_layout);
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-//        leftFlipper.setPadding(10, 10);
-//        middleFlipper.setPadding(10,10);
-//        rightFlipper.setPadding(10,10);
-=======
-=======
->>>>>>> Stashed changes
 //        // Sets the padding of the flipper
 //        leftFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
 //        middleFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
@@ -97,51 +100,27 @@ public class RowLongBox extends LinearLayout {
 //                rightFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
 //            }
 //        });
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
-        setLeftText(leftText);
-        setMiddleText(middleText);
-        setRightText(rightText);
-        setLeftBox(leftBox);
-        setMiddleBox(middleBox);
-        setRightBox(rightBox);
+        // Set text, box type, and color pattern
+        setText(leftTextView, leftText);
+        setText(middleTextView, middleText);
+        setText(rightTextView, rightText);
+        setBox(leftFlipper, leftBox);
+        setBox(middleFlipper, middleBox);
+        setBox(rightFlipper, rightBox);
         setColorPattern(colorPattern);
     }
 
-    private void initComponents() {
-        leftTextView = findViewById(R.id.leftText);
-        middleTextView = findViewById(R.id.middleText);
-        rightTextView = findViewById(R.id.rightText);
-        leftFlipper = findViewById(R.id.leftFlipper);
-        middleFlipper = findViewById(R.id.middleFlipper);
-        rightFlipper = findViewById(R.id.rightFlipper);
-        middleView1 = findViewById(R.id.middleView1);
-        middleView2 = findViewById(R.id.middleView2);
-        middleLayout = findViewById(R.id.middleLayout);
-        backgroundLayout = findViewById(R.id.backgroundLayout);
+    public void setText(TextView textview, CharSequence value) { textview.setText(value); }
+
+    public void setBox(ComponentFlipper flipper, CharSequence value) {
+        if (value == null) {
+            Toast.makeText(this.getContext(), "Error: Vertical long box value is null", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        flipper.changeTo(value);
     }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    public void setLeftText(CharSequence value) {
-        leftTextView.setText(value);
-    }
-
-    public void setMiddleText(CharSequence value) {
-        middleTextView.setText(value);
-    }
-
-    public void setRightText(CharSequence value) {
-        rightTextView.setText(value);
-    }
-
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     public void setLeftBox(CharSequence value) {
         if (value == null) {return;}
         leftFlipper.changeTo(value);
@@ -216,6 +195,14 @@ public class RowLongBox extends LinearLayout {
         else if (position == Values.middle) {middleFlipper.createStopwatch(name);}
         else if (position == Values.right) {rightFlipper.createStopwatch(name);}
         else{
-            Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void pauseStopwatch(int position) {
+        if (position == Values.left) {leftFlipper.pauseStopwatch();}
+        else if (position == Values.middle) {middleFlipper.pauseStopwatch();}
+        else if (position == Values.right) {rightFlipper.pauseStopwatch();}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch pause ", Toast.LENGTH_SHORT).show();}
     }
 }

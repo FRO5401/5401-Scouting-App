@@ -20,7 +20,7 @@ import android.widget.TextView;
  * </ul>
  */
 public class RowTopText extends LinearLayout {
-
+    // Declare variables
     TextView textView;
     ImageView underline;
 
@@ -32,21 +32,21 @@ public class RowTopText extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.row_top_text, this);
 
+        // Get the text and color mode from xml input
         CharSequence text = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text");
         CharSequence colorMode = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "color_mode");
 
-        initComponents();
+        // Init variables
+        textView = findViewById(R.id.top_text);
+        underline = findViewById(R.id.top_text_underline);
 
-        setText(text);
+        // Set text and color mode
+        setText(textView, text);
         setColorMode(colorMode);
     }
 
-    private void initComponents() {
-        textView = findViewById(R.id.topText);
-        underline = findViewById(R.id.topUnderline);
-    }
+    public void setText(TextView textview, CharSequence value) { textview.setText(value); }
 
-    public void setText(CharSequence value) {textView.setText(value);}
     public void setColorMode(CharSequence value) {
         if (value == null) {return;}
         if (value.equals("0")){

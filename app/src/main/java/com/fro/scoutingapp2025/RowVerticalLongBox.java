@@ -36,6 +36,7 @@ import java.util.ArrayList;
  * </ul>
  */
 public class RowVerticalLongBox extends LinearLayout{
+    // Declare variables
     TextView textView1;
     TextView textView2;
     TextView textView3;
@@ -54,41 +55,30 @@ public class RowVerticalLongBox extends LinearLayout{
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.row_vertical_long_box, this);
 
+        // Get values from xml input
         CharSequence text1 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_1");
         CharSequence text2 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_2");
         CharSequence text3 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_3");
         CharSequence text4 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_4");
         CharSequence text5 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text_5");
-
         CharSequence box1 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_1");
         CharSequence box2 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_2");
         CharSequence box3 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_3");
         CharSequence box4 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_4");
         CharSequence box5 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_5");
 
-        initComponents();
-//
-//        flipper1.setPadding(5, 5);
-//        flipper2.setPadding(5, 5);
-//        flipper3.setPadding(5, 5);
-//        flipper4.setPadding(5, 5);
-//        flipper5.setPadding(5, 5);
+        // Init variables
+        textView1 = findViewById(R.id.vertical_long_box_text_1);
+        textView2 = findViewById(R.id.vertical_long_box_text_2);
+        textView3 = findViewById(R.id.vertical_long_box_text_3);
+        textView4 = findViewById(R.id.vertical_long_box_text_4);
+        textView5 = findViewById(R.id.vertical_long_box_text_5);
+        flipper1 = findViewById(R.id.vertical_long_box_flipper_1);
+        flipper2 = findViewById(R.id.vertical_long_box_flipper_2);
+        flipper3 = findViewById(R.id.vertical_long_box_flipper_3);
+        flipper4 = findViewById(R.id.vertical_long_box_flipper_4);
+        flipper5 = findViewById(R.id.vertical_long_box_flipper_5);
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        setText1(text1);
-        setText2(text2);
-        setText3(text3);
-        setText4(text4);
-        setText5(text5);
-        setBox1(box1);
-        setBox2(box2);
-        setBox3(box3);
-        setBox4(box4);
-        setBox5(box5);
-=======
-=======
->>>>>>> Stashed changes
 //        // Sets the padding of the flipper
 //        flipper1.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
 //        flipper2.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
@@ -120,57 +110,16 @@ public class RowVerticalLongBox extends LinearLayout{
         setBox(flipper3, box3);
         setBox(flipper4, box4);
         setBox(flipper5, box5);
->>>>>>> Stashed changes
     }
 
-    private void initComponents() {
-        textView1 = findViewById(R.id.text1);
-        textView2 = findViewById(R.id.text2);
-        textView3 = findViewById(R.id.text3);
-        textView4 = findViewById(R.id.text4);
-        textView5 = findViewById(R.id.text5);
-        flipper1 = findViewById(R.id.box1);
-        flipper2 = findViewById(R.id.box2);
-        flipper3 = findViewById(R.id.box3);
-        flipper4 = findViewById(R.id.box4);
-        flipper5 = findViewById(R.id.box5);
-    }
+    public void setText(TextView textview, CharSequence value) { textview.setText(value); }
 
-    public void setText1(CharSequence value) {
-        textView1.setText(value);
-    }
-    public void setText2(CharSequence value) {
-        textView2.setText(value);
-    }
-    public void setText3(CharSequence value) {
-        textView3.setText(value);
-    }
-    public void setText4(CharSequence value) {
-        textView4.setText(value);
-    }
-    public void setText5(CharSequence value) {
-        textView5.setText(value);
-    }
-
-    public void setBox1(CharSequence value) {
-        if (value == null) {return;}
-        flipper1.changeTo(value);
-    }
-    public void setBox2(CharSequence value) {
-        if (value == null) {return;}
-        flipper2.changeTo(value);
-    }
-    public void setBox3(CharSequence value) {
-        if (value == null) {return;}
-        flipper3.changeTo(value);
-    }
-    public void setBox4(CharSequence value) {
-        if (value == null) {return;}
-        flipper4.changeTo(value);
-    }
-    public void setBox5(CharSequence value) {
-        if (value == null) {return;}
-        flipper5.changeTo(value);
+    public void setBox(ComponentFlipper flipper, CharSequence value) {
+        if (value == null) {
+            Toast.makeText(this.getContext(), "Error: Vertical long box value is null", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        flipper.changeTo(value);
     }
 
     public void createTypeBox(String name, int inputType, int maxCharacters, int position) {
@@ -231,5 +180,14 @@ public class RowVerticalLongBox extends LinearLayout{
         else if (position == Values.vertical_level_5) {flipper5.createStopwatch(name);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch "+name, Toast.LENGTH_SHORT).show();}
+    }
+    public void pauseStopwatch(int position) {
+        if (position == Values.vertical_level_1) {flipper1.pauseStopwatch();}
+        else if (position == Values.vertical_level_2) {flipper2.pauseStopwatch();}
+        else if (position == Values.vertical_level_3) {flipper3.pauseStopwatch();}
+        else if (position == Values.vertical_level_4) {flipper4.pauseStopwatch();}
+        else if (position == Values.vertical_level_5) {flipper5.pauseStopwatch();}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch pause", Toast.LENGTH_SHORT).show();}
     }
 }

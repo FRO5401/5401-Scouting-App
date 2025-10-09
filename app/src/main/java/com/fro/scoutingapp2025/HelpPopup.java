@@ -115,8 +115,8 @@ public class HelpPopup extends LinearLayout {
 
     /**
      * Top and bottom need to total to 9
-     * @param top
-     * @param bottom
+     * @param top The top ratio value
+     * @param bottom The bottom ratio value
      */
     public void setRatio(float top, float bottom){
         helpText1.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0, top));

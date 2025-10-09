@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ import java.util.ArrayList;
  * </ul>
  */
 public class RowLargeBox extends LinearLayout {
-
+    // Declare variables
     TextView textView;
     ComponentFlipper flipper;
 
@@ -39,17 +40,14 @@ public class RowLargeBox extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.row_large_box, this);
 
+        // Get values from xml input
         CharSequence text = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "text");
         CharSequence box =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type");
 
-        initComponents();
+        // Init variables
+        textView = findViewById(R.id.large_box_text);
+        flipper = findViewById(R.id.large_box_flipper);
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-//        flipper.setPadding(2, 10);
-=======
-=======
->>>>>>> Stashed changes
 //        // Sets the padding of the flipper
 //        flipper.setPadding(10, 10, Values.large_box_flipper_height, Values.large_box_flipper_width);
 //        // The first time this row, gets the size of it and sets the flipper padding
@@ -61,24 +59,19 @@ public class RowLargeBox extends LinearLayout {
 //                flipper.setPadding(10, 10, Values.large_box_flipper_height, Values.large_box_flipper_width);
 //            }
 //        });
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
-        setText(text);
-        setBox(box);
+        // Set text and box type
+        setText(textView, text);
+        setBox(flipper, box);
     }
 
-    private void initComponents() {
-        textView = findViewById(R.id.oneText);
-        flipper = findViewById(R.id.oneFlipper);
-    }
+    public void setText(TextView textview, CharSequence value) { textview.setText(value); }
 
-    public void setText(CharSequence value) {textView.setText(value);}
-
-    public void setBox(CharSequence value) {
-        if (value == null) {return;}
+    public void setBox(ComponentFlipper flipper, CharSequence value) {
+        if (value == null) {
+            Toast.makeText(this.getContext(), "Error: Vertical long box value is null", Toast.LENGTH_SHORT).show();
+            return;
+        }
         flipper.changeTo(value);
     }
 
@@ -93,4 +86,6 @@ public class RowLargeBox extends LinearLayout {
     public void createCounter(String name, int maxValue) {flipper.createCounter(name, maxValue);}
 
     public void createStopwatch(String name) {flipper.createStopwatch(name);}
+
+    public void pauseStopwatch() {flipper.pauseStopwatch();}
 }

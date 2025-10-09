@@ -17,17 +17,18 @@
         android:background="@drawable/box_background"
         android:weightSum="5">
         <TextView
-            android:id="@+id/leftText"
+            android:id="@+id/three_boxes_left_text"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             tools:text="Text\nHere"
             android:autoSizeTextType="uniform"
             android:layout_margin="10dp"
             android:textAlignment="center"
+            android:textColor="@color/text_grey"
             android:layout_weight="2"
             android:padding="10dp"/>
         <com.fro.scoutingapp2025.ComponentFlipper
-            android:id="@+id/leftFlipper"
+            android:id="@+id/three_boxes_left_flipper"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -47,17 +48,18 @@
         android:background="@drawable/box_background"
         android:weightSum="5">
         <TextView
-            android:id="@+id/middleText"
+            android:id="@+id/three_boxes_middle_text"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             tools:text="Text\nHere"
             android:autoSizeTextType="uniform"
             android:layout_margin="10dp"
             android:textAlignment="center"
+            android:textColor="@color/text_grey"
             android:layout_weight="2"
             android:padding="10dp"/>
         <com.fro.scoutingapp2025.ComponentFlipper
-            android:id="@+id/middleFlipper"
+            android:id="@+id/three_boxes_middle_flipper"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -77,17 +79,18 @@
         android:background="@drawable/box_background"
         android:weightSum="5">
         <TextView
-            android:id="@+id/rightText"
+            android:id="@+id/three_boxes_right_text"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             tools:text="Text\nHere"
             android:autoSizeTextType="uniform"
             android:layout_margin="10dp"
             android:textAlignment="center"
+            android:textColor="@color/text_grey"
             android:layout_weight="2"
             android:padding="10dp"/>
         <com.fro.scoutingapp2025.ComponentFlipper
-            android:id="@+id/rightFlipper"
+            android:id="@+id/three_boxes_right_flipper"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"

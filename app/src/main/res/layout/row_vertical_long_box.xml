@@ -17,7 +17,7 @@
         android:layout_weight="1"
         android:weightSum="2">
         <TextView
-            android:id="@+id/text1"
+            android:id="@+id/vertical_long_box_text_1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             tools:text="Text\nHere"
@@ -28,7 +28,7 @@
             android:fontFamily="@font/helvetica_bold"
             android:layout_weight="1"/>
         <com.fro.scoutingapp2025.ComponentFlipper
-            android:id="@+id/box1"
+            android:id="@+id/vertical_long_box_flipper_1"
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -42,7 +42,7 @@
         android:background="@color/light_grey"
         android:weightSum="2">
         <TextView
-            android:id="@+id/text2"
+            android:id="@+id/vertical_long_box_text_2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             tools:text="Text\nHere"
@@ -53,7 +53,7 @@
             android:fontFamily="@font/helvetica_bold"
             android:layout_weight="1"/>
         <com.fro.scoutingapp2025.ComponentFlipper
-            android:id="@+id/box2"
+            android:id="@+id/vertical_long_box_flipper_2"
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -66,7 +66,7 @@
         android:layout_weight="1"
         android:weightSum="2">
         <TextView
-            android:id="@+id/text3"
+            android:id="@+id/vertical_long_box_text_3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             tools:text="Text\nHere"
@@ -77,7 +77,7 @@
             android:fontFamily="@font/helvetica_bold"
             android:layout_weight="1"/>
         <com.fro.scoutingapp2025.ComponentFlipper
-            android:id="@+id/box3"
+            android:id="@+id/vertical_long_box_flipper_3"
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -91,7 +91,7 @@
         android:background="@color/light_grey"
         android:weightSum="2">
         <TextView
-            android:id="@+id/text4"
+            android:id="@+id/vertical_long_box_text_4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             tools:text="Text\nHere"
@@ -102,7 +102,7 @@
             android:fontFamily="@font/helvetica_bold"
             android:layout_weight="1"/>
         <com.fro.scoutingapp2025.ComponentFlipper
-            android:id="@+id/box4"
+            android:id="@+id/vertical_long_box_flipper_4"
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -115,7 +115,7 @@
         android:layout_weight="1"
         android:weightSum="2">
         <TextView
-            android:id="@+id/text5"
+            android:id="@+id/vertical_long_box_text_5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             tools:text="Text\nHere"
@@ -126,7 +126,7 @@
             android:fontFamily="@font/helvetica_bold"
             android:layout_weight="1"/>
         <com.fro.scoutingapp2025.ComponentFlipper
-            android:id="@+id/box5"
+            android:id="@+id/vertical_long_box_flipper_5"
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
