@@ -1,4 +1,4 @@
-package com.fro.scoutingapp2025;
+package com.fro.scoutingapptest;
 
 import org.junit.Test;
 

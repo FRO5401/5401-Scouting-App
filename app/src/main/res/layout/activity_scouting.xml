@@ -267,7 +267,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.fro.scoutingapp2025.HelpPopup
+    <com.fro.scoutingapptest.HelpPopup
         android:id="@+id/scouting_help_popup"
         android:visibility="gone"
         android:layout_width="match_parent"

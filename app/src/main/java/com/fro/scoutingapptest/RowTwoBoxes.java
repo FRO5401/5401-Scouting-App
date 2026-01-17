@@ -1,4 +1,4 @@
-package com.fro.scoutingapp2025;
+package com.fro.scoutingapptest;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -36,6 +36,7 @@ public class RowTwoBoxes extends LinearLayout {
     TextView rightTextView;
     ComponentFlipper leftFlipper;
     ComponentFlipper rightFlipper;
+    boolean wantsPadding = true;
 
     public RowTwoBoxes(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -63,7 +64,7 @@ public class RowTwoBoxes extends LinearLayout {
         // The first time this row, gets the size of it and sets the flipper padding
         rightFlipper.post(() -> {
             // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
-            if (rightFlipper.getPadding() == 0) {
+            if (rightFlipper.getPadding() == 0 && wantsPadding) {
                 Values.two_boxes_flipper_width = rightFlipper.getWidth();
                 Values.two_boxes_flipper_height = rightFlipper.getHeight();
                 leftFlipper.setPadding(10, 10, Values.two_boxes_flipper_height, Values.two_boxes_flipper_width);
@@ -121,6 +122,23 @@ public class RowTwoBoxes extends LinearLayout {
         else if (position == Values.right) {rightFlipper.createCounter(name, maxValue);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1, int incAmount2, int incAmount3) {
+        if (position == Values.left) {
+            leftFlipper.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);
+            leftTextView.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  1.0f));
+            leftFlipper.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  4.0f));
+        }
+        else if (position == Values.right) {
+            rightFlipper.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);
+            rightTextView.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  1.0f));
+            rightFlipper.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  4.0f));
+        }
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
+
+        wantsPadding = false;
     }
 
     public void createStopwatch(String name, int position) {

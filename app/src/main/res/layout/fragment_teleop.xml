@@ -8,79 +8,21 @@
     android:weightSum="5"
     android:background="@color/medium_blue">
 
-    <com.fro.scoutingapp2025.RowTopText
+    <com.fro.scoutingapptest.RowTopText
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Tele-Op"
         app:color_mode="dark"
         android:layout_weight="0.5">
-    </com.fro.scoutingapp2025.RowTopText>
+    </com.fro.scoutingapptest.RowTopText>
 
-    <com.fro.scoutingapp2025.RowThreeBoxes
+    <com.fro.scoutingapptest.RowLargeBox
         android:id="@+id/teleop_row_1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:left_text="Algae Pickup\nLocation"
-        app:middle_text="Coral Pickup\nLocation"
-        app:right_text="Reef\nTrough (L1)"
-        app:left_box_type="text_dropdown"
-        app:middle_box_type="text_dropdown"
-        app:right_box_type="counter"
-        android:layout_weight="1">
-    </com.fro.scoutingapp2025.RowThreeBoxes>
-
-    <com.fro.scoutingapp2025.RowLongBox
-        android:id="@+id/teleop_row_2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:left_text="Reef\nLevel 2"
-        app:middle_text="Reef\nLevel 3"
-        app:right_text="Reef\nLevel 4"
-        app:left_box_type="counter"
-        app:middle_box_type="counter"
-        app:right_box_type="counter"
-        app:color_pattern="white_grey_white"
-        android:layout_weight="1">
-    </com.fro.scoutingapp2025.RowLongBox>
-
-    <com.fro.scoutingapp2025.RowLongBox
-        android:id="@+id/teleop_row_3"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:left_text="Algae\nRemoved"
-        app:middle_text="Net"
-        app:right_text="Processor"
-        app:left_box_type="counter"
-        app:middle_box_type="counter"
-        app:right_box_type="counter"
-        app:color_pattern="grey_white_grey"
-        android:layout_weight="1">
-    </com.fro.scoutingapp2025.RowLongBox>
-
-    <com.fro.scoutingapp2025.RowThreeBoxes
-        android:id="@+id/teleop_row_4_processor"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:left_text="Human Player\nAlgae Scored"
-        app:middle_text="Human Player\nAlgae Missed"
-        app:right_text="Defense\nStopwatch"
-        app:left_box_type="counter"
-        app:middle_box_type="counter"
-        app:right_box_type="stopwatch"
-        android:layout_weight="1"
-        android:visibility="visible">
-    </com.fro.scoutingapp2025.RowThreeBoxes>
-
-    <com.fro.scoutingapp2025.RowTwoBoxes
-        android:id="@+id/teleop_row_4_default"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:left_text="Selected Human Player\nIs Not Processor"
-        app:right_text="Defense\nStopwatch"
-        app:left_box_type="nothing"
-        app:right_box_type="stopwatch"
-        android:layout_weight="1"
-        android:visibility="gone">
-    </com.fro.scoutingapp2025.RowTwoBoxes>
+        app:text="Fuel Scored\nIn Hub"
+        app:box_type="multi_counter"
+        android:layout_weight="3.5">
+    </com.fro.scoutingapptest.RowLargeBox>
 
 </LinearLayout>

@@ -9,59 +9,29 @@
     android:weightSum="5">
 
 
-    <com.fro.scoutingapp2025.RowTopText
+    <com.fro.scoutingapptest.RowTopText
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Auto"
         app:color_mode="dark"
         android:layout_weight="0.5">
-    </com.fro.scoutingapp2025.RowTopText>
+    </com.fro.scoutingapptest.RowTopText>
 
-    <com.fro.scoutingapp2025.RowTwoBoxes
+    <com.fro.scoutingapptest.RowLargeBox
         android:id="@+id/auto_row_1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:left_text="Leaves Robot\nStarting Zone"
-        app:right_text="Reef\nTrough (L1)"
-        app:left_box_type="toggle"
-        app:right_box_type="counter"
-        android:layout_weight="1">
-    </com.fro.scoutingapp2025.RowTwoBoxes>
+        app:text="Climb?"
+        app:box_type="text_dropdown"
+        android:layout_weight="1.5">
+    </com.fro.scoutingapptest.RowLargeBox>
 
-    <com.fro.scoutingapp2025.RowLongBox
+    <com.fro.scoutingapptest.RowLargeBox
         android:id="@+id/auto_row_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:left_text="Reef\nLevel 2"
-        app:middle_text="Reef\nLevel 3"
-        app:right_text="Reef\nLevel 4"
-        app:left_box_type="counter"
-        app:middle_box_type="counter"
-        app:right_box_type="counter"
-        app:color_pattern="white_grey_white"
-        android:layout_weight="1"/>
+        app:text="Fuel Scored\nIn Hub"
+        app:box_type="multi_counter"
+        android:layout_weight="2.5"/>
 
-    <com.fro.scoutingapp2025.RowLongBox
-        android:id="@+id/auto_row_3"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:left_text="Algae\nRemoved"
-        app:middle_text="Net"
-        app:right_text="Processor"
-        app:left_box_type="counter"
-        app:middle_box_type="counter"
-        app:right_box_type="counter"
-        app:color_pattern="grey_white_grey"
-        android:layout_weight="1"/>
-
-    <com.fro.scoutingapp2025.RowTwoBoxes
-        android:id="@+id/auto_row_4"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:left_text="Picked Up\nFrom Source"
-        app:right_text="Picked Up\nFrom Ground"
-        app:left_box_type="toggle"
-        app:right_box_type="toggle"
-        android:layout_weight="1">
-    </com.fro.scoutingapp2025.RowTwoBoxes>
 </LinearLayout>

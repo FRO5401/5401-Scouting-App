@@ -1,4 +1,4 @@
-package com.fro.scoutingapp2025;
+package com.fro.scoutingapptest;
 
 import android.content.Context;
 import android.os.Handler;
@@ -7,10 +7,7 @@ import android.os.SystemClock;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
-import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.text.method.DigitsKeyListener;
-import android.text.method.KeyListener;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
@@ -47,6 +44,21 @@ public class ComponentFlipper extends LinearLayout {
     ImageButton counterPlus;
     ImageButton counterMinus;
     TextView counterNumber;
+    // Multi Counter
+    TextView multiCounterCount;
+    ImageButton multiCounterPlus1;
+    ImageButton multiCounterMinus1;
+    ImageButton multiCounterPlus2;
+    ImageButton multiCounterMinus2;
+    ImageButton multiCounterPlus3;
+    ImageButton multiCounterMinus3;
+    TextView multiCounterIncrement1;
+    TextView multiCounterIncrement2;
+    TextView multiCounterIncrement3;
+    LinearLayout multiCounterLayout;
+    LinearLayout multiCounterLayout1;
+    LinearLayout multiCounterLayout2;
+    LinearLayout multiCounterLayout3;
     // Stopwatch
     TextView stopwatchTimer;
     TextView stopwatchRestart;
@@ -94,8 +106,9 @@ public class ComponentFlipper extends LinearLayout {
         if (value.equals("2")) {while (flipper.getCurrentView() != findViewById(R.id.number_dropdown_layout)) {flipper.showNext();}}
         if (value.equals("3")) {while (flipper.getCurrentView() != findViewById(R.id.toggle_layout)) {flipper.showNext();}}
         if (value.equals("4")) {while (flipper.getCurrentView() != findViewById(R.id.counter_layout)) {flipper.showNext();}}
-        if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch_layout)) {flipper.showNext();}}
-        if (value.equals("6")) {flipper.setVisibility(INVISIBLE);}
+        if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.multi_counter_layout)) {flipper.showNext();}}
+        if (value.equals("6")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch_layout)) {flipper.showNext();}}
+        if (value.equals("7")) {flipper.setVisibility(INVISIBLE);}
     }
 
     public void setPadding(int verticalChange, int horizontalChange, int height, int width) {
@@ -195,7 +208,7 @@ public class ComponentFlipper extends LinearLayout {
         }
 
         // Creates the dropdown
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this.getContext(), R.layout.spinner_dropdown, TeamNumbers.lehigh);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(), R.layout.spinner_dropdown, TeamNumbers.ramp_riot);
         numberDropdown = findViewById(R.id.number_dropdown);
         numberDropdown.setThreshold(1);
         numberDropdown.setAdapter(adapter);
@@ -218,7 +231,7 @@ public class ComponentFlipper extends LinearLayout {
             public void afterTextChanged(Editable editable) {
                 String text = numberDropdown.getText().toString();
                 if (!text.isEmpty()) {
-                    Values.data.put(name, Integer.parseInt(numberDropdown.getText().toString()));
+                    Values.data.put(name, numberDropdown.getText().toString());
                 }
             }
         });
@@ -290,13 +303,144 @@ public class ComponentFlipper extends LinearLayout {
         counterMinus.setOnClickListener(v -> {
             //gets the number from the view
             int num = Integer.parseInt(counterNumber.getText().toString());
-            //sets the view to the number + 1
+            //sets the view to the number - 1
             if (num > 0) {
                 num--;
                 counterNumber.setText(String.valueOf(num));
             }
             Values.data.put(name, num);
         });
+    }
+
+    public void createMultiCounter(String name, int maxValue, int colorPattern, int incAmount1, int incAmount2, int incAmount3) {
+        // Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, 0);
+        }
+
+        // Creates the buttons and text view
+        multiCounterCount = findViewById(R.id.multi_counter_count);
+        multiCounterPlus1 = findViewById(R.id.multi_counter_plus_1);
+        multiCounterMinus1 = findViewById(R.id.multi_counter_minus_1);
+        multiCounterPlus2 = findViewById(R.id.multi_counter_plus_2);
+        multiCounterMinus2 = findViewById(R.id.multi_counter_minus_2);
+        multiCounterPlus3 = findViewById(R.id.multi_counter_plus_3);
+        multiCounterMinus3 = findViewById(R.id.multi_counter_minus_3);
+        multiCounterIncrement1 = findViewById(R.id.multi_counter_increment_1);
+        multiCounterIncrement2 = findViewById(R.id.multi_counter_increment_2);
+        multiCounterIncrement3 = findViewById(R.id.multi_counter_increment_3);
+        multiCounterLayout = findViewById(R.id.multi_counter_layout);
+        multiCounterLayout1 = findViewById(R.id.multi_counter_layout_1);
+        multiCounterLayout2 = findViewById(R.id.multi_counter_layout_2);
+        multiCounterLayout3 = findViewById(R.id.multi_counter_layout_3);
+
+
+        // Set text to data value
+        if (Values.data.containsKey(name)) {
+            multiCounterCount.setText(String.valueOf(Values.data.get(name)));
+        }
+
+        // Sets the color pattern of the counter background
+        if (colorPattern == Values.colorType_greyWhiteGrey){
+            multiCounterLayout.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout1.setBackgroundResource(R.color.white);
+            multiCounterLayout2.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout3.setBackgroundResource(R.color.white);
+        } else if (colorPattern == Values.colorType_whiteGreyWhite){
+            multiCounterLayout.setBackgroundResource(R.color.white);
+            multiCounterLayout1.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout2.setBackgroundResource(R.color.white);
+            multiCounterLayout3.setBackgroundResource(R.color.light_grey);
+        } else if (colorPattern == Values.colorType_allGrey){
+            multiCounterLayout.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout1.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout2.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout3.setBackgroundResource(R.color.light_grey);
+        } else {
+            multiCounterLayout.setBackgroundResource(R.color.white);
+            multiCounterLayout1.setBackgroundResource(R.color.white);
+            multiCounterLayout2.setBackgroundResource(R.color.white);
+            multiCounterLayout3.setBackgroundResource(R.color.white);
+        }
+
+        // Sets no padding around flipper
+        flipper.setPadding(0,0,0,0);
+        // Dynamically sets padding between layouts the first time the flipper
+        flipper.post(() -> {
+            multiCounterLayout1.setPadding((flipper.getWidth() / 20), (flipper.getHeight() / 20),
+                    (flipper.getWidth() / 20), (flipper.getHeight() / 20));
+            multiCounterLayout2.setPadding((flipper.getWidth() / 20), (flipper.getHeight() / 20),
+                    (flipper.getWidth() / 20), (flipper.getHeight() / 20));
+            multiCounterLayout3.setPadding((flipper.getWidth() / 20), (flipper.getHeight() / 20),
+                    (flipper.getWidth() / 20), (flipper.getHeight() / 20));
+        });
+
+        // Set text views to show correct increment amount
+        multiCounterIncrement1.setText("+- " + incAmount1);
+        multiCounterIncrement2.setText("+- " + incAmount2);
+        multiCounterIncrement3.setText("+- " + incAmount3);
+
+        /*  Incrementors    */
+        // Adds to value by increment amount 1 when plus is hit
+        multiCounterPlus1.setOnClickListener(v -> {
+            //gets the num from the view
+            int num = Integer.parseInt(multiCounterCount.getText().toString());
+            //sets the view to the num + inc
+            if (num <= maxValue-incAmount1) {
+                num += incAmount1;
+                multiCounterCount.setText(String.valueOf(num));
+            }
+            Values.data.put(name, num);
+        });
+
+        // Subtracts from value by increment amount 1 when minus is hit
+        multiCounterMinus1.setOnClickListener(v -> {
+            //gets the number from the view
+            int num = Integer.parseInt(multiCounterCount.getText().toString());
+            //sets the view to the number - inc
+            if (num >= incAmount1) {
+                num -= incAmount1;
+                multiCounterCount.setText(String.valueOf(num));
+            }
+            Values.data.put(name, num);
+        });
+
+        // Adds to value by increment amount 2 when plus is hit
+        multiCounterPlus2.setOnClickListener(v -> {
+            int num = Integer.parseInt(multiCounterCount.getText().toString());
+            if (num <= maxValue-incAmount2) {
+                num += incAmount2;
+                multiCounterCount.setText(String.valueOf(num));
+            } Values.data.put(name, num);
+        });
+
+        // Subtracts from value by increment amount 2 when minus is hit
+        multiCounterMinus2.setOnClickListener(v -> {
+            int num = Integer.parseInt(multiCounterCount.getText().toString());
+            if (num >= incAmount2) {
+                num -= incAmount2;
+                multiCounterCount.setText(String.valueOf(num));
+            } Values.data.put(name, num);
+        });
+
+        // Adds to value by increment amount 3 when plus is hit
+        multiCounterPlus3.setOnClickListener(v -> {
+            int num = Integer.parseInt(multiCounterCount.getText().toString());
+            if (num <= maxValue-incAmount3) {
+                num += incAmount3;
+                multiCounterCount.setText(String.valueOf(num));
+            } Values.data.put(name, num);
+        });
+
+        // Subtracts from value by increment amount 3 when minus is hit
+        multiCounterMinus3.setOnClickListener(v -> {
+            int num = Integer.parseInt(multiCounterCount.getText().toString());
+            if (num >= incAmount3) {
+                num -= incAmount3;
+                multiCounterCount.setText(String.valueOf(num));
+            } Values.data.put(name, num);
+        });
+
     }
 
     public void createStopwatch(String name) {

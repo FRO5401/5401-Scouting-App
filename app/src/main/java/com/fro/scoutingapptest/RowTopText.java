@@ -1,4 +1,4 @@
-package com.fro.scoutingapp2025;
+package com.fro.scoutingapptest;
 
 import android.content.Context;
 import android.content.res.ColorStateList;

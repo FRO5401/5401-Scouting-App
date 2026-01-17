@@ -1,4 +1,4 @@
-package com.fro.scoutingapp2025;
+package com.fro.scoutingapptest;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -31,6 +31,7 @@ public class RowThinLargeBox extends LinearLayout {
     // Declare variables
     TextView textView;
     ComponentFlipper flipper;
+    boolean wantsPadding = true;
 
     public RowThinLargeBox(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -53,7 +54,7 @@ public class RowThinLargeBox extends LinearLayout {
         // The first time this row, gets the size of it and sets the flipper padding
         flipper.post(() -> {
             // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
-            if (flipper.getPadding() == 0) {
+            if (flipper.getPadding() == 0 && wantsPadding) {
                 Values.thin_large_box_flipper_width = flipper.getWidth();
                 Values.thin_large_box_flipper_height = flipper.getHeight();
                 flipper.setPadding(10, 10, Values.thin_large_box_flipper_height, Values.thin_large_box_flipper_width);
@@ -84,6 +85,13 @@ public class RowThinLargeBox extends LinearLayout {
     public void createToggle(String name, int position) {flipper.createToggle(name);}
 
     public void createCounter(String name, int maxValue) {flipper.createCounter(name, maxValue);}
+
+    public void createMultiCounter(String name, int maxValue, int colorPattern, int incAmount1, int incAmount2, int incAmount3) {
+        flipper.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);
+        textView.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  1.0f));
+        flipper.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  4.0f));
+        wantsPadding = false;
+    }
 
     public void createStopwatch(String name) {flipper.createStopwatch(name);}
 

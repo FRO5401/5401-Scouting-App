@@ -8,21 +8,21 @@
     android:weightSum="5"
     android:background="@color/fro_blue">
 
-    <com.fro.scoutingapp2025.RowTopText
+    <com.fro.scoutingapptest.RowTopText
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Template"
         app:color_mode="dark"
         android:layout_weight="0.4"/>
 
-    <com.fro.scoutingapp2025.RowTopImage
+    <com.fro.scoutingapptest.RowTopImage
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:image="@drawable/reefscape_logo"
+        app:image="@drawable/game_logo"
         app:color_mode="dark"
         android:layout_weight="0.4"/>
 
-    <com.fro.scoutingapp2025.RowTwoBoxes
+    <com.fro.scoutingapptest.RowTwoBoxes
         android:id="@+id/template_row_1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -32,7 +32,7 @@
         app:right_box_type="text_dropdown"
         android:layout_weight="1"/>
 
-    <com.fro.scoutingapp2025.RowThreeBoxes
+    <com.fro.scoutingapptest.RowThreeBoxes
         android:id="@+id/template_row_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -44,7 +44,7 @@
         app:right_box_type="text_dropdown"
         android:layout_weight="1"/>
 
-    <com.fro.scoutingapp2025.RowLongBox
+    <com.fro.scoutingapptest.RowLongBox
         android:id="@+id/template_row_3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -57,7 +57,7 @@
         app:color_pattern="white_grey_white"
         android:layout_weight="1"/>
 
-    <com.fro.scoutingapp2025.RowLargeBox
+    <com.fro.scoutingapptest.RowLargeBox
         android:id="@+id/template_row_4"
         android:layout_width="match_parent"
         android:layout_height="0dp"

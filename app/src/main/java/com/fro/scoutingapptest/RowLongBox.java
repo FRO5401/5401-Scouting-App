@@ -1,7 +1,8 @@
-package com.fro.scoutingapp2025;
+package com.fro.scoutingapptest;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -9,8 +10,15 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 /**
- * Creates a row with three smaller boxes <br/>
+ * Creates a row with one long multicolored box. <br/>
  * Usually, the layout weight of this row is 1 out of a weight sum of 5
+ *
+ * @requires app:color_pattern=""
+ * <br> The color of the background and middle section</li>
+ * <ul>
+ *     <li> white_grey_white - White background with grey middle section</li>
+ *     <li> grey_white_grey - Grey background with white middle section</li>
+ * </ul>
  *
  * @requires app:left_text=""
  * <br> The text that will be displayed in the left box header</li>
@@ -33,7 +41,7 @@ import java.util.ArrayList;
  *     <li>stopwatch - A stopwatch with on, off, and reset</li>
  * </ul>
  */
-public class RowThreeBoxes extends LinearLayout {
+public class RowLongBox extends LinearLayout {
     // Declare variables
     TextView leftTextView;
     TextView middleTextView;
@@ -42,13 +50,20 @@ public class RowThreeBoxes extends LinearLayout {
     ComponentFlipper middleFlipper;
     ComponentFlipper rightFlipper;
 
-    public RowThreeBoxes(Context context, AttributeSet attrs) {
+    //Elements to change the box color
+    View middleView1;
+    View middleView2;
+    LinearLayout middleLayout;
+    LinearLayout backgroundLayout;
+    boolean wantsPadding = true;
+
+    public RowLongBox(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
     private void init(Context context, AttributeSet attrs) {
-        inflate(context, R.layout.row_three_boxes, this);
+        inflate(context, R.layout.row_long_box, this);
 
         // Get values from xml input
         CharSequence leftText = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "left_text");
@@ -57,38 +72,44 @@ public class RowThreeBoxes extends LinearLayout {
         CharSequence leftBox =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "left_box_type");
         CharSequence middleBox =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "middle_box_type");
         CharSequence rightBox = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "right_box_type");
+        CharSequence colorPattern = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "color_pattern");
 
-        // init variables
-        leftTextView = findViewById(R.id.three_boxes_left_text);
-        middleTextView = findViewById(R.id.three_boxes_middle_text);
-        rightTextView = findViewById(R.id.three_boxes_right_text);
-        leftFlipper = findViewById(R.id.three_boxes_left_flipper);
-        middleFlipper = findViewById(R.id.three_boxes_middle_flipper);
-        rightFlipper = findViewById(R.id.three_boxes_right_flipper);
+        // Init variables
+        leftTextView = findViewById(R.id.two_boxes_left_text);
+        middleTextView = findViewById(R.id.two_boxes_middle_text);
+        rightTextView = findViewById(R.id.two_boxes_right_text);
+        leftFlipper = findViewById(R.id.two_boxes_left_flipper);
+        middleFlipper = findViewById(R.id.two_boxes_middle_flipper);
+        rightFlipper = findViewById(R.id.two_boxes_right_flipper);
+        middleView1 = findViewById(R.id.two_boxes_middle_view_1);
+        middleView2 = findViewById(R.id.two_boxes_middle_view_2);
+        middleLayout = findViewById(R.id.two_boxes_middle_layout);
+        backgroundLayout = findViewById(R.id.two_boxes_background_layout);
 
         // Sets the padding of the flipper
-        leftFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
-        middleFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
-        rightFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
+        leftFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
+        middleFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
+        rightFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
         // The first time this row, gets the size of it and sets the flipper padding
         rightFlipper.post(() -> {
             // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
-            if (rightFlipper.getPadding() == 0) {
-                Values.three_boxes_flipper_width = rightFlipper.getWidth();
-                Values.three_boxes_flipper_height = rightFlipper.getHeight();
-                leftFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
-                middleFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
-                rightFlipper.setPadding(10, 10, Values.three_boxes_flipper_height, Values.three_boxes_flipper_width);
+            if (rightFlipper.getPadding() == 0 & wantsPadding) {
+                Values.long_box_flipper_width = rightFlipper.getWidth();
+                Values.long_box_flipper_height = rightFlipper.getHeight();
+                leftFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
+                middleFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
+                rightFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
             }
         });
 
-        // Set text and box type
+        // Set text, box type, and color pattern
         setText(leftTextView, leftText);
         setText(middleTextView, middleText);
         setText(rightTextView, rightText);
         setBox(leftFlipper, leftBox);
         setBox(middleFlipper, middleBox);
         setBox(rightFlipper, rightBox);
+        setColorPattern(colorPattern);
     }
 
     public void setText(TextView textview, CharSequence value) { textview.setText(value); }
@@ -99,6 +120,22 @@ public class RowThreeBoxes extends LinearLayout {
             return;
         }
         flipper.changeTo(value);
+    }
+
+    public void setColorPattern(CharSequence value) {
+        if (value == null) {return;}
+        if (value.equals("0")){
+            backgroundLayout.setBackgroundResource(R.drawable.box_background);
+            middleView1.setBackgroundResource(R.color.light_grey);
+            middleView2.setBackgroundResource(R.color.light_grey);
+            middleLayout.setBackgroundResource(R.color.light_grey);
+        }
+        if (value.equals("1")){
+            backgroundLayout.setBackgroundResource(R.drawable.box_background_grey);
+            middleView1.setBackgroundResource(R.color.white);
+            middleView2.setBackgroundResource(R.color.white);
+            middleLayout.setBackgroundResource(R.color.white);
+        }
     }
 
     public void createTypeBox(String name, int inputType, int maxCharacters, int position) {
@@ -140,6 +177,28 @@ public class RowThreeBoxes extends LinearLayout {
         else if (position == Values.right) {rightFlipper.createCounter(name, maxValue);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1, int incAmount2, int incAmount3) {
+        if (position == Values.left) {
+            leftFlipper.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);
+            leftTextView.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  1.0f));
+            leftFlipper.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  4.0f));
+        }
+        else if (position == Values.middle) {
+            middleFlipper.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);
+            middleTextView.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  1.0f));
+            middleFlipper.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  4.0f));
+        }
+        else if (position == Values.right) {
+            rightFlipper.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);
+            rightTextView.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  1.0f));
+            rightFlipper.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  4.0f));
+        }
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
+
+        wantsPadding = false;
     }
 
     public void createStopwatch(String name, int position) {

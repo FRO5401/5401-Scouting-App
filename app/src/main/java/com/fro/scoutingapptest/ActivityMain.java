@@ -1,4 +1,4 @@
-package com.fro.scoutingapp2025;
+package com.fro.scoutingapptest;
 
 import static android.view.View.VISIBLE;
 
@@ -51,12 +51,12 @@ public class ActivityMain extends AppCompatActivity {
         verticalLongBox.createTeamNumberDropdown("Main_Team_Number", Values.vertical_level_2);
         verticalLongBox.createTextDropdown(
                 "Main_Robot_Position",
-                new ArrayList<>(Arrays.asList("Left", "Middle", "Right", "Other")),
+                new ArrayList<>(Arrays.asList("Outpost", "Tower", "Depot", "Other")),
                 Values.vertical_level_3);
         verticalLongBox.createTypeBox("Main_Match_Number", Values.inputType_number, 3, Values.vertical_level_4);
         verticalLongBox.createTextDropdown(
                 "Main_Human_Player_Position",
-                new ArrayList<>(Arrays.asList("Left Coral Station", "Right Coral Station", "Processor", "Can't Tell")),
+                new ArrayList<>(Arrays.asList("Thrower", "Outpost", "Role", "Can't Tell")),
                 Values.vertical_level_5);
 
         // Sets the margins of the popups

@@ -1,4 +1,4 @@
-package com.fro.scoutingapp2025;
+package com.fro.scoutingapptest;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;

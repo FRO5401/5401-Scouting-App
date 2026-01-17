@@ -14,23 +14,23 @@
         tools:context=".ActivityMain"
         android:weightSum="5">
 
-        <com.fro.scoutingapp2025.RowTopText
+        <com.fro.scoutingapptest.RowTopText
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:text="FRO Scouting"
             app:color_mode="light"
             android:layout_weight="0.4">
-        </com.fro.scoutingapp2025.RowTopText>
+        </com.fro.scoutingapptest.RowTopText>
 
-        <com.fro.scoutingapp2025.RowTopImage
+        <com.fro.scoutingapptest.RowTopImage
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:image="@drawable/reefscape_logo"
+            app:image="@drawable/game_logo"
             app:color_mode="light"
             android:layout_weight="0.4">
-        </com.fro.scoutingapp2025.RowTopImage>
+        </com.fro.scoutingapptest.RowTopImage>
 
-        <com.fro.scoutingapp2025.RowVerticalLongBox
+        <com.fro.scoutingapptest.RowVerticalLongBox
             android:id="@+id/vertical_long_box"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -45,7 +45,7 @@
             app:box_type_4="type_box"
             app:box_type_5="text_dropdown"
             android:layout_weight="3.3">
-        </com.fro.scoutingapp2025.RowVerticalLongBox>
+        </com.fro.scoutingapptest.RowVerticalLongBox>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -83,7 +83,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.fro.scoutingapp2025.HelpPopup
+    <com.fro.scoutingapptest.HelpPopup
         android:id="@+id/main_help_popup"
         android:visibility="gone"
         android:layout_width="match_parent"

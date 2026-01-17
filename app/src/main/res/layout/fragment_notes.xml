@@ -8,15 +8,15 @@
     tools:context=".FragmentNotes"
     android:weightSum="5">
 
-    <com.fro.scoutingapp2025.RowTopText
+    <com.fro.scoutingapptest.RowTopText
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:text="Notes"
         app:color_mode="light"
         android:layout_weight="0.5">
-    </com.fro.scoutingapp2025.RowTopText>
+    </com.fro.scoutingapptest.RowTopText>
 
-    <com.fro.scoutingapp2025.RowLongBox
+    <com.fro.scoutingapptest.RowLongBox
         android:id="@+id/notes_row_1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -28,9 +28,9 @@
         app:right_box_type="toggle"
         app:color_pattern="white_grey_white"
         android:layout_weight="1">
-    </com.fro.scoutingapp2025.RowLongBox>
+    </com.fro.scoutingapptest.RowLongBox>
 
-    <com.fro.scoutingapp2025.RowLargeBox
+    <com.fro.scoutingapptest.RowLargeBox
         android:id="@+id/notes_row_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -1,4 +1,4 @@
-package com.fro.scoutingapp2025;
+package com.fro.scoutingapptest;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -48,6 +48,8 @@ public class RowVerticalLongBox extends LinearLayout{
     ComponentFlipper flipper4;
     ComponentFlipper flipper5;
 
+    boolean wantsPadding = true;
+
     public RowVerticalLongBox(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
@@ -88,7 +90,7 @@ public class RowVerticalLongBox extends LinearLayout{
         // The first time this row, gets the size of it and sets the flipper padding
         flipper5.post(() -> {
             // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
-            if (flipper5.getPadding() == 0) {
+            if (flipper5.getPadding() == 0 && wantsPadding) {
                 Values.vertical_long_box_flipper_width = flipper5.getWidth();
                 Values.vertical_long_box_flipper_height = flipper5.getHeight();
                 flipper1.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
@@ -168,6 +170,17 @@ public class RowVerticalLongBox extends LinearLayout{
         else if (position == Values.vertical_level_3) {flipper3.createCounter(name, maxValue);}
         else if (position == Values.vertical_level_4) {flipper4.createCounter(name, maxValue);}
         else if (position == Values.vertical_level_5) {flipper5.createCounter(name, maxValue);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1, int incAmount2, int incAmount3) {
+        wantsPadding = false;
+        if (position == Values.vertical_level_1) {flipper1.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);}
+        else if (position == Values.vertical_level_2) {flipper2.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);}
+        else if (position == Values.vertical_level_3) {flipper3.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);}
+        else if (position == Values.vertical_level_4) {flipper4.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);}
+        else if (position == Values.vertical_level_5) {flipper5.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
     }
