@@ -25,8 +25,7 @@ public class FragmentTeleop extends Fragment {
         // Init variables
         row1 = rootView.findViewById(R.id.teleop_row_1);
 
-        row1.createMultiCounter("Teleop_Fuel_Scored",400, Values.colorType_greyWhiteGrey, 1, 2,4);
-
+        row1.createMultiCounter("Teleop_Fuel_Scored",400, Values.colorType_greyWhiteGrey, 1,2,4);
 
         // Inflate the layout for this fragment
         return rootView;

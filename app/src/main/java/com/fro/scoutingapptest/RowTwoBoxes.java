@@ -124,6 +124,41 @@ public class RowTwoBoxes extends LinearLayout {
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
     }
 
+    // With 1 increment sets
+    public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1) {
+        if (position == Values.left) {
+            leftFlipper.createMultiCounter(name, maxValue, colorPattern, incAmount1);
+            leftTextView.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  1.0f));
+            leftFlipper.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  4.0f));
+        }
+        else if (position == Values.right) {
+            rightFlipper.createMultiCounter(name, maxValue, colorPattern, incAmount1);
+            rightTextView.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  1.0f));
+            rightFlipper.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  4.0f));
+        }
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
+
+        wantsPadding = false;
+    }
+    // With 2 increment sets
+    public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1, int incAmount2) {
+        if (position == Values.left) {
+            leftFlipper.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2);
+            leftTextView.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  1.0f));
+            leftFlipper.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  4.0f));
+        }
+        else if (position == Values.right) {
+            rightFlipper.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2);
+            rightTextView.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  1.0f));
+            rightFlipper.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  4.0f));
+        }
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
+
+        wantsPadding = false;
+    }
+    // With 3 increment sets
     public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1, int incAmount2, int incAmount3) {
         if (position == Values.left) {
             leftFlipper.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);

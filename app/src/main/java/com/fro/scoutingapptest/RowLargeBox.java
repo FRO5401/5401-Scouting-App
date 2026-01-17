@@ -86,6 +86,22 @@ public class RowLargeBox extends LinearLayout {
 
     public void createCounter(String name, int maxValue) {flipper.createCounter(name, maxValue);}
 
+    // With 1 increment set
+    public void createMultiCounter(String name, int maxValue, int colorPattern, int incAmount1) {
+        flipper.createMultiCounter(name, maxValue, colorPattern, incAmount1);
+        textView.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  1.0f));
+        flipper.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  4.0f));
+        wantsPadding = false;
+    }
+
+    // With 2 increment sets
+    public void createMultiCounter(String name, int maxValue, int colorPattern, int incAmount1, int incAmount2) {
+        flipper.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2);
+        textView.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  1.0f));
+        flipper.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  4.0f));
+        wantsPadding = false;
+    }
+    // With 3 increment sets
     public void createMultiCounter(String name, int maxValue, int colorPattern, int incAmount1, int incAmount2, int incAmount3) {
         flipper.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);
         textView.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  1.0f));

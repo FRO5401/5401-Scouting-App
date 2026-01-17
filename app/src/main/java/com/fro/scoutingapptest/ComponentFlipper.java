@@ -311,7 +311,196 @@ public class ComponentFlipper extends LinearLayout {
             Values.data.put(name, num);
         });
     }
+    // Multi counter with 1 increment set
+    public void createMultiCounter(String name, int maxValue, int colorPattern, int incAmount1) {
+        // Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, 0);
+        }
 
+        // Creates the buttons and text view
+        multiCounterCount = findViewById(R.id.multi_counter_count);
+        multiCounterPlus1 = findViewById(R.id.multi_counter_plus_1);
+        multiCounterMinus1 = findViewById(R.id.multi_counter_minus_1);
+        multiCounterIncrement1 = findViewById(R.id.multi_counter_increment_1);
+        multiCounterLayout = findViewById(R.id.multi_counter_layout);
+        multiCounterLayout1 = findViewById(R.id.multi_counter_layout_1);
+        multiCounterLayout2 = findViewById(R.id.multi_counter_layout_2);
+        multiCounterLayout3 = findViewById(R.id.multi_counter_layout_3);
+
+        // Makes the 3rd layout not exist, so there are only 2
+        multiCounterLayout3.setVisibility(GONE);
+        multiCounterLayout2.setVisibility(GONE);
+        multiCounterLayout.setWeightSum(2f);
+
+        // Set text to data value
+        if (Values.data.containsKey(name)) {
+            multiCounterCount.setText(String.valueOf(Values.data.get(name)));
+        }
+
+        // Sets the color pattern of the counter background
+        if (colorPattern == Values.colorType_greyWhiteGrey){
+            multiCounterLayout.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout1.setBackgroundResource(R.color.white);
+            multiCounterLayout2.setBackgroundResource(R.color.light_grey);
+        } else if (colorPattern == Values.colorType_whiteGreyWhite){
+            multiCounterLayout.setBackgroundResource(R.color.white);
+            multiCounterLayout1.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout2.setBackgroundResource(R.color.white);
+        } else if (colorPattern == Values.colorType_allGrey){
+            multiCounterLayout.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout1.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout2.setBackgroundResource(R.color.light_grey);
+        } else {
+            multiCounterLayout.setBackgroundResource(R.color.white);
+            multiCounterLayout1.setBackgroundResource(R.color.white);
+            multiCounterLayout2.setBackgroundResource(R.color.white);
+        }
+
+        // Sets no padding around flipper
+        flipper.setPadding(0,0,0,0);
+        // Dynamically sets padding between layouts the first time the flipper
+        flipper.post(() -> {
+            multiCounterLayout1.setPadding((flipper.getWidth() / 20), (flipper.getHeight() / 20),
+                    (flipper.getWidth() / 20), (flipper.getHeight() / 20));
+            multiCounterLayout2.setPadding((flipper.getWidth() / 20), (flipper.getHeight() / 20),
+                    (flipper.getWidth() / 20), (flipper.getHeight() / 20));
+        });
+
+        // Set text views to show correct increment amount
+        multiCounterIncrement1.setText("+- " + incAmount1);
+
+        /*  Incrementors    */
+        // Adds to value by increment amount 1 when plus is hit
+        multiCounterPlus1.setOnClickListener(v -> {
+            //gets the num from the view
+            int num = Integer.parseInt(multiCounterCount.getText().toString());
+            //sets the view to the num + inc
+            if (num <= maxValue-incAmount1) {
+                num += incAmount1;
+                multiCounterCount.setText(String.valueOf(num));
+            }
+            Values.data.put(name, num);
+        });
+
+        // Subtracts from value by increment amount 1 when minus is hit
+        multiCounterMinus1.setOnClickListener(v -> {
+            //gets the number from the view
+            int num = Integer.parseInt(multiCounterCount.getText().toString());
+            //sets the view to the number - inc
+            if (num >= incAmount1) {
+                num -= incAmount1;
+                multiCounterCount.setText(String.valueOf(num));
+            }
+            Values.data.put(name, num);
+        });
+    }
+    // Multi counter with 2 increment sets
+    public void createMultiCounter(String name, int maxValue, int colorPattern, int incAmount1, int incAmount2) {
+        // Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, 0);
+        }
+
+        // Creates the buttons and text view
+        multiCounterCount = findViewById(R.id.multi_counter_count);
+        multiCounterPlus1 = findViewById(R.id.multi_counter_plus_1);
+        multiCounterMinus1 = findViewById(R.id.multi_counter_minus_1);
+        multiCounterPlus2 = findViewById(R.id.multi_counter_plus_2);
+        multiCounterMinus2 = findViewById(R.id.multi_counter_minus_2);
+        multiCounterIncrement1 = findViewById(R.id.multi_counter_increment_1);
+        multiCounterIncrement2 = findViewById(R.id.multi_counter_increment_2);
+        multiCounterLayout = findViewById(R.id.multi_counter_layout);
+        multiCounterLayout1 = findViewById(R.id.multi_counter_layout_1);
+        multiCounterLayout2 = findViewById(R.id.multi_counter_layout_2);
+        multiCounterLayout3 = findViewById(R.id.multi_counter_layout_3);
+
+        // Makes the 3rd layout not exist, so there are only 2
+        multiCounterLayout3.setVisibility(GONE);
+        multiCounterLayout.setWeightSum(3f);
+
+        // Set text to data value
+        if (Values.data.containsKey(name)) {
+            multiCounterCount.setText(String.valueOf(Values.data.get(name)));
+        }
+
+        // Sets the color pattern of the counter background
+        if (colorPattern == Values.colorType_greyWhiteGrey){
+            multiCounterLayout.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout1.setBackgroundResource(R.color.white);
+            multiCounterLayout2.setBackgroundResource(R.color.light_grey);
+        } else if (colorPattern == Values.colorType_whiteGreyWhite){
+            multiCounterLayout.setBackgroundResource(R.color.white);
+            multiCounterLayout1.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout2.setBackgroundResource(R.color.white);
+        } else if (colorPattern == Values.colorType_allGrey){
+            multiCounterLayout.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout1.setBackgroundResource(R.color.light_grey);
+            multiCounterLayout2.setBackgroundResource(R.color.light_grey);
+        } else {
+            multiCounterLayout.setBackgroundResource(R.color.white);
+            multiCounterLayout1.setBackgroundResource(R.color.white);
+            multiCounterLayout2.setBackgroundResource(R.color.white);
+        }
+
+        // Sets no padding around flipper
+        flipper.setPadding(0,0,0,0);
+        // Dynamically sets padding between layouts the first time the flipper
+        flipper.post(() -> {
+            multiCounterLayout1.setPadding((flipper.getWidth() / 20), (flipper.getHeight() / 20),
+                    (flipper.getWidth() / 20), (flipper.getHeight() / 20));
+            multiCounterLayout2.setPadding((flipper.getWidth() / 20), (flipper.getHeight() / 20),
+                    (flipper.getWidth() / 20), (flipper.getHeight() / 20));
+        });
+
+        // Set text views to show correct increment amount
+        multiCounterIncrement1.setText("+- " + incAmount1);
+        multiCounterIncrement2.setText("+- " + incAmount2);
+
+        /*  Incrementors    */
+        // Adds to value by increment amount 1 when plus is hit
+        multiCounterPlus1.setOnClickListener(v -> {
+            //gets the num from the view
+            int num = Integer.parseInt(multiCounterCount.getText().toString());
+            //sets the view to the num + inc
+            if (num <= maxValue-incAmount1) {
+                num += incAmount1;
+                multiCounterCount.setText(String.valueOf(num));
+            }
+            Values.data.put(name, num);
+        });
+
+        // Subtracts from value by increment amount 1 when minus is hit
+        multiCounterMinus1.setOnClickListener(v -> {
+            //gets the number from the view
+            int num = Integer.parseInt(multiCounterCount.getText().toString());
+            //sets the view to the number - inc
+            if (num >= incAmount1) {
+                num -= incAmount1;
+                multiCounterCount.setText(String.valueOf(num));
+            }
+            Values.data.put(name, num);
+        });
+
+        // Adds to value by increment amount 2 when plus is hit
+        multiCounterPlus2.setOnClickListener(v -> {
+            int num = Integer.parseInt(multiCounterCount.getText().toString());
+            if (num <= maxValue-incAmount2) {
+                num += incAmount2;
+                multiCounterCount.setText(String.valueOf(num));
+            } Values.data.put(name, num);
+        });
+
+        // Subtracts from value by increment amount 2 when minus is hit
+        multiCounterMinus2.setOnClickListener(v -> {
+            int num = Integer.parseInt(multiCounterCount.getText().toString());
+            if (num >= incAmount2) {
+                num -= incAmount2;
+                multiCounterCount.setText(String.valueOf(num));
+            } Values.data.put(name, num);
+        });
+    }
+    // Multi counter with 3 increment sets
     public void createMultiCounter(String name, int maxValue, int colorPattern, int incAmount1, int incAmount2, int incAmount3) {
         // Creates the data in the hashmap
         if (!Values.data.containsKey(name)) {
@@ -333,7 +522,6 @@ public class ComponentFlipper extends LinearLayout {
         multiCounterLayout1 = findViewById(R.id.multi_counter_layout_1);
         multiCounterLayout2 = findViewById(R.id.multi_counter_layout_2);
         multiCounterLayout3 = findViewById(R.id.multi_counter_layout_3);
-
 
         // Set text to data value
         if (Values.data.containsKey(name)) {

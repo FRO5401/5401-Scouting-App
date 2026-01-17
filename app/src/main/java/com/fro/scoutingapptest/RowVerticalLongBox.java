@@ -174,8 +174,30 @@ public class RowVerticalLongBox extends LinearLayout{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
     }
 
-    public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1, int incAmount2, int incAmount3) {
+    // With 1 increment sets
+    public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1) {
+        if (position == Values.vertical_level_1) {flipper1.createMultiCounter(name, maxValue, colorPattern, incAmount1);}
+        else if (position == Values.vertical_level_2) {flipper2.createMultiCounter(name, maxValue, colorPattern, incAmount1);}
+        else if (position == Values.vertical_level_3) {flipper3.createMultiCounter(name, maxValue, colorPattern, incAmount1);}
+        else if (position == Values.vertical_level_4) {flipper4.createMultiCounter(name, maxValue, colorPattern, incAmount1);}
+        else if (position == Values.vertical_level_5) {flipper5.createMultiCounter(name, maxValue, colorPattern, incAmount1);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
         wantsPadding = false;
+    }
+    // With 2 increment sets
+    public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1, int incAmount2) {
+        if (position == Values.vertical_level_1) {flipper1.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2);}
+        else if (position == Values.vertical_level_2) {flipper2.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2);}
+        else if (position == Values.vertical_level_3) {flipper3.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2);}
+        else if (position == Values.vertical_level_4) {flipper4.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2);}
+        else if (position == Values.vertical_level_5) {flipper5.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
+        wantsPadding = false;
+    }
+    // With 3 increment sets
+    public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1, int incAmount2, int incAmount3) {
         if (position == Values.vertical_level_1) {flipper1.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);}
         else if (position == Values.vertical_level_2) {flipper2.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);}
         else if (position == Values.vertical_level_3) {flipper3.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);}
@@ -183,7 +205,9 @@ public class RowVerticalLongBox extends LinearLayout{
         else if (position == Values.vertical_level_5) {flipper5.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
+        wantsPadding = false;
     }
+
 
     public void createStopwatch(String name, int position) {
         if (position == Values.vertical_level_1) {flipper1.createStopwatch(name);}
