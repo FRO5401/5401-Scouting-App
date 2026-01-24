@@ -22,6 +22,9 @@ public class ExceptionHandler implements UncaughtExceptionHandler {
     public ExceptionHandler() {
         //Gets default exception handler that's executed when uncaught exception terminates a thread (when error)
         this.defaultUEH = Thread.getDefaultUncaughtExceptionHandler();
+
+        // If the folder doesn't exist, create it
+        if (!dir.exists()) { dir.mkdirs(); }
     }
 
     public void uncaughtException(Thread t, Throwable e) {

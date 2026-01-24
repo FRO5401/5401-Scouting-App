@@ -111,6 +111,8 @@ public class Values {
         // Finds the folder that the file will get saved to
         String pathToExternalStorage = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
         File path = new File(pathToExternalStorage + "/" + "Scouting-"+year);
+        // If the folder doesn't exist, create it
+        if (!path.exists()) { path.mkdirs(); }
 
         JSONObject jsonObject = new JSONObject();
 
