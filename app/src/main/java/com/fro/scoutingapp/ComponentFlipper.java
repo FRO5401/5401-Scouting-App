@@ -30,36 +30,13 @@ import java.util.Objects;
 
 public class ComponentFlipper extends LinearLayout {
 
+    /*    This is where all the logic for the components are located   */
+
     // Instantiates the view flipper
     ViewFlipper flipper;
-    // Text type box
-    EditText typeBox;
-    // Text Dropdown
-    Spinner textDropdown;
-    // Team Number Dropdown
-    AutoCompleteTextView numberDropdown;
-    // Toggle
-    SwitchCompat toggle;
-    // Counter
-    ImageButton counterPlus;
-    ImageButton counterMinus;
-    TextView counterNumber;
-    // Multi Counter
-    TextView multiCounterCount;
-    ImageButton multiCounterPlus1;
-    ImageButton multiCounterMinus1;
-    ImageButton multiCounterPlus2;
-    ImageButton multiCounterMinus2;
-    ImageButton multiCounterPlus3;
-    ImageButton multiCounterMinus3;
-    TextView multiCounterIncrement1;
-    TextView multiCounterIncrement2;
-    TextView multiCounterIncrement3;
-    LinearLayout multiCounterLayout;
-    LinearLayout multiCounterLayout1;
-    LinearLayout multiCounterLayout2;
-    LinearLayout multiCounterLayout3;
-    // Stopwatch
+
+
+    // Stopwatch is instantiated here because it is used in multiple places throughout this file
     TextView stopwatchTimer;
     TextView stopwatchRestart;
     TextView stopwatchStart;
@@ -91,10 +68,10 @@ public class ComponentFlipper extends LinearLayout {
 
     public ComponentFlipper(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context, attrs);
+        init(context);
     }
 
-    private void init(Context context, AttributeSet attrs) {
+    private void init(Context context) {
         inflate(context, R.layout.component_flipper, this);
         flipper = findViewById(R.id.flipper);
 
@@ -131,7 +108,7 @@ public class ComponentFlipper extends LinearLayout {
         if (!Values.data.containsKey(name)) {Values.data.put(name, "");}
 
         //Creates the type box
-        typeBox = findViewById(R.id.type_box);
+        EditText typeBox = findViewById(R.id.type_box);
 
         // Sets the input type (number or text)
         if (type == Values.inputType_number) {
@@ -175,7 +152,7 @@ public class ComponentFlipper extends LinearLayout {
         // Creates the dropdown
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_spinner_item, array);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown);
-        textDropdown = findViewById(R.id.text_dropdown);
+        Spinner textDropdown = findViewById(R.id.text_dropdown);
         textDropdown.setAdapter(adapter);
 
         // Sets the dropdown to be below the spinner border
@@ -209,7 +186,7 @@ public class ComponentFlipper extends LinearLayout {
 
         // Creates the dropdown
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this.getContext(), R.layout.spinner_dropdown, TeamNumbers.team_list);
-        numberDropdown = findViewById(R.id.number_dropdown);
+        AutoCompleteTextView numberDropdown = findViewById(R.id.number_dropdown);
         numberDropdown.setThreshold(1);
         numberDropdown.setAdapter(adapter);
 
@@ -244,7 +221,7 @@ public class ComponentFlipper extends LinearLayout {
         }
 
         // Creates the toggle
-        toggle = findViewById(R.id.toggle);
+        SwitchCompat toggle = findViewById(R.id.toggle);
         LinearLayout toggleLayout = findViewById(R.id.toggle_layout);
 
         // Sets the track and thumb drawables
@@ -278,9 +255,9 @@ public class ComponentFlipper extends LinearLayout {
         }
 
         // Creates the buttons and text view
-        counterMinus = findViewById(R.id.counter_minus);
-        counterPlus = findViewById(R.id.counter_plus);
-        counterNumber = findViewById(R.id.counter_number);
+        ImageButton counterMinus = findViewById(R.id.counter_minus);
+        ImageButton counterPlus = findViewById(R.id.counter_plus);
+        TextView counterNumber = findViewById(R.id.counter_number);
 
         // Set text to data value
         if (Values.data.containsKey(name)) {
@@ -319,14 +296,14 @@ public class ComponentFlipper extends LinearLayout {
         }
 
         // Creates the buttons and text view
-        multiCounterCount = findViewById(R.id.multi_counter_count);
-        multiCounterPlus1 = findViewById(R.id.multi_counter_plus_1);
-        multiCounterMinus1 = findViewById(R.id.multi_counter_minus_1);
-        multiCounterIncrement1 = findViewById(R.id.multi_counter_increment_1);
-        multiCounterLayout = findViewById(R.id.multi_counter_layout);
-        multiCounterLayout1 = findViewById(R.id.multi_counter_layout_1);
-        multiCounterLayout2 = findViewById(R.id.multi_counter_layout_2);
-        multiCounterLayout3 = findViewById(R.id.multi_counter_layout_3);
+        TextView multiCounterCount = findViewById(R.id.multi_counter_count);
+        ImageButton multiCounterPlus1 = findViewById(R.id.multi_counter_plus_1);
+        ImageButton multiCounterMinus1 = findViewById(R.id.multi_counter_minus_1);
+        TextView multiCounterIncrement1 = findViewById(R.id.multi_counter_increment_1);
+        LinearLayout multiCounterLayout = findViewById(R.id.multi_counter_layout);
+        LinearLayout multiCounterLayout1 = findViewById(R.id.multi_counter_layout_1);
+        LinearLayout multiCounterLayout2 = findViewById(R.id.multi_counter_layout_2);
+        LinearLayout multiCounterLayout3 = findViewById(R.id.multi_counter_layout_3);
 
         // Makes the 3rd layout not exist, so there are only 2
         multiCounterLayout3.setVisibility(GONE);
@@ -403,17 +380,17 @@ public class ComponentFlipper extends LinearLayout {
         }
 
         // Creates the buttons and text view
-        multiCounterCount = findViewById(R.id.multi_counter_count);
-        multiCounterPlus1 = findViewById(R.id.multi_counter_plus_1);
-        multiCounterMinus1 = findViewById(R.id.multi_counter_minus_1);
-        multiCounterPlus2 = findViewById(R.id.multi_counter_plus_2);
-        multiCounterMinus2 = findViewById(R.id.multi_counter_minus_2);
-        multiCounterIncrement1 = findViewById(R.id.multi_counter_increment_1);
-        multiCounterIncrement2 = findViewById(R.id.multi_counter_increment_2);
-        multiCounterLayout = findViewById(R.id.multi_counter_layout);
-        multiCounterLayout1 = findViewById(R.id.multi_counter_layout_1);
-        multiCounterLayout2 = findViewById(R.id.multi_counter_layout_2);
-        multiCounterLayout3 = findViewById(R.id.multi_counter_layout_3);
+        TextView multiCounterCount = findViewById(R.id.multi_counter_count);
+        ImageButton multiCounterPlus1 = findViewById(R.id.multi_counter_plus_1);
+        ImageButton multiCounterMinus1 = findViewById(R.id.multi_counter_minus_1);
+        ImageButton multiCounterPlus2 = findViewById(R.id.multi_counter_plus_2);
+        ImageButton multiCounterMinus2 = findViewById(R.id.multi_counter_minus_2);
+        TextView multiCounterIncrement1 = findViewById(R.id.multi_counter_increment_1);
+        TextView multiCounterIncrement2 = findViewById(R.id.multi_counter_increment_2);
+        LinearLayout multiCounterLayout = findViewById(R.id.multi_counter_layout);
+        LinearLayout multiCounterLayout1 = findViewById(R.id.multi_counter_layout_1);
+        LinearLayout multiCounterLayout2 = findViewById(R.id.multi_counter_layout_2);
+        LinearLayout multiCounterLayout3 = findViewById(R.id.multi_counter_layout_3);
 
         // Makes the 3rd layout not exist, so there are only 2
         multiCounterLayout3.setVisibility(GONE);
@@ -508,20 +485,20 @@ public class ComponentFlipper extends LinearLayout {
         }
 
         // Creates the buttons and text view
-        multiCounterCount = findViewById(R.id.multi_counter_count);
-        multiCounterPlus1 = findViewById(R.id.multi_counter_plus_1);
-        multiCounterMinus1 = findViewById(R.id.multi_counter_minus_1);
-        multiCounterPlus2 = findViewById(R.id.multi_counter_plus_2);
-        multiCounterMinus2 = findViewById(R.id.multi_counter_minus_2);
-        multiCounterPlus3 = findViewById(R.id.multi_counter_plus_3);
-        multiCounterMinus3 = findViewById(R.id.multi_counter_minus_3);
-        multiCounterIncrement1 = findViewById(R.id.multi_counter_increment_1);
-        multiCounterIncrement2 = findViewById(R.id.multi_counter_increment_2);
-        multiCounterIncrement3 = findViewById(R.id.multi_counter_increment_3);
-        multiCounterLayout = findViewById(R.id.multi_counter_layout);
-        multiCounterLayout1 = findViewById(R.id.multi_counter_layout_1);
-        multiCounterLayout2 = findViewById(R.id.multi_counter_layout_2);
-        multiCounterLayout3 = findViewById(R.id.multi_counter_layout_3);
+        TextView multiCounterCount = findViewById(R.id.multi_counter_count);
+        ImageButton multiCounterPlus1 = findViewById(R.id.multi_counter_plus_1);
+        ImageButton multiCounterMinus1 = findViewById(R.id.multi_counter_minus_1);
+        ImageButton multiCounterPlus2 = findViewById(R.id.multi_counter_plus_2);
+        ImageButton multiCounterMinus2 = findViewById(R.id.multi_counter_minus_2);
+        ImageButton multiCounterPlus3 = findViewById(R.id.multi_counter_plus_3);
+        ImageButton multiCounterMinus3 = findViewById(R.id.multi_counter_minus_3);
+        TextView multiCounterIncrement1 = findViewById(R.id.multi_counter_increment_1);
+        TextView multiCounterIncrement2 = findViewById(R.id.multi_counter_increment_2);
+        TextView multiCounterIncrement3 = findViewById(R.id.multi_counter_increment_3);
+        LinearLayout multiCounterLayout = findViewById(R.id.multi_counter_layout);
+        LinearLayout multiCounterLayout1 = findViewById(R.id.multi_counter_layout_1);
+        LinearLayout multiCounterLayout2 = findViewById(R.id.multi_counter_layout_2);
+        LinearLayout multiCounterLayout3 = findViewById(R.id.multi_counter_layout_3);
 
         // Set text to data value
         if (Values.data.containsKey(name)) {
