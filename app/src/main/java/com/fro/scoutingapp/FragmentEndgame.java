@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FragmentEndgame extends Fragment {
     public FragmentEndgame() {/* Required empty public constructor*/}
+
+    //TODO Create this page
 
     // Declare variables
 

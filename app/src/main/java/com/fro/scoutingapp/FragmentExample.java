@@ -14,6 +14,7 @@ public class FragmentExample extends Fragment {
     public FragmentExample() {/* Required empty public constructor*/}
 
     // Declare global variables here \/
+    //TODO Declare each row as row1, row2, etc
     RowTwoBoxes row1;
     RowThreeBoxes row2;
     RowLongBox row3;
@@ -24,10 +25,14 @@ public class FragmentExample extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_example, container, false);
         // Instantiate variables here \/
+        //TODO Instantiate through the root view
         row1 = rootView.findViewById(R.id.template_row_1);
         row2 = rootView.findViewById(R.id.template_row_2);
         row3 = rootView.findViewById(R.id.template_row_3);
         row4 = rootView.findViewById(R.id.template_row_4);
+
+
+        //TODO Create each box in the row. Hover over the create function to view explanations
 
         /*   Row 1   */
         row1.createCounter("Template_Points_Scored", 30, Values.left);
@@ -51,6 +56,7 @@ public class FragmentExample extends Fragment {
         return rootView;
     }
 
+    //TODO If you have a stopwatch on the fragment, the 5 lines below are required
     @Override
     public void onHiddenChanged(boolean hidden) {
         row3.pauseStopwatch(Values.right);

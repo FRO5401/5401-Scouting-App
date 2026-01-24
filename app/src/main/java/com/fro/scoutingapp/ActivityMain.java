@@ -39,25 +39,30 @@ public class ActivityMain extends AppCompatActivity {
         // Creates an exception handler (when app crashes, a stacktrace is written)
         Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler());
 
-        // Instantiate variables here \/
+        // Instantiate variables
         startButton = findViewById(R.id.start_button);
         verticalLongBox = findViewById(R.id.vertical_long_box);
         helpButton = findViewById(R.id.main_help_button);
         helpPopup = findViewById(R.id.main_help_popup);
         screen = findViewById(R.id.main_screen);
 
+
+        //TODO Set main activity row
+
         // vertical long box
         verticalLongBox.createTypeBox("Main_Scouters_Name", Values.inputType_text, 20, Values.vertical_level_1);
         verticalLongBox.createTeamNumberDropdown("Main_Team_Number", Values.vertical_level_2);
         verticalLongBox.createTextDropdown(
                 "Main_Robot_Position",
-                new ArrayList<>(Arrays.asList("Outpost", "Tower", "Depot", "Other")),
+                new ArrayList<>(Arrays.asList("Left", "Middle", "Right", "Other")),
                 Values.vertical_level_3);
         verticalLongBox.createTypeBox("Main_Match_Number", Values.inputType_number, 3, Values.vertical_level_4);
         verticalLongBox.createTextDropdown(
                 "Main_Human_Player_Position",
-                new ArrayList<>(Arrays.asList("Thrower", "Outpost", "Role", "Can't Tell")),
+                new ArrayList<>(Arrays.asList("Station 1", "Station 2", "Station 3", "Can't Tell")),
                 Values.vertical_level_5);
+
+
 
         // Sets the margins of the popups
         setPopupMargins();

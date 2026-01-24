@@ -16,5 +16,6 @@
         android:layout_weight="0.5">
     </com.fro.scoutingapp.RowTopText>
 
+    <!-- TODO Create rows -->
 
 </LinearLayout>

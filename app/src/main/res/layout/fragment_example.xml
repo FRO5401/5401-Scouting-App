@@ -8,7 +8,10 @@
     android:weightSum="5"
     android:background="@color/fro_blue">
 
-<!--TODO: DELETE THIS FILE AND FragmentExample.java BEFORE APP USE -->
+<!-- TODO: DELETE THIS FILE AND FragmentExample.java BEFORE APP USE -->
+
+<!-- TODO Create a row by typing <Row, and Android will autofill -->
+<!-- TODO Hover over the name of the row to view instructions-->
 
     <com.fro.scoutingapp.RowTopText
         android:layout_width="match_parent"

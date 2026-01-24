@@ -15,4 +15,6 @@
         app:color_mode="dark"
         android:layout_weight="0.5"/>
 
+    <!-- TODO Create rows -->
+
 </LinearLayout>

@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">Scouting App</string>
 
+<!--    TODO Update help screen text    -->
+<!--    \t = indents   -->
+<!--    \n = starts a new line   -->
+<!--    \' = allows an apostrophe   -->
+<!--    \u2022 = creates a bullet point   -->
+
+
     <string name="help_screen_header_1_page_1">How To Scout</string>
     <string name="help_screen_text_1_page_1">
 \t 1. Check the match number and the position assigned to you on the scouting schedule. \n

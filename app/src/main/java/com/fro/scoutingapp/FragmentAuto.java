@@ -7,14 +7,13 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FragmentAuto extends Fragment {
     public FragmentAuto() {/* Required empty public constructor*/}
 
-    // Declare variables
+    //TODO Create this page
 
+    // Declare variables
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

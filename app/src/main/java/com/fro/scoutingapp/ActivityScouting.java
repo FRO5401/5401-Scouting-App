@@ -77,7 +77,7 @@ public class ActivityScouting extends AppCompatActivity {
         helpButton = findViewById(R.id.help_button);
 
         // Fragments
-        FragmentExample fragmentAuto = new FragmentExample();
+        FragmentAuto fragmentAuto = new FragmentAuto();
         FragmentTeleop fragmentTeleop = new FragmentTeleop();
         FragmentEndgame fragmentEndgame = new FragmentEndgame();
         FragmentNotes fragmentNotes = new FragmentNotes();

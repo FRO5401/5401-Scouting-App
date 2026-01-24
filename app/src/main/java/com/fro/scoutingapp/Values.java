@@ -17,24 +17,26 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class Values {
+    // TODO Update current year
     // Current year
     public static final int year = 2026;
 
-    // public variables for the developer to set which box they are using
-    public static int left = 0;
-    public static int middle = 1;
-    public static int right = 2;
-    public static int vertical_level_1 = 3;
-    public static int vertical_level_2 = 4;
-    public static int vertical_level_3 = 5;
-    public static int vertical_level_4 = 6;
-    public static int vertical_level_5 = 7;
-    public static int inputType_text = 8;
-    public static int inputType_number = 9;
-    public static int colorType_whiteGreyWhite = 10;
-    public static int colorType_greyWhiteGrey = 11;
-    public static int colorType_allWhite = 12;
-    public static int colorType_allGrey = 13;
+
+    // public variables for the developer to set which box they are using- DON'T CHANGE
+    public static final int left = 0;
+    public static final int middle = 1;
+    public static final int right = 2;
+    public static final int vertical_level_1 = 3;
+    public static final int vertical_level_2 = 4;
+    public static final int vertical_level_3 = 5;
+    public static final int vertical_level_4 = 6;
+    public static final int vertical_level_5 = 7;
+    public static final int inputType_text = 8;
+    public static final int inputType_number = 9;
+    public static final int colorType_whiteGreyWhite = 10;
+    public static final int colorType_greyWhiteGrey = 11;
+    public static final int colorType_allWhite = 12;
+    public static final int colorType_allGrey = 13;
 
     // Sizes on page creation
     public static int screen_width = 0;

@@ -15,6 +15,8 @@
         app:color_mode="light"
         android:layout_weight="0.5"/>
 
+    <!-- TODO Create rows (if necessary) -->
+
     <com.fro.scoutingapp.RowLongBox
         android:id="@+id/notes_row_1"
         android:layout_width="match_parent"

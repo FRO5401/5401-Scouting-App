@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 public class FragmentTeleop extends Fragment {
     public FragmentTeleop() {/* Required empty public constructor*/}
 
+    //TODO Create this page
+
     // Declare variables
 
 
