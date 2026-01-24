@@ -17,6 +17,7 @@ public class FragmentAuto extends Fragment {
     // Declare variables
     RowLargeBox row1;
     RowLargeBox row2;
+    RowThreeBoxes row3;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class FragmentAuto extends Fragment {
                 new ArrayList<>(Arrays.asList("None", "L1")));
         row2.createMultiCounter("Auto_Fuel_Scored",400, Values.colorType_greyWhiteGrey, 1, 2 ,4);
 
+        row3.createCounter("Auto_Example", 400, Values.left);
         // Inflate the layout for this fragment
         return rootView;
     }

@@ -24,10 +24,11 @@ import java.util.ArrayList;
  *     <li>team_number_dropdown - A searchable dropdown of team numbers</li>
  *     <li>toggle - An on/off switch</li>
  *     <li>counter - A plus/minus counter starting at 0</li>
+ *     <li>multi_counter - A plus/minus counter with multiple increment sets starting at 0. Can have 1/2/3 increment sets.</li>
  *     <li>stopwatch - A stopwatch with on, off, and reset</li>
  * </ul>
  */
-public class RowThinLargeBox extends LinearLayout {
+public class RowThinLargeBox extends LinearLayout implements InterfaceSingleRow {
     // Declare variables
     TextView textView;
     ComponentFlipper flipper;
@@ -75,14 +76,14 @@ public class RowThinLargeBox extends LinearLayout {
         }
         flipper.changeTo(value);
     }
-
+/** @param inputType new */
     public void createTypeBox(String name, int inputType, int  maxCharacters) {flipper.createTypeBox(name, inputType, maxCharacters);}
 
     public void createTextDropdown(String name, ArrayList<String> array) {flipper.createTextDropdown(name, array);}
 
     public void createTeamNumberDropdown(String name) {flipper.createTeamNumberDropdown(name);}
 
-    public void createToggle(String name, int position) {flipper.createToggle(name);}
+    public void createToggle(String name) {flipper.createToggle(name);}
 
     public void createCounter(String name, int maxValue) {flipper.createCounter(name, maxValue);}
 

@@ -27,10 +27,11 @@ import java.util.ArrayList;
  *     <li>team_number_dropdown - A searchable dropdown of team numbers</li>
  *     <li>toggle - An on/off switch</li>
  *     <li>counter - A plus/minus counter starting at 0</li>
+ *     <li>multi_counter - A plus/minus counter with multiple increment sets starting at 0. Can have 1/2/3 increment sets.</li>
  *     <li>stopwatch - A stopwatch with on, off, and reset</li>
  * </ul>
  */
-public class RowTwoBoxes extends LinearLayout {
+public class RowTwoBoxes extends LinearLayout implements InterfaceMultiRow {
     // Declare variables
     TextView leftTextView;
     TextView rightTextView;
@@ -89,12 +90,23 @@ public class RowTwoBoxes extends LinearLayout {
         flipper.changeTo(value);
     }
 
+    /** @param position The box that this component will be created in.
+     * <ul>
+     *      <li>Values.left - The component will be in the left box</li>
+     *      <li>Values.right - The component will be in the right box</li>
+     * </ul>
+     */
     public void createTextDropdown(String name, ArrayList<String> array, int position) {
         if (position == Values.left) {leftFlipper.createTextDropdown(name, array);}
         else if (position == Values.right) {rightFlipper.createTextDropdown(name, array);}
         else{Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }
-
+    /** @param position The box that this component will be created in.
+     * <ul>
+     *      <li>Values.left - The component will be in the left box</li>
+     *      <li>Values.right - The component will be in the right box</li>
+     * </ul>
+     */
     public void createTypeBox(String name, int inputType, int maxCharacters, int position) {
         if (position == Values.left) {leftFlipper.createTypeBox(name, inputType, maxCharacters);}
         else if (position == Values.right) {rightFlipper.createTypeBox(name, inputType, maxCharacters);}
@@ -102,28 +114,48 @@ public class RowTwoBoxes extends LinearLayout {
             Toast.makeText(this.getContext(), "ERROR: Invalid position in text type box "+name, Toast.LENGTH_SHORT).show();
         }
     }
-
+    /** @param position The box that this component will be created in.
+     * <ul>
+     *      <li>Values.left - The component will be in the left box</li>
+     *      <li>Values.right - The component will be in the right box</li>
+     * </ul>
+     */
     public void createTeamNumberDropdown(String name, int position) {
         if (position == Values.left) {leftFlipper.createTeamNumberDropdown(name);}
         else if (position == Values.right) {rightFlipper.createTeamNumberDropdown(name);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }
-
+    /** @param position The box that this component will be created in.
+     * <ul>
+     *      <li>Values.left - The component will be in the left box</li>
+     *      <li>Values.right - The component will be in the right box</li>
+     * </ul>
+     */
     public void createToggle(String name, int position) {
         if (position == Values.left) {leftFlipper.createToggle(name);}
         else if (position == Values.right) {rightFlipper.createToggle(name);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in toggle "+name, Toast.LENGTH_SHORT).show();}
     }
-
+    /** @param position The box that this component will be created in.
+     * <ul>
+     *      <li>Values.left - The component will be in the left box</li>
+     *      <li>Values.right - The component will be in the right box</li>
+     * </ul>
+     */
     public void createCounter(String name, int maxValue, int position) {
         if (position == Values.left) {leftFlipper.createCounter(name, maxValue);}
         else if (position == Values.right) {rightFlipper.createCounter(name, maxValue);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
     }
-
+    /** @param position The box that this component will be created in.
+     * <ul>
+     *      <li>Values.left - The component will be in the left box</li>
+     *      <li>Values.right - The component will be in the right box</li>
+     * </ul>
+     */
     // With 1 increment sets
     public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1) {
         if (position == Values.left) {
@@ -141,6 +173,12 @@ public class RowTwoBoxes extends LinearLayout {
 
         wantsPadding = false;
     }
+    /** @param position The box that this component will be created in.
+     * <ul>
+     *      <li>Values.left - The component will be in the left box</li>
+     *      <li>Values.right - The component will be in the right box</li>
+     * </ul>
+     */
     // With 2 increment sets
     public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1, int incAmount2) {
         if (position == Values.left) {
@@ -158,6 +196,12 @@ public class RowTwoBoxes extends LinearLayout {
 
         wantsPadding = false;
     }
+    /** @param position The box that this component will be created in.
+     * <ul>
+     *      <li>Values.left - The component will be in the left box</li>
+     *      <li>Values.right - The component will be in the right box</li>
+     * </ul>
+     */
     // With 3 increment sets
     public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1, int incAmount2, int incAmount3) {
         if (position == Values.left) {
@@ -175,14 +219,24 @@ public class RowTwoBoxes extends LinearLayout {
 
         wantsPadding = false;
     }
-
+    /** @param position The box that this component will be created in.
+     * <ul>
+     *      <li>Values.left - The component will be in the left box</li>
+     *      <li>Values.right - The component will be in the right box</li>
+     * </ul>
+     */
     public void createStopwatch(String name, int position) {
         if (position == Values.left) {leftFlipper.createStopwatch(name);}
         else if (position == Values.right) {rightFlipper.createStopwatch(name);}
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch "+name, Toast.LENGTH_SHORT).show();}
     }
-
+    /** @param position The box that this component is in.
+     * <ul>
+     *      <li>Values.left - The component is in the left box</li>
+     *      <li>Values.right - The component is in the right box</li>
+     * </ul>
+     */
     public void pauseStopwatch(int position) {
         if (position == Values.left) {leftFlipper.pauseStopwatch();}
         else if (position == Values.right) {rightFlipper.pauseStopwatch();}

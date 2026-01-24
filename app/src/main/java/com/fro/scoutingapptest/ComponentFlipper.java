@@ -208,7 +208,7 @@ public class ComponentFlipper extends LinearLayout {
         }
 
         // Creates the dropdown
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(), R.layout.spinner_dropdown, TeamNumbers.ramp_riot);
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this.getContext(), R.layout.spinner_dropdown, TeamNumbers.team_list);
         numberDropdown = findViewById(R.id.number_dropdown);
         numberDropdown.setThreshold(1);
         numberDropdown.setAdapter(adapter);

@@ -30,10 +30,11 @@ import java.util.ArrayList;
  *     <li>team_number_dropdown - A searchable dropdown of team numbers</li>
  *     <li>toggle - An on/off switch</li>
  *     <li>counter - A plus/minus counter starting at 0</li>
+ *     <li>multi_counter - A plus/minus counter with multiple increment sets starting at 0. Can have 1/2/3 increment sets.</li>
  *     <li>stopwatch - A stopwatch with on, off, and reset</li>
  * </ul>
  */
-public class RowThreeBoxes extends LinearLayout {
+public class RowThreeBoxes extends LinearLayout implements InterfaceMultiRow {
     // Declare variables
     TextView leftTextView;
     TextView middleTextView;

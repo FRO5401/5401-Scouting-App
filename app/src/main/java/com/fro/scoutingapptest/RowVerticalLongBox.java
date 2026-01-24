@@ -32,10 +32,11 @@ import java.util.ArrayList;
  *     <li>team_number_dropdown - A searchable dropdown of team numbers</li>
  *     <li>toggle - An on/off switch</li>
  *     <li>counter - A plus/minus counter starting at 0</li>
+ *     <li>multi_counter - A plus/minus counter with multiple increment sets starting at 0. Can have 1/2/3 increment sets.</li>
  *     <li>stopwatch - A stopwatch with on, off, and reset</li>
  * </ul>
  */
-public class RowVerticalLongBox extends LinearLayout{
+public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRow {
     // Declare variables
     TextView textView1;
     TextView textView2;
@@ -123,7 +124,15 @@ public class RowVerticalLongBox extends LinearLayout{
         }
         flipper.changeTo(value);
     }
-
+    /** @param position The level that this component will be created in. Levels go from top to bottom
+     * <ul>
+     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
+     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
+     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
+     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     * </ul>
+     */
     public void createTypeBox(String name, int inputType, int maxCharacters, int position) {
         if (position == Values.vertical_level_1) {flipper1.createTypeBox(name, inputType, maxCharacters);}
         else if (position == Values.vertical_level_2) {flipper2.createTypeBox(name, inputType, maxCharacters);}
@@ -134,6 +143,15 @@ public class RowVerticalLongBox extends LinearLayout{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in type box "+name, Toast.LENGTH_SHORT).show();
         }
     }
+    /** @param position The level that this component will be created in. Levels go from top to bottom
+     * <ul>
+     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
+     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
+     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
+     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     * </ul>
+     */
     public void createTextDropdown(String name, ArrayList<String> array, int position) {
         if (position == Values.vertical_level_1) {flipper1.createTextDropdown(name, array);}
         else if (position == Values.vertical_level_2) {flipper2.createTextDropdown(name, array);}
@@ -143,7 +161,15 @@ public class RowVerticalLongBox extends LinearLayout{
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }
-
+    /** @param position The level that this component will be created in. Levels go from top to bottom
+     * <ul>
+     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
+     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
+     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
+     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     * </ul>
+     */
     public void createTeamNumberDropdown(String name, int position) {
         if (position == Values.vertical_level_1) {flipper1.createTeamNumberDropdown(name);}
         else if (position == Values.vertical_level_2) {flipper2.createTeamNumberDropdown(name);}
@@ -153,7 +179,15 @@ public class RowVerticalLongBox extends LinearLayout{
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }
-
+    /** @param position The level that this component will be created in. Levels go from top to bottom
+     * <ul>
+     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
+     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
+     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
+     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     * </ul>
+     */
     public void createToggle(String name, int position) {
         if (position == Values.vertical_level_1) {flipper1.createToggle(name);}
         else if (position == Values.vertical_level_2) {flipper2.createToggle(name);}
@@ -163,7 +197,15 @@ public class RowVerticalLongBox extends LinearLayout{
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in toggle "+name, Toast.LENGTH_SHORT).show();}
     }
-
+    /** @param position The level that this component will be created in. Levels go from top to bottom
+     * <ul>
+     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
+     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
+     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
+     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     * </ul>
+     */
     public void createCounter(String name, int maxValue, int position) {
         if (position == Values.vertical_level_1) {flipper1.createCounter(name, maxValue);}
         else if (position == Values.vertical_level_2) {flipper2.createCounter(name, maxValue);}
@@ -173,7 +215,15 @@ public class RowVerticalLongBox extends LinearLayout{
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
     }
-
+    /** @param position The level that this component will be created in. Levels go from top to bottom
+     * <ul>
+     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
+     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
+     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
+     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     * </ul>
+     */
     // With 1 increment sets
     public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1) {
         if (position == Values.vertical_level_1) {flipper1.createMultiCounter(name, maxValue, colorPattern, incAmount1);}
@@ -185,6 +235,15 @@ public class RowVerticalLongBox extends LinearLayout{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
         wantsPadding = false;
     }
+    /** @param position The level that this component will be created in. Levels go from top to bottom
+     * <ul>
+     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
+     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
+     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
+     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     * </ul>
+     */
     // With 2 increment sets
     public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1, int incAmount2) {
         if (position == Values.vertical_level_1) {flipper1.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2);}
@@ -196,6 +255,15 @@ public class RowVerticalLongBox extends LinearLayout{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
         wantsPadding = false;
     }
+    /** @param position The level that this component will be created in. Levels go from top to bottom
+     * <ul>
+     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
+     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
+     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
+     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     * </ul>
+     */
     // With 3 increment sets
     public void createMultiCounter(String name, int maxValue, int position, int colorPattern, int incAmount1, int incAmount2, int incAmount3) {
         if (position == Values.vertical_level_1) {flipper1.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);}
@@ -207,8 +275,15 @@ public class RowVerticalLongBox extends LinearLayout{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
         wantsPadding = false;
     }
-
-
+    /** @param position The level that this component will be created in. Levels go from top to bottom
+     * <ul>
+     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
+     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
+     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
+     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     * </ul>
+     */
     public void createStopwatch(String name, int position) {
         if (position == Values.vertical_level_1) {flipper1.createStopwatch(name);}
         else if (position == Values.vertical_level_2) {flipper2.createStopwatch(name);}
@@ -218,6 +293,15 @@ public class RowVerticalLongBox extends LinearLayout{
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch "+name, Toast.LENGTH_SHORT).show();}
     }
+    /** @param position The level that this component is in. Levels go from top to bottom
+     * <ul>
+     *      <li>Values.vertical_level_1 - The component is in the top box</li>
+     *      <li>Values.vertical_level_2 - The component is in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component is in the middle box</li>
+     *      <li>Values.vertical_level_4 - The component is in the second to bottom box</li>
+     *      <li>Values.vertical_level_5 - The component is in the bottom box</li>
+     * </ul>
+     */
     public void pauseStopwatch(int position) {
         if (position == Values.vertical_level_1) {flipper1.pauseStopwatch();}
         else if (position == Values.vertical_level_2) {flipper2.pauseStopwatch();}

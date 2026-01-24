@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @requires app:text=""
  * <br> The text that will be displayed in the box header
- *
+
  * @requires app:box_type=""
  * <br> The type of component that will be in the box
  * <ul>
@@ -23,11 +23,12 @@ import java.util.ArrayList;
  *     <li>text_dropdown - A dropdown list</li>
  *     <li>team_number_dropdown - A searchable dropdown of team numbers</li>
  *     <li>toggle - An on/off switch</li>
- *     <li>counter - A plus/minus counter starting at 0</li>
+ *     <li>counter - A plus/minus counter starting at 0, incremented by 1</li>
+ *     <li>multi_counter - A plus/minus counter with multiple increment sets starting at 0. Can have 1/2/3 increment sets.</li>
  *     <li>stopwatch - A stopwatch with on, off, and reset</li>
  * </ul>
  */
-public class RowLargeBox extends LinearLayout {
+public class RowLargeBox extends LinearLayout implements InterfaceSingleRow {
     // Declare variables
     TextView textView;
     ComponentFlipper flipper;
@@ -82,7 +83,7 @@ public class RowLargeBox extends LinearLayout {
 
     public void createTeamNumberDropdown(String name) {flipper.createTeamNumberDropdown(name);}
 
-    public void createToggle(String name, int position) {flipper.createToggle(name);}
+    public void createToggle(String name) {flipper.createToggle(name);}
 
     public void createCounter(String name, int maxValue) {flipper.createCounter(name, maxValue);}
 
@@ -101,6 +102,7 @@ public class RowLargeBox extends LinearLayout {
         flipper.setLayoutParams( new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0,  4.0f));
         wantsPadding = false;
     }
+
     // With 3 increment sets
     public void createMultiCounter(String name, int maxValue, int colorPattern, int incAmount1, int incAmount2, int incAmount3) {
         flipper.createMultiCounter(name, maxValue, colorPattern, incAmount1, incAmount2, incAmount3);
@@ -109,6 +111,7 @@ public class RowLargeBox extends LinearLayout {
         wantsPadding = false;
     }
 
+    // A stopwatch with on, off, and reset
     public void createStopwatch(String name) {flipper.createStopwatch(name);}
 
     public void pauseStopwatch() {flipper.pauseStopwatch();}
