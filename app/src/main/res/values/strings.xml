@@ -1,3 +1,39 @@
 <resources>
     <string name="app_name">Scouting App</string>
+
+    <string name="help_screen_header_1_page_1">How To Scout</string>
+    <string name="help_screen_text_1_page_1">
+\t 1. Check the match number and the position assigned to you on the scouting schedule. \n
+\t 2. Enter your name, the robot number, robot position, and the human player position. \n
+\t 3. Start in the Auto section. \n
+\t 4. Watch your assigned robot, filling out the fields associated with your robot\'s actions. \n
+\t 5. When the first bell rings, go to the Tele-Op section. \n
+\t 6. Repeat step 4. \n
+\t 7. When the game is over, go to the Endgame section and fill out the boxes. \n
+\t 8. Go to the Notes section, and input any notes. \n
+\t 9. Click the 3 lines on the right, and select submit. \n</string>
+
+    <string name="help_screen_header_1_page_2">Helpful Tidbits</string>
+    <string name="help_screen_text_1_page_2">
+\t \u2022 Some helpful piece of text related to the game. \n
+\t \u2022 You can find the human player position by looking at the players\' shirt colors, and inferring their team. \n
+\t \u2022 Examples of things to put in the notes box: If the robot is a skateboard, a defense bot, or their auto fails. </string>
+
+    <string name="help_screen_header_2_page_2">Terminology</string>
+    <string name="help_screen_text_2_page_2">
+\t \u2022 TERM =  The definition of something that is useful to a scouter. \n
+\t \u2022 COOPERITION BONUS = If both alliance\'s work together to do something. \n
+\t \u2022 RANKING POINT = The criteria for a specific ranking point.</string>
+
+    <string name="help_screen_header_1_page_3">Penalties</string>
+    <string name="help_screen_text_1_page_3">
+\t \u2022 A specific yet common penalty and how it\'s caused. \n
+\t \u2022 If there is a penalty, the ref closest to the offender will wave a flag that corresponds to their team\'s color.</string>
+
+
+    <string name="help_screen_header_2_page_3">Visual Cues</string>
+    <string name="help_screen_text_2_page_3">
+\t \u2022 A visual cue that could be helpful to the scouter. \n
+\t \u2022 Once a team receives a YELLOW or RED CARD, a yellow rectangle will show next to the team number on the audience display. \n
+\t \u2022 If COOPERTITION is enabled, a handshake icon will be on the scoreboard.</string>
 </resources>

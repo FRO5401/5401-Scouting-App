@@ -1,19 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_width="match_parent"
+    android:id="@+id/main_screen">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/main"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/fro_blue"
+        tools:context=".ActivityMain"
+        android:weightSum="5">
+
+        <com.fro.scoutingapp.RowTopText
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:text="FRO Scouting"
+            app:color_mode="light"
+            android:layout_weight="0.4">
+        </com.fro.scoutingapp.RowTopText>
+
+        <com.fro.scoutingapp.RowTopImage
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:image="@drawable/game_logo"
+            app:color_mode="light"
+            android:layout_weight="0.4">
+        </com.fro.scoutingapp.RowTopImage>
+
+        <com.fro.scoutingapp.RowVerticalLongBox
+            android:id="@+id/vertical_long_box"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:text_1="Scouter's\nName:"
+            app:text_2="Team\nNumber:"
+            app:text_3="Robot\nPosition:"
+            app:text_4="Match\nNumber:"
+            app:text_5="Human Player\nPosition:"
+            app:box_type_1="type_box"
+            app:box_type_2="team_number_dropdown"
+            app:box_type_3="text_dropdown"
+            app:box_type_4="type_box"
+            app:box_type_5="text_dropdown"
+            android:layout_weight="3.3">
+        </com.fro.scoutingapp.RowVerticalLongBox>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="0.7"
+            android:layout_margin="30dp">
+            <TextView
+                android:id="@+id/start_button"
+                android:padding="40dp"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="uniform"
+                android:textAlignment="center"
+                android:text="Start Scouting"
+                android:fontFamily="@font/helvetica_bold"
+                android:clickable="true"
+                android:layout_weight="8"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/text_grey"
+                android:background="@drawable/box_background">
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/main_help_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:layout_weight="2"
+                android:scaleType="fitCenter"
+                android:background="@color/transparent"
+                android:src="@drawable/help_button">
+            </ImageButton>
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.fro.scoutingapp.HelpPopup
+        android:id="@+id/main_help_popup"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

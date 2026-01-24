@@ -12,8 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ScoutingApp">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".ActivityScouting"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityMain"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
