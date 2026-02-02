@@ -36,6 +36,7 @@
             android:id="@+id/vertical_long_box"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:row_amount="five_rows"
             app:text_1="Scouter's\nName:"
             app:text_2="Team\nNumber:"
             app:text_3="Robot\nPosition:"

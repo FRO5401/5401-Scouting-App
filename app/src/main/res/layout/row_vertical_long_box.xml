@@ -1,5 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/backgroundLayout"
+    android:id="@+id/vertical_long_box_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -88,6 +88,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/vertical_long_box_layout_4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -114,6 +115,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/vertical_long_box_layout_5"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

@@ -120,6 +120,13 @@
             <enum name="light" value="0"/>
             <enum name="dark" value="1"/>
         </attr>
+
+        <attr name="row_amount" format="enum" >
+            <enum name="three_rows" value="0"/>
+            <enum name="four_rows" value="1"/>
+            <enum name="five_rows" value="2"/>
+
+        </attr>
     </declare-styleable>
 
 </resources>

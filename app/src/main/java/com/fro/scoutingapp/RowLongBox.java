@@ -88,18 +88,20 @@ public class RowLongBox extends LinearLayout implements InterfaceMultiRow {
         backgroundLayout = findViewById(R.id.two_boxes_background_layout);
 
         // Sets the padding of the flipper
-        leftFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
-        middleFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
-        rightFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
+        int verticalChange = 10;
+        int horizontalChange = 10;
+        leftFlipper.setPadding(verticalChange, horizontalChange, Values.long_box_flipper_height, Values.long_box_flipper_width);
+        middleFlipper.setPadding(verticalChange, horizontalChange, Values.long_box_flipper_height, Values.long_box_flipper_width);
+        rightFlipper.setPadding(verticalChange, horizontalChange, Values.long_box_flipper_height, Values.long_box_flipper_width);
         // The first time this row, gets the size of it and sets the flipper padding
         rightFlipper.post(() -> {
             // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
             if (rightFlipper.getPadding() == 0 & wantsPadding) {
                 Values.long_box_flipper_width = rightFlipper.getWidth();
                 Values.long_box_flipper_height = rightFlipper.getHeight();
-                leftFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
-                middleFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
-                rightFlipper.setPadding(10, 10, Values.long_box_flipper_height, Values.long_box_flipper_width);
+                leftFlipper.setPadding(verticalChange, horizontalChange, Values.long_box_flipper_height, Values.long_box_flipper_width);
+                middleFlipper.setPadding(verticalChange, horizontalChange, Values.long_box_flipper_height, Values.long_box_flipper_width);
+                rightFlipper.setPadding(verticalChange, horizontalChange, Values.long_box_flipper_height, Values.long_box_flipper_width);
             }
         });
 

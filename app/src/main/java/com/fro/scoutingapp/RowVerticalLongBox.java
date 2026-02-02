@@ -12,6 +12,15 @@ import java.util.ArrayList;
  * Creates a row with one long multicolored box. <br/>
  * Usually, the layout weight of this row is 3 out of a weight sum of 5
  *
+ * @requires app:row_amount=""
+ * <br> The amount of rows that will be created on this component.
+ * <br>If less than 5 rows are created, then text and box_types for those rows are unnecessary
+ * <ul>
+ *     <li>three_rows - Creates 3 rows</li>
+ *     <li>four_rows - Creates 4 rows</li>
+ *     <li>five_rows - Creates 5 rows</li>
+ * <ul>
+ *
  * @requires app:text_1=""
  * @requires app:text_2=""
  * @requires app:text_3=""
@@ -34,7 +43,6 @@ import java.util.ArrayList;
  *     <li>counter - A plus/minus counter starting at 0</li>
  *     <li>multi_counter - A plus/minus counter with multiple increment sets starting at 0. Can have 1/2/3 increment sets.</li>
  *     <li>stopwatch - A stopwatch with on, off, and reset</li>
- * </ul>
  */
 public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRow {
     // Declare variables
@@ -48,6 +56,9 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
     ComponentFlipper flipper3;
     ComponentFlipper flipper4;
     ComponentFlipper flipper5;
+    LinearLayout backgroundBox;
+    LinearLayout layout4;
+    LinearLayout layout5;
 
     boolean wantsPadding = true;
 
@@ -67,8 +78,9 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
         CharSequence box1 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_1");
         CharSequence box2 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_2");
         CharSequence box3 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_3");
-        CharSequence box4 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_4");
-        CharSequence box5 =attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_5");
+        CharSequence box4 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_4");
+        CharSequence box5 = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "box_type_5");
+        CharSequence rowAmount = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "row_amount");
 
         // Init variables
         textView1 = findViewById(R.id.vertical_long_box_text_1);
@@ -81,38 +93,61 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
         flipper3 = findViewById(R.id.vertical_long_box_flipper_3);
         flipper4 = findViewById(R.id.vertical_long_box_flipper_4);
         flipper5 = findViewById(R.id.vertical_long_box_flipper_5);
+        backgroundBox = findViewById(R.id.vertical_long_box_background);
+        layout4 = findViewById(R.id.vertical_long_box_layout_4);
+        layout5 = findViewById(R.id.vertical_long_box_layout_5);
 
         // Sets the padding of the flipper
-        flipper1.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
-        flipper2.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
-        flipper3.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
-        flipper4.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
-        flipper5.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
-        // The first time this row, gets the size of it and sets the flipper padding
-        flipper5.post(() -> {
+        int verticalChange = 5;
+        int horizontalChange = 15;
+        flipper1.setPadding(verticalChange, horizontalChange, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+        flipper2.setPadding(verticalChange, horizontalChange, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+        flipper3.setPadding(verticalChange, horizontalChange, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+        flipper4.setPadding(verticalChange, horizontalChange, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+        flipper5.setPadding(verticalChange, horizontalChange, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+        // The first time this row is created, gets the size of it and sets the flipper padding
+        flipper1.post(() -> {
             // If the flipper padding was set to 0 (aka the flipper is loaded for the first time)
-            if (flipper5.getPadding() == 0 && wantsPadding) {
-                Values.vertical_long_box_flipper_width = flipper5.getWidth();
-                Values.vertical_long_box_flipper_height = flipper5.getHeight();
-                flipper1.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
-                flipper2.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
-                flipper3.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
-                flipper4.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
-                flipper5.setPadding(5, 15, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+            if (flipper1.getPadding() == 0 && wantsPadding) {
+                Values.vertical_long_box_flipper_width = flipper1.getWidth();
+                Values.vertical_long_box_flipper_height = flipper1.getHeight();
+                flipper1.setPadding(verticalChange, horizontalChange, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+                flipper2.setPadding(verticalChange, horizontalChange, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+                flipper3.setPadding(verticalChange, horizontalChange, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+                flipper4.setPadding(verticalChange, horizontalChange, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
+                flipper5.setPadding(verticalChange, horizontalChange, Values.vertical_long_box_flipper_height, Values.vertical_long_box_flipper_width);
             }
         });
 
-        // Set text and box type
+
+        // Set text and box type for first 3 rows
         setText(textView1, text1);
         setText(textView2, text2);
         setText(textView3, text3);
-        setText(textView4, text4);
-        setText(textView5, text5);
         setBox(flipper1, box1);
         setBox(flipper2, box2);
         setBox(flipper3, box3);
-        setBox(flipper4, box4);
-        setBox(flipper5, box5);
+
+        // If the user created 3 rows
+        if (rowAmount.toString().equals("0")){
+            layout4.setVisibility(GONE);
+            layout5.setVisibility(GONE);
+            backgroundBox.setWeightSum(3f);
+        }
+        // If the user created 4 rows
+        else if (rowAmount.toString().equals("1")){
+            layout5.setVisibility(GONE);
+            setText(textView4, text4);
+            setBox(flipper4, box4);
+            backgroundBox.setWeightSum(4f);
+        }
+        // If the user created 5 rows
+        else {
+            setText(textView4, text4);
+            setBox(flipper4, box4);
+            setText(textView5, text5);
+            setBox(flipper5, box5);
+        }
     }
 
     public void setText(TextView textview, CharSequence value) { textview.setText(value); }
@@ -124,13 +159,14 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
         }
         flipper.changeTo(value);
     }
-    /** @param position The level that this component will be created in. Levels go from top to bottom
+    /** @param position The level that this component is in. Levels go from top to bottom.
+     *                  Keep in mind how many rows were created for this component.
      * <ul>
-     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
-     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
-     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
-     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
-     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     *      <li>Values.vertical_level_1 - The component is in the top box</li>
+     *      <li>Values.vertical_level_2 - The component is in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component is in the third from top box</li>
+     *      <li>Values.vertical_level_4 - The component is in the fourth from top box</li>
+     *      <li>Values.vertical_level_5 - The component is in the fifth from top box</li>
      * </ul>
      */
     public void createTypeBox(String name, int inputType, int maxCharacters, int position) {
@@ -143,13 +179,14 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
             Toast.makeText(this.getContext(), "ERROR: Invalid position in type box "+name, Toast.LENGTH_SHORT).show();
         }
     }
-    /** @param position The level that this component will be created in. Levels go from top to bottom
+    /** @param position The level that this component is in. Levels go from top to bottom.
+     *                  Keep in mind how many rows were created for this component.
      * <ul>
-     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
-     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
-     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
-     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
-     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     *      <li>Values.vertical_level_1 - The component is in the top box</li>
+     *      <li>Values.vertical_level_2 - The component is in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component is in the third from top box</li>
+     *      <li>Values.vertical_level_4 - The component is in the fourth from top box</li>
+     *      <li>Values.vertical_level_5 - The component is in the fifth from top box</li>
      * </ul>
      */
     public void createTextDropdown(String name, ArrayList<String> array, int position) {
@@ -161,13 +198,14 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }
-    /** @param position The level that this component will be created in. Levels go from top to bottom
+    /** @param position The level that this component is in. Levels go from top to bottom.
+     *                  Keep in mind how many rows were created for this component.
      * <ul>
-     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
-     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
-     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
-     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
-     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     *      <li>Values.vertical_level_1 - The component is in the top box</li>
+     *      <li>Values.vertical_level_2 - The component is in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component is in the third from top box</li>
+     *      <li>Values.vertical_level_4 - The component is in the fourth from top box</li>
+     *      <li>Values.vertical_level_5 - The component is in the fifth from top box</li>
      * </ul>
      */
     public void createTeamNumberDropdown(String name, int position) {
@@ -179,13 +217,14 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in dropdown "+name, Toast.LENGTH_SHORT).show();}
     }
-    /** @param position The level that this component will be created in. Levels go from top to bottom
+    /** @param position The level that this component is in. Levels go from top to bottom.
+     *                  Keep in mind how many rows were created for this component.
      * <ul>
-     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
-     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
-     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
-     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
-     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     *      <li>Values.vertical_level_1 - The component is in the top box</li>
+     *      <li>Values.vertical_level_2 - The component is in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component is in the third from top box</li>
+     *      <li>Values.vertical_level_4 - The component is in the fourth from top box</li>
+     *      <li>Values.vertical_level_5 - The component is in the fifth from top box</li>
      * </ul>
      */
     public void createToggle(String name, int position) {
@@ -197,13 +236,14 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in toggle "+name, Toast.LENGTH_SHORT).show();}
     }
-    /** @param position The level that this component will be created in. Levels go from top to bottom
+    /** @param position The level that this component is in. Levels go from top to bottom.
+     *                  Keep in mind how many rows were created for this component.
      * <ul>
-     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
-     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
-     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
-     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
-     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     *      <li>Values.vertical_level_1 - The component is in the top box</li>
+     *      <li>Values.vertical_level_2 - The component is in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component is in the third from top box</li>
+     *      <li>Values.vertical_level_4 - The component is in the fourth from top box</li>
+     *      <li>Values.vertical_level_5 - The component is in the fifth from top box</li>
      * </ul>
      */
     public void createCounter(String name, int maxValue, int position) {
@@ -215,13 +255,14 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
     }
-    /** @param position The level that this component will be created in. Levels go from top to bottom
+    /** @param position The level that this component is in. Levels go from top to bottom.
+     *                  Keep in mind how many rows were created for this component.
      * <ul>
-     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
-     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
-     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
-     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
-     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     *      <li>Values.vertical_level_1 - The component is in the top box</li>
+     *      <li>Values.vertical_level_2 - The component is in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component is in the third from top box</li>
+     *      <li>Values.vertical_level_4 - The component is in the fourth from top box</li>
+     *      <li>Values.vertical_level_5 - The component is in the fifth from top box</li>
      * </ul>
      */
     // With 1 increment sets
@@ -235,13 +276,14 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
         wantsPadding = false;
     }
-    /** @param position The level that this component will be created in. Levels go from top to bottom
+    /** @param position The level that this component is in. Levels go from top to bottom.
+     *                  Keep in mind how many rows were created for this component.
      * <ul>
-     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
-     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
-     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
-     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
-     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     *      <li>Values.vertical_level_1 - The component is in the top box</li>
+     *      <li>Values.vertical_level_2 - The component is in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component is in the third from top box</li>
+     *      <li>Values.vertical_level_4 - The component is in the fourth from top box</li>
+     *      <li>Values.vertical_level_5 - The component is in the fifth from top box</li>
      * </ul>
      */
     // With 2 increment sets
@@ -255,13 +297,14 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
         wantsPadding = false;
     }
-    /** @param position The level that this component will be created in. Levels go from top to bottom
+    /** @param position The level that this component is in. Levels go from top to bottom.
+     *                  Keep in mind how many rows were created for this component.
      * <ul>
-     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
-     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
-     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
-     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
-     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     *      <li>Values.vertical_level_1 - The component is in the top box</li>
+     *      <li>Values.vertical_level_2 - The component is in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component is in the third from top box</li>
+     *      <li>Values.vertical_level_4 - The component is in the fourth from top box</li>
+     *      <li>Values.vertical_level_5 - The component is in the fifth from top box</li>
      * </ul>
      */
     // With 3 increment sets
@@ -275,13 +318,14 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
             Toast.makeText(this.getContext(), "ERROR: Invalid position in counter "+name, Toast.LENGTH_SHORT).show();}
         wantsPadding = false;
     }
-    /** @param position The level that this component will be created in. Levels go from top to bottom
+    /** @param position The level that this component is in. Levels go from top to bottom.
+     *                  Keep in mind how many rows were created for this component.
      * <ul>
-     *      <li>Values.vertical_level_1 - The component will be in the top box</li>
-     *      <li>Values.vertical_level_2 - The component will be in the second from top box</li>
-     *      <li>Values.vertical_level_3 - The component will be in the middle box</li>
-     *      <li>Values.vertical_level_4 - The component will be in the second to bottom box</li>
-     *      <li>Values.vertical_level_5 - The component will be in the bottom box</li>
+     *      <li>Values.vertical_level_1 - The component is in the top box</li>
+     *      <li>Values.vertical_level_2 - The component is in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component is in the third from top box</li>
+     *      <li>Values.vertical_level_4 - The component is in the fourth from top box</li>
+     *      <li>Values.vertical_level_5 - The component is in the fifth from top box</li>
      * </ul>
      */
     public void createStopwatch(String name, int position) {
@@ -293,13 +337,14 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch "+name, Toast.LENGTH_SHORT).show();}
     }
-    /** @param position The level that this component is in. Levels go from top to bottom
+    /** @param position The level that this component is in. Levels go from top to bottom.
+     *                  Keep in mind how many rows were created for this component.
      * <ul>
      *      <li>Values.vertical_level_1 - The component is in the top box</li>
      *      <li>Values.vertical_level_2 - The component is in the second from top box</li>
-     *      <li>Values.vertical_level_3 - The component is in the middle box</li>
-     *      <li>Values.vertical_level_4 - The component is in the second to bottom box</li>
-     *      <li>Values.vertical_level_5 - The component is in the bottom box</li>
+     *      <li>Values.vertical_level_3 - The component is in the third from top box</li>
+     *      <li>Values.vertical_level_4 - The component is in the fourth from top box</li>
+     *      <li>Values.vertical_level_5 - The component is in the fifth from top box</li>
      * </ul>
      */
     public void pauseStopwatch(int position) {
