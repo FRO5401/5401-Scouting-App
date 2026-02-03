@@ -16,6 +16,19 @@
         android:layout_weight="0.5">
     </com.fro.scoutingapp.RowTopText>
 
-    <!-- TODO Create rows -->
+    <com.fro.scoutingapp.RowLargeBox
+        android:id="@+id/endgame_row_1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:text="End Position"
+        app:box_type="text_dropdown"
+        android:layout_weight="2"/>
 
+    <com.fro.scoutingapp.RowLargeBox
+        android:id="@+id/endgame_row_2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:text="Robot Started Climbing At This Time (seconds)"
+        app:box_type="type_box"
+        android:layout_weight="2"/>
 </LinearLayout>

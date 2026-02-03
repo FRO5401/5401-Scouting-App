@@ -15,14 +15,12 @@
         app:color_mode="light"
         android:layout_weight="0.5"/>
 
-    <!-- TODO Create rows (if necessary) -->
-
     <com.fro.scoutingapp.RowLongBox
         android:id="@+id/notes_row_1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:left_text="Did The\nRobot Break"
-        app:middle_text="Was The\nRobot Tipped"
+        app:middle_text="Did The\nRobot Get Stuck"
         app:right_text="Were There\nAny Penalties"
         app:left_box_type="toggle"
         app:middle_box_type="toggle"

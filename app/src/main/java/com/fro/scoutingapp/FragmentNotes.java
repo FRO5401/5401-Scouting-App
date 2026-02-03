@@ -10,8 +10,6 @@ import androidx.fragment.app.Fragment;
 public class FragmentNotes extends Fragment {
     public FragmentNotes() {/* Required empty public constructor*/}
 
-    //TODO Update this page (if necessary)
-
     // Declare variables
     RowLongBox row1;
     RowLargeBox row2;
@@ -25,7 +23,7 @@ public class FragmentNotes extends Fragment {
 
         // Row 1
         row1.createToggle("Notes_Did_Robot_Break", Values.left);
-        row1.createToggle("Notes_Was_Robot_Tipped", Values.middle);
+        row1.createToggle("Notes_Did_Robot_Get_Stuck", Values.middle);
         row1.createToggle("Notes_Any_Penalties", Values.right);
 
         // Row 2

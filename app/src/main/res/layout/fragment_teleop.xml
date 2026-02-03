@@ -15,6 +15,27 @@
         app:color_mode="dark"
         android:layout_weight="0.5"/>
 
-    <!-- TODO Create rows -->
+    <com.fro.scoutingapp.RowLargeBox
+        android:id="@+id/teleop_row_1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:text="Fuel Scored"
+        app:box_type="multi_counter"
+        android:layout_weight="1.5"/>
 
+    <com.fro.scoutingapp.RowLargeBox
+        android:id="@+id/teleop_row_2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:text="Fuel Collected"
+        app:box_type="multi_counter"
+        android:layout_weight="1.5"/>
+
+    <com.fro.scoutingapp.RowLargeBox
+        android:id="@+id/teleop_row_3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:text="Amount Of Times\nCollected From Outpost"
+        app:box_type="counter"
+        android:layout_weight="1"/>
 </LinearLayout>
