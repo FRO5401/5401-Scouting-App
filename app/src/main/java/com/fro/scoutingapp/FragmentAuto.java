@@ -28,7 +28,7 @@ public class FragmentAuto extends Fragment {
         row1.createMultiCounter("Auto_Fuel_Scored", 1000, Values.colorType_greyWhiteGrey, 1,5);
 
         // Row 2
-        row2.createMultiCounter("Auto_Fuel_Collected", 1000, Values.colorType_greyWhiteGrey, 1, 5);
+        row2.createMultiCounter("Auto_Fuel_Passed", 1000, Values.colorType_greyWhiteGrey, 1, 5);
 
         // Row 3
         row3.createToggle("Auto_Climbed_L1", Values.left);

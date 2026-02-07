@@ -28,10 +28,10 @@ public class FragmentTeleop extends Fragment {
         row1.createMultiCounter("Teleop_Fuel_Scored", 1500, Values.colorType_greyWhiteGrey, 1, 5);
 
         // Row 2
-        row2.createMultiCounter("Teleop_Full_Collected", 1500, Values.colorType_greyWhiteGrey, 1, 5);
+        row2.createMultiCounter("Teleop_Fuel_Passed", 1500, Values.colorType_greyWhiteGrey, 1, 5);
 
         // Row 3
-        row3.createCounter("Teleop_Times_Visited_Outpost", 50);
+        row3.createCounter("Teleop_Times_Fuel_Stored_Outpost", 50);
 
         // Inflate the layout for this fragment
         return rootView;

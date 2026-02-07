@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Scouting App</string>
 
-<!--    TODO Update help screen text    -->
 <!--    \t = indents   -->
 <!--    \n = starts a new line   -->
 <!--    \' = allows an apostrophe   -->
@@ -23,24 +22,37 @@
     <string name="help_screen_header_1_page_2">Helpful Tidbits</string>
     <string name="help_screen_text_1_page_2">
 \t \u2022 Some helpful piece of text related to the game. \n
-\t \u2022 You can find the human player position by looking at the players\' shirt colors, and inferring their team. \n
-\t \u2022 Examples of things to put in the notes box: If the robot is a skateboard, a defense bot, or their auto fails. </string>
+\t \u2022 Examples of things to put in the notes box: Broken autos or negative elements of match that hinder the robots ability to perform\n
+\t \u2022 How to count. Instead of counting every single ball, find groups of 5 and use the + 5 button to add five. This year\'s game isn’t about precise accuracy, it’s about approximation.\n</string>
 
     <string name="help_screen_header_2_page_2">Terminology</string>
     <string name="help_screen_text_2_page_2">
-\t \u2022 TERM =  The definition of something that is useful to a scouter. \n
-\t \u2022 COOPERITION BONUS = If both alliance\'s work together to do something. \n
-\t \u2022 RANKING POINT = The criteria for a specific ranking point.</string>
+\t \u2022 FUEL= The abundant yellow game piece that are shot into the HUB \n
+\t \u2022 OUTPOST = Where the robot can get FUEL from a human player \n
+\t \u2022 DEPOT = A 24 FUEL storage area that DOES NOT refill \n
+\t \u2022 TOWER = The ladder that the robot climbs during ENDGAME and AUTO \n
+\t \u2022 HUB = A large structure where FUEL is scored in during its ALLIANCE PERIOD \n
+\t \u2022 ALLIANCE PERIOD = The 25 seconds when the HUB is active and can be scored in \n
+\t \u2022 TRENCH = A structure that blocks tall robots from entering the center \n
+\t \u2022 BUMP= Speed bump obstacle between the TRENCH and HUB that makes it harder for robots to cross the field</string>
 
     <string name="help_screen_header_1_page_3">Penalties</string>
     <string name="help_screen_text_1_page_3">
-\t \u2022 A specific yet common penalty and how it\'s caused. \n
-\t \u2022 If there is a penalty, the ref closest to the offender will wave a flag that corresponds to their team\'s color.</string>
+\t \u2022 If a robot does a penalty, the ref closest to them will wave the alliance team color flag \n
+\t \u2022 The OUTPOST has a storage limit. Off-FIELD FUEL may only be stored in the CHUTE and the CORRAL. Excess FUEL, defined as the CHUTE and CORRAL being full, must immediately be entered onto the FIELD. \n
+\t \u2022 DISABLED is when a robot is commanded to cease all operations for the round \n
+\t \u2022 MINOR FOULS get the opposing team 5 extra points to their total \n
+\t \u2022 MAJOR FOULS get the opposing team 15 extra points to their total \n
+\t \u2022 YELLOW CARDS are issued for robot or team misconduct, including egregious/unsportsmanlike behavior and rule breaking \n
+\t \u2022 RED CARDS are issues for a second yellow card, and DISQUALIFIES a team for the match</string>
 
 
     <string name="help_screen_header_2_page_3">Visual Cues</string>
     <string name="help_screen_text_2_page_3">
-\t \u2022 A visual cue that could be helpful to the scouter. \n
 \t \u2022 Once a team receives a YELLOW or RED CARD, a yellow rectangle will show next to the team number on the audience display. \n
-\t \u2022 If COOPERTITION is enabled, a handshake icon will be on the scoreboard.</string>
+\t \u2022 Each alliance has their team numbers posted at the top of their color alliance \n
+\t \u2022 ENERGIZED Ranking Point progress is displayed out of 100 under each alliance’s team numbers \n
+\t \u2022 When ENERGIZED RP is completed, the counter goes up to 360 and that alliance is eligible for the SUPERCHARGED ranking point \n
+\t \u2022 A yellow arrow icon will display on the alliance with an active Hub \n
+\t \u2022 During Tele-Op, the amount of Hub shifts that have occurred and the amount of time left in the current shift are located above the match time</string>
 </resources>

@@ -27,7 +27,7 @@
         android:id="@+id/teleop_row_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:text="Fuel Collected"
+        app:text="Fuel Passed"
         app:box_type="multi_counter"
         android:layout_weight="1.5"/>
 
@@ -35,7 +35,7 @@
         android:id="@+id/teleop_row_3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:text="Amount Of Times\nCollected From Outpost"
+        app:text="Amount Of Times\nStored Fuel in Outpost"
         app:box_type="counter"
         android:layout_weight="1"/>
 </LinearLayout>
