@@ -23,7 +23,8 @@
     <string name="help_screen_text_1_page_2">
 \t \u2022 Some helpful piece of text related to the game. \n
 \t \u2022 Examples of things to put in the notes box: Broken autos or negative elements of match that hinder the robots ability to perform\n
-\t \u2022 How to count. Instead of counting every single ball, find groups of 5 and use the + 5 button to add five. This year\'s game isn’t about precise accuracy, it’s about approximation.\n</string>
+\t \u2022 How to count. Instead of counting every single ball, find groups of 5 and use the + 5 button to add five.\n
+\t \u2022 This year\'s game isn’t about precise accuracy, it’s about approximation.\n</string>
 
     <string name="help_screen_header_2_page_2">Terminology</string>
     <string name="help_screen_text_2_page_2">
