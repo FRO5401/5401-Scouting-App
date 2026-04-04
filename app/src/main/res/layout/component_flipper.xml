@@ -5,6 +5,65 @@
     android:orientation="horizontal"
     android:id="@+id/flipper">
 
+<!--    Checkbox    -->
+    <LinearLayout
+        android:id="@+id/checkbox_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="5">
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox_box_1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="@string/default_text"
+            android:fontFamily="@font/helvetica_bold"
+            android:textColor="@color/text_grey"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"/>
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox_box_2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="@string/default_text"
+            android:fontFamily="@font/helvetica_bold"
+            android:textColor="@color/text_grey"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"/>
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox_box_3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="@string/default_text"
+            android:fontFamily="@font/helvetica_bold"
+            android:textColor="@color/text_grey"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"/>
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox_box_4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="@string/default_text"
+            android:fontFamily="@font/helvetica_bold"
+            android:textColor="@color/text_grey"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"/>
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox_box_5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="@string/default_text"
+            android:fontFamily="@font/helvetica_bold"
+            android:textColor="@color/text_grey"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"/>
+    </LinearLayout>
+
 <!--    Text Type Box    -->
     <LinearLayout
         android:id="@+id/type_box_layout"

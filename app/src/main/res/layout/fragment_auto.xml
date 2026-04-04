@@ -18,4 +18,12 @@
 
 <!-- TODO Create rows -->
 
+    <com.fro.scoutingapp.RowLargeBox
+        android:id="@+id/auto_row_1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:text="Type of\nDefense Played"
+        app:box_type="checkbox"
+        android:layout_weight="2"/>
+
 </LinearLayout>

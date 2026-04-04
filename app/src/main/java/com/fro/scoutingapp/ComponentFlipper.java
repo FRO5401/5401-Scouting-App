@@ -1,6 +1,8 @@
 package com.fro.scoutingapp;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
@@ -13,6 +15,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -21,8 +25,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.widget.CompoundButtonCompat;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -85,7 +92,8 @@ public class ComponentFlipper extends LinearLayout {
         if (value.equals("4")) {while (flipper.getCurrentView() != findViewById(R.id.counter_layout)) {flipper.showNext();}}
         if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.multi_counter_layout)) {flipper.showNext();}}
         if (value.equals("6")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch_layout)) {flipper.showNext();}}
-        if (value.equals("7")) {flipper.setVisibility(INVISIBLE);}
+        if (value.equals("7")) {while (flipper.getCurrentView() != findViewById(R.id.checkbox_layout)) {flipper.showNext();}}
+        if (value.equals("8")) {flipper.setVisibility(INVISIBLE);}
     }
 
     public void setPadding(int verticalChange, int horizontalChange, int height, int width) {
@@ -688,6 +696,129 @@ public class ComponentFlipper extends LinearLayout {
             stopwatchStart.setClickable(true);
             stopwatchStart.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.box_outline, getContext().getTheme()));
 
+        }
+    }
+
+    public void createCheckBox(String name, int amountOfCheckboxes, ArrayList<String> checkboxNames) {
+        //Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, "");
+        }
+
+        // Creates the layout
+        LinearLayout checkboxLayout = findViewById(R.id.checkbox_layout);
+
+        //Checks to make sure the array list has correct number of names
+        if (checkboxNames.size() != amountOfCheckboxes){
+            Toast.makeText(getContext(), "Error: In Checkbox "+name+", amount of checkboxes and names don't match.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Sets the correct weight sum for amount of checkboxes
+        switch (amountOfCheckboxes){
+            case 1:  checkboxLayout.setWeightSum(1); break;
+            case 2:  checkboxLayout.setWeightSum(2); break;
+            case 3:  checkboxLayout.setWeightSum(3); break;
+            case 4:  checkboxLayout.setWeightSum(4); break;
+            case 5:  checkboxLayout.setWeightSum(5); break;
+        }
+
+        // Creates checkbox1
+        CheckBox checkBox1 = findViewById(R.id.checkbox_box_1);
+        checkBox1.setText(checkboxNames.get(0));
+        CompoundButtonCompat.setButtonTintList(checkBox1, ContextCompat.getColorStateList(this.getContext(), R.color.fro_blue));
+
+        // If the checkbox is checked, it puts the text value in the string
+        checkBox1.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            String text = checkBox1.getText() + ", ";
+            String output = Objects.requireNonNull(Values.data.get(name)).toString();
+
+            // Adds the text to the data
+            if (isChecked) { output += text; }
+            // Removes the text from the data
+            if (!isChecked && output.contains(text)){ output = output.replace(text,""); }
+
+            Values.data.put(name, output);
+        });
+
+        // Creates checkbox2 if two or more were selected
+        if (amountOfCheckboxes >= 2){
+            CheckBox checkBox2 = findViewById(R.id.checkbox_box_2);
+            checkBox2.setText(checkboxNames.get(1));
+            CompoundButtonCompat.setButtonTintList(checkBox2, ContextCompat.getColorStateList(this.getContext(), R.color.fro_blue));
+
+            // If the checkbox is checked, it puts the text value in the string
+            checkBox2.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                String text = checkBox2.getText() + ", ";
+                String output = Objects.requireNonNull(Values.data.get(name)).toString();
+
+                // Adds the text to the data
+                if (isChecked) { output += text; }
+                // Removes the text from the data
+                if (!isChecked && output.contains(text)){ output = output.replace(text,""); }
+
+                Values.data.put(name, output);
+            });
+        }
+
+        // Creates checkbox3 if three or more were selected
+        if (amountOfCheckboxes >= 3){
+            CheckBox checkBox3 = findViewById(R.id.checkbox_box_3);
+            checkBox3.setText(checkboxNames.get(2));
+            CompoundButtonCompat.setButtonTintList(checkBox3, ContextCompat.getColorStateList(this.getContext(), R.color.fro_blue));
+
+            // If the checkbox is checked, it puts the text value in the string
+            checkBox3.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                String text = checkBox3.getText() + ", ";
+                String output = Objects.requireNonNull(Values.data.get(name)).toString();
+
+                // Adds the text to the data
+                if (isChecked) { output += text; }
+                // Removes the text from the data
+                if (!isChecked && output.contains(text)){ output = output.replace(text,""); }
+
+                Values.data.put(name, output);
+            });
+        }
+
+        // Creates checkbox4 if four or more were selected
+        if (amountOfCheckboxes >= 4){
+            CheckBox checkBox4 = findViewById(R.id.checkbox_box_4);
+            checkBox4.setText(checkboxNames.get(3));
+            CompoundButtonCompat.setButtonTintList(checkBox4, ContextCompat.getColorStateList(this.getContext(), R.color.fro_blue));
+
+            // If the checkbox is checked, it puts the text value in the string
+            checkBox4.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                String text = checkBox4.getText() + ", ";
+                String output = Objects.requireNonNull(Values.data.get(name)).toString();
+
+                // Adds the text to the data
+                if (isChecked) { output += text; }
+                // Removes the text from the data
+                if (!isChecked && output.contains(text)){ output = output.replace(text,""); }
+
+                Values.data.put(name, output);
+            });
+        }
+
+        // Creates checkbox5 if five were selected
+        if (amountOfCheckboxes == 5){
+            CheckBox checkBox5 = findViewById(R.id.checkbox_box_5);
+            checkBox5.setText(checkboxNames.get(4));
+            CompoundButtonCompat.setButtonTintList(checkBox5, ContextCompat.getColorStateList(this.getContext(), R.color.fro_blue));
+
+            // If the checkbox is checked, it puts the text value in the string
+            checkBox5.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                String text = checkBox5.getText() + ", ";
+                String output = Objects.requireNonNull(Values.data.get(name)).toString();
+
+                // Adds the text to the data
+                if (isChecked) { output += text; }
+                // Removes the text from the data
+                if (!isChecked && output.contains(text)){ output = output.replace(text,""); }
+
+                Values.data.put(name, output);
+            });
         }
     }
 }
