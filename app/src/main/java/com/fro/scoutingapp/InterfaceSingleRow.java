@@ -156,4 +156,16 @@ public interface InterfaceSingleRow {
      * } }</pre>
      */
     public void pauseStopwatch();
+
+    /**
+     * Creates a normal dropdown list with text options
+     * @param name The name the data will be exported as. Usually structured as page_data.
+     * <br/> Ex. "Teleop_Pieces_Scored"
+     * @param amountOfCheckboxes The amount of checkboxes that will be shown
+     * @param checkboxNames An array list of the names for the checkbox options in order from top to bottom.
+     *        Make sure there is the same number of  names as amountOfCheckboxes
+     * <br/> Ex: (.., new ArrayList<>(Arrays.asList("O1", "O2", "O3")));
+     */
+    public void createCheckBox(String name, int amountOfCheckboxes, ArrayList<String> checkboxNames);
+
 }

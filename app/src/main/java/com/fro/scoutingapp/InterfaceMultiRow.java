@@ -215,4 +215,22 @@ public interface InterfaceMultiRow {
      * </ul>
      */
     public void pauseStopwatch(int position);
-}
+
+    /**
+     * Creates a normal dropdown list with text options
+     * @param name The name the data will be exported as. Usually structured as page_data.
+     * <br/> Ex. "Teleop_Pieces_Scored"
+     * @param amountOfCheckboxes The amount of checkboxes that will be shown
+     * @param checkboxNames An array list of the names for the checkbox options in order from top to bottom.
+     *        Make sure there is the same number of  names as amountOfCheckboxes
+     * <br/> Ex: (.., new ArrayList<>(Arrays.asList("O1", "O2", "O3")));
+     * @param position The box that this component will be created in.
+     * <ul>
+     *      <li>Values.left - The component will be in the left box</li>
+     *      <li>Values.middle - The component will be in the middle box</li>
+     *      <li>Values.right - The component will be in the right box</li>
+     * </ul>
+     */
+    public void createCheckBox(String name, int amountOfCheckboxes, ArrayList<String> checkboxNames, int position);
+
+    }
