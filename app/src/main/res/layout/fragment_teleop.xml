@@ -22,12 +22,4 @@
         app:text="Fuel Scored"
         app:box_type="multi_counter"
         android:layout_weight="2"/>
-
-    <com.fro.scoutingapp.RowLargeBox
-        android:id="@+id/teleop_row_2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:text="Amount Of Times\nStored Fuel in Outpost"
-        app:box_type="counter"
-        android:layout_weight="1.3"/>
 </LinearLayout>
