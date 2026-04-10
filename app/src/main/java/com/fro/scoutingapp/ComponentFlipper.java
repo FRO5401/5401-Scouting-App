@@ -31,6 +31,8 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.CompoundButtonCompat;
 
+import com.google.android.material.slider.Slider;
+
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
@@ -93,7 +95,8 @@ public class ComponentFlipper extends LinearLayout {
         if (value.equals("5")) {while (flipper.getCurrentView() != findViewById(R.id.multi_counter_layout)) {flipper.showNext();}}
         if (value.equals("6")) {while (flipper.getCurrentView() != findViewById(R.id.stopwatch_layout)) {flipper.showNext();}}
         if (value.equals("7")) {while (flipper.getCurrentView() != findViewById(R.id.checkbox_layout)) {flipper.showNext();}}
-        if (value.equals("8")) {flipper.setVisibility(INVISIBLE);}
+        if (value.equals("8")) {while (flipper.getCurrentView() != findViewById(R.id.slider_layout)) {flipper.showNext();}}
+        if (value.equals("9")) {flipper.setVisibility(INVISIBLE);}
     }
 
     public void setPadding(int verticalChange, int horizontalChange, int height, int width) {
@@ -820,5 +823,23 @@ public class ComponentFlipper extends LinearLayout {
                 Values.data.put(name, output);
             });
         }
+    }
+
+    public void createSlider(String name, int minValue, int maxValue, double stepValue) {
+        // Creates the data in the hashmap
+        if (!Values.data.containsKey(name)) {
+            Values.data.put(name, 0);
+        }
+
+        // Creates the slider
+        Slider slider = findViewById(R.id.slider);
+
+        // Sets the min, max and step values
+        slider.setValueFrom(minValue);
+        slider.setValueTo(maxValue);
+        slider.setStepSize((float) stepValue);
+
+        slider.setOnClickListener(v -> Values.data.put(name, slider.getValue()));
+
     }
 }

@@ -21,7 +21,8 @@
             <enum name="multi_counter" value="5"/>
             <enum name="stopwatch" value="6"/>
             <enum name="checkbox" value="7"/>
-            <enum name="nothing" value="8"/>
+            <enum name="slider" value="8"/>
+            <enum name="nothing" value="9"/>
         </attr>
 
         <attr name="middle_box_type" format="enum" >
@@ -33,7 +34,8 @@
             <enum name="multi_counter" value="5"/>
             <enum name="stopwatch" value="6"/>
             <enum name="checkbox" value="7"/>
-            <enum name="nothing" value="8"/>
+            <enum name="slider" value="8"/>
+            <enum name="nothing" value="9"/>
         </attr>
 
         <attr name="right_box_type" format="enum" >
@@ -45,7 +47,8 @@
             <enum name="multi_counter" value="5"/>
             <enum name="stopwatch" value="6"/>
             <enum name="checkbox" value="7"/>
-            <enum name="nothing" value="8"/>
+            <enum name="slider" value="8"/>
+            <enum name="nothing" value="9"/>
         </attr>
 
         <attr name="box_type" format="enum" >
@@ -57,7 +60,8 @@
             <enum name="multi_counter" value="5"/>
             <enum name="stopwatch" value="6"/>
             <enum name="checkbox" value="7"/>
-            <enum name="nothing" value="8"/>
+            <enum name="slider" value="8"/>
+            <enum name="nothing" value="9"/>
         </attr>
 
         <attr name="box_type_1" format="enum" >
@@ -69,7 +73,8 @@
             <enum name="multi_counter" value="5"/>
             <enum name="stopwatch" value="6"/>
             <enum name="checkbox" value="7"/>
-            <enum name="nothing" value="8"/>
+            <enum name="slider" value="8"/>
+            <enum name="nothing" value="9"/>
         </attr>
 
         <attr name="box_type_2" format="enum" >
@@ -81,7 +86,8 @@
             <enum name="multi_counter" value="5"/>
             <enum name="stopwatch" value="6"/>
             <enum name="checkbox" value="7"/>
-            <enum name="nothing" value="8"/>
+            <enum name="slider" value="8"/>
+            <enum name="nothing" value="9"/>
         </attr>
 
         <attr name="box_type_3" format="enum" >
@@ -93,7 +99,8 @@
             <enum name="multi_counter" value="5"/>
             <enum name="stopwatch" value="6"/>
             <enum name="checkbox" value="7"/>
-            <enum name="nothing" value="8"/>
+            <enum name="slider" value="8"/>
+            <enum name="nothing" value="9"/>
         </attr>
 
         <attr name="box_type_4" format="enum" >
@@ -105,7 +112,8 @@
             <enum name="multi_counter" value="5"/>
             <enum name="stopwatch" value="6"/>
             <enum name="checkbox" value="7"/>
-            <enum name="nothing" value="8"/>
+            <enum name="slider" value="8"/>
+            <enum name="nothing" value="9"/>
         </attr>
 
         <attr name="box_type_5" format="enum" >
@@ -117,7 +125,8 @@
             <enum name="multi_counter" value="5"/>
             <enum name="stopwatch" value="6"/>
             <enum name="checkbox" value="7"/>
-            <enum name="nothing" value="8"/>
+            <enum name="slider" value="8"/>
+            <enum name="nothing" value="9"/>
         </attr>
 
         <attr name="color_pattern" format="enum" >

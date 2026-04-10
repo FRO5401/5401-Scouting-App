@@ -252,4 +252,11 @@ public class RowTwoBoxes extends LinearLayout implements InterfaceMultiRow {
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in checkbox "+name, Toast.LENGTH_SHORT).show();}
     }
+
+    public void createSlider(String name, int minValue, int maxValue, double stepValue, int position) {
+        if (position == Values.left) {leftFlipper.createSlider(name, minValue, maxValue, stepValue);}
+        else if (position == Values.right) {rightFlipper.createSlider(name, minValue, maxValue, stepValue);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in checkbox "+name, Toast.LENGTH_SHORT).show();}
+    }
 }

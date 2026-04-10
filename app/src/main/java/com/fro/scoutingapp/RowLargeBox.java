@@ -119,4 +119,6 @@ public class RowLargeBox extends LinearLayout implements InterfaceSingleRow {
     public void pauseStopwatch() {flipper.pauseStopwatch();}
 
     public void createCheckBox(String name, int amountOfCheckboxes, ArrayList<String> checkboxNames) {flipper.createCheckBox(name, amountOfCheckboxes, checkboxNames);}
+
+    public void createSlider(String name, int minValue, int maxValue, double stepValue) { flipper.createSlider(name, minValue, maxValue, stepValue); }
 }
