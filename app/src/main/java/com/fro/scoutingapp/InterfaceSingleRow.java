@@ -168,4 +168,14 @@ public interface InterfaceSingleRow {
      */
     public void createCheckBox(String name, int amountOfCheckboxes, ArrayList<String> checkboxNames);
 
+    /**
+     * Creates a normal dropdown list with text options
+     * @param name The name the data will be exported as. Usually structured as page_data.
+     * <br/> Ex. "Teleop_Pieces_Scored"
+     * @param minValue The minimum value in the slider, on the left side.
+     * @param maxValue The maximum value in the slider, on the right side.
+     * @param stepValue The increments that the slider will snap to.
+     */
+    public void createSlider(String name, int minValue, int maxValue, double stepValue);
+
 }

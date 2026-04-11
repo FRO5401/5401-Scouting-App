@@ -233,4 +233,21 @@ public interface InterfaceMultiRow {
      */
     public void createCheckBox(String name, int amountOfCheckboxes, ArrayList<String> checkboxNames, int position);
 
-    }
+
+    /**
+     * Creates a normal dropdown list with text options
+     * @param name The name the data will be exported as. Usually structured as page_data.
+     * <br/> Ex. "Teleop_Pieces_Scored"
+     * @param minValue The minimum value in the slider, on the left side.
+     * @param maxValue The maximum value in the slider, on the right side.
+     * @param stepValue The increments that the slider will snap to.
+     * @param position The box that this component will be created in.
+     * <ul>
+     *      <li>Values.left - The component will be in the left box</li>
+     *      <li>Values.middle - The component will be in the middle box</li>
+     *      <li>Values.right - The component will be in the right box</li>
+     * </ul>
+     * */
+    public void createSlider(String name, int minValue, int maxValue, double stepValue, int position);
+
+}
