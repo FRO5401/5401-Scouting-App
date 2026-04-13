@@ -46,21 +46,14 @@ public class ActivityMain extends AppCompatActivity {
         helpPopup = findViewById(R.id.main_help_popup);
         screen = findViewById(R.id.main_screen);
 
-
-        //TODO Set main activity row
-
         // vertical long box
         verticalLongBox.createTypeBox("Main_Scouters_Name", Values.inputType_text, 20, Values.vertical_level_1);
         verticalLongBox.createTeamNumberDropdown("Main_Team_Number", Values.vertical_level_2);
         verticalLongBox.createTextDropdown(
                 "Main_Robot_Position",
-                new ArrayList<>(Arrays.asList("Left", "Middle", "Right", "Other")),
+                new ArrayList<>(Arrays.asList("Outpost", "Tower", "Depot")),
                 Values.vertical_level_3);
         verticalLongBox.createTypeBox("Main_Match_Number", Values.inputType_number, 3, Values.vertical_level_4);
-        verticalLongBox.createTextDropdown(
-                "Main_Human_Player_Position",
-                new ArrayList<>(Arrays.asList("Station 1", "Station 2", "Station 3", "Can't Tell")),
-                Values.vertical_level_5);
 
 
 

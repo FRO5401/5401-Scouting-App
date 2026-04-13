@@ -10,16 +10,18 @@ import androidx.fragment.app.Fragment;
 public class FragmentTeleop extends Fragment {
     public FragmentTeleop() {/* Required empty public constructor*/}
 
-    //TODO Create this page
 
     // Declare variables
-
+    RowLargeBox row1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_teleop, container, false);
         // Init variables
+        row1 = rootView.findViewById(R.id.teleop_row_1);
 
+        // Row 1
+        row1.createMultiCounter("Teleop_Fuel_Scored", 1500, Values.colorType_greyWhiteGrey, 1, 5);
 
         // Inflate the layout for this fragment
         return rootView;

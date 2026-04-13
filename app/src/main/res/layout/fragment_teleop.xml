@@ -15,6 +15,11 @@
         app:color_mode="dark"
         android:layout_weight="0.5"/>
 
-    <!-- TODO Create rows -->
-
+    <com.fro.scoutingapp.RowLargeBox
+        android:id="@+id/teleop_row_1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:text="Fuel Scored"
+        app:box_type="multi_counter"
+        android:layout_weight="2"/>
 </LinearLayout>
