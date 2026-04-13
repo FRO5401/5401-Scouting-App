@@ -225,6 +225,22 @@ public class RowThreeBoxes extends LinearLayout implements InterfaceMultiRow {
         else if (position == Values.middle) {middleFlipper.pauseStopwatch();}
         else if (position == Values.right) {rightFlipper.pauseStopwatch();}
         else{
-            Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch pause ", Toast.LENGTH_SHORT).show();}
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch pause", Toast.LENGTH_SHORT).show();}
+    }
+
+    public void createCheckBox(String name, int amountOfCheckboxes, ArrayList<String> checkboxNames, int position) {
+        if (position == Values.left) {leftFlipper.createCheckBox(name, amountOfCheckboxes, checkboxNames);}
+        else if (position == Values.middle) {middleFlipper.createCheckBox(name, amountOfCheckboxes, checkboxNames);}
+        else if (position == Values.right) {rightFlipper.createCheckBox(name, amountOfCheckboxes, checkboxNames);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in checkbox "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    public void createSlider(String name, int minValue, int maxValue, double stepValue, int position) {
+        if (position == Values.left) {leftFlipper.createSlider(name, minValue, maxValue, stepValue);}
+        else if (position == Values.middle) {middleFlipper.createSlider(name, minValue, maxValue, stepValue);}
+        else if (position == Values.right) {rightFlipper.createSlider(name, minValue, maxValue, stepValue);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in checkbox "+name, Toast.LENGTH_SHORT).show();}
     }
 }

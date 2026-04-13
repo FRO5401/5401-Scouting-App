@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class FragmentAuto extends Fragment {
     public FragmentAuto() {/* Required empty public constructor*/}

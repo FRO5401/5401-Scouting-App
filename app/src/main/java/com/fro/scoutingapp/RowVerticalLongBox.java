@@ -356,4 +356,44 @@ public class RowVerticalLongBox extends LinearLayout implements InterfaceMultiRo
         else{
             Toast.makeText(this.getContext(), "ERROR: Invalid position in stopwatch pause", Toast.LENGTH_SHORT).show();}
     }
+
+    /** @param position The level that this component is in. Levels go from top to bottom.
+     *                  Keep in mind how many rows were created for this component.
+     * <ul>
+     *      <li>Values.vertical_level_1 - The component is in the top box</li>
+     *      <li>Values.vertical_level_2 - The component is in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component is in the third from top box</li>
+     *      <li>Values.vertical_level_4 - The component is in the fourth from top box</li>
+     *      <li>Values.vertical_level_5 - The component is in the fifth from top box</li>
+     * </ul>
+     */
+    public void createCheckBox(String name, int amountOfCheckboxes, ArrayList<String> checkboxNames, int position) {
+        if (position == Values.vertical_level_1) {flipper1.createCheckBox(name, amountOfCheckboxes, checkboxNames);}
+        else if (position == Values.vertical_level_2) {flipper2.createCheckBox(name, amountOfCheckboxes, checkboxNames);}
+        else if (position == Values.vertical_level_3) {flipper3.createCheckBox(name, amountOfCheckboxes, checkboxNames);}
+        else if (position == Values.vertical_level_4) {flipper4.createCheckBox(name, amountOfCheckboxes, checkboxNames);}
+        else if (position == Values.vertical_level_5) {flipper5.createCheckBox(name, amountOfCheckboxes, checkboxNames);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in checkbox "+name, Toast.LENGTH_SHORT).show();}
+    }
+
+    /** @param position The level that this component is in. Levels go from top to bottom.
+     *                  Keep in mind how many rows were created for this component.
+     * <ul>
+     *      <li>Values.vertical_level_1 - The component is in the top box</li>
+     *      <li>Values.vertical_level_2 - The component is in the second from top box</li>
+     *      <li>Values.vertical_level_3 - The component is in the third from top box</li>
+     *      <li>Values.vertical_level_4 - The component is in the fourth from top box</li>
+     *      <li>Values.vertical_level_5 - The component is in the fifth from top box</li>
+     * </ul>
+     */
+    public void createSlider(String name, int minValue, int maxValue, double stepValue, int position) {
+        if (position == Values.vertical_level_1) {flipper1.createSlider(name, minValue, maxValue, stepValue);}
+        else if (position == Values.vertical_level_2) {flipper2.createSlider(name, minValue, maxValue, stepValue);}
+        else if (position == Values.vertical_level_3) {flipper3.createSlider(name, minValue, maxValue, stepValue);}
+        else if (position == Values.vertical_level_4) {flipper4.createSlider(name, minValue, maxValue, stepValue);}
+        else if (position == Values.vertical_level_5) {flipper5.createSlider(name, minValue, maxValue, stepValue);}
+        else{
+            Toast.makeText(this.getContext(), "ERROR: Invalid position in checkbox "+name, Toast.LENGTH_SHORT).show();}
+    }
 }

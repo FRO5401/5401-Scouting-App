@@ -35,4 +35,5 @@
         app:right_box_type="toggle"
         android:layout_weight="1"/>
 
+
 </LinearLayout>
