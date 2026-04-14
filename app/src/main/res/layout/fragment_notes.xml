@@ -32,16 +32,24 @@
         android:id="@+id/notes_row_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:text="Defense Rating"
-        app:box_type="text_dropdown"
+        app:text="Defense Type"
+        app:box_type="checkbox"
         android:layout_weight="1"/>
 
     <com.fro.scoutingapp.RowLargeBox
         android:id="@+id/notes_row_3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:text="Defense Rating\n(0 means no defense)"
+        app:box_type="slider"
+        android:layout_weight="1"/>
+
+    <com.fro.scoutingapp.RowLargeBox
+        android:id="@+id/notes_row_4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:text="Any extra notes, comments, concerns?"
         app:box_type="type_box"
-        android:layout_weight="2"/>
+        android:layout_weight="1.25"/>
 
 </LinearLayout>

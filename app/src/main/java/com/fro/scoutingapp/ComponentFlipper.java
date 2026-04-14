@@ -11,6 +11,7 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -731,6 +732,10 @@ public class ComponentFlipper extends LinearLayout {
         checkBox1.setText(checkboxNames.get(0));
         CompoundButtonCompat.setButtonTintList(checkBox1, ContextCompat.getColorStateList(this.getContext(), R.color.fro_blue));
 
+        // Sets checkbox to saved checked value
+        String data = Objects.requireNonNull(Values.data.get(name)).toString();
+        if (data.contains(checkboxNames.get(0))) { checkBox1.setChecked(true); }
+
         // If the checkbox is checked, it puts the text value in the string
         checkBox1.setOnCheckedChangeListener((buttonView, isChecked) -> {
             String text = checkBox1.getText() + ", ";
@@ -749,6 +754,9 @@ public class ComponentFlipper extends LinearLayout {
             CheckBox checkBox2 = findViewById(R.id.checkbox_box_2);
             checkBox2.setText(checkboxNames.get(1));
             CompoundButtonCompat.setButtonTintList(checkBox2, ContextCompat.getColorStateList(this.getContext(), R.color.fro_blue));
+
+            // Sets checkbox to saved checked value
+            if (data.contains(checkboxNames.get(1))) { checkBox2.setChecked(true); }
 
             // If the checkbox is checked, it puts the text value in the string
             checkBox2.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -770,6 +778,9 @@ public class ComponentFlipper extends LinearLayout {
             checkBox3.setText(checkboxNames.get(2));
             CompoundButtonCompat.setButtonTintList(checkBox3, ContextCompat.getColorStateList(this.getContext(), R.color.fro_blue));
 
+            // Sets checkbox to saved checked value
+            if (data.contains(checkboxNames.get(2))) { checkBox3.setChecked(true); }
+
             // If the checkbox is checked, it puts the text value in the string
             checkBox3.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 String text = checkBox3.getText() + ", ";
@@ -790,6 +801,9 @@ public class ComponentFlipper extends LinearLayout {
             checkBox4.setText(checkboxNames.get(3));
             CompoundButtonCompat.setButtonTintList(checkBox4, ContextCompat.getColorStateList(this.getContext(), R.color.fro_blue));
 
+            // Sets checkbox to saved checked value
+            if (data.contains(checkboxNames.get(3))) { checkBox4.setChecked(true); }
+
             // If the checkbox is checked, it puts the text value in the string
             checkBox4.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 String text = checkBox4.getText() + ", ";
@@ -809,6 +823,9 @@ public class ComponentFlipper extends LinearLayout {
             CheckBox checkBox5 = findViewById(R.id.checkbox_box_5);
             checkBox5.setText(checkboxNames.get(4));
             CompoundButtonCompat.setButtonTintList(checkBox5, ContextCompat.getColorStateList(this.getContext(), R.color.fro_blue));
+
+            // Sets checkbox to saved checked value
+            if (data.contains(checkboxNames.get(4))) { checkBox5.setChecked(true); }
 
             // If the checkbox is checked, it puts the text value in the string
             checkBox5.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -834,12 +851,23 @@ public class ComponentFlipper extends LinearLayout {
         // Creates the slider
         Slider slider = findViewById(R.id.slider);
 
+        // Set slider to current value
+        if (Values.data.containsKey(name)) {
+            float value = Float.parseFloat(String.valueOf(Values.data.get(name)));
+            slider.setValue(value);
+        }
+
         // Sets the min, max and step values
         slider.setValueFrom(minValue);
         slider.setValueTo(maxValue);
         slider.setStepSize((float) stepValue);
 
-        slider.setOnClickListener(v -> Values.data.put(name, slider.getValue()));
+        slider.addOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull Slider slider, float v, boolean b) {
+                Values.data.put(name, slider.getValue());
+            }
+        });
 
     }
 }
